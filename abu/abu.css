@@ -1,0 +1,210 @@
+
+ body{
+    background-image: url(abu7.png);
+            background-attachment: fixed;
+            background-size: cover;
+    }
+    
+    .parallax{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-family: sparta;
+        width: 100%;
+        height: 80vh;
+        }
+    
+        .parallax:nth-child(1){
+            height: 1000px;
+            background-image: url(banner1.png);
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    
+        .parallax:nth-child(2){
+            background-image: url(abu1.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+            
+            }
+    
+            .parallax:nth-child(3){
+                height: 1000px;
+                background-image: url(banner1.png);
+                background-attachment: fixed;
+                background-size: cover;
+                }
+    
+                .parallax:nth-child(4){
+                    background-color: rgb(0, 0, 0);
+                    background-attachment: fixed;
+                    background-size: cover;
+                    opacity: 0.8;
+                    }
+    
+                    .parallax:nth-child(5){
+                        height: 1000px;
+                        background-image: url(banner2.png);
+                        background-attachment: fixed;
+                        background-size: cover;
+                        }
+            
+                        .parallax:nth-child(6){
+                            background-color: lightcyan;
+                            background-attachment: fixed;
+                            background-size: cover;
+                            } 
+
+/*font*/
+    header a{
+    list-style-type: none;
+    padding-top: 2%;
+    padding-left: 80px;
+    text-align: center;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-family: cursive;
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.562);
+    transition: .5s ease;
+    }
+    
+    header a:hover{
+    text-decoration: underline;
+    font-size: 28px;
+    }
+    
+    header a:nth-child(1){
+    padding-left: 40px;
+    }                 
+    
+    .banner{
+    font-family: cursive;
+    padding-left: 50%;
+    font-size: 30px;
+    }
+    
+    .banner:hover{
+    font-size: 30px;
+    text-decoration: none;
+    font-style: normal;
+    }
+    
+    .sub{
+    font-family: cursive;
+    padding: 40px;
+    font-size: 50px;
+    letter-spacing: 10px;
+    color: white;
+    }
+    
+    .d{
+    font-family: cursive;
+    font-size: 30px;
+    padding-left: 40px;
+    color: white;
+    padding-right: 10px;
+    }
+
+    .d2{
+    font-family: cursive;
+    color: orchid;
+    padding: 20px;
+    font-size: 40px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    max-width: 400px;
+    transition: .2;
+    }
+
+    .d2 :hover{
+    width: 650;
+
+    }
+
+    .t{
+    font-family: cursive;
+    font-size: 70px;
+    text-decoration: underline;
+    font-weight: 900;
+    padding-left: 10px;
+    color: lightcoral;
+    padding-right: 10px;
+    }
+
+    .emoji{
+    font-size: 100px;
+    }
+
+    i{
+    padding: 40px;
+    align-content: center;
+    font-size: 80px;
+    transition: 2s;
+    }
+
+    i:nth-child(1){
+    color: white;
+    background: rgb(37, 80, 196);
+    font-size: 40px;
+    }
+
+    i:nth-child(2){
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    font-size: 40px;
+    }
+
+    i:nth-child(3){
+    color: white;
+    background: rgb(13, 226, 59);
+    font-size: 40px;
+    }
+
+    i:hover{
+    font-size: 85px;
+    }
+
+
+/*header*/
+    header{
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 100;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.781);
+    box-shadow: white;
+    transition: 1s;
+    }
+    
+    header:hover{
+    height: 90px;
+    }
+
+
+    .profileimg{
+    width: 100px;
+    height:250px;
+    border-radius: 800px;
+    }
+
+    .album{
+    background-color: rgba(152, 251, 152, 0);
+    }
+
+    .img{
+    width: 200px;
+    height: 200px;
+    transition: .2s;
+    }
+
+    .img:hover{
+    width: 250px;
+    height: 250px;
+    }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+        <script>
+            var password;
+            var pass = "jiashiu"
+            function cuz(){
+                password = prompt("Enter PASSWORD to View Page")
+                if (password==pass){
+                    document.getElementById("x").style.backgroundImage = "url(bg.png)";
+                    document.getElementById('y').innerHTML = '惊不惊喜 意不意外';
+                    document.getElementById("y").style.color = "yellow";
+                }
+                else { 
+                    alert ('wrong password')
+                    window.location = "index.html";
+                }
+            }
+                
+        </script>
+
+        <style>
+            body{
+                padding: 0;
+                margin: 0;
+                scroll-behavior: smooth;
+                border: 0;
+                background: white;
+                cursor: not-allowed;
+            }
+
+            main h1{
+                text-align: center;
+                justify-content: center;
+                font-size: 5rem;
+                color: black;
+                animation-name: example;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                text-shadow: 13 13 13px #ffffff;
+                cursor: pointer;
+            }
+
+            @keyframes example {
+            0% {font-size: 3rem;}
+            50% {font-size: 5rem;}
+            100% {font-size: 3rem;}
+        }
+        </style>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Just for fun. Happy Birthday" />
+        <meta http-equiv="author"content="old man" />
+
+        <title>惊喜</title>
+    </head>
+    <body id="x">
+        <main>
+            <h1 onclick="cuz()" id="y">点击以获得惊喜</h1>
+        </main>
+    </body>
+</html>

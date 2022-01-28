@@ -1,0 +1,28 @@
+FreeWHA Control Panel
+Always access your control panel using http://pvz2.6te.net/cpanel. This way you will be redirected to the proper server.
+
+Log in using:
+
+_________________Username: pvz2.6te.net
+_________________Password: malim123
+
+If you have accounts created on more than one server, see http://www.freewebhostingarea.com/members/.
+Some scripts require server path. Yours is /home/vhosts/pvz2.6te.net.
+
+Your Personal FTP Information:
+
+__________________FTP Server/Host: pvz2.6te.net
+__________________FTP Login/Username: pvz2.6te.net
+__________________FTP PassWord: malim123
+
+To upload your files, you may use free ftp programs like:
+
+___________________Filezilla, Cyberduck or WinSCP. 
+
+Or you may try our Web based FTP client, located at:
+
+__________________http://pvz2.6te.net/ftp/.
+
+Once logged in, you will be able to create a new dir, new file, to upload a zip archive and have it unzipped automatically, to edit your files, to select files and download them as .zip, to copy, move, delete, rename, chmod (change permissions), search anything under your account, ability to see and edit dot files like .htaccess. With a normal ftp program you will not be able to do this. For a complete list of features see:
+
+__________________http://pvz2.6te.net/ftp/help.html.

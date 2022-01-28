@@ -1,0 +1,86 @@
+body{
+  background-attachment: fixed;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+h1{
+  font-family: righteous;
+  font-size: 60px;
+  text-shadow:11px 12px 5px rgb(247, 247, 247) ;
+  transition: 2s;
+  color: black;
+}
+
+h1:hover{
+  text-shadow:11px 12px 5px rgb(196, 196, 196) ;
+  letter-spacing: 2px;
+  color: rgb(119, 119, 119);
+}
+
+h2{
+  font-family: raleway;
+  font-size: 20px;
+  color: black;
+  text-align: justify;
+}
+
+header{
+  position: fixed;
+  display: flex;
+  box-shadow: 0 4px 8px 0 rgba(53, 53, 53, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, rgba(186, 239, 255, 0.7),rgba(95, 230, 196, 0.7));
+  width: 100%;
+  height: 10%;
+  z-index: 1;
+}
+
+header h1{
+  text-align: centre;
+  margin: auto;
+  position: relative;
+  font-size: 40px;
+  font-family: abel;
+  padding-left: 0%;
+  text-shadow: none;
+}
+
+header h2{
+  text-align: centre;
+  margin: 10px 0px 0px 5px;
+  position: absolute;
+  font-size: 30px;
+}
+
+header h3{
+  text-align: centre;
+  margin: 10px 0px 0px 95%;
+  position: absolute;
+  font-size: 30px;
+}
+
+.banner{
+  margin: 5% 0 0 0 ;
+  display: flex;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  background: white;
+}
+
+.banner .profilepic{
+  background-image: url(jaeden.jpeg);
+  background-repeat: no-repeat;
+  position: sticky;
+  top: 0;
+  width: 40%;
+  height: 700px;
+  z-index: 0;
+}
+
+.banner .profile{
+  padding: 0 20px 0 20px;
+}

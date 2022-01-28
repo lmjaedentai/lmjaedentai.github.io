@@ -1,0 +1,442 @@
+body{
+padding: 0;
+margin: 0;
+border: 0;
+scroll-behavior: smooth;
+}
+
+header{
+z-index: 1;
+width: 100%;
+height: 100px;
+display: flex;
+position: fixed;
+color: transparent;
+}
+
+header a{
+color: white;
+font-size: 40px;
+padding-left: 40px;
+padding-top: 33px;
+text-decoration: none;
+font-style: normal;
+transition: 1s;
+}
+
+header a:hover{
+font-size: 50px;
+}
+
+header p{
+color: rgb(255, 255, 255);
+font-size: 40px;
+font-family: poiret one;
+padding-left: 17%;
+letter-spacing: 0px;
+transition: 1s;
+}
+
+header p:hover{
+letter-spacing: 10px;
+}
+
+header i{
+color: white;
+font-size: 80px;
+position: absolute;
+left: 90%;
+transition: 1s;
+}
+
+header i:hover{
+font-size: 50px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background: url(index.webp);
+  filter: opacity(0.7);
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover{
+  color: #5f5f5f;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 66px;
+  margin-left: 50px;
+}
+
+.sidenav p{
+font-family: josefin sans;
+font-size: 70px;
+font-weight: 900;
+padding-left: 30px;
+padding-right: 30px;
+padding-bottom: 30px;
+color: rgba(255, 255, 255, 0.808)
+}
+
+.sidenav h2{
+bottom: 10%;
+position: absolute;
+font-family: long cang;
+padding-left: 45px;
+color: rgb(255, 255, 255);
+font-size: 40px;
+}
+
+main{
+margin: 0;
+}
+
+.vid{
+margin: 0 auto;
+text-align: center;
+border: 0;
+width: 100%;
+background: black;
+}
+
+.vid video{
+height: 470px;
+position: relative;
+margin: auto;
+padding: 0;
+}
+
+.tvbox{
+position: sticky;
+top: 0;
+}
+
+.tvbox .tv i{
+color: rgb(240, 240, 240);
+position: sticky;
+position: -webkit-sticky;
+font-size: 50px;
+top: 400px;
+margin-top: 40px;
+left: 98%;
+}
+
+.gallery{
+padding: 0%;
+background: black;
+text-align: center;
+margin: auto;
+width: 100%;
+height: 500px;
+overflow: hidden;
+z-index: 0;
+transition: 0.1s;
+}
+
+.gallery img{
+width: 100%;
+height: 100%;
+max-width: 1200px;
+max-height: 1000px;
+}
+
+#bs .text p {
+color: rgba(255, 255, 255, 0.788);
+font-weight: 900;
+position: absolute;
+font-family: josefin sans;
+left: 20px;
+padding: 0;
+bottom: 0px;
+font-size: 0;
+transition: .5s;
+}
+
+#bs .text a {
+padding: 0;
+color: rgba(255, 255, 255, 0.788);
+font-weight: 900;
+position: absolute;
+left: 50px;
+font-family: josefin sans;
+bottom: 10px;
+font-size: 0;
+transition: 2s;
+}
+
+#bs .text img{
+position: absolute;
+border-radius: 1000px;
+opacity: 0;
+z-index: 1;
+top: 850px;
+left: 500px;
+width: 200px;
+height: 200px;
+transition: 1s;
+}
+
+#bs:hover .text p{
+font-size: 50px;
+}
+
+#bs:hover .text a{
+font-size: 30px;
+}
+
+#bs:hover .text img{
+opacity: .7;
+}
+
+#tyk .text p {
+color: rgba(235, 235, 235, 0.788);
+font-weight: 900;
+position: absolute;
+left: 20px;
+font-family: josefin sans;
+bottom: -440px;
+font-size: 0;
+transition: .5s;
+}
+
+#tyk .text a {
+color: rgba(235, 235, 235, 0.788);
+font-weight: 900;
+position: absolute;
+left: 50px;
+font-family: josefin sans;
+bottom: -450px;
+font-size: 0;
+transition: 2s;
+}
+
+#tyk .text .tyk{
+position: absolute;
+border-radius: 1000px;
+opacity: 0;
+z-index: 1;
+top: 1320px;
+left: 580px;
+width: 200px;
+height: 200px;
+transition: 1s;
+}
+
+#tyk .text .den{
+position: absolute;
+border-radius: 1000px;
+opacity: 0;
+z-index: 1;
+top: 1340px;
+left: 180px;
+width: 200px;
+height: 200px;
+transition: 1s;
+}
+
+
+#tyk:hover .text p{
+font-size: 50px;
+}
+
+#tyk:hover .text a{
+font-size: 30px;
+}
+
+#tyk:hover .text .tyk{
+opacity: .7;
+}
+
+#tyk:hover .text .den{
+opacity: .7;
+}
+
+
+.essay{
+padding: 40px;
+z-index: 1;
+background: linear-gradient(to bottom, rgb(76, 228, 255), rgb(89, 231, 89));
+}
+
+.essay-container{
+margin: auto;
+text-align: left;
+background-color: rgba(255, 255, 255, 0.425);
+padding: 60px;
+box-shadow: #000000;
+width: 80%;
+transition: 0.5s;
+}
+
+.essay-container:hover{
+width: 90%;
+}
+
+.essay-container h1{
+font-family: poiret one;
+}
+
+.essay-container h1:hover{
+color: rgb(255, 255, 255);
+}
+
+.essay-container p{
+padding-left: 20px;
+font-family: rajdhani;
+}
+
+.essay-container h2{
+font-family: long cang;
+color: #777777;
+transition: 2s;
+}
+
+.essay-container h2:hover{
+color: rgb(251, 255, 0);
+}
+
+.info{
+margin: auto;
+height: 400px;
+width: 500px;
+background-color:  rgba(255, 255, 255, 0.425);
+}
+
+.info-container{
+padding-top: 30px;
+}
+
+.info h1{
+font-family: poiret one;
+font-size: 60px;
+text-align: center;
+padding-top: 10px;
+}
+
+.info p{
+font-family: rajdhani;
+font-size: 20px;
+padding-left: 40px;
+}
+
+.info .p{
+margin: auto;
+font-family: josefin sans;
+font-size: 40px;
+color: rgb(175, 175, 175);
+}
+
+.vidfooter{
+height: 500px;
+z-index: 1;
+}
+
+footer{
+background: url(footer.jfif);
+background-size: cover;
+background-color: rgba(0, 0, 0, 0.384);
+background-blend-mode: darken;
+filter: contrast(150%);
+width: 100%;
+height: auto;
+padding:0;
+margin: 0;
+position: absolute;
+z-index: 1;
+}
+
+footer p{
+font-family: josefin sans;
+font-size: 15px;
+color: rgba(255, 255, 255, 0.63);
+text-transform: uppercase;
+padding: 10px;
+transition: 1s;
+}
+
+footer p:hover{
+color: white;
+}
+
+footer h1{
+font-family: josefin sans;
+font-size: 80px;
+color: rgba(187, 187, 187, 0.596);
+font-weight: 900;
+margin-left: 40px;
+transform: rotate(360deg);
+transition: .5s;
+}
+
+footer h1:hover{
+letter-spacing: 10px;
+}
+
+footer hr{
+margin:10px 40px 10px 40px;
+color:rgb(255, 255, 255);
+opacity: 0.9;
+}
+
+footer .social{
+justify-content: center;
+margin: auto;
+display: flex;
+}
+
+footer .social i{
+font-size: 30px;
+padding: 15px;
+margin: 20px;
+text-align: center;
+color: white;
+width: 20px;
+height: 20px;
+transition: .2s;
+}
+
+footer .social .d_iconbox img{
+width: 60px;
+height: 60px;
+transition: .2s;
+}
+
+footer .social .d_iconbox img:hover{
+width: 70px;
+height: 70px;
+}
+
+footer .social i:hover{
+font-size: 40px;
+}
+
+footer .end{
+font-family: long cang;
+color: rgb(255, 255, 255);
+transition: .5s;
+}
+
+footer .end:hover{
+color: aqua;
+}

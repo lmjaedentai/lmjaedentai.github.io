@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jaeden's personal website</title>
+        <link rel="stylesheet" type="text/css" href="jden.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Indie+Flower&family=Long+Cang&family=Spartan:wght@100&display=swap" rel="stylesheet">  
+        <script>
+            function openNav() {
+              document.getElementById("mySidenav").style.width = "330px";
+            }
+            function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+            }
+
+            //Get the button:
+mybutton = document.getElementById("myBtn");
+
+
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+mybutton.style.display = "block";
+} else {
+mybutton.style.display = "none";
+}
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+document.body.scrollTop = 0; // For Safari
+document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
+
+
+
+        </script>
+    </head>
+    <body>
+        <header>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <h1>privacy requirement</h1>
+                <p>All person arent allow to copy any media include texts, photos, links for personal commercial or any others purpose by photocopy, screen printing, video recording, image capturing or other methods. </p>
+                <h2>All right reserved by Jaeden Tai in 2020</h2>
+            </div>
+            <div class="banner">
+                <a href="javascript:void(0)" onclick="openNav()">&#9776;</a>
+                <p onclick="location.href='home.html'">Jden.yeah</p>
+                <span onclick="location.href='home.html'">&#8962;</span>
+            </div>
+            <div class="nav">
+                <p onclick="location.href='home.html'">home</p>
+                <p onclick="location.href='about.html'">about</p>
+                <p onclick="location.href='diary.html'">diary</p>
+            </div>
+        </header>
+        <main>
+            <div class="content">
+                <img src="pvz.png">
+                <p class="sub">pvz .net</p>
+                <button class="linkbtn" onclick="location.href='https://sites.google.com/view/pvzcomic'">Go &rarr;</button>
+            </div>
+            <div class="content">
+                <img src="abu.png">
+                <p class="sub">abu .net</p>
+                <button class="linkbtn" onclick="location.href='https://sites.google.com/view/abucom'">Go &rarr;</button>
+            </div>
+            <div class="content">
+                <img src="filezilla.png">
+                <p class="sub">My FTP Client</p>
+                <button class="linkbtn" onclick="location.href='https://filezilla-project.org/'">Go &rarr;</button>
+            </div>
+            <div class="content">
+                <img src="trebedit.png">
+                <p class="sub">Code Editor for Android</p>
+                <button class="linkbtn" onclick="location.href='https://play.google.com/store/apps/details?id=com.teejay.trebedit&hl=en'">Go &rarr;</button>
+            </div>
+            <div class="content">
+                <img src="koder.png">
+                <p class="sub">Code Editor for IOS</p>
+                <button class="linkbtn" onclick="location.href='https://koderapp.com/#home'">Go &rarr;</button>
+            </div>
+            <div class="content">
+                <img src="vscode.png">
+                <p class="sub">Code Editor for PC</p>
+                <button class="linkbtn" onclick="location.href='https://code.visualstudio.com/'">Go &rarr;</button>
+            </div>
+            <button onclick="topFunction()" id="myBtn" title="Back To Top">
+                <i class="fa fa-angle-up">
+            </button>
+        </main>
+        <footer>
+            <h1>all right reserved by Jaeden tai in 2020</h1>
+            <h2>view us in</h2>
+                <p onclick="location.href='https://facebook.com/profile.php?id=100030483516376'"><i class="fa fa-facebook"></i>Facebook</p>
+                <p onclick="location.href='https://instagram.com/lmjaedentai'"><i class="fa fa-instagram"></i>Instagram</p>
+                <p onclick="location.href='https://u.wechat.com/IJZB_mQL2_z_m2540ctff8c'"><i  class="fa fa-wechat"></i>WeChat</p>
+            <h2>contact us</h2>
+                <p onclick="location.href='https://mail.google.com/mail/mu/mp/426/#cv/Sent%20Mail/1714de7bfb7ff6bd'"><i class="mail">&#128235;</i>taijaeden@gmail.com</p>
+                <p onclick="location.href='https://api.whatsapp.com/send?phone=600102613766&text=[jden.comcontact]_dont_erase_'"><i class="phone">&phone;</i>my phone</p>
+                <p onclick="loacation.href='https://www.google.com.my/maps/place/South+East+Asia/@8.6350355,107.5729061,5z/data=!3m1!4b1!4m5!3m4!1s0x3233af605e720cd5:0x28a70f18542d1b91!8m2!3d-2.2179704!4d115.66283'"><i class="house">&#127969;</i>my house</p>
+            <h2>code in use</h2>
+                <p onclick="location.href='https://en.wikipedia.org/wiki/HTML'">html</p>
+                <p onclick="location.href='https://en.wikipedia.org/wiki/CSS'">css</p>
+                <p onclick="location.href='https://en.wikipedia.org/wiki/javascript'">javascript</p>
+            <h2>quick links</h2>
+                <p onclick="location.href='home.html'">home</p>
+                <p onclick="location.href='about.html'">about</p>
+                <p onclick="location.href='diary.html'">diary</p>
+            <button onclick="topFunction()" id="myBtn2" title="Back To Top">
+                <i class="fa fa-angle-up">
+            </button>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>KaiCheng Offical </title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&family=Long+Cang&family=Poiret+One&family=Rajdhani&display=swap" rel="stylesheet"> 
+    </head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+
+const parallax = documenty.getElementByClass
+("parallax");
+window.addEventListener("scroll", function ()
+{
+let offset = window.pageYOffset;
+parallax.style.backgroundPositionY = offset
+* 0.2 + "px";
+})
+
+function openNav() {
+document.getElementById("mySidenav").style.width = "80%";
+}
+function closeNav() {
+document.getElementById("mySidenav").style.width = "0";
+}
+
+mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+mybutton.style.display = "block";
+} else {
+mybutton.style.display = "none";
+}
+}
+function topFunction() {
+document.body.scrollTop = 0; 
+document.documentElement.scrollTop = 0; } 
+
+    </script>
+    <body>
+    
+        <header>
+            <a href="javascript:void(0)" onclick="openNav()" title="Menu">&#9776;</a>
+            <p onclick="location.href='index.html'" title="Reload">KaiCheng</p>
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <p onclick="location.href='https://jden.000webhostapp.com/'"> about us</p>
+                    <p onclick="location.href='https://sites.google.com/view/pvzcomic'"> our comic</p>
+                    <p onclick="location.href='https://www.youtube.com/channel/UCyXtSwu0lTppjPdKMRt0vnw/about?disable_polymer=1'"> youtube channel</p>
+                    <h2>All right reserved by Jaeden in 2020</h2>
+               </div>
+        </header>
+        <main>
+            <div class="vid">
+                <video autoplay loop >
+                    <source src="kc.mp4" type="video/mp4">
+                </video>
+                <div class="n">
+            </div>
+            <div class="tvbox">
+                <a href="javascript:void(0)" class="tv" ><i class="fa fa-television" title="Watch On YouTube"onclick="location.href='https://www.youtube.com/channel/UCyXtSwu0lTppjPdKMRt0vnw/about?disable_polymer=1'"></i></a>
+            </div>
+            <div class="gallery" id="bs">
+                <img src="bs.jpg_large" alt="">
+                <div class="text">
+                    <p>We played Brawl Stars together</p>
+                    <a>and record the moment</a>
+                    <img src="bs.jpg">
+                </div>
+            </div>
+            <div class="gallery" id="tyk">
+                <img src="ppl.jpg" alt="">
+                <div class="text">
+                    <p>Visit our channel</p>
+                    <a>subscribe us as the best support </a>
+                    <img src="tyk.png" class="tyk">
+                    <img src="jden.png" class="den">
+                </div>
+            </div>
+            <div class="essay">
+            <div class="essay-container">
+                <h1>About us</h1>
+                <p>we created kaicheng to spread the happiness around the world by internet. we start our artwork together from the catoon comic, to a paper drawing games, to the comic website until this youtube channel. two person, from a3 & a4 paper with a pencil to two basic pc, this not our effort, but thats our story. we laugh for seven years, fight for seven years, share every moment for seven years. from the pvz comic ,   植物工作室   to KaiCheng, we need to thank to everyone that supported us, espically our "boss" Lim Wei Ming.  thanks to 000webhost, cdjns cloud and w3 webschool, or else this website fully develop just a dream. thanks to supercell that created brawlstar. its really fun. thanks to everyone that are watching or watched our video. thanks to every subscriber and every of you that are reading this paragraph. thanks to my parents that encouraged me every moment. click the tv icon on top right to visit kaicheng YouTube channel and welcome to visit our facebook and instagram page.   </p>
+                <h2># kaicheng</h2>
+            </div></div>
+        </main>
+                <footer>
+                    <h1><u>K</u>ai<u>C</u>heng</h1>
+                    <p>all right reserved by jaeden tai in 2020</p>
+                    <p>This content is not affiliated with, endorsed, sponsored, or specifically approved by Supercell and Supercell is not responsible for it. For more information see Supercell's Fan Content Policy </p>
+                    <p>All person arent allow to copy any media include texts, photos, links for personal commercial or any others purpose by photocopy, screen printing, video recording, image capturing or other methods. </p>
+                    <div class="social">
+                        <i class="fa fa-facebook" title="visit our facebook page"onclick="location.href='https://www.facebook.com/imkaicheng-109418727405582'" ></i>
+                        <i class="fa fa-instagram" title="follow our instsagram "onclick="location.href='http://instagram.com/lmkaicheng'"></i>
+                        <i class="fa fa-youtube" title="watch our youtube video"onclick="location.href='https://www.youtube.com/channel/UCyXtSwu0lTppjPdKMRt0vnw/about?disable_polymer=1'"></i>
+                        <i class="d_iconbox"><img src="den icon.jpeg"  title="go to jden.yeah"onclick="location.href='https://jden.000webhostapp.com/'"></i>
+                    </div>
+                    <p class="end">The life is fantastic. never ending fun</p>
+                </footer>
+    </body>
+</html>
