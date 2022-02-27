@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
+
+:root{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    --cute:'Supermercado One';
+    scroll-behavior: smooth;
+}
+
+body{
+    background-image: url(./asset/bg.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;	
+}
+
+header{
+    font-family: var(--cute);
+    text-align: center;
+}
+
+header h2{
+    color: rgb(78, 76, 76);
+}
+
+.btnbox{
+    height: 300px;
+    position: relative;
+    font-family: var(--cute);
+    color:rgb(146, 193, 243);
+    font-size: 3em;
+}
+
+.btnbox button{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width:170px;
+    height: 70px;
+
+    background:white;
+    border: 0px;
+    border-radius: 20px;
+    box-shadow: 23px 12px 51px -17px rgb(255, 145, 237);
+    transition:0.5s
+}
+
+.btnbox button:hover{
+    box-shadow: 23px 12px 51px -17px rgb(247, 0, 255);
+}
+
+.slide a{
+    display: block;
+    margin: 90vh auto 0vh auto;
+    color: transparent;
+}
+
+.slide img{
+    display: block;
+    margin: 20vh auto 20vh auto;
+    width: 30%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 23px 12px 51px -17px rgb(48, 198, 236);
+    transition:2s;
+}
+
+.slide p{
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 40vh;
+    font-size: 3em;
+    color: aliceblue;
+    letter-spacing: 30px;
+    text-shadow: 4px 4px 8px #052105;
+    transition:2s;
+}
+
+.slide p:hover{
+    letter-spacing: 60px;
+}
+
+.playerbox{
+    position: fixed;
+    display: block;
+    top: 90%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.player{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 80%;
+    cursor: pointer;
+    transition:1s;
+}
+
+.player:hover{
+    opacity: 100%;
+}
+
+footer p{
+    margin: auto;
+    text-align: center;
+    color:white;
+    font-family: "consolas";
+    padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px){
+    .slide img{
+        width:70%;
+    }
+    .slide img:hover{
+        width: 80%;
+    }
+
+    .slide p{
+        font-size: 2em;
+    }
+
+    .slide p:hover{
+        letter-spacing: 20px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: rgb(200, 226, 255);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+}
