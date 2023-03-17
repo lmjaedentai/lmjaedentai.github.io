@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+body{
+    border: 0;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgb(255, 210, 244) 42%, rgb(176, 242, 255) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;	
+    overflow: hidden;
+}
+
+body h1{
+    font-family: Georgia;
+    font-weight: 600;
+    font-size: 7rem;
+    letter-spacing: 0.4px;
+    background-image: linear-gradient(
+        -225deg,
+        #805dff 0%,
+        #0eec63 29%,
+        #ff6397 67%,
+        #fff800 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    /* display: inline-block; */
+    margin: 5vh auto;
+    text-align: center;
+}
+
+@keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+#scoreboard{
+    text-align: center;
+    color:rgb(255, 200, 3);
+    margin-top: 5vh;
+    font-family: lilita one;
+    font-size: 5rem;
+    text-shadow: 5px 5px 10px #c2dbff;
+}
+
+#spike{
+    display: block;
+    width: 371px;
+    height: 315px;
+    margin: 10vh auto 0 auto;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px){
+    header{
+        height: 60px;
+        width: 90%;
+        min-width: 0;
+        left: 5%;
+        right: 5%;
+        align-self: center;
+    }
+    #menu{
+        width: 90%;  
+    }
+}
