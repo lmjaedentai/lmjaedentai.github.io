@@ -1,9 +1,8 @@
 console.log("start")
 
-//TODO Enter
 function getquery() {  
   var query = document.getElementById("searchbar").value
-  if (query == '') {
+  if (query == ''|| !/^[a-zA-Z()]*$/.test(query)) { //is alpha
     window.alert("invalid input");
   }
   else {
@@ -38,13 +37,26 @@ function processquery(raw,second=false){
       return document.getElementById("result").innerHTML = "no result";
     }
   }
+
+  
+
+
+
   output = output.replaceAll("(", "<i>(");
   output = output.replaceAll(")", ")</i>");
   document.getElementById("result").innerHTML =output;
 }
 
+//TODO bingqiling
+//LINK https://github.com/takafumir/javascript-lemmatizer
 
 function clearInput(){  
   document.getElementById("searchbar").value= "";
 }
 
+var wage = document.getElementById("searchbar");
+wage.addEventListener("keydown", function (e) {
+    if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+        getquery()
+    }
+});

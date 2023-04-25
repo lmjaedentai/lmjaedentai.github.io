@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Open+Sans&display=swap');
 
 
 :root {
@@ -16,6 +16,11 @@ body{
     scroll-behavior: smooth;
     background: var(--indigo);
     color:var(--white);
+    overflow: overlay;
+}
+
+a{
+    color:var(--blue);
 }
 
 header{
@@ -50,7 +55,7 @@ header input{
     max-width: 80vh;
     height: 40px;
     padding-left: 20px;
-    margin: 10px;
+    margin: 0px;
     background: var(--indigo);
     border: 1.5px solid var(--grey);
     border-radius: 5px;
@@ -76,15 +81,14 @@ header input::placeholder{
 }
 
 header button{
-    margin: 10px;
+    margin: 0px 0px 0px 10px;
     background: var(--blue);
     border: none;
     border-radius: 10px;
-    height: 39px;
+    height: 43px;
     width: 50px;
     font-size: 1.2rem;
     color: var(--white);
-    padding-top: 6px;
     font-family: josefin sans;
     transition: 0.5s;
 }
@@ -108,7 +112,7 @@ header button:focus{
     min-width: 40vh;
     height:min-content;
     padding: 10px 40px;
-    margin: 80px auto;
+    margin: 50px auto;
     border-radius:20px;
     box-shadow: rgba(13, 0, 35, 0.281) 2px 1px 8px 1px;
     transition: 0.5s;
@@ -130,7 +134,7 @@ header button:focus{
 
 .container p{
     color:var(--white);
-    font-family: roboto mono;
+    font-family: open sans;
     font-size: 0.9rem;
     text-align: justify;
     white-space: pre-line;
@@ -146,7 +150,24 @@ header button:focus{
 }
 
 ::-webkit-scrollbar-thumb {
-    
     background-color: rgba(250, 24, 239, 0);  
     border-radius: 20px;                        
+}
+
+
+
+
+
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    .container{
+        margin: 30px auto;
+        max-width: 100%;
+        border-radius: 30px;
+    }
+
+    header h1, header p{
+        margin-left: 10px;
+        padding: 0px;
+    }
 }
