@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="A Dictionary designed by @lmjaedentai using javascript." />
+        <meta http-equiv="author"content="Jaeden Tai" />
+        
+        <script src="main.js"></script>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Dictionary</title>
+    </head>
+    <body>
+        <header>
+            <h1>Billy Dict</h1>
+            <p>2022 by <u>@lmjaedentai</u></p>
+            <div class="searchbar">
+                <input type="text" id="searchbar" placeholder="search" class="no-outline" onfocus="clearInput()">
+                <button id="searchbutton" onclick="getquery()">Go</button>
+            </div>
+            
+        </header>
+        <main>
+            <div class="container">
+                <h1 id="searchtitle">📘 Billy Dictionary</h1>
+                <p id="result">
+                    Define any English word here in a simple yet fast way. Support Chinese translation in high accuracy <strong>(coming soon)</strong>.
+                    <br> Coded in Javascript. Powered by <a href="https://dictionaryapi.dev/">freedictAPI</a>
+                </p>
+            </div>
+        </main>
+        <footer> 
+                
+        </footer>
+    </body>
+</html>

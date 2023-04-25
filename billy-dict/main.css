@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Roboto+Mono&display=swap');
+
+
+:root {
+    --blue: #506cf7;
+    --white: #d4d4da;
+    --grey:#51515f;
+    --indigo: #232329;
+    --lightblue:#2b2b33;
+}
+
+body{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    background: var(--indigo);
+    color:var(--white);
+}
+
+header{
+    position: relative;
+    display: block;
+    margin: 20px;
+    font-family: josefin sans;
+    /* border: 3px solid red; */
+}
+
+
+header h1{
+    color:var(--blue);
+    margin: 40px;
+    font-size: 2.5rem;
+}
+
+header p{
+    margin-left: 40px;
+}
+
+
+header .searchbar{
+    display: flex;
+    justify-content: center;
+    /* margin: 0px auto; */
+    /* border: 1px solid red; */
+}
+
+header input{
+    width: 100%;
+    max-width: 80vh;
+    height: 40px;
+    padding-left: 20px;
+    margin: 10px;
+    background: var(--indigo);
+    border: 1.5px solid var(--grey);
+    border-radius: 5px;
+    color: var(--white);
+    font-family: josefin sans;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+header input:focus{
+    border: 1px solid #879de6;
+    outline:none;
+    appearance: none;
+}
+
+header input::placeholder{
+    color:var(--grey);
+    font-family: josefin sans;
+    padding-left: 10px;
+}
+
+header button{
+    margin: 10px;
+    background: var(--blue);
+    border: none;
+    border-radius: 10px;
+    height: 39px;
+    width: 50px;
+    font-size: 1.2rem;
+    color: var(--white);
+    padding-top: 6px;
+    font-family: josefin sans;
+    transition: 0.5s;
+}
+
+header button:hover{
+    width: 95px;
+}
+
+
+header button:focus{
+    background: #5c7ce3;
+}
+
+
+.container{
+    position: relative;
+    display:block;
+    background-color: var(--lightblue);
+    width: 70%;
+    max-width: 80vh;
+    min-width: 40vh;
+    height:min-content;
+    padding: 10px 40px;
+    margin: 80px auto;
+    border-radius:20px;
+    box-shadow: rgba(13, 0, 35, 0.281) 2px 1px 8px 1px;
+    transition: 0.5s;
+}
+
+.container:hover{
+    box-shadow: var(--indigo) 2px 1px 8px 1px;
+}
+
+
+.container h1{
+    color: var(--blue);
+    margin: auto;
+    font-weight: 700;
+    font-family: josefin sans;
+    font-size: 1.5rem;
+    padding-top:20px;
+}
+
+.container p{
+    color:var(--white);
+    font-family: roboto mono;
+    font-size: 0.9rem;
+    text-align: justify;
+    white-space: pre-line;
+}
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 9px;
+    margin-right: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+    
+    background-color: rgba(250, 24, 239, 0);  
+    border-radius: 20px;                        
+}
