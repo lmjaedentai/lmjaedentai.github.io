@@ -2,7 +2,7 @@ console.log("start")
 
 function getquery() {  
   var query = document.getElementById("searchbar").value
-  if (query == ''|| !/^[a-zA-Z()]*$/.test(query)) { //is alpha
+  if (query == ''|| !/^[a-zA-Z()]*$/.test(query.trim())) { //is alpha
     window.alert("invalid input");
   }
   else {
