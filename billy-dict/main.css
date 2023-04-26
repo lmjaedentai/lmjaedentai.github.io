@@ -13,6 +13,7 @@ body{
     padding: 0;
     border: 0;
     margin: 0;
+    width: 100%;
     scroll-behavior: smooth;
     background: var(--indigo);
     color:var(--white);
@@ -61,6 +62,7 @@ header input{
     border-radius: 5px;
     color: var(--white);
     font-family: josefin sans;
+    font-size: 0.8rem;
 }
 
 input[type="search"]::-webkit-search-decoration,
@@ -110,6 +112,7 @@ header button:focus{
     width: 70%;
     max-width: 80vh;
     min-width: 40vh;
+    box-sizing: border-box; 
     height:min-content;
     padding: 10px 40px;
     margin: 50px auto;
@@ -140,6 +143,11 @@ header button:focus{
     white-space: pre-line;
 }
 
+.container img{
+    width: 80%;
+    padding: 20px;
+}
+
 
 
 
@@ -160,8 +168,16 @@ header button:focus{
 
 @media only screen and (max-width: 500px) {
     /* For mobile phones: */
+    body{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
     .container{
-        margin: 30px auto;
+        /* box-sizing: content-box;  */
+        /* margin: 30px auto; */
+        padding: 10px 20px;
         max-width: 100%;
         border-radius: 30px;
     }
