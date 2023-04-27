@@ -112,7 +112,7 @@ function chinesequery(query, output,second = false) {
       });
     }
   }
-  document.getElementById("result").innerHTML = output + meaning +`<img src="https://http.cat/302">`;
+  document.getElementById("result").innerHTML = output + meaning +`<br><img src="https://http.cat/302">`;
   clearInput();
 }
 
