@@ -2,8 +2,11 @@ console.warn("\n" +"                       _oo0oo_\n" +"                      o8
 
 function getquery() {  
   var query = document.getElementById("searchbar").value;
-  if (query == ''|| !/^[a-zA-Z()]*$/.test(query.trim())) { //is alpha
-    window.alert("invalid input");
+  if (query == '') {
+    return document.getElementById("result").innerHTML = `<img src="https://http.cat/204"><br><img src="https://http.cat/405">`
+  } 
+  if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
+    return document.getElementById("result").innerHTML = `<img src="https://http.cat/400">`
   }
   else {
     searchquery(query);
@@ -22,7 +25,7 @@ function searchquery(query, second = false){
 
 function processquery(raw, search, second = false) {
   if (second) {
-    var output = `\n\n❓do you mean:  ${search}`;
+    var output = `<img src="https://http.cat/303">\n\n❓do you mean:  ${search}`;
   }
   else {
     var output = '';
@@ -48,10 +51,10 @@ function processquery(raw, search, second = false) {
       .then((response) => response.json())
       .then(function (autocorrect) {
         if (!autocorrect || autocorrect.length === 0 || autocorrect===undefined) {
-          return document.getElementById("result").innerHTML = `❌ No Result.  Try <a href="https://www.google.com/search?q=define+${search}">Google.</a><br><img src="https://http.cat/404">`
+          return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
         }
         if (autocorrect[0].hasOwnProperty('meta')) {
-          return document.getElementById("result").innerHTML =`\n👉🏻  refer <a href="https://www.merriam-webster.com/dictionary/${search}">Meriam Webster</a>`
+          return document.getElementById("result").innerHTML =`<img src="https://http.cat/422"> <br>👉🏻  refer <a href="https://www.merriam-webster.com/dictionary/${search}" target="_blank">Meriam Webster</a>`
         }
         else {
           searchquery(autocorrect[1],true);
@@ -59,15 +62,18 @@ function processquery(raw, search, second = false) {
       })
     }
     else {
-      return document.getElementById("result").innerHTML = `❌ No Result.  Try <a href="https://www.google.com/search?q=define+${search}">Google.</a><br><img src="https://http.cat/404">`
+      return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
     }
   }
+  else {
+    output = output.replaceAll("(", "<i>(");
+    output = output.replaceAll(")", ")</i>");
+    output = output.replace("\n", "");
+    document.getElementById("result").innerHTML = output + chinesequery(search);
+    chinesequery(search,output)
+  }
 
-  output = output.replaceAll("(", "<i>(");
-  output = output.replaceAll(")", ")</i>");
-  output = output.replace("\n", "");
-  document.getElementById("result").innerHTML = output + chinesequery(search);
-  chinesequery(search,output)
+  
 }
 
 
@@ -78,16 +84,15 @@ function chinesequery(query, output,second = false) {
   var meaning = ''
 
   if (query in cndata) {
-    meaning = cndata[query]
+    meaning = cndata[query];
     for (let i = 0; i<targetlist.length; i++){
       meaning = meaning.replaceAll(targetlist[i],replacelist[i])
     }
-    for (let n = 43; n >=1; n--){
+    for (let n = 43; n > 0; n--){
       if (meaning.includes(`${n}. `)) {
-        meaning = meaning.replaceAll(`${n}. `, `\n${n}. `);
+        meaning = meaning.replaceAll(`${n}. `, `\n${n}.`);
       }
     }
-    meaning = meaning.replace(`.`, `. `)
   }
   else {
     if (second) {
@@ -104,14 +109,11 @@ function chinesequery(query, output,second = false) {
           var searchpure = autocorrect[0]["meta"]["stems"][0];
           meaning = chinesequery(searchpure, output, second = true);
         }
-        else {
-          var searchpure = autocorrect[1];
-          meaning = chinesequery(autocorrect[1], output);
-        }
       });
     }
   }
-  document.getElementById("result").innerHTML = output +meaning;
+  document.getElementById("result").innerHTML = output + meaning +`<img src="https://http.cat/302">`;
+  clearInput();
 }
 
 
@@ -126,8 +128,6 @@ wage.addEventListener("keydown", function (e) {
       getquery()
     }
 });
-
-
 
 
 

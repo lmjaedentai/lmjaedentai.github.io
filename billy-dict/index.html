@@ -15,7 +15,7 @@
             <h1>Billy Dict</h1>
             <p>2022 by <u>@lmjaedentai</u></p>
             <div class="searchbar">
-                <input type="text" id="searchbar" placeholder="search" class="no-outline" onfocus="clearInput()">
+                <input type="text" placeholder="search" id="searchbar" class="no-outline" name="q" onblur="this.focus()" autofocus>
                 <button id="searchbutton" onclick="getquery()">Go</button>
             </div>
             
@@ -24,8 +24,9 @@
             <div class="container">
                 <h1 id="searchtitle">📘 Billy Dictionary</h1>
                 <p id="result">
-                    Define any English word here in a simple yet fast way. Support Chinese translation in high accuracy <strong>(coming soon)</strong>.
-                    <br> Coded in Javascript. Powered by <a href="https://dictionaryapi.dev/">freedictAPI</a>
+                    Define any English word here in a simple yet fast way. Support Chinese translation in high accuracy <strong>(beta version)</strong>.
+                    <br> <img src="https://http.cat/100">
+                    <br> Coded in Javascript. Made possible by <a href="https://dictionaryapi.dev/" target="_blank">freedictAPI</a>, <a href="https://dictionaryapi.com/" target="_blank">Meriam Webster</a> and <a href="https://github.com/mahavivo/english-dictionary/tree/master/OALD8_%E4%B8%AD%E6%96%87%E9%87%8A%E4%B9%89" target="_blank">OALD8_中文释义</a>
                 </p>
             </div>
         </main>
