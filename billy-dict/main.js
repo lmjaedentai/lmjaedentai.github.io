@@ -15,7 +15,7 @@ function getquery() {
 }
 
 function searchquery(query, second = false){
-  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`)
+  fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${query}?key=fea702b3-bccf-47c3-b29e-2293789b70af`)
     .then((response) => response.json())
     .then(function (raw) {
       document.getElementById("searchtitle").innerHTML = `📘 ${query}`;
@@ -31,62 +31,56 @@ function processquery(raw, search, second = false) {
     var output = '';
   }
   let n = 0;
+  let origin = '\nWord Origin:\n\n';
 
-  //QQ formatting
-  for (let result in raw) {
-    for (let a in raw[result]["meanings"]) {
-      output += `\n\n${raw[result]["meanings"][a]["partOfSpeech"]}`;
-      for (definition in raw[result]["meanings"][a]["definitions"]) {
-        n += 1;
-        output += `\n ${n}. ${raw[result]["meanings"][a]["definitions"][definition]['definition']}`;
-      }
-    }
-  }
 
   //QQ error handling
-  if (output === undefined || output == "") { 
+  if (raw === undefined || raw == "" ||raw[0].hasOwnProperty('meta') == false) { 
     if (second == false) {
-      //QQ autocorrect
-      fetch(`https://dictionaryapi.com/api/v3/references/learners/json/${search}?key=5109265c-d6b4-4c53-950f-530a5c8c9658`)
-      .then((response) => response.json())
-      .then(function (autocorrect) {
-        if (!autocorrect || autocorrect.length === 0 || autocorrect===undefined) {
-          return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
-        }
-        if (autocorrect[0].hasOwnProperty('meta')) {
-          return document.getElementById("result").innerHTML =`<img src="https://http.cat/422"> <br>👉🏻  refer <a href="https://www.merriam-webster.com/dictionary/${search}" target="_blank">Meriam Webster</a>`
-        }
-        else {
-          searchquery(autocorrect[1],true);
-        }
-      })
+      if (!raw || raw.length === 0 || raw===undefined) {
+        return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
+      }
+      else { //autocorrect
+        searchquery(raw[0],true);
+      }
     }
-    else {
+    else { //second time
       return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
     }
   }
-  else {
+  else { //no error
+    for (let elements in raw) {
+      if (raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] || raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0] || raw[elements]["hwi"]["hw"] == search || raw[elements]["meta"]["id"] == search) {
+        output += `\n\n${raw[elements]['fl']}`;
+        for (definitions in raw[elements]["shortdef"]) {
+          n += 1;
+          output += `\n${n}. ${raw[elements]["shortdef"][definitions]}`;
+        }
+      }
+      if (raw[elements].hasOwnProperty('art')) {
+        output += `\n\n<img src="https://www.merriam-webster.com/assets/mw/static/art/dict/${raw[elements]['art']['artid']}.gif">\n`;
+      }
+    }
+    
     output = output.replaceAll("(", "<i>(");
     output = output.replaceAll(")", ")</i>");
     output = output.replace("\n", "");
-    document.getElementById("result").innerHTML = output + chinesequery(search);
-    chinesequery(search,output)
-  }
-
-  
+    chinesequery(search,output,raw)
+  }  
 }
 
 
 //QQ bingqiling
-function chinesequery(query, output,second = false) {
+function chinesequery(query, output, raw, second = false) {
   const targetlist = ['noun', 'adverb', 'adjective', 'verb', 'Ad\n\nVerb: : ', 'preposition', 'conjunction', 'article', 'pronoun', 'pro\n\nNoun: ', 'exclamation'];
   const replacelist = ['\n\nNoun: ', '\n\nAdverb:', '\n\nAdjective: ', '\n\nVerb: ', 'Adverb: ', '\n\nPreposition: ', '\n\nConjunction: ', '\n\nArticles: ', '\n\nPronouns: ', '\n\nPronouns: ', '\n\nExclamation: '];
   var meaning = ''
 
   if (query in cndata) {
     meaning = cndata[query];
+    //formatting
     for (let i = 0; i<targetlist.length; i++){
-      meaning = meaning.replaceAll(targetlist[i],replacelist[i])
+      meaning = meaning.replaceAll(targetlist[i], replacelist[i]);
     }
     for (let n = 43; n > 0; n--){
       if (meaning.includes(`${n}. `)) {
@@ -94,25 +88,21 @@ function chinesequery(query, output,second = false) {
       }
     }
   }
-  else {
+  else { //query not in cndata
     if (second) {
-      meaning =''
+      meaning = ''; //TODO translate
     }
-    else {
-      fetch(`https://dictionaryapi.com/api/v3/references/learners/json/${query}?key=5109265c-d6b4-4c53-950f-530a5c8c9658`)
-      .then((response) => response.json())
-      .then(autocorrect => {
-        if (!autocorrect || autocorrect.length === 0 || autocorrect===undefined) {
-          meaning ='';
-        }
-        if (autocorrect[0].hasOwnProperty('meta')) {
-          var searchpure = autocorrect[0]["meta"]["stems"][0];
-          meaning = chinesequery(searchpure, output, second = true);
-        }
-      });
+    else { //first time error
+      if (!raw || raw.length === 0 || raw === undefined) { //404
+        meaning =''; 
+      }
+      if (raw[0].hasOwnProperty('meta')) {
+        var searchpure = raw[0]["meta"]["stems"][0]; //lemmatize the word
+        return chinesequery(searchpure, output, raw,second = true);
+      } //else is autocorrect but not apply here, will change query for only cn
     }
   }
-  document.getElementById("result").innerHTML = output + meaning;
+  document.getElementById("result").innerHTML = output + meaning + `\n\n\nfrom <a href="https://dictionaryapi.com/" target="_blank">Merriam Webster</a> and <a href="https://github.com/mahavivo/english-dictionary/tree/master/OALD8_%E4%B8%AD%E6%96%87%E9%87%8A%E4%B9%89" target="_blank">OALD8_中文释义</a>`;
   clearInput();
 }
 
