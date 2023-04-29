@@ -25,7 +25,7 @@ function searchquery(query, second = false){
 
 function processquery(raw, search, second = false) {
   if (second) {
-    var output = `<img src="https://http.cat/303">\n\n❓do you mean:  ${search}`;
+    var output = `<img src="https://http.cat/303">\n\n<span>❓do you mean:  ${search}</span>`;
   }
   else {
     var output = '';
@@ -50,7 +50,7 @@ function processquery(raw, search, second = false) {
   }
   else { //no error
     for (let elements in raw) {
-      if (raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] || raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0] || raw[elements]["hwi"]["hw"] == search || raw[elements]["meta"]["id"] == search) {
+      if (raw[elements]["hwi"]["hw"] == search.trim() || raw[elements]["meta"]["id"] == search.trim() || raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] || raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0] ) {
         output += `\n\n${raw[elements]['fl']}`;
         for (definitions in raw[elements]["shortdef"]) {
           n += 1;
@@ -61,11 +61,16 @@ function processquery(raw, search, second = false) {
         output += `\n\n<img src="https://www.merriam-webster.com/assets/mw/static/art/dict/${raw[elements]['art']['artid']}.gif">\n`;
       }
     }
-    
-    output = output.replaceAll("(", "<i>(");
-    output = output.replaceAll(")", ")</i>");
-    output = output.replace("\n", "");
-    chinesequery(search,output,raw)
+
+    if (output == '' || output===undefined) { //no result but merriam give another word
+      return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
+    }
+    else {
+      output = output.replaceAll("(", "<i>(");
+      output = output.replaceAll(")", ")</i>");
+      output = output.replace("\n", "");
+      chinesequery(search,output,raw)
+    }
   }  
 }
 
@@ -102,7 +107,8 @@ function chinesequery(query, output, raw, second = false) {
       } //else is autocorrect but not apply here, will change query for only cn
     }
   }
-  document.getElementById("result").innerHTML = output + meaning + `\n\n\nfrom <a href="https://dictionaryapi.com/" target="_blank">Merriam Webster</a> and <a href="https://github.com/mahavivo/english-dictionary/tree/master/OALD8_%E4%B8%AD%E6%96%87%E9%87%8A%E4%B9%89" target="_blank">OALD8_中文释义</a>`;
+  console.table({ output, meaning });
+  document.getElementById("result").innerHTML = output + meaning;
   clearInput();
 }
 

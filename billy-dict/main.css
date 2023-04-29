@@ -145,13 +145,39 @@ header button:focus{
 
 .container img{
     width: 90%;
-    padding: 20px;
+    padding:20px;
     border-radius: 10%;
 }
 
+.container span{
+    background-color: #7e3f46;
+    border-radius: 5px;
+    font-weight: 500;
+    padding: 5px;
+}
 
+footer{
+    display: flex;
+    position: relative;
+    left: 0;
+    bottom: 0%;
+    width: 100%;
+    width: 90%;
+    padding: 0px 20px 20px 20px;
+}
 
+footer .merriam{
+    height: 50px;
+    width: 50px;
+    
+}
 
+footer p{
+    margin: auto 20px;
+    color:var(--white);
+    font-family: josefin sans;
+    font-size: 0.9rem;
+}
 
 ::-webkit-scrollbar {
     width: 9px;
