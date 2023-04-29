@@ -1,7 +1,7 @@
 console.warn("\n" +"                       _oo0oo_\n" +"                      o8888888o\n" +"                      88\" . \"88\n" +"                      (| -_- |)\n" +"                      0\\  =  /0\n" +"                    ___/`---'\\___\n" +"                  .' \\\\|     |// '.\n" +"                 / \\\\|||  :  |||// \\\n" +"                / _||||| -:- |||||- \\\n" +"               |   | \\\\\\  -  /// |   |\n" +"               | \\_|  ''\\---/''  |_/ |\n" +"               \\  .-\\__  '-'  ___/-. /\n" +"             ___'. .'  /--.--\\  `. .'___\n" +"          .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" +"         | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" +"         \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" +"     =====`-.____`.___ \\_____/___.-`___.-'=====\n" +"                       `=---='\n" +"\n" +"\n" +"     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +"\n" +"                菩提本无树   明镜亦非台\n" +"                本来无BUG    何必常修改\n");
 
 function getquery() {  
-  var query = document.getElementById("searchbar").value;
+  var query = document.getElementById("searchbar").value.toLowerCase().trim();
   if (query == '') {
     return document.getElementById("result").innerHTML = `<img src="https://http.cat/204"><br><img src="https://http.cat/405">`
   } 
@@ -50,8 +50,8 @@ function processquery(raw, search, second = false) {
   }
   else { //no error
     for (let elements in raw) {
-      if (raw[elements]["hwi"]["hw"] == search.trim() || raw[elements]["meta"]["id"] == search.trim() || raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] || raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0] ) {
-        output += `\n\n${raw[elements]['fl']}`;
+      if (raw[elements]["hwi"]["hw"] == search || raw[elements]["meta"]["id"] == search || raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] || raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0] ) {
+        output += `\n\n<u>${raw[elements]['fl']}</u>`;
         for (definitions in raw[elements]["shortdef"]) {
           n += 1;
           output += `\n${n}. ${raw[elements]["shortdef"][definitions]}`;
