@@ -41,7 +41,7 @@ function processquery(raw, search, second = false) {
         return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
       }
       else { //autocorrect
-        searchquery(raw[0],true);
+        searchquery(raw[0].toLowerCase().trim(),true);
       }
     }
     else { //second time
