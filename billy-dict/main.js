@@ -31,7 +31,7 @@ function processquery(raw, search, second = false) {
     var output = '';
   }
   let n = 0;
-  let origin = '\nWord Origin:\n\n';
+  let block = true;
 
 
   //QQ error handling
@@ -41,6 +41,7 @@ function processquery(raw, search, second = false) {
         return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
       }
       else { //autocorrect
+        console.table(raw);
         searchquery(raw[0].toLowerCase().trim(),true);
       }
     }
@@ -49,21 +50,29 @@ function processquery(raw, search, second = false) {
     }
   }
   else { //no error
-    for (let elements in raw) {
-      if (raw[elements]["hwi"]["hw"] == search || raw[elements]["meta"]["id"] == search || raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] || raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0] ) {
+    for (let elements in raw) { //print def
+      if (raw[elements]["hwi"]["hw"] == search || raw[elements]["meta"]["id"] == search || raw[0]["meta"]["stems"][0].toLowerCase() == search || raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] || raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0] ) {
         output += `\n\n<u>${raw[elements]['fl']}</u>`;
         for (definitions in raw[elements]["shortdef"]) {
           n += 1;
           output += `\n${n}. ${raw[elements]["shortdef"][definitions]}`;
         }
       }
-      if (raw[elements].hasOwnProperty('art')) {
+      if (raw[elements].hasOwnProperty('art')) { //print img
         output += `\n\n<img src="https://www.merriam-webster.com/assets/mw/static/art/dict/${raw[elements]['art']['artid']}.gif">\n`;
+      }
+      if (raw[elements]["meta"]["offensive"] && block) { //offensive
+        if (window.confirm("The word is offensive. Do you wish to proceed?")) {
+          block = false;
+        }
+        else {
+          return document.getElementById("result").innerHTML = `<img src="https://http.cat/450"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
+        }
       }
     }
 
     if (output == '' || output===undefined) { //no result but merriam give another word
-      return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
+      return document.getElementById("result").innerHTML = `<img src="https://http.cat/410"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
     }
     else {
       output = output.replaceAll("(", "<i>(");
@@ -107,7 +116,6 @@ function chinesequery(query, output, raw, second = false) {
       } //else is autocorrect but not apply here, will change query for only cn
     }
   }
-  console.table({ output, meaning });
   document.getElementById("result").innerHTML = output + meaning;
   clearInput();
 }

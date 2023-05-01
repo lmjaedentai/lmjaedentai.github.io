@@ -179,7 +179,8 @@ footer p{
     margin: auto 20px;
     color:var(--white);
     font-family: josefin sans;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
 }
 
 ::-webkit-scrollbar {
