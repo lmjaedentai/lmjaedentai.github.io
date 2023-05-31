@@ -127,9 +127,16 @@ function clearInput(){
   // document.getElementById("searchbar").focus();
 }
 
-var wage = document.getElementById("searchbar");
-wage.addEventListener("keydown", function (e) {
-    if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
-      getquery()
-    }
-});
+var form = document.getElementById("searchform");
+function handleForm(event) {
+  event.preventDefault();
+  getquery();
+} 
+form.addEventListener('submit', handleForm);
+
+// var wage = document.getElementById("searchbar");
+// wage.addEventListener("keydown", function (e) {
+//     if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+//       getquery()
+//     }
+// });
