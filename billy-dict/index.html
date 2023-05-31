@@ -15,11 +15,10 @@
         <header>
             <h1>Billy Dict</h1>
             <p>2022 by <u>@lmjaedentai</u></p>
-            <div class="searchbar">
-                <input type="text" placeholder="search" id="searchbar" class="no-outline" name="q" onblur="this.focus()" autofocus>
-                <button id="searchbutton" onclick="getquery()">Go</button>
-            </div>
-            
+            <form onsubmit="return false">
+                <input type="text" placeholder="search" id="searchbar" class="no-outline">
+                <button type="button" id="searchbutton" onclick="getquery()">Go</button>
+            </form>
         </header>
         <main>
             <div class="container">

@@ -24,7 +24,9 @@ a{
     color:var(--blue);
 }
 
-
+hr{
+    border: 1px #373743 solid;
+}
 
 header{
     position: relative;
@@ -46,7 +48,7 @@ header p{
 }
 
 
-header .searchbar{
+header form{
     display: flex;
     justify-content: center;
     /* margin: 0px auto; */
@@ -127,7 +129,6 @@ header button:focus{
     box-shadow: var(--indigo) 2px 1px 8px 1px;
 }
 
-
 .container h1{
     color: var(--blue);
     margin: auto;
@@ -182,6 +183,8 @@ footer p{
     font-size: 0.8rem;
     line-height: 1.4;
 }
+
+
 
 ::-webkit-scrollbar {
     width: 9px;

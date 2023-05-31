@@ -3,7 +3,7 @@ console.warn("\n" +"                       _oo0oo_\n" +"                      o8
 function getquery() {  
   var query = document.getElementById("searchbar").value.toLowerCase().trim();
   if (query == '') {
-    return document.getElementById("result").innerHTML = `<img src="https://http.cat/204"><br><img src="https://http.cat/405">`
+    return console.log('fk')
   } 
   if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
     return document.getElementById("result").innerHTML = `<img src="https://http.cat/400">`
@@ -11,8 +11,8 @@ function getquery() {
   else {
     searchquery(query);
   }
-    
 }
+
 
 function searchquery(query, second = false){
   fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${query}?key=fea702b3-bccf-47c3-b29e-2293789b70af`)
@@ -28,7 +28,7 @@ function processquery(raw, search, second = false) {
     var output = `<img src="https://http.cat/303">\n\n<span>❓do you mean:  ${search}</span>`;
   }
   else {
-    var output = '';
+    var output = '\n\n';
   }
   let n = 0;
   let block = true;
@@ -77,7 +77,7 @@ function processquery(raw, search, second = false) {
     else {
       output = output.replaceAll("(", "<i>(");
       output = output.replaceAll(")", ")</i>");
-      output = output.replace("\n", "");
+      output = output.replace("\n\n\n\n", "\n\n<hr>\n");
       chinesequery(search,output,raw)
     }
   }  
@@ -116,14 +116,15 @@ function chinesequery(query, output, raw, second = false) {
       } //else is autocorrect but not apply here, will change query for only cn
     }
   }
-  document.getElementById("result").innerHTML = output + meaning;
+  document.getElementById("result").innerHTML = meaning.replace(`\n\n`, `\n`) + output;
   clearInput();
 }
 
 
 //QQ ui functions
 function clearInput(){  
-  document.getElementById("searchbar").value= "";
+  document.getElementById("searchbar").value = "";
+  // document.getElementById("searchbar").focus();
 }
 
 var wage = document.getElementById("searchbar");
@@ -132,16 +133,3 @@ wage.addEventListener("keydown", function (e) {
       getquery()
     }
 });
-
-
-
-// const translate = require('google-translate-api');
-
-// translate('Ik spreek Engels', {to: 'en'}).then(res => {
-//     console.log(res.text);
-//     //=> I speak English
-//     console.log(res.from.language.iso);
-//     //=> nl
-// }).catch(err => {
-//     console.error(err);
-// });
