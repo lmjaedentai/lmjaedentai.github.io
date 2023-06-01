@@ -153,11 +153,15 @@ header button:focus{
     border-radius: 10%;
 }
 
-.container span{
+.container .error{
     background-color: #7e3f46;
     border-radius: 5px;
     font-weight: 500;
     padding: 5px;
+}
+
+.container .grey{
+    color: #8b8b8b;
 }
 
 footer{
@@ -195,8 +199,6 @@ footer p{
     background-color: rgba(250, 24, 239, 0);  
     border-radius: 20px;                        
 }
-
-
 
 
 

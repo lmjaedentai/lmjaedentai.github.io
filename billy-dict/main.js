@@ -25,10 +25,10 @@ function searchquery(query, second = false){
 
 function processquery(raw, search, second = false) {
   if (second) {
-    var output = `<img src="https://http.cat/303">\n\n<span>❓do you mean:  ${search}</span>`;
+    var english_output = `\n\n\n\n<img src="https://http.cat/303">\n\n<span class="error">❓do you mean:  ${search}</span>`;
   }
   else {
-    var output = '\n\n';
+    var english_output = '\n\n';
   }
   let n = 0;
   let block = true;
@@ -52,14 +52,14 @@ function processquery(raw, search, second = false) {
   else { //no error
     for (let elements in raw) { //print def
       if (raw[elements]["hwi"]["hw"] == search || raw[elements]["meta"]["id"] == search || raw[0]["meta"]["stems"][0].toLowerCase() == search || raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] || raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0] ) {
-        output += `\n\n<u>${raw[elements]['fl']}</u>`;
+        english_output += `\n\n<u>${raw[elements]['fl']}</u>`;
         for (definitions in raw[elements]["shortdef"]) {
           n += 1;
-          output += `\n${n}. ${raw[elements]["shortdef"][definitions]}`;
+          english_output += `\n<span class="grey">${n}.</span> ${raw[elements]["shortdef"][definitions]}`;
         }
       }
       if (raw[elements].hasOwnProperty('art')) { //print img
-        output += `\n\n<img src="https://www.merriam-webster.com/assets/mw/static/art/dict/${raw[elements]['art']['artid']}.gif">\n`;
+        english_output += `\n\n<img src="https://www.merriam-webster.com/assets/mw/static/art/dict/${raw[elements]['art']['artid']}.gif">\n`;
       }
       if (raw[elements]["meta"]["offensive"] && block) { //offensive
         if (window.confirm("The word is offensive. Do you wish to proceed?")) {
@@ -71,52 +71,54 @@ function processquery(raw, search, second = false) {
       }
     }
 
-    if (output == '' || output===undefined) { //no result but merriam give another word
+    if (english_output == '' || english_output===undefined) { //no result but merriam give another word
       return document.getElementById("result").innerHTML = `<img src="https://http.cat/410"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
     }
     else {
-      output = output.replaceAll("(", "<i>(");
-      output = output.replaceAll(")", ")</i>");
-      output = output.replace("\n\n\n\n", "\n\n<hr>\n");
-      chinesequery(search,output,raw)
+      english_output = english_output.replaceAll("(", "<i class='grey'>(");
+      english_output = english_output.replaceAll(")", ")</i>");
+      english_output = english_output.replace("\n\n\n\n", "\n\n<hr>\n");
+      chinesequery(search,english_output,raw)
     }
   }  
 }
 
 
 //QQ bingqiling
-function chinesequery(query, output, raw, second = false) {
+function chinesequery(query, english_output, raw, second = false) {
   const targetlist = ['noun', 'adverb', 'adjective', 'verb', 'Ad\n\nVerb: : ', 'preposition', 'conjunction', 'article', 'pronoun', 'pro\n\nNoun: ', 'exclamation'];
   const replacelist = ['\n\nNoun: ', '\n\nAdverb:', '\n\nAdjective: ', '\n\nVerb: ', 'Adverb: ', '\n\nPreposition: ', '\n\nConjunction: ', '\n\nArticles: ', '\n\nPronouns: ', '\n\nPronouns: ', '\n\nExclamation: '];
-  var meaning = ''
+  var chinese_output = ''
 
   if (query in cndata) {
-    meaning = cndata[query];
+    chinese_output = cndata[query];
     //formatting
     for (let i = 0; i<targetlist.length; i++){
-      meaning = meaning.replaceAll(targetlist[i], replacelist[i]);
+      chinese_output = chinese_output.replaceAll(targetlist[i], replacelist[i]);
     }
     for (let n = 43; n > 0; n--){
-      if (meaning.includes(`${n}. `)) {
-        meaning = meaning.replaceAll(`${n}. `, `\n${n}.`);
+      if (chinese_output.includes(`${n}. `)) {
+        chinese_output = chinese_output.replaceAll(`${n}. `, `\n<span class="grey">${n}.</span>`);
       }
     }
   }
   else { //query not in cndata
     if (second) {
-      meaning = ''; //TODO translate
+      chinese_output = ''; //TODO translate
     }
     else { //first time error
       if (!raw || raw.length === 0 || raw === undefined) { //404
-        meaning =''; 
+        chinese_output =''; 
       }
       if (raw[0].hasOwnProperty('meta')) {
         var searchpure = raw[0]["meta"]["stems"][0]; //lemmatize the word
-        return chinesequery(searchpure, output, raw,second = true);
+        return chinesequery(searchpure, english_output, raw,second = true);
       } //else is autocorrect but not apply here, will change query for only cn
     }
   }
-  document.getElementById("result").innerHTML = meaning.replace(`\n\n`, `\n`) + output;
+  chinese_output = chinese_output.replaceAll(`；`, `<span class="grey">；</span>`);
+  chinese_output = chinese_output.replace(`\n\n`, `\n`);
+  document.getElementById("result").innerHTML = chinese_output + english_output;
   clearInput();
 }
 
@@ -133,10 +135,3 @@ function handleForm(event) {
   getquery();
 } 
 form.addEventListener('submit', handleForm);
-
-// var wage = document.getElementById("searchbar");
-// wage.addEventListener("keydown", function (e) {
-//     if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
-//       getquery()
-//     }
-// });
