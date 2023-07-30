@@ -1,0 +1,21 @@
+{
+    "name": "Billy KaiCheng Dictionary",
+    "short_name": "billy",
+    "description": "A Dictionary designed by @lmjaedentai using javascript, powered by Merriam-Webster's Collegiate® Dictionary.",
+    "icons": [
+        {
+            "src": "icon-32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "theme_color": "#506cf7",
+    "background_color": "#232329"
+}
