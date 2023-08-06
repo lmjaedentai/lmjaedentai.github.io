@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Open+Sans&family=Source+Sans+Pro&display=swap');
 
 
-:root {
+/* :root {
     --blue: #506cf7;
     --white: #d4d4da;
     --grey:#51515f;
     --indigo: #232329;
     --lightblue:#2b2b33;
+} */
+:root {
+    --blue: #506cf7;
+    --white: #464c6a;
+    --grey:#ffffff;
+    --indigo: #f7fbff;
+    --lightblue: #ffffffec;
 }
 
 body{
@@ -15,7 +22,12 @@ body{
     margin: 0;
     width: 100%;
     scroll-behavior: smooth;
-    background: var(--indigo);
+    /* background: linear-gradient(90deg,#93d0ff, #a2dfc8); */
+    background-image: url(./bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;	
     color:var(--white);
     overflow: overlay;
 }
@@ -25,7 +37,7 @@ a{
 }
 
 hr{
-    border: 1px #373743 solid;
+    border: 1px #a6b0e9 solid;
 }
 
 header{
@@ -94,7 +106,7 @@ header button{
     height: 43px;
     width: 50px;
     font-size: 1.2rem;
-    color: var(--white);
+    color: #e4eaf1;
     font-family: josefin sans;
     transition: 0.5s;
 }
@@ -112,7 +124,7 @@ header button:focus{
 .container{
     position: relative;
     display:block;
-    background-color: var(--lightblue);
+    /* background-color: var(--lightblue); */
     width: 70%;
     max-width: 80vh;
     min-width: 40vh;
@@ -121,12 +133,20 @@ header button:focus{
     padding: 10px 40px;
     margin: 50px auto;
     border-radius:20px;
-    box-shadow: rgba(13, 0, 35, 0.281) 2px 1px 8px 1px;
+    /* box-shadow: #dee0fc 0px 8px 24px, #dee0fc 0px 16px 56px, #dee0fc 0px 24px 80px; */
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
     transition: 0.5s;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.614);
 }
 
 .container:hover{
-    box-shadow: var(--indigo) 2px 1px 8px 1px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 .container h1{
@@ -154,14 +174,14 @@ header button:focus{
 }
 
 .container .error{
-    background-color: #7e3f46;
+    background-color: #f3cacf;
     border-radius: 5px;
     font-weight: 500;
     padding: 5px;
 }
 
 .container .grey{
-    color: #8b8b8b;
+    color: #868fc3;
 }
 
 footer{
