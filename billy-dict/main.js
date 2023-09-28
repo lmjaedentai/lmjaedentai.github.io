@@ -30,7 +30,6 @@ function processquery(raw, search, second = false) {
   else {
     var english_output = '\n\n';
   }
-  let n = 0;
   let block = true;
 
 
@@ -50,12 +49,24 @@ function processquery(raw, search, second = false) {
     }
   }
   else { //no error
-    for (let elements in raw) { //print def
-      if (raw[elements]["hwi"]["hw"] == search || raw[elements]["meta"]["id"] == search || raw[0]["meta"]["stems"][0].toLowerCase() == search || raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] || raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0] ) {
-        english_output += `\n\n<u>${raw[elements]['fl']}</u>`;
-        for (definitions in raw[elements]["shortdef"]) {
-          n += 1;
-          english_output += `\n<span class="grey">${n}.</span> ${raw[elements]["shortdef"][definitions]}`;
+    // console.table(raw[0]["meta"]["stems"]);
+    for (let elements in raw) { //check if search query available
+      if (raw[elements]["hwi"]["hw"] == search ||
+        raw[elements]["meta"]["id"] == search ||
+        raw[0]["meta"]["stems"].map(word => word.toLowerCase()).includes(search) ||
+        raw[elements]["hwi"]["hw"] == raw[0]["meta"]["stems"][0] ||
+        raw[elements]["meta"]["id"] == raw[0]["meta"]["stems"][0]
+      ) {
+        if (raw[elements]["shortdef"].length == 0) {
+          continue; //the definition is unavailable
+        }
+        else { //print def
+          english_output += `\n<u>${raw[elements]['fl']}</u>`; //print part of speech
+          for (definitions in raw[elements]["shortdef"]) {
+            english_output += `<li>${raw[elements]["shortdef"][definitions]}</li>`;
+        }
+          // console.log(raw[elements]['fl'], raw[elements]["shortdef"].length);
+          // console.table(raw[elements]["shortdef"]);
         }
       }
       if (raw[elements].hasOwnProperty('art')) { //print img
@@ -74,10 +85,11 @@ function processquery(raw, search, second = false) {
     if (english_output == '' || english_output===undefined) { //no result but merriam give another word
       return document.getElementById("result").innerHTML = `<img src="https://http.cat/410"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
     }
-    else {
+    else { //formatting
       english_output = english_output.replaceAll("(", "<i class='grey'>(");
       english_output = english_output.replaceAll(")", ")</i>");
-      english_output = english_output.replace("\n\n\n\n", "\n\n<hr>\n");
+      english_output = english_output.replace("\n\n\n", "\n\n<hr><ol type='1'>");
+      english_output += "</ol>"
       chinesequery(search,english_output,raw)
     }
   }  

@@ -181,8 +181,17 @@ header button:focus{
     padding: 5px;
 }
 
-.container .grey{
+li::marker, .container .grey{
     color: #868fc3;
+}
+
+.container ol{
+    margin: 0;
+    padding: 15px;
+}
+
+.container li{
+    list-style: decimal;
 }
 
 footer{
