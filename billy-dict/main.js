@@ -1,5 +1,7 @@
 console.warn("\n" + "                       _oo0oo_\n" + "                      o8888888o\n" + "                      88\" . \"88\n" + "                      (| -_- |)\n" + "                      0\\  =  /0\n" + "                    ___/`---'\\___\n" + "                  .' \\\\|     |// '.\n" + "                 / \\\\|||  :  |||// \\\n" + "                / _||||| -:- |||||- \\\n" + "               |   | \\\\\\  -  /// |   |\n" + "               | \\_|  ''\\---/''  |_/ |\n" + "               \\  .-\\__  '-'  ___/-. /\n" + "             ___'. .'  /--.--\\  `. .'___\n" + "          .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" + "         | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" + "         \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" + "     =====`-.____`.___ \\_____/___.-`___.-'=====\n" + "                       `=---='\n" + "\n" + "\n" + "     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" + "\n" + "                菩提本无树   明镜亦非台\n" + "                本来无BUG    何必常修改\n");
 document.getElementById("searchbar").focus();
+var englishlemmatize = false;
+
 
 function getquery() {
   var query = document.getElementById("searchbar").value.toLowerCase().trim();
@@ -7,9 +9,10 @@ function getquery() {
     return //console.log('empty input')
   }
   if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
-    return document.getElementById("result").innerHTML = `<img src="https://http.cat/400">\nOnly alphabetical query can be accepted.`
+    return document.getElementById("result").innerHTML = `<img src="https://http.cat/405">\nOnly alphabetic characters are acceptable.`
   }
   else {
+    document.getElementById("result").innerHTML = `<img src="https://http.cat/102">`
     searchquery(query);
   }
 }
@@ -38,8 +41,9 @@ function englishdef(raw, search, second = false) {
         return document.getElementById("result").innerHTML = `<img src="https://http.cat/404"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
       }
       else { //autocorrect
+        englishlemmatize = true;
         searchquery(raw[0].toLowerCase().trim(),true);
-        // console.table(raw);
+        console.table(raw);
       }
     }
     else { //second time
@@ -82,7 +86,7 @@ function englishdef(raw, search, second = false) {
     }
 
     if (english_output == '' || english_output===undefined) { //no result but merriam give another word
-      return document.getElementById("result").innerHTML = `<img src="https://http.cat/410"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
+      return document.getElementById("result").innerHTML = `<img src="https://http.cat/204"><br>Try <a href="https://www.google.com/search?q=define+${search}" target="_blank">Google.</a>`
     }
     else { //formatting
       english_output = english_output.replaceAll("(", "<i class='grey'>(");
@@ -110,14 +114,17 @@ function chinesedef(query, englishraw, second = false, third = false) {
         chinese_output = chinese_output.replaceAll(`${n}. `, `\n<span class="grey">${n}.</span>`);
       }
     }
+    if (second) { //lemmatize sucessfully
+      chinese_output = `\n\n<span class="info">🔄️ Your query has been lemmatized to "${query}"</span>` + chinese_output
+    }
   }
   else { //query not in cndata
-    if (third != false) {
-      third += '    <u class="grey">(Google translated)</u>'
-      // console.table({ translated: third })
-      return formatoutput(englishdef(englishraw, query, second), third);
+    if (third != false) { //3rd time error --> translate
+      third = '<u class="grey">Google translated</u>\n' + third +`\n\n<span class="info">🔤 Translation accuracy not guaranteed.</span>`
+      console.table({searchinput:query,english:englishraw, translated: third ,en_second_trial:englishlemmatize})
+      return formatoutput(englishdef(englishraw, query, second), third, query,englishlemmatize);
     }
-    if (second) {//2nd try still no result
+    else if (second) {//2nd try still no result
       translatedef(query, englishraw);
     }
     else { //first time error
@@ -126,7 +133,7 @@ function chinesedef(query, englishraw, second = false, third = false) {
       }
       if (englishraw[0].hasOwnProperty('meta')) {//else if autocorrect but not apply here, will change query for only cn
         var searchpure = englishraw[0]["meta"]["stems"][0]; //lemmatize the word
-        // console.table({ lemmatize: chinese_output })
+        console.table({ lemmatize: chinese_output })
         return chinesedef(searchpure, englishraw, second = true);
       } 
     }
@@ -142,14 +149,14 @@ async function translatedef(query,englishraw) { //test: hetero
   .then((response) => response.json())
     .then(function (translated_output) {
     console.log(translated_output[0][0][0])
-    return chinesedef(query,englishraw, false, translated_output[0][0][0])
+    return chinesedef(query,englishraw, true, translated_output[0][0][0])
   });
 }
 
 function formatoutput(english_output, chinese_output,search,second) {
   // console.table({ en: english_output, cn: chinese_output });
   if(second){
-    chinese_output = `<span class="error">❓do you mean:  ${search}</span>\n` + chinese_output;
+    chinese_output = `<span class="error">❓did you mean:   <strong>${search}</strong></span>\n\n` + chinese_output;
   }
   document.getElementById("result").innerHTML = chinese_output + english_output;
   // console.warn('i end my job')

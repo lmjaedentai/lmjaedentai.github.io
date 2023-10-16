@@ -33,6 +33,6 @@
     ],
     "start_url": "index.html",
     "display": "fullscreen",
-    "theme_color": "#506cf7",
+    "theme_color": "#ffdfce", 
     "background_color": "#dae6f2"
 }
