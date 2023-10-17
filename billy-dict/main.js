@@ -1,7 +1,7 @@
 console.warn("\n" + "                       _oo0oo_\n" + "                      o8888888o\n" + "                      88\" . \"88\n" + "                      (| -_- |)\n" + "                      0\\  =  /0\n" + "                    ___/`---'\\___\n" + "                  .' \\\\|     |// '.\n" + "                 / \\\\|||  :  |||// \\\n" + "                / _||||| -:- |||||- \\\n" + "               |   | \\\\\\  -  /// |   |\n" + "               | \\_|  ''\\---/''  |_/ |\n" + "               \\  .-\\__  '-'  ___/-. /\n" + "             ___'. .'  /--.--\\  `. .'___\n" + "          .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" + "         | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" + "         \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" + "     =====`-.____`.___ \\_____/___.-`___.-'=====\n" + "                       `=---='\n" + "\n" + "\n" + "     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" + "\n" + "                菩提本无树   明镜亦非台\n" + "                本来无BUG    何必常修改\n");
 document.getElementById("searchbar").focus();
 var englishlemmatize = false;
-
+window.onload = runemoji();
 
 function getquery() {
   var query = document.getElementById("searchbar").value.toLowerCase().trim();
@@ -160,6 +160,7 @@ function formatoutput(english_output, chinese_output,search,second) {
   }
   document.getElementById("result").innerHTML = chinese_output + english_output;
   // console.warn('i end my job')
+  runemoji();
   clearInput();
 }
 
@@ -176,9 +177,15 @@ var form = document.getElementById("searchform");
 function handleForm(event) {
   event.preventDefault();
   getquery();
+  
 }
 form.addEventListener('submit', handleForm);
 
 
+function runemoji() {    
+  twemoji.size = '36x36';
+  twemoji.parse(document.body, 
+          {folder: 'svg', ext: '.svg'} // This is to specify to Twemoji to use SVGs and not PNGs
+  );
+}
 //QQ beta
-
