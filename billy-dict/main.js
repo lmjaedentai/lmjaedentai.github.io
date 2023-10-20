@@ -1,7 +1,6 @@
 console.warn("\n" + "                       _oo0oo_\n" + "                      o8888888o\n" + "                      88\" . \"88\n" + "                      (| -_- |)\n" + "                      0\\  =  /0\n" + "                    ___/`---'\\___\n" + "                  .' \\\\|     |// '.\n" + "                 / \\\\|||  :  |||// \\\n" + "                / _||||| -:- |||||- \\\n" + "               |   | \\\\\\  -  /// |   |\n" + "               | \\_|  ''\\---/''  |_/ |\n" + "               \\  .-\\__  '-'  ___/-. /\n" + "             ___'. .'  /--.--\\  `. .'___\n" + "          .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" + "         | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" + "         \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" + "     =====`-.____`.___ \\_____/___.-`___.-'=====\n" + "                       `=---='\n" + "\n" + "\n" + "     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" + "\n" + "                菩提本无树   明镜亦非台\n" + "                本来无BUG    何必常修改\n");
 document.getElementById("searchbar").focus();
 var englishlemmatize = false;
-window.onload = runemoji();
 
 function getquery() {
   var query = document.getElementById("searchbar").value.toLowerCase().trim();
@@ -22,7 +21,7 @@ function searchquery(query, second = false){
     .then((response) => response.json())
     .then(function (raw) {
       if (second == false) {
-        document.getElementById("searchtitle").innerHTML = `📘 ${query}`;
+        document.getElementById("searchtitle").innerHTML = `<img class="emoji" src="https://cdn.jsdelivr.net/gh/mkabumattar/fluentui-emoji@latest/icons/modern/blue-book.svg" /> ${query}`;
       }
       // console.warn('i start my job')
       formatoutput(englishdef(raw, query, second),chinesedef(query,raw),query,second);
@@ -115,12 +114,12 @@ function chinesedef(query, englishraw, second = false, third = false) {
       }
     }
     if (second) { //lemmatize sucessfully
-      chinese_output = `\n\n<span class="info">🔄️ Your query has been lemmatized to "${query}"</span>` + chinese_output
+      chinese_output = `\n\n<span class="info"><img class="emoji" src="https://cdn.jsdelivr.net/gh/mkabumattar/fluentui-emoji@latest/icons/flat/counterclockwise-arrows-button.svg" /> Your query has been lemmatized to "${query}"</span>` + chinese_output
     }
   }
   else { //query not in cndata
     if (third != false) { //3rd time error --> translate
-      third = '<u class="grey">Google translated</u>\n' + third +`\n\n<span class="info">🔤 Translation accuracy not guaranteed.</span>`
+      third = '<u class="grey">Google translated</u>\n' + third +`\n\n<span class="info"><img class="emoji" src="https://cdn.jsdelivr.net/gh/mkabumattar/fluentui-emoji@latest/icons/flat/input-latin-letters.svg" /> Translation accuracy not guaranteed.</span>`
       console.table({searchinput:query,english:englishraw, translated: third ,en_second_trial:englishlemmatize})
       return formatoutput(englishdef(englishraw, query, second), third, query,englishlemmatize);
     }
@@ -156,11 +155,10 @@ async function translatedef(query,englishraw) { //test: hetero
 function formatoutput(english_output, chinese_output,search,second) {
   // console.table({ en: english_output, cn: chinese_output });
   if(second){
-    chinese_output = `<span class="error">❓did you mean:   <strong>${search}</strong></span>\n\n` + chinese_output;
+    chinese_output = `<span class="error"><img class="emoji" src="https://cdn.jsdelivr.net/gh/mkabumattar/fluentui-emoji@latest/icons/modern/red-question-mark.svg"/> did you mean:   <strong>${search}</strong></span>\n\n` + chinese_output;
   }
   document.getElementById("result").innerHTML = chinese_output + english_output;
   // console.warn('i end my job')
-  runemoji();
   clearInput();
 }
 
@@ -181,11 +179,5 @@ function handleForm(event) {
 }
 form.addEventListener('submit', handleForm);
 
-
-function runemoji() {    
-  twemoji.size = '36x36';
-  twemoji.parse(document.body, 
-          {folder: 'svg', ext: '.svg'} // This is to specify to Twemoji to use SVGs and not PNGs
-  );
-}
-//QQ beta
+//QQ beta 
+//TODO apple emoji pack

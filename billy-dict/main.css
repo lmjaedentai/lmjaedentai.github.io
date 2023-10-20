@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Open+Sans&family=Source+Sans+Pro&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Noto+Color+Emoji&family=Source+Sans+Pro&display=swap');
 
 /* :root {
     --blue: #506cf7;
@@ -156,11 +155,12 @@ header button:focus{
 .container p{
     color:var(--white);
     font-family: source sans pro;
-    /* font-family: open sans; */
     font-size: 1rem;
     text-align: justify;
     white-space: pre-line;
 }
+
+
 
 .container img.emoji {
     pointer-events: none; 
@@ -180,16 +180,14 @@ header button:focus{
 .container .error{
     background-color: #f9c8c7;
     color: #fa1858;
-    /* border: 1.5px solid #ef8383; */
     border-radius: 5px;
     font-weight: 500;
     padding: 5px;
 }
 
 .container .info{
-    background-color: #cbebfb;
+    background-color: #b4e4fc;
     color: #118bbc;
-    /* border: 1.5px solid #ef8383; */
     border-radius: 5px;
     font-weight: 500;
     padding: 5px;
