@@ -21,8 +21,7 @@ body{
     margin: 0;
     width: 100%;
     scroll-behavior: smooth;
-    background-image: url(./bg2.png);
-    /* background-image: url(./bg2.jpg); */
+    background-image: url(./bg2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
