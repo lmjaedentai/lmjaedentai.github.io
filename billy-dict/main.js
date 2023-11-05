@@ -1,9 +1,25 @@
 console.warn("\n" + "                       _oo0oo_\n" + "                      o8888888o\n" + "                      88\" . \"88\n" + "                      (| -_- |)\n" + "                      0\\  =  /0\n" + "                    ___/`---'\\___\n" + "                  .' \\\\|     |// '.\n" + "                 / \\\\|||  :  |||// \\\n" + "                / _||||| -:- |||||- \\\n" + "               |   | \\\\\\  -  /// |   |\n" + "               | \\_|  ''\\---/''  |_/ |\n" + "               \\  .-\\__  '-'  ___/-. /\n" + "             ___'. .'  /--.--\\  `. .'___\n" + "          .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" + "         | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" + "         \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" + "     =====`-.____`.___ \\_____/___.-`___.-'=====\n" + "                       `=---='\n" + "\n" + "\n" + "     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" + "\n" + "                菩提本无树   明镜亦非台\n" + "                本来无BUG    何必常修改\n");
 document.getElementById("searchbar").focus();
 var englishlemmatize = false;
+var contextmenu = document.querySelector(".contextmenu"); 
 
 function getquery() {
   var query = document.getElementById("searchbar").value.toLowerCase().trim();
+  if (query == '') {
+    return //console.log('empty input')
+  }
+  if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
+    return document.getElementById("result").innerHTML = `<img src="https://http.cat/405">\nOnly alphabetic characters are acceptable.`
+  }
+  else {
+    document.getElementById("result").innerHTML = `<img src="https://http.cat/102">`
+    searchquery(query);
+  }
+}
+
+function gethighlighted() {
+  var query = document.getSelection().toString().toLowerCase().trim();
+  contextmenu.style.display = "none"; 
   if (query == '') {
     return //console.log('empty input')
   }
@@ -21,7 +37,7 @@ function searchquery(query, second = false){
     .then((response) => response.json())
     .then(function (raw) {
       if (second == false) {
-        document.getElementById("searchtitle").innerHTML = `<img class="emoji" src="https://cdn.jsdelivr.net/gh/mkabumattar/fluentui-emoji@latest/icons/modern/blue-book.svg" /> ${query}`;
+        document.getElementById("searchtitle").innerHTML = `<img class="emoji" src="https://cdn.jsdelivr.net/gh/mkabumattar/fluentui-emoji@latest/icons/modern/blue-book.svg"/> ${query}`;
       }
       // console.warn('i start my job')
       formatoutput(englishdef(raw, query, second),chinesedef(query,raw),query,second);
@@ -180,4 +196,21 @@ function handleForm(event) {
 form.addEventListener('submit', handleForm);
 
 //QQ beta 
-//TODO apple emoji pack
+var pageX, pageY; 
+document.addEventListener("mouseup", () => { 
+  let selectedText = document.getSelection().toString(); 
+  if (selectedText !== "") {
+    contextmenu.style.display = "flex";
+    // contextmenu.style.width = "100px";
+    contextmenu.style.left = pageX + "px";
+    contextmenu.style.top = pageY - 50 + "px";
+  }
+  else {
+    contextmenu.style.display = "none"; 
+  } 
+}); 
+
+document.addEventListener("mousedown", (e) => { 
+  pageX = e.pageX; 
+  pageY = e.pageY; 
+}); 

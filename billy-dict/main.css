@@ -222,6 +222,37 @@ footer p{
 }
 
 
+.contextmenu { 
+    display: none; 
+    cursor: pointer; 
+    position: absolute; 
+    width: 30px;
+    height: 30px;
+    background: var(--blue);
+    border: none;
+    border-radius: 10px;
+    color: #e4eaf1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: 0.5s;
+} 
+
+.contextmenu i { 
+    font-size: 1rem;
+    margin: 5px 8px 0px 0;
+} 
+
+.contextmenu p {
+    overflow:hidden;
+    font-family: josefin sans;
+    font-size: 0.9rem;
+    margin: 7px 0 0px 0;
+}
+
+.contextmenu:hover{ 
+    width: 100px;
+} 
+
+
 
 ::-webkit-scrollbar {
     width: 9px;
