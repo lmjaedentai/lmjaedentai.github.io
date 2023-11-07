@@ -284,4 +284,8 @@ footer p{
         margin-left: 10px;
         padding: 0px;
     }
+
+    .contextmenu { 
+        scale: 1.3;
+    } 
 }

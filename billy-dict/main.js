@@ -201,9 +201,8 @@ document.addEventListener("mouseup", () => {
   let selectedText = document.getSelection().toString(); 
   if (selectedText !== "") {
     contextmenu.style.display = "flex";
-    // contextmenu.style.width = "100px";
     contextmenu.style.left = pageX + "px";
-    contextmenu.style.top = pageY - 50 + "px";
+    contextmenu.style.top = pageY + 20 + "px";
   }
   else {
     contextmenu.style.display = "none"; 
