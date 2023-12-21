@@ -9,6 +9,9 @@ function getquery() {
     return //console.log('empty input')
   }
   if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
+    if (query == '小妹妹') {
+      return document.getElementById("result").innerHTML = `<img src="./cute.png">`
+    }
     return document.getElementById("result").innerHTML = `<img src="https://http.cat/405">\nOnly alphabetic characters are acceptable.`
   }
   else {
@@ -213,3 +216,8 @@ document.addEventListener("mousedown", (e) => {
   pageX = e.pageX; 
   pageY = e.pageY; 
 }); 
+
+
+// Cookies.set('name', {"new":''});
+// s = Cookies.get('name');
+// console.log(s)
