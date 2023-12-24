@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Noto+Sans:wght@400;700&family=Open+Sans&display=swap');
+
+/* LINK https://dev.to/whitep4ntstrongr/the-best-lightdark-mode-theme-toggle-in-javascript-368f */
+
+.theme-light {
+    --text-header: #506cf7;
+    --text-primary: #182148;
+    --text-secondary: rgba(24, 33, 72,.75);
+    --text-tertiary: rgba(24, 33, 72,.6);
+    --text-quaternary: rgba(24, 33, 72,.38);
+    --white-primary: rgb(249, 249, 255);
+    --white-secondary: #f3f3f3;
+    --white-tertiary: #eaeff4;
+}
+
+.theme-dark {
+    --text-header: #506cf7;
+    --text-primary: #d4d4da;
+    --text-secondary: rgba(212, 212, 218,.75);
+    --text-tertiary: rgba(212, 212, 218,.6);
+    --text-quaternary: rgba(212, 212, 218,.38);
+
+    --white-primary: #232329;
+    --white-secondary: #373740; 
+    --white-tertiary: #2b2b33;
+}
+
+
+body{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    width: 100%;
+    background: var(--white-primary);
+    overflow: overlay;
+}
+
+header{
+    width: 100%;
+    height: 45px;
+    position: fixed;
+    bottom: 0%;
+    background: var(--white-primary);
+    opacity: 95%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header input{
+    font-family: josefin sans;
+    height: 30px;
+    width: 70%;
+    max-width: 75vh;
+    min-width: 40vh;
+    border-radius: 5px;
+    border: 0;
+    background: var(--white-tertiary);
+    color: var(--text-primary);
+    padding-left: 20px;
+}
+
+header input:focus{
+    outline:none;
+    appearance: none;
+}
+
+header input::placeholder{
+    color:var(--text-tertiary);
+    /* font-family: josefin sans; */
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+header .history{
+    border: 0 none;
+    background: none;
+    cursor: pointer;
+    position: absolute;
+    right: 1%;
+}
+
+header .moon{
+    border: 0 none;
+    background: none;
+    cursor: pointer;
+    position: absolute;
+    left: 1%;
+}
+
+main{
+    font-family:'Noto Sans';
+    color: var(--text-primary);
+    /* padding: 20px 200px; */
+    width: 70%;
+    max-width: 90vh;
+    min-width: 30vh;
+    box-sizing: border-box; 
+    height:min-content;
+    padding: 10px 40px;
+    margin: 50px auto;
+}
+
+hr{
+    background-color: var(--white-secondary);
+    border: 0 none;
+    color: var(--white-secondary);
+    height: 1px;
+}
+
+h1, a{
+    font-family: 'josefin sans';
+    color: var(--text-header);
+    margin: 0;
+}
+
+p{
+    text-align: justify;
+    white-space: pre-line;
+    font-size: 0.9rem;
+    margin: 0px;
+}
+
+main span{
+    color: var(--text-tertiary);
+    padding: 0 2px;
+}
+
+main strong{
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 15px 0 3px 0;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+}
+
+
+
+footer{
+    display: block;
+    position: relative;
+    bottom: 0%;
+    width: 100%;
+    z-index: -1;
+    background-color: var(--white-tertiary);
+}
+
+footer .footerbox{
+    display: flex;
+    padding: 40px 0px 70px 80px;
+}
+
+footer .merriam{
+    height: 50px;
+    width: 50px;
+    
+}
+
+footer p{
+    margin: auto 20px;
+    color:var(--text-secondary);
+    font-family: josefin sans;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+
+.contextmenu { 
+    display: none; 
+    cursor: pointer; 
+    position: absolute; 
+    width: 30px;
+    height: 30px;
+    background: var(--blue);
+    border: none;
+    border-radius: 10px;
+    color: #e4eaf1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: 0.5s;
+} 
+
+.contextmenu i { 
+    font-size: 1rem;
+    margin: 5px 8px 0px 0;
+} 
+
+.contextmenu p {
+    overflow:hidden;
+    font-family: josefin sans;
+    font-size: 0.9rem;
+    margin: 7px 0 0px 0;
+}
+
+.contextmenu:hover{ 
+    width: 100px;
+} 
+
+
+
+::-webkit-scrollbar {
+    width: 9px;
+    margin-right: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(250, 24, 239, 0);  
+    border-radius: 20px;                        
+}
+
+
+ion-icon {
+    font-size: 34px;
+    padding: 5px;
+    color: var(--text-secondary);
+}
+
+
+
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    body{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    header input{
+        width:65%;
+    }
+
+    ion-icon {
+        font-size: 25px;
+    }
+    
+
+    main{
+        padding: 10px 0px;
+        max-width: 100%;
+    }
+}
