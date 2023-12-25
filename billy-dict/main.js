@@ -228,8 +228,10 @@ function formatoutput(english_output='', chinese_output='', search='', second=fa
 //QQ ui functions
 function clearInput() {
     document.getElementById("searchbar").value = "";
-    window.scrollTo(0, 0);
     document.getElementById("searchbar").focus();
+    setTimeout(window.scrollTo(0,0),100);
+    document.getElementById('searchtitle').scrollIntoView({behavior: 'smooth'});
+
 }
 
 var form = document.getElementById("searchform");
