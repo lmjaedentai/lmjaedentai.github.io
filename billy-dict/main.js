@@ -219,6 +219,7 @@ function formatoutput(english_output='', chinese_output='', search='', second=fa
     document.getElementById("phonetic").innerHTML = (custom != '') ? custom : document.getElementById("phonetic").innerHTML;
     document.getElementById("thesaurus").innerHTML =  (table != '') ? table : document.getElementById("thesaurus").innerHTML;
     clearInput();
+    
 }
 
 
@@ -227,7 +228,8 @@ function formatoutput(english_output='', chinese_output='', search='', second=fa
 //QQ ui functions
 function clearInput() {
     document.getElementById("searchbar").value = "";
-    // document.getElementById("searchbar").focus();
+    window.scrollTo(0, 0);
+    document.getElementById("searchbar").focus();
 }
 
 var form = document.getElementById("searchform");
