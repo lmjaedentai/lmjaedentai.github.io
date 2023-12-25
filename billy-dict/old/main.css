@@ -21,6 +21,7 @@ body{
     margin: 0;
     width: 100%;
     scroll-behavior: smooth;
+    /* background: var(--indigo); */
     background-image: url(./bg2.jpg);
     background-size: cover;
     background-repeat: no-repeat;

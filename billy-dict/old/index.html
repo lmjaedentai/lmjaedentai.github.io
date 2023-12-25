@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A Dictionary designed by @lmjaedentai using javascript, powered by Merriam-Webster's Collegiate® Dictionary.">
+        <meta name="author" content="Jaeden Tai">
+        <meta name="robots" content="noindex">
+        <meta name="theme-color" content="#dae6f2">         <!--NOTE: dae6f2 -->
+        
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="manifest" href="js13kpwa.webmanifest">
+        <link rel="icon" type="image/x-icon" href="../favicon.ico">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <title>Dictionary</title>
+    </head>
+    <body>
+        <header>
+            <h1>Billy Dict</h1>
+            <p>2022 by <u>@lmjaedentai</u></p>
+            <form id="searchform">
+                <input type="text" placeholder="search" id="searchbar" class="no-outline">
+                <button type="button" id="searchbutton" onclick="getquery()">Go</button>
+            </form>
+        </header>
+        <main>
+            <div class="container">
+                <h1 id="searchtitle"><img class="emoji" src="https://cdn.jsdelivr.net/gh/mkabumattar/fluentui-emoji@latest/icons/modern/blue-book.svg" /> Billy Dictionary</h1>
+                <p id="result">
+                    <img src="https://http.cat/100"><br> 
+                    Find English definiton here in a simple and fast way. Support Chinese translation in high accuracy.
+                </p>
+            </div>
+        </main>
+        <footer> 
+            <a href="https://dictionaryapi.com/" target="_blank"><img class="merriam" src="https://dictionaryapi.com/images/info/branding-guidelines/MWLogo_DarkBG_120x120_2x.png"></a>
+            <p>Coded in Javascript. Made possible by <a href="https://dictionaryapi.com/" target="_blank">Merriam-Webster's Collegiate® Dictionary</a> and <a href="https://github.com/mahavivo/english-dictionary/tree/master/OALD8_%E4%B8%AD%E6%96%87%E9%87%8A%E4%B9%89" target="_blank">OALD8_中文释义</a></p>
+        </footer>
+        <button type="button" class="contextmenu" onclick="gethighlighted()">
+            <i class="material-icons">search</i><p>search</p>
+        </button>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <script src="../new.js"></script>
+    <script src="main.js"></script>
+</html>
