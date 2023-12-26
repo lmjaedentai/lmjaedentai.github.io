@@ -5,7 +5,7 @@ var englishlemmatize = false;
 
 function getquery() {
     var query = document.getElementById("searchbar").value.toLowerCase().trim();
-    document.getElementById("phonetic").innerHTML ='<img data-ujs-name="Happy music"/>\n\nSearching...'
+    document.getElementById("phonetic").innerHTML =''
     document.getElementById("definition").innerHTML = '';
     document.getElementById("chinese").innerHTML = '';
     document.getElementById("thesaurus").innerHTML = '';
@@ -106,7 +106,7 @@ function englishdef(raw, search, second = false) {
                     block = false;
                 }
                 else {
-                    document.getElementById("phonetic").innerHTML = '<img data-ujs-name="Taken"/>\n\nNo content'; return
+                    formatoutput('<img data-ujs-name="Taken"/>\n\nNo content'); return
                 }
             }
         }
@@ -126,7 +126,7 @@ function englishdef(raw, search, second = false) {
 
 //QQ bingqiling
 function chinesedef(query, englishraw, second = false, third = false) {
-    const targetlist = ['noun', 'adverb', 'adjective', 'verb', 'Ad\n\nVerb: : ', 'preposition', 'conjunction', 'article', 'pronoun', 'pro\n\nNoun: ', 'exclamation'];
+    const targetlist = ['noun', 'adverb', 'adjective', 'verb', '<strong>\n\nAd<strong>\n\nVerb</strong></strong>', 'preposition', 'conjunction', 'article', 'pronoun', 'pro<strong>\n\nNoun</strong>', 'exclamation'];
     const replacelist = ['Noun', 'Adverb', 'Adjective', 'Verb', 'Adverb', 'Preposition', 'Conjunction', 'Articles', 'Pronouns', 'Pronouns', 'Exclamation'];
     var chinese_output = ''
 
@@ -134,7 +134,7 @@ function chinesedef(query, englishraw, second = false, third = false) {
         chinese_output = cndata[query];
         //formatting
         for (let i = 0; i < targetlist.length; i++) {
-            chinese_output = chinese_output.replaceAll(targetlist[i], `\n\n<strong>${replacelist[i]}</strong>`);
+            chinese_output = chinese_output.replaceAll(targetlist[i], `<strong>\n\n${replacelist[i]}</strong>`);
         }
         for (let n = 43; n > 0; n--) {
             if (chinese_output.includes(`${n}. `)) {
@@ -142,7 +142,7 @@ function chinesedef(query, englishraw, second = false, third = false) {
             }
         }
         if (second) { //lemmatize sucessfully
-            formatoutput(custom=`<span class="info">Your query has been lemmatized to "${query}"</span>`)
+            formatoutput('','','','',`<span class="info">Your query has been lemmatized to "${query}"</span>`)
         }
     }
     else { //query not in cndata
@@ -213,10 +213,11 @@ function thesaurus(raw, search) {
 
 function formatoutput(english_output='', chinese_output='', search='', second=false,custom='',table='') {
     // console.table({ en: english_output, cn: chinese_output ,custom:custom, table:table});
-    document.getElementById("phonetic").innerHTML = second ? `<span class="error">did you mean: ${search}</span>` : document.getElementById("phonetic").innerHTML;
+    if (custom != '') {
+        document.getElementById("phonetic").innerHTML = (second) ? `<span class="error">did you mean: ${search}</span>\n${custom}` : custom
+    }
     document.getElementById("definition").innerHTML = (english_output != '') ? english_output : document.getElementById("definition").innerHTML;
     document.getElementById("chinese").innerHTML = (chinese_output != '') ? chinese_output : document.getElementById("chinese").innerHTML;
-    document.getElementById("phonetic").innerHTML = (custom != '') ? custom : document.getElementById("phonetic").innerHTML;
     document.getElementById("thesaurus").innerHTML =  (table != '') ? table : document.getElementById("thesaurus").innerHTML;
     clearInput();
     
