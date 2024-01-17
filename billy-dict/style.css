@@ -4,6 +4,7 @@
 
 .theme-light {
     --text-header: #506cf7;
+    --text-header2: #8294f9;
     --text-primary: #182148;
     --text-secondary: rgba(24, 33, 72,.75);
     --text-tertiary: rgba(24, 33, 72,.6);
@@ -15,10 +16,11 @@
 
 .theme-dark {
     --text-header: #506cf7;
+    --text-header2: #8294f9;
     --text-primary: #d4d4da;
     --text-secondary: rgba(212, 212, 218,.75);
     --text-tertiary: rgba(212, 212, 218,.6);
-    --text-quaternary: rgba(212, 212, 218,.38);
+    --text-quaternary: rgba(212, 212, 218, 0.279);
 
     --white-primary: #232329;
     --white-secondary: #373740; 
@@ -150,6 +152,26 @@ main p{
 main span{
     color: var(--text-tertiary);
     padding: 0 2px;
+}
+
+main em{
+    font-style: normal;
+    color: var(--text-header2);
+    text-decoration: underline;
+}
+
+main blockquote{
+    color: var(--text-secondary);
+    text-align: left;
+    border-left: 3px solid var(--white-secondary);
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin: 0px 0px;
+    transition: 0.2s;
+}
+
+main blockquote:hover{
+    border-left: 3px solid var(--text-header);
 }
 
 main ol{

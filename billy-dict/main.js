@@ -5,9 +5,10 @@ var englishlemmatize = false;
 
 function getquery() {
     var query = document.getElementById("searchbar").value.toLowerCase().trim();
-    document.getElementById("phonetic").innerHTML =''
+    document.getElementById("phonetic").innerHTML = ''
     document.getElementById("definition").innerHTML = '';
     document.getElementById("chinese").innerHTML = '';
+    document.getElementById("example").innerHTML =''
     document.getElementById("thesaurus").innerHTML = '';
 
     if (query == '') {
@@ -37,7 +38,6 @@ function getquery() {
 // }
 
 function searchquery(query, second = false) {
-    document.getElementById("phonetic").innerHTML = '';       
     fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${query}?key=fea702b3-bccf-47c3-b29e-2293789b70af`)
         .then((response) => response.json())
         .then(function (raw) {
@@ -45,19 +45,19 @@ function searchquery(query, second = false) {
                 document.getElementById("searchtitle").innerHTML = query;
             }
             // console.warn('i start my job')
-            formatoutput(englishdef(raw, query, second), chinesedef(query, raw), query, second);
+            formatoutput({ en:englishdef(raw, query, second), cn:chinesedef(query, raw), q:query, second:second, exp:'' });
     });
     fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=1b547310-00e9-418a-b23f-b73d22906f1c`)
         .then((response) => response.json())
         .then(function (raw) {
-            formatoutput('','','','','',thesaurus(raw, query));
+            formatoutput({ t: thesaurus(raw, query) });
     });
 }
 
 function englishdef(raw, search, second = false) {
     var english_output = '\n\n';
+    var example_output = '';
     let block = true;
-    let n = 1;
 
     //QQ error handling
     if (raw === undefined || raw == "" || raw[0].hasOwnProperty('meta') == false) {
@@ -76,7 +76,6 @@ function englishdef(raw, search, second = false) {
         }
     }
     else { //no error
-        // console.table(raw[0]["meta"]["stems"]);
         for (let elements in raw) { //check if search query available
             if (raw[elements]["hwi"]["hw"] == search ||
                 raw[elements]["meta"]["id"] == search ||
@@ -87,30 +86,53 @@ function englishdef(raw, search, second = false) {
                 if (raw[elements]["shortdef"].length == 0) {
                     continue; //the definition is unavailable
                 }
-                else { //print def
+                else {
+                    //QQ print def
                     english_output += `\n<strong>${raw[elements]['fl']}</strong>`; //print part of speech
                     for (definitions in raw[elements]["shortdef"]) {
-                        // english_output += `\n${n}. ${raw[elements]["shortdef"][definitions]}`;
                         english_output += `<li>${raw[elements]["shortdef"][definitions]}</li> `;
-                        n++
                     }
-                    // console.log(raw[elements]['fl'], raw[elements]["shortdef"].length);
-                    // console.table(raw[elements]["shortdef"]);
                 }
             }
-            if (raw[elements].hasOwnProperty('art')) { //print img
+            //QQ print img
+            if (raw[elements].hasOwnProperty('art')) { 
                 english_output += `\n<img src="https://www.merriam-webster.com/assets/mw/static/art/dict/${raw[elements]['art']['artid']}.gif">\n`;
             }
-            if (raw[elements]["meta"]["offensive"] && block) { //offensive
+            //QQ offensive
+            if (raw[elements]["meta"]["offensive"] && block) { 
                 if (window.confirm("The word is offensive. Do you wish to proceed?")) {
                     block = false;
                 }
                 else {
-                    formatoutput('<img data-ujs-name="Taken"/>\n\nNo content'); return
+                    formatoutput({ e: '<img data-ujs-name="Taken"/>\n\nNo content' }); return
                 }
             }
-        }
+            //QQ examples
+            raw[elements]['def'].forEach(childdef => {
+                if ('sseq' in childdef) {
+                    childdef['sseq'].forEach(sseq => {
+                        if ('dt' in sseq[0][1]) {
+                            sseq[0][1]['dt'].forEach(dt => {
+                                if (dt[0]=='vis') {
+                                    for (i = 1; i < dt.length; i++){
+                                        // console.table({'len':dt[i].length,'dti':dt[i]})
+                                        for (ii = 0; ii < dt[i].length; ii++){
+                                            if ('t' in dt[i][ii]) {
+                                                example_output +=`<blockquote>${dt[i][ii]['t']}</blockquote>\n`;
+                                                example_output = example_output.replace(/\{.*\}/,`<em>${search}</em>`)
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            });
 
+        }
+        
+        formatoutput({ exp: example_output });
         if (english_output == '' || english_output === undefined) { //no result but merriam give another word
             document.getElementById("phonetic").innerHTML = '<img data-ujs-name="Taken"/>\n\nNo content'; return
         }
@@ -142,14 +164,14 @@ function chinesedef(query, englishraw, second = false, third = false) {
             }
         }
         if (second) { //lemmatize sucessfully
-            formatoutput('','','','',`<span class="info">Your query has been lemmatized to "${query}"</span>`)
+            formatoutput({e:`<span class="info">Your query has been lemmatized to "${query}"</span>`})
         }
     }
     else { //query not in cndata
         if (third != false) { //3rd time error --> translate
             third = '<strong>Google translated</strong>\n' + third
             // console.table({ searchinput: query, english: englishraw, translated: third, en_second_trial: englishlemmatize })
-            return formatoutput(englishdef(englishraw, query, second), third, query, englishlemmatize, `<span class="info">Translation accuracy not guaranteed.</span>`);
+            return formatoutput({en:englishdef(englishraw, query, second), cn:third, q:query, second:englishlemmatize, e:`<span class="info">Translation accuracy not guaranteed.</span>`});
         }
         else if (second) {//2nd try still no result
             translatedef(query, englishraw);
@@ -211,14 +233,15 @@ function thesaurus(raw, search) {
     }
 }
 
-function formatoutput(english_output='', chinese_output='', search='', second=false,custom='',table='') {
-    // console.table({ en: english_output, cn: chinese_output ,custom:custom, table:table});
-    if (custom != '') {
-        document.getElementById("phonetic").innerHTML = (second) ? `<span class="error">did you mean: ${search}</span>\n${custom}` : custom
+function formatoutput({ en = '', cn = '', q = '', second = false, e = '', t = '', exp =''}) {
+    // console.table({ en: en, cn: cn ,e:e, t:t});
+    if (e != '') {
+        document.getElementById("phonetic").innerHTML = (second) ? `<span class="error">did you mean: ${q}</span>\n${e}` : e
     }
-    document.getElementById("definition").innerHTML = (english_output != '') ? english_output : document.getElementById("definition").innerHTML;
-    document.getElementById("chinese").innerHTML = (chinese_output != '') ? chinese_output : document.getElementById("chinese").innerHTML;
-    document.getElementById("thesaurus").innerHTML =  (table != '') ? table : document.getElementById("thesaurus").innerHTML;
+    document.getElementById("definition").innerHTML = (en != '') ? en : document.getElementById("definition").innerHTML;
+    document.getElementById("chinese").innerHTML = (cn != '') ? cn : document.getElementById("chinese").innerHTML;
+    document.getElementById("thesaurus").innerHTML = (t != '') ? t : document.getElementById("thesaurus").innerHTML;
+    document.getElementById("example").innerHTML =  (exp!= '') ? exp : document.getElementById("example").innerHTML;
     clearInput();
     
 }
