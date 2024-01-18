@@ -134,7 +134,7 @@ function chinesedef(query, englishraw, second = false, third = false) {
     }
     else { //query not in cndata
         if (third != false) { //3rd time error --> translate
-            third = '<strong>Google translated</strong>\n' + third
+            third = '<strong>Google translated (inaccurate)</strong>\n' + third
             return formatoutput({cn:third, q:query, second:englishlemmatize, e:`<span class="info">Translation accuracy not guaranteed.</span>`});
         }
         else if (second) {//2nd try still no result
