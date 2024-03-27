@@ -234,10 +234,10 @@ function thesaurus(raw, search) {
 }
 
 function formatoutput({ en = '', cn = '', q = '', second = false, e = '', t = '', exp =''}) {
-    // console.table({ en: en, cn: cn ,e:e, t:t});
-    if (e != '') {
+    if (second || e != '') { //e can be info below title or seconndary query
         document.getElementById("phonetic").innerHTML = (second) ? `<span class="error">did you mean: ${q}</span>\n${e}` : e
     }
+    //var = (cond) ? new : else_remain
     document.getElementById("definition").innerHTML = (en != '') ? en : document.getElementById("definition").innerHTML;
     document.getElementById("chinese").innerHTML = (cn != '') ? cn : document.getElementById("chinese").innerHTML;
     document.getElementById("thesaurus").innerHTML = (t != '') ? t : document.getElementById("thesaurus").innerHTML;
@@ -285,6 +285,4 @@ form.addEventListener('submit', handleForm);
 //     pageX = e.pageX;
 //     pageY = e.pageY;
 // });
-
-
-
+ 
