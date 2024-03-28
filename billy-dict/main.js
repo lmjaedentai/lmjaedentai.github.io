@@ -1,7 +1,7 @@
 console.warn("\n" + "                       _oo0oo_\n" + "                      o8888888o\n" + "                      88\" . \"88\n" + "                      (| -_- |)\n" + "                      0\\  =  /0\n" + "                    ___/`---'\\___\n" + "                  .' \\\\|     |// '.\n" + "                 / \\\\|||  :  |||// \\\n" + "                / _||||| -:- |||||- \\\n" + "               |   | \\\\\\  -  /// |   |\n" + "               | \\_|  ''\\---/''  |_/ |\n" + "               \\  .-\\__  '-'  ___/-. /\n" + "             ___'. .'  /--.--\\  `. .'___\n" + "          .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" + "         | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" + "         \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" + "     =====`-.____`.___ \\_____/___.-`___.-'=====\n" + "                       `=---='\n" + "\n" + "\n" + "     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" + "\n" + "                菩提本无树   明镜亦非台\n" + "                本来无BUG    何必常修改\n");
 document.getElementById("searchbar").focus();
 var englishlemmatize = false;
-// var contextmenu = document.querySelector(".contextmenu");
+var contextmenu = document.querySelector(".contextmenu");
 
 function getquery() {
     var query = document.getElementById("searchbar").value.toLowerCase().trim();
@@ -21,21 +21,6 @@ function getquery() {
         searchquery(query);
     }
 }
-
-// function gethighlighted() {
-//     var query = document.getSelection().toString().toLowerCase().trim();
-//     contextmenu.style.display = "none";
-//     if (query == '') {
-//         return //console.log('empty input')
-//     }
-//     if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
-//         return document.getElementById("phonetic").innerHTML='<img data-ujs-name="Cancel"/>\n\nOnly alphabetic characters are acceptable.'
-//     }
-//     else {
-//         document.getElementById("phonetic").innerHTML='<img data-ujs-name="Happy music"/>\n\nSearching...'
-//         searchquery(query);
-//     }
-// }
 
 function searchquery(query, second = false) {
     fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${query}?key=fea702b3-bccf-47c3-b29e-2293789b70af`)
@@ -267,11 +252,16 @@ form.addEventListener('submit', handleForm);
 
 
 
-// //QQ beta
+//QQ beta
+// function gethighlighted() {
+//     contextmenu.style.display = "none";
+//     searchquery(document.getSelection().toString().toLowerCase().trim());
+// }
+
 // var pageX, pageY;
 // document.addEventListener("mouseup", () => {
 //     let selectedText = document.getSelection().toString();
-//     if (selectedText !== "") {
+//     if (selectedText !== "" && (/^[A-Za-z\s]*$/.test(selectedText.trim()))) {
 //         contextmenu.style.display = "flex";
 //         contextmenu.style.left = "80%";
 //         contextmenu.style.top = pageY+ "px";
@@ -285,4 +275,3 @@ form.addEventListener('submit', handleForm);
 //     pageX = e.pageX;
 //     pageY = e.pageY;
 // });
- 

@@ -1,4 +1,4 @@
-UndrawJS.init({ defaultColor: "#823feb" })
+UndrawJS.init()
 
 // function to set a given theme/color-scheme
 function setTheme(themeName) {

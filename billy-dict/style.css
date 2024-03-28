@@ -1,17 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Noto+Sans:wght@400;700&family=Open+Sans&display=swap');
 
-/* LINK https://dev.to/whitep4ntstrongr/the-best-lightdark-mode-theme-toggle-in-javascript-368f */
-
 .theme-light {
-    --text-header: #823feb;
-    --text-header2: #813febd5;
-    --text-primary: #3a1c6a;
-    --text-secondary: rgba(58, 28, 106, .75);
-    --text-tertiary: rgba(58, 28, 106, .5);
-    --text-quaternary: rgba(58, 28, 106, .38);
-    --white-primary: #f6f4fc;
-    --white-secondary: #cbb2ff;
-    --white-tertiary: #ede7f5;
+    --text-header: #506cf7;
+    --text-header2: #8294f9;
+    --text-primary: #182148;
+    --text-secondary: rgba(24, 33, 72,.75);
+    --text-tertiary: rgba(24, 33, 72,.6);
+    --text-quaternary: rgba(24, 33, 72,.38);
+    --white-primary: rgb(249, 249, 255);
+    --white-secondary: #d3d3d3;
+    --white-tertiary: #eaeff4;
 }
 
 .theme-dark {
@@ -47,6 +45,7 @@ header{
     bottom: 0%;
     background: var(--white-primary);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    z-index: 1;
 }
 
 header form{
@@ -98,10 +97,15 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 .mobilebutton button{
     border: 0 none;
-    /* background: none; */
     background: var(--white-primary);
     border-radius: 15px;
     cursor: pointer;
+}
+
+.mobilebutton ion-icon {
+    font-size: 34px;
+    padding: 5px;
+    color: var(--text-secondary);
 }
 
 main{
@@ -222,7 +226,7 @@ footer{
     position: relative;
     bottom: 0%;
     width: 100%;
-    z-index: -1;
+    z-index: 0;
     background-color: var(--white-tertiary);
 }
 
@@ -244,7 +248,7 @@ footer p{
     line-height: 1.4;
     text-align: left;
 }
-/* 
+
 
 .contextmenu { 
     display: none; 
@@ -255,26 +259,28 @@ footer p{
     background: var(--text-header);
     border: none;
     border-radius: 10px;
-    color: #e4eaf1;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     transition: 0.5s;
 } 
-
-.contextmenu i { 
-    font-size: 1rem;
-    margin: 5px 8px 0px 0;
-} 
+/* 
 
 .contextmenu p {
     overflow:hidden;
     font-family: josefin sans;
+    color: #e4eaf1;
     font-size: 0.9rem;
-    margin: 7px 0 0px 0;
+    margin: 0;
+}
+
+.contextmenu ion-icon {
+    font-size: 134px;
+    padding: 5px;
+    color: var(--text-secondary);
 }
 
 .contextmenu:hover{ 
     width: 100px;
-}  */
+} */
 
 
 
@@ -288,12 +294,6 @@ footer p{
     border-radius: 20px;                        
 }
 
-
-ion-icon {
-    font-size: 34px;
-    padding: 5px;
-    color: var(--text-secondary);
-}
 
 
 
