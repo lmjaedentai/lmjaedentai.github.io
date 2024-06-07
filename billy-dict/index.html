@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="manifest" href="js13kpwa.webmanifest" />
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A Dictionary designed by @lmjaedentai using javascript, powered by Merriam-Webster's Collegiate® Dictionary.">
+        <meta name="author" content="Jaeden Tai">
+        <meta name="robots" content="noindex">
+        <title>Dictionary</title>
+    </head>
+    <body>
+        <header>
+            <form id="searchform">
+                <ion-icon name="search-outline"></ion-icon>
+                <input placeholder="search dict" title="Enter to search" id="searchbar">
+                <ion-icon onclick="clearInput()" class="cancelbutton" name="close-outline"></ion-icon>
+            </form>
+        </header>
+        <div class="mobilebutton">
+            <button title="History" type="button" class="history" onclick="window.alert('coming soon')"><ion-icon name="time-outline"></ion-icon></button>
+            <button title="toggle dark" type="button" class="moon" onclick="toggleTheme()"><ion-icon name="moon-outline"></ion-icon></button>
+        </div>
+        <main>
+            <h1 id="searchtitle">Billy</h1>
+            <p id="phonetic"></p>
+            <h2>中文解译</h2>
+            <p id="chinese" style="text-justify: left;"><img data-ujs-name="Reading time"/></p>
+            <hr>
+            <h2>Definition</h2>
+            <p id="definition">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+            <hr>
+            <h2>Examples</h2>
+            <p id="example">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <hr>
+            <h2>Thesaurus</h2>
+            <div id="thesaurus"><p>The purpose of lorem ipsum is to create a natural looking block of text <span>(sentence, paragraph, page, etc.)</span> that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content.<br><img data-ujs-name="Reading list"/><br><br><br>The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates, websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum.</p></div>
+        </main>
+        <footer>
+            <div class="footerbox">
+                <a href="https://dictionaryapi.com/"><img class="merriam" src="https://dictionaryapi.com/images/info/branding-guidelines/MWLogo_DarkBG_120x120_2x.png"></a>
+                <p>Illustration from <a href="https://undraw.co" target="_blank">undraw.co</a> and <a href="https://ionic.io/ionicons" target="_blank">Ionicon</a><br>Powered by <a href="https://dictionaryapi.com/" target="_blank">Merriam-Webster's Collegiate® Dictionary</a> and <a href="https://github.com/mahavivo/english-dictionary/tree/master/OALD8_%E4%B8%AD%E6%96%87%E9%87%8A%E4%B9%89" target="_blank">OALD8_中文释义</a></p>
+            </div>
+        </footer>
+        <button type="button" class="contextmenu" onclick="gethighlighted()"><p>search</p></button>
+
+        <script src="main.js" defer></script>
+        <script src="data.js"></script>
+        <script src="style.js" defer></script>
+        <script src="https://unpkg.com/undraw-js@1.0/index.min.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>

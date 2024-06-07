@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Shantell+Sans:BNCE,INFM,SPAC@20,25,11.6&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+html{
+    font-size: 18px;
+}
+
+body{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    width: 100%;
+    overflow: overlay;
+    min-height: 100%;
+    transition: 0.5s;
+    background-image: url(https://images.unsplash.com/photo-1717297808345-b740e9846158);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;	
+}
+
+
+
+main{
+    display: block;
+    margin: 20vh auto 0px;
+    width: 70%;
+    /* max-width: 500px; */
+    /* border: 5px solid red; */
+    text-align: center;
+    font-family: 'Josefin sans';
+}
+
+main h1{
+    margin: 0 auto 10px;
+    font-size: 3rem;
+    text-shadow: 3px 5px 0px rgba(0,0,0,0.39);
+    color: #f7f2f3;
+}
+
+main h2{
+    margin: 0 auto 60px;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.39);
+    color: rgb(184, 31, 98);
+}
+
+main img{
+    margin: 60px auto;
+    display: block;
+    width: 200px;
+    border-radius: 50%;
+    opacity: 0.9;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* main .collectionbox{
+    display: flex;
+    width: 100%;
+    border: 5px solid blue;
+    height: 120px;
+    overflow-x: auto;
+    scrollbar-width: none; 
+}
+
+
+.collection{
+    min-width: 300px;
+    margin: 0px 20px;
+    max-height: 110px;
+    border: 5px solid red;
+    background: white;
+}
+ */
+
+main button{
+    display: block;
+    margin: 0px auto;
+    width: 200px;
+    height: 70px;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-family: 'Josefin sans';
+    font-size: 1.3rem;
+    color: #f7f2f3;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+main button:hover{
+    background: rgba(0, 0, 0, 0.2);
+}
+
+main ion-icon{
+    margin: 0px 0px 0px 10px;
+}
+
+
+@media only screen and (max-width: 500px) {
+    body{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+
+

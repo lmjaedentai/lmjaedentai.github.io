@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Shantell+Sans:BNCE,INFM,SPAC@20,25,11.6&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+.theme-light {
+    --text-header: #1b376a;
+    --text-header2: tomato;
+    --text-primary: #150222;
+    --text-secondary: rgba(21, 2, 34, 0.75);
+    --text-tertiary: rgba(21, 2, 34,.6);
+    --text-quaternary: rgba(21, 2, 34,.38);
+    --white-primary: #FAFAFA;
+    --white-secondary: rgba(213,229,249,1);
+    --white-tertiary: rgba(240,216,236,1);
+} 
+
+
+html{
+    font-size: 18px;
+}
+
+body{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    width: 100%;
+    overflow: overlay;
+}
+
+main{
+    margin: auto ;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: var(--text-header) 15px solid;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: pre-line;
+}
+
+main h1{
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'josefin sans';
+    color: var(--text-header2);
+}
+
+main h2{
+    display: block;
+    margin: auto ;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'josefin sans';
+    color: var(--text-header);
+}
+
+
+
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    html{
+        font-size: 15px;
+    }
+
+    body{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    main{
+        display: block;
+    }
+}
