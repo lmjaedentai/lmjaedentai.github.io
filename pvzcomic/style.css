@@ -2,15 +2,16 @@
 
 
 .theme-light {
-    --text-header: #1b376a;
-    --text-header2: tomato;
+    --text-header: #00266c;
+    --text-header2: #ff6e7d;
+    --text-header3: #3d679a;
     --text-primary: #150222;
     --text-secondary: rgba(21, 2, 34, 0.75);
     --text-tertiary: rgba(21, 2, 34,.6);
     --text-quaternary: rgba(21, 2, 34,.38);
     --white-primary: #FAFAFA;
-    --white-secondary: rgba(213,229,249,1);
-    --white-tertiary: rgba(240,216,236,1);
+    --white-secondary: #40a4ce;
+    --white-tertiary: #fdcbc5;
 } 
 
 
@@ -23,45 +24,158 @@ body{
     border: 0;
     margin: 0;
     width: 100%;
-    overflow: overlay;
 }
 
+header{
+    background-color: var(--text-header2);
+    width: 70px;
+    height: 70px;
+    border-radius: 25px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    position: fixed;
+    top: 5%;
+    left: 10%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+header:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+header .material-symbols-rounded{
+    margin: 15px;
+    color: var(--white-primary);
+    font-size: 40px;
+    display: block;
+    transition: 1.5s;
+}
+
+header .material-symbols-rounded:hover{
+    transform: rotateY(360deg);
+}
+
+
 main{
-    margin: auto ;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: var(--text-header) 15px solid;
-    border-radius: 15px;
+    margin: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     white-space: pre-line;
+    overflow: hidden;
 }
 
-main h1{
+.infobox{
     display: block;
-    margin: auto;
-    text-align: center;
-    font-size: 3rem;
+    overflow: scroll;
+    scrollbar-width: none;
+    height: 90%;
+    max-height: 680px;
+    /* border: 10px solid var(--white-secondary); */
+}
+
+.authorbox{
+    display: flex;
+    margin: 0px 10px 10px;
+    border: 10px solid var(--white-secondary);
+    width: 88%;
+    max-width: 500px;
+    min-width: 230px;
+    max-height: 250px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.authorbox img{
+    border-radius: 50%;
+    width: 100px;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.authorbox img:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.authorbox h2{
+    margin: 50px 15px;
+}
+
+.titlebox{
+    margin: 0px 10px 10px;
+    border: 10px solid var(--text-header3);
+    width: 88%;
+    max-width: 500px;
+    min-width: 230px;
+}
+
+h1{
+    font-size: 2.3rem;
     font-family: 'josefin sans';
     color: var(--text-header2);
+    margin: 5px 15px 0px;
 }
 
-main h2{
-    display: block;
-    margin: auto ;
-    text-align: center;
-    font-size: 2.5rem;
+h2{
+    font-size: 1.5rem;
     font-family: 'josefin sans';
     color: var(--text-header);
+    margin: 5px 15px 0px;
+}
+
+p{
+    font-size: 1rem;
+    font-family: 'mulish';
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 5px 15px 0px;
+    text-align: justify;
 }
 
 
+.albumbox{
+    margin: 10px;
+    box-sizing: border-box; 
+    min-width: 230px;
+    max-width: 500px;
+    width: 95%;
+}
 
-@media only screen and (max-width: 500px) {
+.album {
+    background-color: var(--text-header);
+    padding: 5px;
+    width: 95%;
+    white-space: nowrap;
+    overflow: auto;
+    /* scrollbar-width: none; */
+}
+
+
+.album::-webkit-scrollbar-track{
+	background-color: var(--white-tertiary);
+}
+
+.album::-webkit-scrollbar{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+.album::-webkit-scrollbar-thumb{
+    background-color: var(--text-header2);
+    border-radius: 10px;
+}
+
+
+.album img {
+    padding: 5px;
+    max-width: 500px;
+    width: 97%;
+    height: 95%;
+}
+
+@media only screen and (max-width: 650px) {
     /* For mobile phones: */
     html{
         font-size: 15px;
@@ -75,5 +189,15 @@ main h2{
 
     main{
         display: block;
+    }
+
+    header{
+        bottom: 90%;
+        right: 90%;
+        scale: 1.2;
+    }
+
+    .authorbox{
+        margin-top: 25vh;
     }
 }
