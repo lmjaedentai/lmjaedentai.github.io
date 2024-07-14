@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Quicksand:wght@300..700&display=swap');
+
+.theme-light {
+    --text-header: #00266c;
+    --text-header2: #ff6e7d;
+    --text-header3: #3d679a;
+    --text-primary: #150222;
+    --text-secondary: rgba(21, 2, 34, 0.75);
+    --text-tertiary: rgba(21, 2, 34,.6);
+    --text-quaternary: rgba(21, 2, 34,.38);
+    --white-primary: #FAFAFA;
+    --white-secondary: #40a4ce;
+    --white-tertiary: #fdcbc5;
+} 
+
+
+html{
+    font-size: 18px;
+}
+
+body{
+    border: 0;
+    margin: 0;
+    width: 100%;
+    background-image: url(bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+header{
+    padding: 0px 50px 50px;
+    /* border-right: 1px red solid; */
+    font-family: 'ma shan zheng';
+    color: #000000;
+    letter-spacing: 2px;
+}
+
+
+header h1{
+    padding: 50px 0 0 0;
+    font-size: 4.5rem;
+    margin: 0;
+    text-shadow: 6px 3px 5px rgba(0, 0, 0, 0.22);
+    transition: 1s;
+}
+
+
+header h1:hover{
+    text-shadow: 6px 3px 5px rgba(0, 0, 0, 0.5);
+    letter-spacing: 13px;
+}
+
+header h2{
+    margin:30px 10px;
+    font-size: 1.3rem;
+    color: #515151;
+}
+
+main{
+    display: flex;
+    overflow-x: hidden;
+}
+
+.content{
+    padding: 50px;
+    flex: 60%;
+    font-family: 'quicksand';
+    text-align: justify;
+    transition: 0.5s;
+    opacity: 0.3;
+}
+
+.content:hover{
+    opacity: 1;
+}
+
+.nav{
+    flex: 40%;
+    display: block;
+    max-width: 300px;
+    border-right: 1px solid rgb(250, 191, 184);
+    justify-content: center;
+    align-items: center;
+    padding:0 50px;
+    transition: 0.5s;
+    opacity: 0.34;
+}
+
+.nav:hover{
+    opacity: 1;
+}
+
+.nav .infobox{
+    top: 0;
+    position: sticky;
+}
+
+.nav img{
+    height: 220px;
+    border-radius: 50%;
+    margin: 20px auto 0;
+}
+
+.nav p{
+    font-family: 'ma shan zheng';
+    font-size: 1.3rem;
+}
+
+.nav .infocard{
+    display: flex;
+    margin: 0 auto;
+}
+
+.nav button{
+    display: block;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background: rgba(253, 88, 110, 0.2);
+    border: 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-family: 'Josefin sans';
+    font-size: 1.5rem;
+    color: rgb(88, 77, 77);
+    font-family: 'quicksand';
+    font-style: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.nav button ion-icon{
+    padding-top: 5px;
+    margin: auto;
+
+}
+
+
+
+@media only screen and (max-width: 650px) {
+    /* For mobile phones: */
+    html{
+        font-size: 15px;
+    }
+
+    body{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    main{
+        display: block;
+        margin-bottom: 100px;
+    }
+
+    header{
+        bottom: 90%;
+        right: 90%;
+        scale: 1.1;
+    }
+}
