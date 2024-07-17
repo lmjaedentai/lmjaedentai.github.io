@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="physics-theme">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- <link rel="manifest" href="js13kpwa.webmanifest" /> -->
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A Dictionary designed by @lmjaedentai using javascript, powered by Merriam-Webster's Collegiate® Dictionary.">
+        <meta name="author" content="Jaeden Tai">
+        <meta name="robots" content="noindex">
+        <title>Dictionary</title>
+    </head>
+    <body>
+        <nav>
+            <form id="searchform">
+                <ion-icon name="search-outline"></ion-icon>
+                <input placeholder="search dict" title="Enter to search" id="searchbar">
+                <ion-icon onclick="clearInput()" class="cancelbutton" name="close-outline"></ion-icon>
+            </form>
+        </nav>
+        <main>
+            <header>
+                <div class="btn" onclick="setTheme('chemistry-theme') ">
+                    <p id="subject">Biology  </p>  <!-- TODO dropdown -->
+                    <ion-icon name="caret-down-circle-outline"></ion-icon>
+                </div>
+            </header>
+            <a id="goto"></a>
+            <h1 id="title"> mitochondria</h1>
+            <div class="def" id="definition">
+                an organelle found in large numbers in most cells, in which the biochemical processes of <em>respiration</em> and energy production occur. It has a double membrane, the inner part being folded inwards to form layers <em>(cristae)</em>.
+            </div>
+
+            <h2>bm translation</h2>
+            <span>Google Translation accuracy not guaranteed.</span>
+            <div id="translation">
+                wevsf jfoewjf0jfvcvdv vddsv
+            </div>
+
+            <h2>extra link</h2>
+            <div class="linkbox">
+                <button id="wikibutton" onclick="openwiki()"><ion-icon name="book-outline"></ion-icon>Wikipedia</button>
+                <button id="googlebutton" onclick="opengoogle()"><ion-icon name="logo-google"></ion-icon>Search</button>
+            </div>
+
+            <h2>see also</h2>
+            <div id="suggestionbox">
+                <div class="suggestion"><p>lysozyme</p> <button><ion-icon name="chevron-forward-outline"></ion-icon></button></div>
+                <div class="suggestion"><p>lysozyme</p> <button><ion-icon name="chevron-forward-outline"></ion-icon></button></div>
+                <div class="suggestion"><p>lysozyme</p> <button><ion-icon name="chevron-forward-outline"></ion-icon></button></div>
+            </div>
+            
+        </main>
+
+
+
+        <footer>
+            <div class="footerbox">
+                <p><b>The MSG Project</b><br>Created by The King of Flavor</p>
+            </div>
+        </footer>
+        <!-- <button type="button" class="contextmenu" onclick="gethighlighted()"><p>search</p></button> -->
+
+        <script src="data.js"></script>
+        <script src="style.js" defer></script>
+        <script src="main.js" defer></script>
+        <script src="https://unpkg.com/undraw-js@1.0/index.min.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>

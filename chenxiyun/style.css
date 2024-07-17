@@ -64,7 +64,7 @@ main{
 }
 
 .content{
-    padding: 50px;
+    margin: 50px;
     flex: 60%;
     font-family: 'quicksand';
     text-align: justify;
@@ -83,7 +83,7 @@ main{
     border-right: 1px solid rgb(250, 191, 184);
     justify-content: center;
     align-items: center;
-    padding:0 50px;
+    margin:0 50px;
     transition: 0.5s;
     opacity: 0.34;
 }
@@ -162,4 +162,9 @@ main{
         right: 90%;
         scale: 1.1;
     }
+
+    .nav, .content{
+        opacity: 1;
+    }
+
 }
