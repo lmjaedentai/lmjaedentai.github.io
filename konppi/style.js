@@ -16,5 +16,4 @@ function redirectto(name){
     // window.open(`./search.html`,'_self')
     location.href = './search.html'
     setTheme(`${name}-theme`);
-    document.getElementById("subject").innerHTML = name;
 }

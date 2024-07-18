@@ -9,7 +9,7 @@
     --text-quaternary: rgba(0, 0, 0, 0.38);
     --white-primary: rgb(255, 255, 255);
     --white-secondary: var(--text-quaternary);  
-    --white-tertiary: #eaeff478;
+    --white-tertiary: #eaeff4;
 }
 
 .bio-theme {
@@ -21,7 +21,7 @@
     --text-quaternary: rgba(0, 0, 0, 0.38);
     --white-primary: rgb(255, 255, 255);
     --white-secondary: var(--text-quaternary);  
-    --white-tertiary: #eaeff478;
+    --white-tertiary: #eaeff4;
 }
 
 .chemistry-theme {
@@ -33,7 +33,7 @@
     --text-quaternary: rgba(0, 0, 0, 0.38);
     --white-primary: rgb(255, 255, 255);
     --white-secondary: var(--text-quaternary);  
-    --white-tertiary: #eaeff478;
+    --white-tertiary: #eaeff4;
 }
 
 
@@ -149,7 +149,12 @@ main{
     height:min-content;
     padding: 30px;
     margin: 20px auto 80px;
-    
+    transition: 1s;
+}
+
+.def:hover{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: #fff;
 }
 
 .suggestion{
@@ -175,7 +180,7 @@ main{
     margin: auto 20px 10px auto;
     font-size: 20px;
     border-radius: 20px;
-    border: 2.5px solid var(--text-header);
+    border: 0px none;
     color: var(--text-header);
     width: 30px;
     height: 30px;
@@ -433,36 +438,6 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
-
-.contextmenu{ 
-    overflow:hidden;
-    display: none; 
-    cursor: pointer; 
-    position: absolute; 
-    width: 60px;
-    height: 30px;
-    background: var(--text-header);
-    border: none;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    color: #e4eaf1;
-    transition: 0.7s;
-} 
-
-.contextmenu p {
-    overflow:hidden;
-    font-family: josefin sans;
-    font-size: 15px;
-    margin:auto;
-}
-
-.contextmenu:hover{
-    width: 100px;
-}
-
-.contextmenu:active{
-    background-color: var(--text-header2);
-}
 
 ::-webkit-scrollbar {
     width: 9px;

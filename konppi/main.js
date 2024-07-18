@@ -34,28 +34,30 @@ async function searchquery(query) {
     else {
         return document.getElementById("definition").innerHTML = 'No result';
     }
-    //QQ 3: translation
-    document.getElementById("translation").innerHTML = await translatedef(query);
+
     //QQ 4: suggestion
-    
-    const suggestionlist = Object.keys(cndata).filter(query => cndata[query].chapter === raw['CHAPTER']); //FIXME
-    // const suggestionlist = findTitlesByChapter(data, 1)
-    console.log(suggestionlist)
-    suggestionlist.forEach(suggested => {
+    // const suggestionlist = Object.keys(cndata).filter(query => cndata[query].CHAPTER === raw['CHAPTER']); //FIXME
+    // suggestionlist.forEach(suggested => {
+    //     suggestioncode += `<div class="suggestion"><p>${suggested}</p> <button onclick="searchquery('${suggested}')"><ion-icon name="chevron-forward-outline"></ion-icon></button></div>`
+
+    // });
+
+    console.log(raw['CHAPTER'])
+    const suggestionlist = Object.fromEntries(
+        Object.entries(cndata).filter(([key, value]) => value.CHAPTER ==raw['CHAPTER']) //FIXME raw is undefineiod
+    );
+    console.log(raw['CHAPTER'])
+    Object.entries(suggestionlist).forEach(([suggested, value]) => {
+        // console.log(key, value);
         suggestioncode += `<div class="suggestion"><p>${suggested}</p> <button onclick="searchquery('${suggested}')"><ion-icon name="chevron-forward-outline"></ion-icon></button></div>`
-
     });
+
+    console.log(suggestionlist)
     document.getElementById("suggestionbox").innerHTML = suggestioncode;
+
+    //QQ 3: translation 
+    document.getElementById("translation").innerHTML = await translatedef(query);//it run will ridicuosly change raw to array
     clearInput();
-}
-
-
-function findTitlesByChapter(jsonData, chapterNumber) {
-    return Object.keys(jsonData).filter(key => jsonData[key].CHAPTER === chapterNumber);
-}
-
-function escapeRegExp(string) {// Function to escape special characters in words for use in regex
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
 
 function openwiki() {
@@ -82,7 +84,7 @@ async function translatedef(query) { //test: hetero
 //QQ ui functions
 function clearInput() {
     document.getElementById("searchbar").value = "";
-    document.getElementById("searchbar").focus();
+    // document.getElementById("searchbar").focus();
     document.getElementById('goto').scrollIntoView({behavior: 'smooth'});
     setTimeout(window.scrollTo(0,0),100);
 }
