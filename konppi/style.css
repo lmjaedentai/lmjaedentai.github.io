@@ -68,10 +68,9 @@ ion-icon{
 }
 
 .btn{
-    width: 130px;
+    width: 150px;
     height: 45px;
     margin: 0px 0 50px;
-    font-size: 1rem;
     background-color: var(--text-header2);
     border-radius: 10px;
     border: 2.5px solid var(--text-header);
@@ -86,8 +85,10 @@ ion-icon{
 
 .btn p{
     /* display: block; */
+    font-size: 1.2rem;
     margin: auto 10px;
     text-align: center;
+    text-transform: capitalize;
     /* padding-bottom: 10px; */
 }
 
@@ -99,6 +100,23 @@ ion-icon{
 .btn:hover ion-icon{
     transform: rotate(180deg);
 }
+
+#infobox{
+    display:flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    max-width: 400px;
+    color: var(--text-primary);
+    overflow: hidden;
+    transition: 1s;
+    
+    width: 0px;
+    visibility: hidden;
+    /* border: 5px solid #a994f6; */
+}
+
 
 
 header h1{
@@ -456,8 +474,73 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     border-radius: 20px;                        
 }
 
+/* QQ homepage */
+.banner h1{
+    font-size: 2.5rem;
+    font-family: 'Josefin sans';
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px;
+    color: var(--text-primary);
+}
+
+.banner h1:nth-child(4){
+    color:#7b68ee;
+    background-color:#eeeefc;
+    text-decoration: underline;
+}
+
+.banner h1:nth-child(2){
+    color: #24ca9e;
+    background-color: #dffff2;
+    text-decoration: underline;
+}
+
+.banner h1:nth-child(3){
+    color: #ff6347;
+    background-color: #ffe4e1;
+    text-decoration: underline;
+}
+
+.menu{
+    display: flex;
+    margin: 40px 0;
+}
+
+.menu .btn{
+    font-size: 30px;
+    width: 30%;
+    height: 150px;
+    margin: 20px 10px;
+    /* overflow: hidden; */
+}
 
 
+
+.menu .btn p{
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+.menu .btn:nth-child(3){
+    background-color: #eeeefc;
+    color: #7b68ee;
+    border: 2.5px solid #7b68ee;
+}
+
+.menu .btn:nth-child(1){
+    background-color: #ffe4e1;
+    color: #ff6347;
+    border: 2.5px solid #ff6347;
+}
+
+
+.menu .btn:nth-child(2){
+    background-color: #dffff2;
+    color: #24ca9e;
+    border: 2.5px solid #24ca9e;
+}
 
 @media only screen and (max-width: 500px) {
     /* For mobile phones: */
@@ -502,5 +585,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
         width: 60px;
         height: 40px;
         font-size: 18px;
+    }
+
+    .menu .btn{
+        writing-mode: vertical-lr;
+        text-orientation: mixed;
     }
 }

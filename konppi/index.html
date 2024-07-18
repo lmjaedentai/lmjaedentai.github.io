@@ -9,7 +9,7 @@
         <meta name="description" content="A Dictionary designed by @lmjaedentai using javascript, powered by Merriam-Webster's Collegiate® Dictionary.">
         <meta name="author" content="Jaeden Tai">
         <meta name="robots" content="noindex">
-        <title>Dictionary</title>
+        <title>Glossary</title>
     </head>
     <body>
         <nav>
@@ -20,35 +20,33 @@
             </form>
         </nav>
         <main>
-            <header>
-                <div class="btn" onclick="setTheme('chemistry-theme') ">
-                    <p id="subject">Biology  </p>  <!-- TODO dropdown -->
-                    <ion-icon name="caret-down-circle-outline"></ion-icon>
-                </div>
-            </header>
             <a id="goto"></a>
-            <h1 id="title"> mitochondria</h1>
-            <div class="def" id="definition">
-                an organelle found in large numbers in most cells, in which the biochemical processes of <em>respiration</em> and energy production occur. It has a double membrane, the inner part being folded inwards to form layers <em>(cristae)</em>.
-            </div>
-
-            <h2>bm translation</h2>
-            <span>Google Translation accuracy not guaranteed.</span>
-            <div id="translation">
-                wevsf jfoewjf0jfvcvdv vddsv
-            </div>
-
-            <h2>extra link</h2>
-            <div class="linkbox">
-                <button id="wikibutton" onclick="openwiki()"><ion-icon name="book-outline"></ion-icon>Wikipedia</button>
-                <button id="googlebutton" onclick="opengoogle()"><ion-icon name="logo-google"></ion-icon>Search</button>
-            </div>
-
-            <h2>see also</h2>
-            <div id="suggestionbox">
-                <div class="suggestion"><p>lysozyme</p> <button><ion-icon name="chevron-forward-outline"></ion-icon></button></div>
-                <div class="suggestion"><p>lysozyme</p> <button><ion-icon name="chevron-forward-outline"></ion-icon></button></div>
-                <div class="suggestion"><p>lysozyme</p> <button><ion-icon name="chevron-forward-outline"></ion-icon></button></div>
+            <div class="home">
+                <h2>Hi there 👋🏻</h2>
+                <p>Science is a difficult subject that requires a high learning curve and detailed guidance. During your learning process, have you ever struggled with complex and challenging scientific terms?</p>
+                <div class="banner">
+                    <h1><i>Introducing</i></h1>
+                    <h1>Matriculation</h1>
+                    <h1>Science</h1>
+                    <h1>Glossary</h1>
+                </div>
+                <p>Welcome to our minimalist Matriculation Science Glossary, a valuable resource tailored specifically for Matriculation students embarking on their scientific journey. Our content is fully compliant with the current syllabus and is useful not only for daily revision but also for the preparation of the PSPM.</p>
+                <br><span>Select your subject</span>
+                <div class="menu">
+                    <div class="btn" onclick="redirectto('bio')">
+                        <p id="subject">Biology</p>  <!-- TODO dropdown -->
+                    </div>
+                    <div class="btn" onclick="redirectto('chemistry')">
+                        <p id="subject">chemistry</p>  <!-- TODO dropdown -->
+                    </div>
+                    <div class="btn" onclick="redirectto('physics')">
+                        <p id="subject">Physics</p>  <!-- TODO dropdown -->
+                    </div>
+                </div>
+                <h2>Try now 🤩</h2>
+                <p> This glossary serves as a quick reference guide to essential terms and concepts across 3 scientific disciplines. Dive in and make the most of this glossary to bolster your understanding and excel in your scientific studies.</p>
+                <br><span>Crafted with love and dedication by  </span><em>The King Of Flavor Team</em> 
+                
             </div>
             
         </main>

@@ -1,9 +1,9 @@
+document.documentElement.className = localStorage.getItem('theme');
 console.warn("\n" + "                       _oo0oo_\n" + "                      o8888888o\n" + "                      88\" . \"88\n" + "                      (| -_- |)\n" + "                      0\\  =  /0\n" + "                    ___/`---'\\___\n" + "                  .' \\\\|     |// '.\n" + "                 / \\\\|||  :  |||// \\\n" + "                / _||||| -:- |||||- \\\n" + "               |   | \\\\\\  -  /// |   |\n" + "               | \\_|  ''\\---/''  |_/ |\n" + "               \\  .-\\__  '-'  ___/-. /\n" + "             ___'. .'  /--.--\\  `. .'___\n" + "          .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" + "         | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" + "         \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" + "     =====`-.____`.___ \\_____/___.-`___.-'=====\n" + "                       `=---='\n" + "\n" + "\n" + "     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" + "\n" + "                菩提本无树   明镜亦非台\n" + "                本来无BUG    何必常修改\n");
 document.getElementById("searchbar").focus();
 
 function getquery() {
-    // var query = document.getElementById("searchbar").value.toLowerCase().trim();
-    var query = document.getElementById("searchbar").value//.toLowerCase().trim();
+    var query = document.getElementById("searchbar").value.toLowerCase().trim();
     if (query == '') {
         return //console.log('empty input')
     }
@@ -24,10 +24,12 @@ async function searchquery(query) {
     //QQ 1: definiton
     if (query in cndata) {
         raw = cndata[query];
+        console.table({t:query,d:raw['DEFINITION'],c:raw['CHAPTER'],s:raw['SUBJECT']})
         document.getElementById("title").innerHTML = query;
-        document.getElementById("definition").innerHTML = raw['definition'];
+        document.getElementById("definition").innerHTML = raw['DEFINITION'];
         //QQ 2: color theme
-        setTheme(`${raw['subject']}-theme`);
+        setTheme(`${raw['SUBJECT']}-theme`);
+        document.getElementById("subject").innerHTML = raw['SUBJECT'];
     }
     else {
         return document.getElementById("definition").innerHTML = 'No result';
@@ -35,7 +37,10 @@ async function searchquery(query) {
     //QQ 3: translation
     document.getElementById("translation").innerHTML = await translatedef(query);
     //QQ 4: suggestion
-    var suggestionlist = Object.keys(cndata).filter(title => cndata[title].chapter === "1");
+    
+    const suggestionlist = Object.keys(cndata).filter(query => cndata[query].chapter === raw['CHAPTER']); //FIXME
+    // const suggestionlist = findTitlesByChapter(data, 1)
+    console.log(suggestionlist)
     suggestionlist.forEach(suggested => {
         suggestioncode += `<div class="suggestion"><p>${suggested}</p> <button onclick="searchquery('${suggested}')"><ion-icon name="chevron-forward-outline"></ion-icon></button></div>`
 
@@ -45,15 +50,22 @@ async function searchquery(query) {
 }
 
 
+function findTitlesByChapter(jsonData, chapterNumber) {
+    return Object.keys(jsonData).filter(key => jsonData[key].CHAPTER === chapterNumber);
+}
+
 function escapeRegExp(string) {// Function to escape special characters in words for use in regex
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
 
 function openwiki() {
-    window.open(`https://en.wikipedia.org/w/index.php?search=${query}`,'_blank');
+    window.open(`https://www.youtube.com/results?search_query=${query}`,'_blank');
 }
 function opengoogle() {
     window.open(`https://www.google.com/search?q=${query}`,'_blank')
+}
+function opendict() {
+    window.open(`https://www.oxfordlearnersdictionaries.com/definition/english/${query}`,'_blank')
 }
 
 async function translatedef(query) { //test: hetero
