@@ -5,7 +5,7 @@ document.getElementById("searchbar").focus();
 function getquery() {
     var query = document.getElementById("searchbar").value.toLowerCase().trim();
     if (query == '') {
-        return //console.log('empty input')
+        return
     }
     document.getElementById("definition").innerHTML = '';
     
@@ -14,7 +14,6 @@ function getquery() {
     }
     else {
         searchquery(query);
-        // clearInput();
     }
 }
 
@@ -24,7 +23,7 @@ async function searchquery(query) {
     //QQ 1: definiton
     if (query in cndata) {
         raw = cndata[query];
-        console.table({t:query,d:raw['DEFINITION'],c:raw['CHAPTER'],s:raw['SUBJECT']})
+        // console.table({t:query,d:raw['DEFINITION'],c:raw['CHAPTER'],s:raw['SUBJECT']})
         document.getElementById("title").innerHTML = query;
         document.getElementById("definition").innerHTML = raw['DEFINITION'];
         //QQ 2: color theme
@@ -36,23 +35,10 @@ async function searchquery(query) {
     }
 
     //QQ 4: suggestion
-    // const suggestionlist = Object.keys(cndata).filter(query => cndata[query].CHAPTER === raw['CHAPTER']); //FIXME
-    // suggestionlist.forEach(suggested => {
-    //     suggestioncode += `<div class="suggestion"><p>${suggested}</p> <button onclick="searchquery('${suggested}')"><ion-icon name="chevron-forward-outline"></ion-icon></button></div>`
-
-    // });
-
-    console.log(raw['CHAPTER'])
-    const suggestionlist = Object.fromEntries(
-        Object.entries(cndata).filter(([key, value]) => value.CHAPTER ==raw['CHAPTER']) //FIXME raw is undefineiod
-    );
-    console.log(raw['CHAPTER'])
+    const suggestionlist = Object.fromEntries(Object.entries(cndata).filter(([key, value]) => value.CHAPTER ==raw['CHAPTER']) );
     Object.entries(suggestionlist).forEach(([suggested, value]) => {
-        // console.log(key, value);
         suggestioncode += `<div class="suggestion"><p>${suggested}</p> <button onclick="searchquery('${suggested}')"><ion-icon name="chevron-forward-outline"></ion-icon></button></div>`
-    });
-
-    console.log(suggestionlist)
+    });// console.log(suggestionlist)
     document.getElementById("suggestionbox").innerHTML = suggestioncode;
 
     //QQ 3: translation 
@@ -60,20 +46,10 @@ async function searchquery(query) {
     clearInput();
 }
 
-function openwiki() {
-    window.open(`https://www.youtube.com/results?search_query=${query}`,'_blank');
-}
-function opengoogle() {
-    window.open(`https://www.google.com/search?q=${query}`,'_blank')
-}
-function opendict() {
-    window.open(`https://www.oxfordlearnersdictionaries.com/definition/english/${query}`,'_blank')
-}
 
-async function translatedef(query) { //test: hetero
+async function translatedef(query) {
     const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ms&dt=t&q=${encodeURI(query)}`)
-    raw = await response.json()
-    console.log(raw[0][0][0])
+    raw = await response.json();
     return raw[0][0][0];
 }
 
@@ -89,12 +65,7 @@ function clearInput() {
     setTimeout(window.scrollTo(0,0),100);
 }
 
-var form = document.getElementById("searchform");
-function handleForm(event) {
+document.getElementById("searchform").addEventListener('submit', event =>  {
     event.preventDefault();
     getquery();
-}
-form.addEventListener('submit', handleForm);
-
-
-
+});

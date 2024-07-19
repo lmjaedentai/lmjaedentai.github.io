@@ -15,23 +15,24 @@
         <nav>
             <form id="searchform">
                 <ion-icon name="search-outline"></ion-icon>
-                <input placeholder="search dict" title="Enter to search" id="searchbar">
+                <input placeholder="search" title="Enter to search" id="searchbar">
                 <ion-icon onclick="clearInput()" class="cancelbutton" name="close-outline"></ion-icon>
             </form>
         </nav>
         <main>
             <header>
-                <div class="btn" onclick="">
-                    <p id="subject">Menu</p>  <!-- TODO dropdown -->
-                    <ion-icon name="caret-down-circle-outline"></ion-icon>
+                <div class="btn" onclick="location.href = './index.html#menu'">
+                    <p id="subject">Menu</p>  
+                    <ion-icon name="caret-down-circle-outline" size="small"></ion-icon>
                 </div>
             </header>
+
             <a id="goto"></a>
             <h1 id="title"> Science</h1>
             <div class="def" id="definition">
                 <span>The systematic study of the structure and behaviour of the physical and natural world through observation, experimentation, and the testing of theories against the evidence obtained..</span>
                 <br><br>
-                Type to search...
+                <p>Type to search...</p>
             </div>
 
             <h2>bm translation</h2>
@@ -51,16 +52,12 @@
             <div id="suggestionbox">
             </div>
         </main>
-        <!-- <div id="infobox">
-            cddcdvcdcdcc
-        </div> -->
-
-
 
         <footer>
             <div class="footerbox">
                 <p><b>The MSG Project</b><br>Created by The King of Flavor</p>
             </div>
+
         </footer>
 
         <script src="data.js"></script>

@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.physics-theme {
-    --text-header: #7b68ee;
-    --text-header2: #eeeefc;
+
+html{
     --text-primary: #000000;
     --text-secondary: rgba(0, 0, 0, 0.75);
     --text-tertiary: rgba(0, 0, 0, 0.6);
@@ -10,46 +9,41 @@
     --white-primary: rgb(255, 255, 255);
     --white-secondary: var(--text-quaternary);  
     --white-tertiary: #eaeff4;
+    --bio-header: #ff6347 ;
+    --bio-header2: #ffe4e1;
+    --chemistry-header:#24ca9e;
+    --chemistry-header2: #dffff2;
+    --physics-header: #7b68ee;
+    --physics-header2: #eeeefc;
+    font-size: 18px;
+}
+
+.physics-theme {
+    --text-header: var(--physics-header);
+    --text-header2: var(--physics-header2);
 }
 
 .bio-theme {
-    --text-header: #ff6347;
-    --text-header2: #ffe4e1;
-    --text-primary: #000000;
-    --text-secondary: rgba(0, 0, 0, 0.75);
-    --text-tertiary: rgba(0, 0, 0, 0.6);
-    --text-quaternary: rgba(0, 0, 0, 0.38);
-    --white-primary: rgb(255, 255, 255);
-    --white-secondary: var(--text-quaternary);  
-    --white-tertiary: #eaeff4;
+    --text-header: var(--bio-header) ;
+    --text-header2: var(--bio-header2) ;
 }
 
 .chemistry-theme {
-    --text-header: #24ca9e;
-    --text-header2: #dffff2;
-    --text-primary: #000000;
-    --text-secondary: rgba(0, 0, 0, 0.75);
-    --text-tertiary: rgba(0, 0, 0, 0.6);
-    --text-quaternary: rgba(0, 0, 0, 0.38);
-    --white-primary: rgb(255, 255, 255);
-    --white-secondary: var(--text-quaternary);  
-    --white-tertiary: #eaeff4;
+    --text-header: var(--chemistry-header);
+    --text-header2: var(--chemistry-header2);
 }
 
-
-
-html{
-    font-size: 18px;
-}
 
 body{
     padding: 0;
     border: 0;
     margin: 0;
     width: 100%;
-    background: var(--white-primary);
-    overflow: overlay;
     min-height: 100%;
+    background: var(--white-primary);
+    /* background-image: radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,0.2) 0%, rgba(236,180,238,0.2) 46.4%, rgba(163,203,247,0.2) 100.7% ); */
+    overflow: overlay;
+    scroll-behavior: smooth;
 }
 
 header{
@@ -58,9 +52,16 @@ header{
     top: 0;
     width: 100%;
     height: 50px;
-    background-color: var(--white-primary);
     padding: 10px 1px;
-    
+    background-color: transparent;
+    z-index:2 ;
+}
+
+header h1{
+    display: flex;
+    margin: auto 20px auto auto;
+    padding-right: 50px;
+    text-align: right;
 }
 
 ion-icon{
@@ -68,15 +69,17 @@ ion-icon{
 }
 
 .btn{
-    width: 150px;
+    display: flex;
+    flex-wrap:wrap;
+    box-sizing: border-box;
+    width: 170px;
     height: 45px;
     margin: 0px 0 50px;
-    background-color: var(--text-header2);
-    border-radius: 10px;
     border: 2.5px solid var(--text-header);
+    border-radius: 10px;
+    background-color: var(--text-header2);
     color: var(--text-header);
     font-family: 'josefin sans';
-    display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -84,47 +87,25 @@ ion-icon{
 }
 
 .btn p{
-    /* display: block; */
-    font-size: 1.2rem;
     margin: auto 10px;
     text-align: center;
+    font-size: 1.2rem;
     text-transform: capitalize;
-    /* padding-bottom: 10px; */
+    flex: 0.7;
 }
 
 .btn ion-icon{
-    font-size: 1.3rem;
+    font-size: 2.5rem;
     transition: 0.7s;
+    padding: 5px;
+    flex:0.3 ;
+    min-width: 20px;
 }
 
 .btn:hover ion-icon{
-    transform: rotate(180deg);
+    transform: rotate(-90deg);
 }
 
-#infobox{
-    display:flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    max-width: 400px;
-    color: var(--text-primary);
-    overflow: hidden;
-    transition: 1s;
-    
-    width: 0px;
-    visibility: hidden;
-    /* border: 5px solid #a994f6; */
-}
-
-
-
-header h1{
-    display: flex;
-    text-align: right;
-    margin: auto 20px auto auto;
-    padding-right: 50px;
-}
 
 main{
     font-family:'poppins';
@@ -154,13 +135,13 @@ main{
 
 .def:hover{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    background-color: #fff;
+    background-color: var(--white-primary);
 }
 
 .suggestion{
     height: 50px;
     width: 90%;
-    border-bottom: #e3e1e1 0.5px solid;
+    border-bottom: var(--white-tertiary) 0.5px solid;
     padding: 5px 10px;
     display: flex;
     align-items: center;
@@ -350,7 +331,8 @@ footer{
     bottom: 0%;
     width: 100%;
     z-index: 1;
-    background-color: var(--white-tertiary);
+    /* background-color: var(--white-tertiary); */
+    background-image: radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,0.2) 0%, rgba(236,180,238,0.2) 46.4%, rgba(163,203,247,0.2) 100.7% );
 }
 
 footer .footerbox{
@@ -381,7 +363,7 @@ nav{
     bottom: 0;
     margin-bottom: 10px;
     background: transparent;
-    z-index: 0;
+    z-index: 1;
     justify-content: center;
 }
 
@@ -449,6 +431,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     border-radius: 20px;                        
 }
 
+
 /* QQ homepage */
 .banner h1{
     font-size: 2.5rem;
@@ -460,20 +443,20 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 .banner h1:nth-child(4){
-    color:#7b68ee;
-    background-color:#eeeefc;
+    color:var(--physics-header);
+    background-color:var(--physics-header2);
     text-decoration: underline;
 }
 
 .banner h1:nth-child(2){
-    color: #24ca9e;
-    background-color: #dffff2;
+    color: var(--chemistry-header);
+    background-color: var(--chemistry-header2);
     text-decoration: underline;
 }
 
 .banner h1:nth-child(3){
-    color: #ff6347;
-    background-color: #ffe4e1;
+    color: var(--bio-header);
+    background-color: var(--bio-header2);
     text-decoration: underline;
 }
 
@@ -490,31 +473,30 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     /* overflow: hidden; */
 }
 
-
-
 .menu .btn p{
     font-size: 1.5rem;
     text-transform: capitalize;
-    padding: 10px;
+    padding: 5px;
+    font-weight: 600;
 }
 
 .menu .btn:nth-child(3){
-    background-color: #eeeefc;
-    color: #7b68ee;
-    border: 2.5px solid #7b68ee;
+    background-color: var(--physics-header2);
+    color: var(--physics-header);
+    border: 3px solid var(--physics-header);
 }
 
 .menu .btn:nth-child(1){
-    background-color: #ffe4e1;
-    color: #ff6347;
-    border: 2.5px solid #ff6347;
+    background-color: var(--bio-header2);
+    color: var(--bio-header);
+    border: 3px solid var(--bio-header);
 }
 
 
 .menu .btn:nth-child(2){
-    background-color: #dffff2;
-    color: #24ca9e;
-    border: 2.5px solid #24ca9e;
+    background-color: var(--chemistry-header2);
+    color: var(--chemistry-header);
+    border: 3px solid var(--chemistry-header);
 }
 
 @media only screen and (max-width: 500px) {
@@ -565,5 +547,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     .menu .btn{
         writing-mode: vertical-lr;
         text-orientation: mixed;
+        height: 200px;
     }
 }

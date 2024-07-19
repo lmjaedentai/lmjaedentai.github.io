@@ -12,13 +12,6 @@
         <title>Glossary</title>
     </head>
     <body>
-        <nav>
-            <form id="searchform">
-                <ion-icon name="search-outline"></ion-icon>
-                <input placeholder="search dict" title="Enter to search" id="searchbar">
-                <ion-icon onclick="clearInput()" class="cancelbutton" name="close-outline"></ion-icon>
-            </form>
-        </nav>
         <main>
             <a id="goto"></a>
             <div class="home">
@@ -31,16 +24,16 @@
                     <h1>Glossary</h1>
                 </div>
                 <p>Welcome to our minimalist Matriculation Science Glossary, a valuable resource tailored specifically for Matriculation students embarking on their scientific journey. Our content is fully compliant with the current syllabus and is useful not only for daily revision but also for the preparation of the PSPM.</p>
-                <br><span>Click to choose the subject</span>
+                <br id="menu" style="padding-top: 50px;"><span>Click to choose the subject</span>
                 <div class="menu">
                     <div class="btn" onclick="redirectto('bio')">
-                        <p id="subject">Biology</p>  <!-- TODO dropdown -->
+                        <p id="subject">Biology  </p><ion-icon name="fitness-outline"></ion-icon>  <!-- TODO dropdown -->
                     </div>
                     <div class="btn" onclick="redirectto('chemistry')">
-                        <p id="subject">chemistry</p>  <!-- TODO dropdown -->
+                        <p id="subject">chemistry</p><ion-icon name="flask-outline"></ion-icon>
                     </div>
                     <div class="btn" onclick="redirectto('physics')">
-                        <p id="subject">Physics</p>  <!-- TODO dropdown -->
+                        <p id="subject">Physics</p><ion-icon name="planet-outline"></ion-icon>
                     </div>
                 </div>
                 <h2>Try now 🤩</h2>
