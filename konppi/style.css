@@ -8,7 +8,7 @@ html{
     --text-quaternary: rgba(0, 0, 0, 0.38);
     --white-primary: rgb(255, 255, 255);
     --white-secondary: var(--text-quaternary);  
-    --white-tertiary: #eaeff4;
+    --white-tertiary: #f3f6fb;
     --bio-header: #ff6347 ;
     --bio-header2: #ffe4e1;
     --chemistry-header:#24ca9e;
@@ -41,7 +41,6 @@ body{
     width: 100%;
     min-height: 100%;
     background: var(--white-primary);
-    /* background-image: radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,0.2) 0%, rgba(236,180,238,0.2) 46.4%, rgba(163,203,247,0.2) 100.7% ); */
     overflow: overlay;
     scroll-behavior: smooth;
 }
@@ -75,11 +74,12 @@ ion-icon{
     width: 170px;
     height: 45px;
     margin: 0px 0 50px;
-    border: 2.5px solid var(--text-header);
+    border: 3px solid var(--text-header);
     border-radius: 10px;
     background-color: var(--text-header2);
     color: var(--text-header);
     font-family: 'josefin sans';
+    font-weight: 500;
     justify-content: center;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -131,6 +131,7 @@ main{
     padding: 30px;
     margin: 20px auto 80px;
     transition: 1s;
+    white-space: pre-line;
 }
 
 .def:hover{
@@ -183,6 +184,12 @@ main{
 .linkbox{
     display: flex;
     padding: 10px 0px;
+    overflow-x: scroll;
+
+}
+
+.linkbox::-webkit-scrollbar {
+    display: none;
 }
 
 .linkbox button{
@@ -330,7 +337,7 @@ footer{
     position: relative;
     bottom: 0%;
     width: 100%;
-    z-index: 1;
+    z-index: 0;
     /* background-color: var(--white-tertiary); */
     background-image: radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,0.2) 0%, rgba(236,180,238,0.2) 46.4%, rgba(163,203,247,0.2) 100.7% );
 }
@@ -349,9 +356,10 @@ footer p{
     margin: auto 10px;
     color:var(--text-secondary);
     font-family: josefin sans;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     line-height: 1.4;
     text-align: left;
+    cursor: pointer;
 }
 
 
@@ -412,7 +420,8 @@ nav input:focus{
 
 nav input::placeholder{
     font-size: 1rem;
-    color:var(--text-quaternary);
+    color:var(--text-header);
+    opacity: 0.75;
 }
 
 input[type="search"]::-webkit-search-decoration,
@@ -498,6 +507,30 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     color: var(--chemistry-header);
     border: 3px solid var(--chemistry-header);
 }
+
+/* QQ about us */
+.avatar{
+    border-radius: 50%;
+    width: 150px;
+    margin-top: 30px;
+}
+
+.about h3{
+    font-family: 'josefin sans';
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.about h2{
+    margin: 70px 0px 10px;
+    color: var(--text-secondary);
+}
+
+.about p{
+    padding: 5px 0px 0px;
+}
+
+
 
 @media only screen and (max-width: 500px) {
     /* For mobile phones: */

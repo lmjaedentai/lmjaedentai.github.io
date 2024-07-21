@@ -25,7 +25,7 @@ async function searchquery(query) {
         raw = cndata[query];
         // console.table({t:query,d:raw['DEFINITION'],c:raw['CHAPTER'],s:raw['SUBJECT']})
         document.getElementById("title").innerHTML = query;
-        document.getElementById("definition").innerHTML = raw['DEFINITION'];
+        document.getElementById("definition").innerHTML = raw['DEFINITION'].replaceAll(`\\n`, `<br><br>`);;
         //QQ 2: color theme
         setTheme(`${raw['SUBJECT']}-theme`);
         document.getElementById("subject").innerHTML = raw['SUBJECT'];
@@ -35,7 +35,7 @@ async function searchquery(query) {
     }
 
     //QQ 4: suggestion
-    const suggestionlist = Object.fromEntries(Object.entries(cndata).filter(([key, value]) => value.CHAPTER ==raw['CHAPTER']) );
+    const suggestionlist = Object.fromEntries(Object.entries(cndata).filter(([key, value]) => value.CHAPTER ==raw['CHAPTER'] && value.SUBJECT ==raw['SUBJECT']) );
     Object.entries(suggestionlist).forEach(([suggested, value]) => {
         suggestioncode += `<div class="suggestion"><p>${suggested}</p> <button onclick="searchquery('${suggested}')"><ion-icon name="chevron-forward-outline"></ion-icon></button></div>`
     });// console.log(suggestionlist)
@@ -45,6 +45,8 @@ async function searchquery(query) {
     document.getElementById("translation").innerHTML = await translatedef(query);//it run will ridicuosly change raw to array
     clearInput();
 }
+
+
 
 
 async function translatedef(query) {
