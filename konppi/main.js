@@ -25,7 +25,7 @@ async function searchquery(query) {
         raw = cndata[query];
         // console.table({t:query,d:raw['DEFINITION'],c:raw['CHAPTER'],s:raw['SUBJECT']})
         document.getElementById("title").innerHTML = query;
-        document.getElementById("definition").innerHTML = raw['DEFINITION'].replaceAll(`\\n`, `<br><br>`);;
+        document.getElementById("definition").innerHTML = raw['DEFINITION'].replaceAll(`\\n`, `<br><br>`);
         //QQ 2: color theme
         setTheme(`${raw['SUBJECT']}-theme`);
         document.getElementById("subject").innerHTML = raw['SUBJECT'];
@@ -42,7 +42,7 @@ async function searchquery(query) {
     document.getElementById("suggestionbox").innerHTML = suggestioncode;
 
     //QQ 3: translation 
-    document.getElementById("translation").innerHTML = await translatedef(query);//it run will ridicuosly change raw to array
+    document.getElementById("translation").innerHTML = await translatedef( raw['DEFINITION'].replaceAll(`\\n`, `<br><br>`));//it run will ridicuosly change raw to array
     clearInput();
 }
 
@@ -71,3 +71,7 @@ document.getElementById("searchform").addEventListener('submit', event =>  {
     event.preventDefault();
     getquery();
 });
+
+function buttonclick() {
+    getquery();
+}

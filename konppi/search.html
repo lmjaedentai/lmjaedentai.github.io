@@ -6,7 +6,7 @@
         <!-- <link rel="manifest" href="js13kpwa.webmanifest" /> -->
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A Dictionary designed by @lmjaedentai using javascript, powered by Merriam-Webster's Collegiate® Dictionary.">
+        <meta name="description" content="Matriculation Science Glossary, a quick reference guide to essential terms ">
         <meta name="author" content="Jaeden Tai">
         <meta name="robots" content="noindex">
         <title>Glossary</title>
@@ -14,16 +14,19 @@
     <body>
         <nav>
             <form id="searchform">
-                <ion-icon name="search-outline"></ion-icon>
                 <input placeholder="search" title="Enter to search" id="searchbar">
                 <ion-icon onclick="clearInput()" class="cancelbutton" name="close-outline"></ion-icon>
             </form>
+            <button onclick="buttonclick()"><ion-icon name="search-outline"></ion-icon></button>
         </nav>
         <main>
             <header>
                 <div class="btn" onclick="location.href = './index.html#menu'">
                     <p id="subject">Menu</p>  
                     <ion-icon name="caret-down-circle-outline" size="small"></ion-icon>
+                </div>
+                <div class="imgcontainer" onclick="location.href = 'https://mylink.la/kolej_matrikulasi_melaka'">
+                    <img src="./asset/kmm.jpeg">
                 </div>
             </header>
 
@@ -50,6 +53,8 @@
             <h2>see also</h2>
             <div id="suggestionbox">
             </div>
+            <br><br>
+            <iframe data-tally-src="https://tally.so/embed/wAxPbo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="181" frameborder="0" marginheight="0" marginwidth="0" title="MSG Rating"></iframe><script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
         </main>
 
         <footer>

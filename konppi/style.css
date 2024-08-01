@@ -8,7 +8,7 @@ html{
     --text-quaternary: rgba(0, 0, 0, 0.38);
     --white-primary: rgb(255, 255, 255);
     --white-secondary: var(--text-quaternary);  
-    --white-tertiary: #f3f6fb;
+    --white-tertiary: #f6f7f9;
     --bio-header: #ff6347 ;
     --bio-header2: #ffe4e1;
     --chemistry-header:#24ca9e;
@@ -52,7 +52,7 @@ header{
     width: 100%;
     height: 50px;
     padding: 10px 1px;
-    background-color: transparent;
+    background-color: white;
     z-index:2 ;
 }
 
@@ -104,6 +104,18 @@ ion-icon{
 
 .btn:hover ion-icon{
     transform: rotate(-90deg);
+}
+
+header .imgcontainer{
+    margin: 0 10px;
+    flex: 0.7;
+    text-align: right;
+}
+
+header .imgcontainer img{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
 }
 
 
@@ -238,11 +250,6 @@ main h1{
     padding-top: 50px;
 }
 
-#phonetic{
-    position: relative;
-    z-index: 3;
-}
-
 main strong{
     margin: 20px 0;
     color: var(--text-secondary);
@@ -314,12 +321,12 @@ main .error{
     background: var(--text-header2);
 }
 
-main img{
+/* main img{
     margin: 0px auto;
     width: 80%;
     padding:20px;
     border-radius: 10%;
-}
+} */
 
 table {
     border-collapse: collapse;
@@ -381,8 +388,8 @@ nav form{
     min-width: 40vh;
     border-radius: 5px;
     border: 0;
-    background: var(--white-primary);
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+    background: var(--white-tertiary);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     align-items: center;
     display: flex;
 }
@@ -392,6 +399,7 @@ nav input{
     font-size: 1.2rem;
     color: var(--text-secondary);
     width: 90%;
+    padding-left: 20px;
     background: transparent;
     border: none;
 }
@@ -406,7 +414,7 @@ nav ion-icon{
 nav .cancelbutton{
     border-radius: 50%;
     color: var(--text-tertiary);
-    background: var(--white-tertiary);
+    background: var(--white-primary);
     width: 24px;
     height: 20px;
     cursor: pointer;
@@ -420,7 +428,8 @@ nav input:focus{
 
 nav input::placeholder{
     font-size: 1rem;
-    color:var(--text-header);
+    color:var(--text-tertiary);
+    padding-left: 20px;
     opacity: 0.75;
 }
 
@@ -429,6 +438,26 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
+
+nav button{
+    display: block;
+    width: 65px;
+    box-sizing: border-box;
+    margin: 0 7px;
+    border: none;
+    background-color: var(--text-header);
+    color: var(--white-primary);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+
+nav button ion-icon{
+    color: var(--white-tertiary);
+    margin: auto;
+    font-size: 30px;
+    --ionicon-stroke-width: 55px;
+}
 
 ::-webkit-scrollbar {
     width: 9px;
@@ -545,23 +574,28 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     }
 
     nav{
-        height: 80px;
+        height: 60px;
+        padding: 10px;
     }
 
 
     nav form{
         margin-bottom: 5px;
-        width:90%;
+        width:70%;
         min-width: 0px;
     }
 
     nav input{
         font-size: 1.6rem;
     }
+
+    nav button{
+        height: 55px;
+        width: 55px;
+    }
     
     main{
         padding: 10px 7% 300px;
-        /* max-width: 100%; */
         width: 100%;
     }
     
