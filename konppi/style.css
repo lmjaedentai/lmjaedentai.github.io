@@ -7,8 +7,8 @@ html{
     --text-tertiary: rgba(0, 0, 0, 0.6);
     --text-quaternary: rgba(0, 0, 0, 0.38);
     --white-primary: rgb(255, 255, 255);
-    --white-secondary: var(--text-quaternary);  
-    --white-tertiary: #f6f7f9;
+    --white-secondary: #f6f7f9;  
+    --white-tertiary: #eaeff4;
     --bio-header: #ff6347 ;
     --bio-header2: #ffe4e1;
     --chemistry-header:#24ca9e;
@@ -23,7 +23,7 @@ html{
     --text-header2: var(--physics-header2);
 }
 
-.bio-theme {
+.biology-theme {
     --text-header: var(--bio-header) ;
     --text-header2: var(--bio-header2) ;
 }
@@ -236,13 +236,6 @@ main h2{
     text-transform: capitalize;
 }
 
-main hr{
-    background-color: var(--white-secondary);
-    border: 0 none;
-    /* color: var(--white-secondary); */
-    height: 1px;
-}
-
 main h1{
     font-family: 'josefin sans';
     text-transform: capitalize;
@@ -273,49 +266,18 @@ main em{
     font-weight: 500;
     color: var(--text-header);
     background-color: var(--text-header2);
-    text-decoration: underline;
+    /* text-decoration: underline; */
     cursor: pointer;
     transition: 0.41s;
+    padding: 2px 5px;
+    margin: 5px;
 }
 
 main em:hover{
     letter-spacing: 1px;
 }
 
-main blockquote{
-    color: var(--text-secondary);
-    text-align: left;
-    border-left: 3px solid var(--white-secondary);
-    border-radius: 3px;
-    padding: 2px 5px;
-    margin: 0px 0px;
-    transition: 0.2s;
-}
 
-main blockquote:hover{
-    border-left: 3px solid var(--text-header);
-}
-
-main ol{
-    margin: 0;
-    padding: 0 0px;
-}
-
-main li{
-    list-style: decimal;
-}
-
-main  li::marker {
-    color: var(--text-quaternary);
-    font-size: 0.8rem;
-}
-main .info{
-    color: #0e8d94;
-}
-
-main .error{
-    color: #fe3824;
-}
 
 ::selection {
     background: var(--text-header2);
@@ -386,7 +348,7 @@ nav form{
     width: 100%;
     max-width: 65vh;
     min-width: 40vh;
-    border-radius: 5px;
+    border-radius: 30px;
     border: 0;
     background: var(--white-tertiary);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -414,7 +376,7 @@ nav ion-icon{
 nav .cancelbutton{
     border-radius: 50%;
     color: var(--text-tertiary);
-    background: var(--white-primary);
+    background: var(--white-secondary);
     width: 24px;
     height: 20px;
     cursor: pointer;
@@ -427,8 +389,8 @@ nav input:focus{
 }
 
 nav input::placeholder{
-    font-size: 1rem;
-    color:var(--text-tertiary);
+    font-size: 1.1rem;
+    color:var(--text-secondary);
     padding-left: 0px;
     opacity: 0.75;
 }

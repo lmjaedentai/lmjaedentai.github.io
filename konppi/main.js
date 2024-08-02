@@ -25,7 +25,9 @@ async function searchquery(query) {
         raw = cndata[query];
         // console.table({t:query,d:raw['DEFINITION'],c:raw['CHAPTER'],s:raw['SUBJECT']})
         document.getElementById("title").innerHTML = query;
-        document.getElementById("definition").innerHTML = raw['DEFINITION'].replaceAll(`\\n`, `<br><br>`);
+
+        var chapternum = isNaN(raw['CHAPTER']) ? raw['CHAPTER'] : `Chapter ${raw['CHAPTER']}`;
+        document.getElementById("definition").innerHTML = raw['DEFINITION'].replaceAll(`\\n`, `<br><br>`) + `<br><br><em>${chapternum}</em>` ;
         //QQ 2: color theme
         setTheme(`${raw['SUBJECT']}-theme`);
         document.getElementById("subject").innerHTML = raw['SUBJECT'];
@@ -75,3 +77,26 @@ document.getElementById("searchform").addEventListener('submit', event =>  {
 function buttonclick() {
     getquery();
 }
+
+
+// Immediately invoked function to set the theme on initial load
+(function () {
+    const themedata = {
+        "biology-theme": {
+            "DEFINITION": "Biology is the scientific study of life and living organisms.\n\nIt's a fascinating subject that explores everything from the smallest molecules within cells to entire ecosystems and the interactions between organisms and their environment.",
+            "SUBJECT": "Biology"
+        },
+        "physics-theme": {
+            "DEFINITION": "Physics is the branch of science that deals with the nature and properties of matter and energy.\n\nIt's a fundamental discipline that helps us understand how the universe works, from the smallest particles to the largest galaxies.",
+            "SUBJECT": "Physics"
+        },
+        "chemistry-theme": {
+            "DEFINITION": `Chemistry is the branch of science that studies the composition, structure, properties, and reactions of matter.\n\nIt explores how different substances interact with each other and how these interactions can be used to create new materials or products.\nEssentially, chemistry helps us understand the "why" and "how" behind the changes that occur in our world.`,
+            "SUBJECT": "Chemistry"
+        },
+    }
+    
+    const theme = localStorage.getItem('theme');
+    document.getElementById("definition").innerHTML = themedata[theme]["DEFINITION"]
+    document.getElementById("title").innerHTML = themedata[theme]["SUBJECT"]
+})();
