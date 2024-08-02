@@ -112,7 +112,7 @@ header .imgcontainer{
     text-align: right;
 }
 
-header .imgcontainer img{
+header .imgcontainer .img{
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -321,12 +321,12 @@ main .error{
     background: var(--text-header2);
 }
 
-/* main img{
+main img{
     margin: 0px auto;
-    width: 80%;
-    padding:20px;
+    width: 100%;
+    padding:10px;
     border-radius: 10%;
-} */
+}
 
 table {
     border-collapse: collapse;
@@ -429,7 +429,7 @@ nav input:focus{
 nav input::placeholder{
     font-size: 1rem;
     color:var(--text-tertiary);
-    padding-left: 20px;
+    padding-left: 0px;
     opacity: 0.75;
 }
 

@@ -7,10 +7,10 @@ function getquery() {
     if (query == '') {
         return
     }
-    document.getElementById("definition").innerHTML = '';
+    document.getElementById("definition").innerHTML = `<img src='https://http.cat/images/102.jpg';>`;
     
     if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
-        return document.getElementById("definiton").innerHTML = 'invalid input';
+        return document.getElementById("definition").innerHTML = `<img src='https://http.cat/images/406.jpg';>\nOnly alphabetic characters are currently supported.`
     }
     else {
         searchquery(query);
@@ -31,7 +31,7 @@ async function searchquery(query) {
         document.getElementById("subject").innerHTML = raw['SUBJECT'];
     }
     else {
-        return document.getElementById("definition").innerHTML = 'No result';
+        return document.getElementById("definition").innerHTML = `<img src='https://http.cat/images/404.jpg';>\nNo result. Try Google`;
     }
 
     //QQ 4: suggestion
