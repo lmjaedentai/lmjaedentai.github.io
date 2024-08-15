@@ -18,6 +18,7 @@ function getquery() {
 }
 
 async function searchquery(query) {
+    document.getElementById("definition").innerHTML = `<img src='https://http.cat/images/102.jpg';>\n\nloading...`;
     var suggestioncode = ''
     globalThis.query = query;
     //QQ 1: definiton
@@ -27,7 +28,7 @@ async function searchquery(query) {
         document.getElementById("title").innerHTML = query;
 
         var chapternum = isNaN(raw['CHAPTER']) ? raw['CHAPTER'] : `Chapter ${raw['CHAPTER']}`;
-        document.getElementById("definition").innerHTML = raw['DEFINITION'].replaceAll(`\\n`, `<br><br>`) + `<br><br><em>${chapternum}</em>` ;
+        document.getElementById("definition").innerHTML = raw['DEFINITION'].replaceAll(`\\n`, `<br><br>`) + `<br><br><em onclick="location.href = './search.html#suggestionbox'">${chapternum}</em>` ;
         //QQ 2: color theme
         setTheme(`${raw['SUBJECT']}-theme`);
         document.getElementById("subject").innerHTML = raw['SUBJECT'];
@@ -39,7 +40,7 @@ async function searchquery(query) {
     //QQ 4: suggestion
     const suggestionlist = Object.fromEntries(Object.entries(cndata).filter(([key, value]) => value.CHAPTER ==raw['CHAPTER'] && value.SUBJECT ==raw['SUBJECT']) );
     Object.entries(suggestionlist).forEach(([suggested, value]) => {
-        suggestioncode += `<div class="suggestion"><p>${suggested}</p> <button onclick="searchquery('${suggested}')"><ion-icon name="chevron-forward-outline"></ion-icon></button></div>`
+        suggestioncode += `<div class="suggestion" onclick="searchquery('${suggested}')"><p>${suggested}</p> <button onclick="searchquery('${suggested}')"><ion-icon name="chevron-forward-outline"></ion-icon></button></div>`
     });// console.log(suggestionlist)
     document.getElementById("suggestionbox").innerHTML = suggestioncode;
 
