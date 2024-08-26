@@ -1,4 +1,4 @@
-console.warn("\n" + "                       _oo0oo_\n" + "                      o8888888o\n" + "                      88\" . \"88\n" + "                      (| -_- |)\n" + "                      0\\  =  /0\n" + "                    ___/`---'\\___\n" + "                  .' \\\\|     |// '.\n" + "                 / \\\\|||  :  |||// \\\n" + "                / _||||| -:- |||||- \\\n" + "               |   | \\\\\\  -  /// |   |\n" + "               | \\_|  ''\\---/''  |_/ |\n" + "               \\  .-\\__  '-'  ___/-. /\n" + "             ___'. .'  /--.--\\  `. .'___\n" + "          .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" + "         | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" + "         \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" + "     =====`-.____`.___ \\_____/___.-`___.-'=====\n" + "                       `=---='\n" + "\n" + "\n" + "     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" + "\n" + "                菩提本无树   明镜亦非台\n" + "                本来无BUG    何必常修改\n");
+console.warn("test");
 document.getElementById("searchbar").focus();
 var englishlemmatize = false;
 var contextmenu = document.querySelector(".contextmenu");
@@ -13,6 +13,7 @@ function getquery() {
     document.getElementById("chinese").innerHTML = '';
     document.getElementById("example").innerHTML =''
     document.getElementById("thesaurus").innerHTML = '';
+    document.getElementById("etymology").innerHTML = '';
     
     if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
         return document.getElementById("phonetic").innerHTML='<img src="./asset/error.svg"/>\n\nOnly alphabetic characters are acceptable.'
@@ -22,26 +23,23 @@ function getquery() {
     }
 }
 
-function searchquery(query, second = false) {
-    fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${query}?key=fea702b3-bccf-47c3-b29e-2293789b70af`)
-        .then((response) => response.json())
-        .then(function (raw) {
-            if (second == false) {
-                document.getElementById("searchtitle").innerHTML = query;
-            }
-            // console.warn('i start my job')
-            formatoutput({ en:englishdef(raw, query, second), cn:chinesedef(query, raw), q:query, second:second, exp:'' });
-    });
-    fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=1b547310-00e9-418a-b23f-b73d22906f1c`)
-        .then((response) => response.json())
-        .then(function (raw) {
-            formatoutput({ t: thesaurus(raw, query) });
-    });
+async function searchquery(query, second = false) {
+    const response = await fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${query}?key=fea702b3-bccf-47c3-b29e-2293789b70af`)
+    raw = await response.json()
+    if (second == false) {
+        document.getElementById("searchtitle").innerHTML = query;
+    }
+    englishdef(raw, query, second)
+    
+    const response2 = await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=1b547310-00e9-418a-b23f-b73d22906f1c`)
+    raw2 = await response2.json()
+    thesaurus(raw2, query)
 }
 
 function englishdef(raw, search, second = false) {
     var english_output = '\n\n';
     var example_output = '';
+    var etymology_output = '';
     let block = true;
 
     //QQ error handling
@@ -84,6 +82,15 @@ function englishdef(raw, search, second = false) {
                     formatoutput({ e: '<img src="./asset/error.svg"/>\n\nNo content' }); return
                 }
             }
+            if (raw[elements].hasOwnProperty('et')) { //QQ print img
+                et = raw[elements]['et'][0][1];
+                et = et.replaceAll("{it}", "<i>");
+                et = et.replaceAll("{/it}","</i>");
+                et = et.replace(/\{[^}]*\}/g, '');
+                et = et.replaceAll("+","");
+                console.log(et);
+                etymology_output += `${et}\n\n`;
+            }
             if (raw[elements].hasOwnProperty('def')) {//QQ examples
                 raw[elements]['def'].forEach(childdef => {
                     if ('sseq' in childdef) {
@@ -109,7 +116,7 @@ function englishdef(raw, search, second = false) {
             }
         }
         
-        formatoutput({ exp: example_output });
+        
         if (english_output == '' || english_output === undefined) { //no result but merriam give another word
             document.getElementById("phonetic").innerHTML = '<img src="./asset/error.svg"/>\n\nNo content'; return
         }
@@ -118,7 +125,8 @@ function englishdef(raw, search, second = false) {
             english_output = english_output.replaceAll(")", ")</span>");
             english_output = english_output.replace("\n\n\n", "");
             english_output = `<ol type='1'>${english_output}</ol>`;
-            return english_output
+            formatoutput({ exp: example_output, en: english_output, et:etymology_output });
+            chinesedef(search, raw, second);
         }
     }
 }
@@ -150,10 +158,10 @@ function chinesedef(query, englishraw, second = false, third = false) {
             // console.table({ searchinput: query, english: englishraw, translated: third, en_second_trial: englishlemmatize })
             return formatoutput({en:englishdef(englishraw, query, second), cn:third, q:query, second:englishlemmatize, e:`<span class="info">Translation accuracy not guaranteed.</span>`});
         }
-        else if (second) {//2nd try still no result
+        else if (second) {//2nd try still no result --> third
             translatedef(query, englishraw);
         }
-        else { //first time error
+        else { //first time error --> lemm
             if (!englishraw || englishraw.length === 0 || englishraw === undefined) { //404 in english
                 return chinese_output = '';
             }
@@ -169,7 +177,7 @@ function chinesedef(query, englishraw, second = false, third = false) {
     chinese_output = chinese_output.replaceAll(`)`, `)</span>`);
     chinese_output = chinese_output.replace(`\n\n`, ``);
     // console.table({return_normal: chinese_output})
-    return chinese_output;
+    formatoutput({ cn: chinese_output });
 }
 
 async function translatedef(query, englishraw) { //test: hetero
@@ -177,7 +185,7 @@ async function translatedef(query, englishraw) { //test: hetero
         .then((response) => response.json())
         .then(function (translated_output) {
             // console.log(translated_output[0][0][0])
-            return translated_output[0][0][0]
+            return chinesedef(query, englishraw, true, translated_output[0][0][0])
         });
 }
 
@@ -206,11 +214,12 @@ function thesaurus(raw, search) {
             tableraw += `<td>${synonym[i]}</td>`
         }
         tableraw += '</tr></table>'
-        return tableraw + `</table>`
+        return formatoutput({ t:`${tableraw}</table>`});
+        
     }
 }
 
-function formatoutput({ en = '', cn = '', q = '', second = false, e = '', t = '', exp =''}) {
+function formatoutput({ en = '', cn = '', q = '', second = false, e = '', t = '', exp ='', et=''}) {
     if (second || e != '') { //e can be info below title or seconndary query
         document.getElementById("phonetic").innerHTML = (second) ? `<span class="error">did you mean: ${q}</span>\n${e}` : e
     }
@@ -218,7 +227,8 @@ function formatoutput({ en = '', cn = '', q = '', second = false, e = '', t = ''
     document.getElementById("definition").innerHTML = (en != '') ? en : document.getElementById("definition").innerHTML;
     document.getElementById("chinese").innerHTML = (cn != '') ? cn : document.getElementById("chinese").innerHTML;
     document.getElementById("thesaurus").innerHTML = (t != '') ? t : document.getElementById("thesaurus").innerHTML;
-    document.getElementById("example").innerHTML =  (exp!= '') ? exp : document.getElementById("example").innerHTML;
+    document.getElementById("example").innerHTML = (exp != '') ? exp : document.getElementById("example").innerHTML;
+    document.getElementById("etymology").innerHTML =  (et!= '') ? et : document.getElementById("etymology").innerHTML;
     clearInput();
     
 }
