@@ -15,7 +15,7 @@ function getquery() {
     document.getElementById("thesaurus").innerHTML = '';
     
     if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
-        return document.getElementById("phonetic").innerHTML='<img data-ujs-name="Access denied"/>\n\nOnly alphabetic characters are acceptable.'
+        return document.getElementById("phonetic").innerHTML='<img src="./asset/error.svg"/>\n\nOnly alphabetic characters are acceptable.'
     }
     else {
         searchquery(query);
@@ -48,7 +48,7 @@ function englishdef(raw, search, second = false) {
     if (raw === undefined || raw == "" || raw[0].hasOwnProperty('meta') == false) {
         if (second == false) {
             if (!raw || raw.length === 0 || raw === undefined) {
-                document.getElementById("phonetic").innerHTML = '<img data-ujs-name="Page not found"/>\n\nNo result'; return
+                document.getElementById("phonetic").innerHTML = '<img src="./asset/error.svg"/>\n\nNo result'; return
             }
             else { //autocorrect
                 englishlemmatize = true;
@@ -57,7 +57,7 @@ function englishdef(raw, search, second = false) {
             }
         }
         else { //second time
-            document.getElementById("phonetic").innerHTML = '<img data-ujs-name="Page not found"/>\n\nNo result'; return
+            document.getElementById("phonetic").innerHTML = '<img src="./asset/error.svg"/>\n\nNo result'; return
         }
     }
     else { //no error
@@ -81,7 +81,7 @@ function englishdef(raw, search, second = false) {
                     block = false;
                 }
                 else {
-                    formatoutput({ e: '<img data-ujs-name="Taken"/>\n\nNo content' }); return
+                    formatoutput({ e: '<img src="./asset/error.svg"/>\n\nNo content' }); return
                 }
             }
             if (raw[elements].hasOwnProperty('def')) {//QQ examples
@@ -111,7 +111,7 @@ function englishdef(raw, search, second = false) {
         
         formatoutput({ exp: example_output });
         if (english_output == '' || english_output === undefined) { //no result but merriam give another word
-            document.getElementById("phonetic").innerHTML = '<img data-ujs-name="Taken"/>\n\nNo content'; return
+            document.getElementById("phonetic").innerHTML = '<img src="./asset/error.svg"/>\n\nNo content'; return
         }
         else { //formatting
             english_output = english_output.replaceAll("(", "<span>(");
@@ -125,8 +125,8 @@ function englishdef(raw, search, second = false) {
 
 //QQ bingqiling
 function chinesedef(query, englishraw, second = false, third = false) {
-    const targetlist = ['noun', 'adverb', 'adjective', 'verb', '<strong>\n\nAd<strong>\n\nVerb</strong></strong>', 'preposition', 'conjunction', 'article', 'pronoun', 'pro<strong>\n\nNoun</strong>', 'exclamation'];
-    const replacelist = ['Noun', 'Adverb', 'Adjective', 'Verb', 'Adverb', 'Preposition', 'Conjunction', 'Articles', 'Pronouns', 'Pronouns', 'Exclamation'];
+    const targetlist = ['noun', 'adverb', 'adjective', 'verb', '<strong>\n\nAd<strong>\n\nVerb</strong></strong>', 'preposition', 'conjunction', 'article', 'pronoun', 'pro<strong>\n\nNoun</strong>', 'exclamation','Abbreviation'];
+    const replacelist = ['Noun', 'Adverb', 'Adjective', 'Verb', 'Adverb', 'Preposition', 'Conjunction', 'Articles', 'Pronouns', 'Pronouns', 'Exclamation','Abbreviation'];
     var chinese_output = ''
 
     if (query in cndata) {
@@ -159,7 +159,7 @@ function chinesedef(query, englishraw, second = false, third = false) {
             }
             if (englishraw[0].hasOwnProperty('meta')) {//else if autocorrect but not apply here, will change query for only cn
                 var searchpure = englishraw[0]["meta"]["stems"][0]; //lemmatize the word
-                // console.table({ lemmatize: chinese_output })
+                console.table({replaceplist:englishraw[0]["meta"]["stems"], lemmatize: chinese_output})
                 return chinesedef(searchpure, englishraw, second = true);
             }
         }
@@ -177,7 +177,7 @@ async function translatedef(query, englishraw) { //test: hetero
         .then((response) => response.json())
         .then(function (translated_output) {
             // console.log(translated_output[0][0][0])
-            return chinesedef(query, englishraw, true, translated_output[0][0][0])
+            return translated_output[0][0][0]
         });
 }
 

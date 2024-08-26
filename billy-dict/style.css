@@ -51,7 +51,7 @@ header{
     bottom: 0;
     margin-bottom: 10px;
     background: transparent;
-    z-index: 0;
+    z-index: 2;
     justify-content: center;
 }
 
@@ -110,7 +110,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 
 .mobilebutton{
-    z-index: 2;
+    z-index: 1;
     position: sticky;
     display: flex;
     top: 10%;
@@ -164,7 +164,6 @@ h1, a{
 
 #phonetic{
     position: relative;
-    z-index: 3;
 }
 
 main strong{
@@ -218,6 +217,7 @@ main  li::marker {
     color: var(--text-quaternary);
     font-size: 0.8rem;
 }
+
 main .info{
     color: #0e8d94;
 }
@@ -253,7 +253,6 @@ footer{
     position: relative;
     bottom: 0%;
     width: 100%;
-    z-index: 1;
     background-color: var(--white-tertiary);
 }
 
