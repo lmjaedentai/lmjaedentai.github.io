@@ -6,7 +6,7 @@ var contextmenu = document.querySelector(".contextmenu");
 function getquery() {
     var query = document.getElementById("searchbar").value.toLowerCase().trim();
     if (query == '') {
-        return //console.log('empty input')
+        return
     }
     document.getElementById("phonetic").innerHTML = ''
     document.getElementById("definition").innerHTML = '';
@@ -29,14 +29,14 @@ async function searchquery(query, second = false) {
     if (second == false) {
         document.getElementById("searchtitle").innerHTML = query;
     }
-    englishdef(raw, query, second)
+    await englishdef(raw, query, second)
     
     const response2 = await fetch(`https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=1b547310-00e9-418a-b23f-b73d22906f1c`)
     raw2 = await response2.json()
     thesaurus(raw2, query)
 }
 
-function englishdef(raw, search, second = false) {
+async function englishdef(raw, search, second = false, third=false) {
     var english_output = '\n\n';
     var example_output = '';
     var etymology_output = '';
@@ -51,7 +51,6 @@ function englishdef(raw, search, second = false) {
             else { //autocorrect
                 englishlemmatize = true;
                 searchquery(raw[0].toLowerCase().trim(), true);
-                // console.table(raw);
             }
         }
         else { //second time
@@ -82,14 +81,15 @@ function englishdef(raw, search, second = false) {
                     formatoutput({ e: '<img src="./asset/error.svg"/>\n\nNo content' }); return
                 }
             }
-            if (raw[elements].hasOwnProperty('et')) { //QQ print img
+            if (raw[elements].hasOwnProperty('et')) { //QQ etymology
                 et = raw[elements]['et'][0][1];
+                et = et.replaceAll("{dx_ety}see ", "");
                 et = et.replaceAll("{it}", "<i>");
                 et = et.replaceAll("{/it}","</i>");
                 et = et.replace(/\{[^}]*\}/g, '');
+                et = et.replace("\n\n\n", "");
                 et = et.replaceAll("+","");
-                console.log(et);
-                etymology_output += `${et}\n\n`;
+                etymology_output += `${et}\n`;
             }
             if (raw[elements].hasOwnProperty('def')) {//QQ examples
                 raw[elements]['def'].forEach(childdef => {
@@ -98,8 +98,7 @@ function englishdef(raw, search, second = false) {
                             if ('dt' in sseq[0][1]) {
                                 sseq[0][1]['dt'].forEach(dt => {
                                     if (dt[0] == 'vis') {
-                                        for (i = 1; i < dt.length; i++) {
-                                            // console.table({'len':dt[i].length,'dti':dt[i]})
+                                        for (i = 1; i < dt.length; i++) {// console.table({'len':dt[i].length,'dti':dt[i]})
                                             for (ii = 0; ii < dt[i].length; ii++) {
                                                 if ('t' in dt[i][ii]) {
                                                     example_output += `<blockquote>${dt[i][ii]['t']}</blockquote>\n`;
@@ -125,14 +124,17 @@ function englishdef(raw, search, second = false) {
             english_output = english_output.replaceAll(")", ")</span>");
             english_output = english_output.replace("\n\n\n", "");
             english_output = `<ol type='1'>${english_output}</ol>`;
-            formatoutput({ exp: example_output, en: english_output, et:etymology_output });
-            chinesedef(search, raw, second);
+            formatoutput({ exp: example_output, en: english_output, et: etymology_output });
+            if (!third) {
+                await chinesedef(search, raw, second);
+            }
+            
         }
     }
 }
 
 //QQ bingqiling
-function chinesedef(query, englishraw, second = false, third = false) {
+async function chinesedef(query, englishraw, second = false, third = false) {
     const targetlist = ['noun', 'adverb', 'adjective', 'verb', '<strong>\n\nAd<strong>\n\nVerb</strong></strong>', 'preposition', 'conjunction', 'article', 'pronoun', 'pro<strong>\n\nNoun</strong>', 'exclamation','Abbreviation'];
     const replacelist = ['Noun', 'Adverb', 'Adjective', 'Verb', 'Adverb', 'Preposition', 'Conjunction', 'Articles', 'Pronouns', 'Pronouns', 'Exclamation','Abbreviation'];
     var chinese_output = ''
@@ -145,7 +147,7 @@ function chinesedef(query, englishraw, second = false, third = false) {
         }
         for (let n = 43; n > 0; n--) {
             if (chinese_output.includes(`${n}. `)) {
-                chinese_output = chinese_output.replaceAll(`${n}. `, `\n<span> • </span>`);
+                chinese_output =  chinese_output.replaceAll(`${n}. `, `\n<span> • </span>`);
             }
         }
         if (second) { //lemmatize sucessfully
@@ -153,22 +155,24 @@ function chinesedef(query, englishraw, second = false, third = false) {
         }
     }
     else { //query not in cndata
-        if (third != false) { //3rd time error --> translate
-            third = '<strong>Google translated</strong>\n' + third
-            // console.table({ searchinput: query, english: englishraw, translated: third, en_second_trial: englishlemmatize })
-            return formatoutput({en:englishdef(englishraw, query, second), cn:third, q:query, second:englishlemmatize, e:`<span class="info">Translation accuracy not guaranteed.</span>`});
-        }
-        else if (second) {//2nd try still no result --> third
-            translatedef(query, englishraw);
+        // if (third != false) { //3rd time error --> translate
+        //     third = '<strong>Google translated</strong>\n' + third
+            
+        // }
+        // else 
+        if (second) {//2nd try still no result --> third
+            chinese_output = await translatedef(query, englishraw);
+            chinese_output = '<strong>Google translated</strong>\n' + chinese_output
+            return formatoutput({en: await englishdef(englishraw,query,false,true),cn:chinese_output, q:query, second:englishlemmatize, e:`<span class="info">Translation accuracy not guaranteed.</span>`});
         }
         else { //first time error --> lemm
             if (!englishraw || englishraw.length === 0 || englishraw === undefined) { //404 in english
-                return chinese_output = '';
+                chinese_output = '';
             }
             if (englishraw[0].hasOwnProperty('meta')) {//else if autocorrect but not apply here, will change query for only cn
                 var searchpure = englishraw[0]["meta"]["stems"][0]; //lemmatize the word
-                console.table({replaceplist:englishraw[0]["meta"]["stems"], lemmatize: chinese_output})
-                return chinesedef(searchpure, englishraw, second = true);
+                // console.table({replaceplist:englishraw[0]["meta"]["stems"], lemmatize: chinese_output})
+                return await chinesedef(searchpure, englishraw, second = true);
             }
         }
     }
@@ -176,17 +180,13 @@ function chinesedef(query, englishraw, second = false, third = false) {
     chinese_output = chinese_output.replaceAll(`(`, `<span>(`);
     chinese_output = chinese_output.replaceAll(`)`, `)</span>`);
     chinese_output = chinese_output.replace(`\n\n`, ``);
-    // console.table({return_normal: chinese_output})
     formatoutput({ cn: chinese_output });
 }
 
 async function translatedef(query, englishraw) { //test: hetero
     const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=zh-TW&dt=t&q=${encodeURI(query)}`)
-        .then((response) => response.json())
-        .then(function (translated_output) {
-            // console.log(translated_output[0][0][0])
-            return chinesedef(query, englishraw, true, translated_output[0][0][0])
-        });
+    raw = await response.json()
+    return raw[0][0][0];
 }
 
 function thesaurus(raw, search) {

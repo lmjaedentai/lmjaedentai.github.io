@@ -431,7 +431,8 @@ nav button ion-icon{
 
 
 #predictwrapper{
-    margin: 3px auto ;
+    margin: 0px auto ;
+    padding: 3px 0px;
     width: 100%;
     height: 28px;
     max-width: 75vh;
@@ -446,15 +447,21 @@ nav button ion-icon{
     overflow-x: scroll;
     overflow-y: hidden;
     z-index: 1;
-    /* background: red; */
+    /* background: rgba(255, 255, 255, 0.8) */
+}
+
+#predictbox:-webkit-scrollbar {
+    display: none;
 }
 
 #predictbox #predicted {
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 20px;
     width: max-content;
     max-width: 300px;
-    padding: 5px 10px 0px;
+    padding: 3px 10px;
     margin-right: 5px;
     color: var(--text-header);
     background: var(--text-header2);
@@ -471,6 +478,7 @@ nav button ion-icon{
 #predictbox #predicted:hover {
     color: var(--text-header2);
     background: var(--text-header);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 
@@ -605,10 +613,32 @@ nav button ion-icon{
         font-size: 1.6rem;
     }
 
+    nav .flexbox{
+        height: 70px;
+    }
+
+    nav 
+
     nav button{
         height: 55px;
         width: 55px;
     }
+
+    #predictwrapper{
+        height: 60px;
+    }
+
+    #predictbox #predicted {
+        height: 50px;
+        max-width: 500px;
+        padding: 0px 15px 0px;
+        font-size: 1.1rem;
+        line-height: 40px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    
     
     main{
         padding: 10px 7% 300px;
