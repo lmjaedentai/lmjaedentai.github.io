@@ -288,6 +288,7 @@ main em:hover{
 main img{
     margin: 0px auto;
     width: 100%;
+    max-width: 350px;
     padding:10px;
     border-radius: 10%;
 }
@@ -336,14 +337,19 @@ footer p{
 
 nav{
     width: 100%;
-    height: 55px;
     position: fixed;
-    display: flex;
+    display: block;
     bottom: 0;
     margin-bottom: 10px;
     background: transparent;
     z-index: 1;
     justify-content: center;
+}
+
+nav .flexbox{
+    justify-content: center;
+    display: flex;
+    width: 100%;
 }
 
 nav form{
@@ -422,6 +428,51 @@ nav button ion-icon{
     font-size: 30px;
     --ionicon-stroke-width: 55px;
 }
+
+
+#predictwrapper{
+    margin: 3px auto ;
+    width: 100%;
+    height: 28px;
+    max-width: 75vh;
+    min-width: 40vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#predictbox{
+    width: 1000px;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    z-index: 1;
+    /* background: red; */
+}
+
+#predictbox #predicted {
+    display: flex;
+    height: 20px;
+    width: max-content;
+    max-width: 300px;
+    padding: 5px 10px 0px;
+    margin-right: 5px;
+    color: var(--text-header);
+    background: var(--text-header2);
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-family: 'Josefin sans';
+    font-weight: 650;
+    box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#predictbox #predicted:hover {
+    color: var(--text-header2);
+    background: var(--text-header);
+}
+
 
 ::-webkit-scrollbar {
     width: 9px;
@@ -525,6 +576,8 @@ nav button ion-icon{
 
 
 
+
+
 @media only screen and (max-width: 500px) {
     /* For mobile phones: */
     html{
@@ -538,7 +591,6 @@ nav button ion-icon{
     }
 
     nav{
-        height: 60px;
         padding: 10px;
     }
 
