@@ -18,10 +18,10 @@ const cndata = {
         "SEM": 1
     },
     "isotope": {
-        "DEFINITION": "Two or more atoms of the same element having same number of protons but different number of neutrons",
-        "CHAPTER": 1,
-        "SUBJECT": "chemistry",
-        "SEM": 1
+        "DEFINITION": "Nucleus that have same proton but different mass number",
+        "CHAPTER": 9,
+        "SUBJECT": "physics",
+        "SEM": 2
     },
     "relative atomic mass": {
         "DEFINITION": "A mass of one atom of an element compared to one twelfth mass of one atom of carbon-12 atom",
@@ -306,10 +306,10 @@ const cndata = {
         "SEM": 1
     },
     "hybridization": {
-        "DEFINITION": "Mixing of two or more atomic orbitals to form a new set of equivalent hybrid orbitals (with different energies, shapes, etc… than the component atomic orbitals) suitable for the pairing of electrons to form chemical bonds in valence bond theory",
-        "CHAPTER": 4,
-        "SUBJECT": "chemistry",
-        "SEM": 1
+        "DEFINITION": "In genetics, the mating, or crossing, of two true-breeding varieties.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
     },
     "intermolecular force": {
         "DEFINITION": "Attractive forces between neighbouring particles (atoms, molecules or ions).",
@@ -341,7 +341,7 @@ const cndata = {
         "SUBJECT": "chemistry",
         "SEM": 1
     },
-    "charles’s law": {
+    "charles’s law": { 
         "DEFINITION": "At constant pressure, the volume occupied by a fixed amount of gas is directly proportional to its absolute temperature",
         "CHAPTER": 5,
         "SUBJECT": "chemistry",
@@ -822,10 +822,10 @@ const cndata = {
         "SEM": 1
     },
     "energy": {
-        "DEFINITION": "The system's ability to do work",
-        "CHAPTER": 4,
-        "SUBJECT": "physics",
-        "SEM": 1
+        "DEFINITION": "The capacity to cause change, especially to do work (to move matter against an opposing force).",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
     },
     "gravitational potential energy": {
         "DEFINITION": "The energy stored in a body or system because of its position",
@@ -1002,10 +1002,10 @@ const cndata = {
         "SEM": 1
     },
     "interference": {
-        "DEFINITION": "The interaction (superposition) of two or more wave motions",
+        "DEFINITION": "The effect of interaction between two or more waves which overlaps or superposed at a point and at a particular time from the sources",
         "CHAPTER": 7,
         "SUBJECT": "physics",
-        "SEM": 1
+        "SEM": 2
     },
     "constructive interference": {
         "DEFINITION": "Occurs when two crests or troughs are in superposition to produce maximum amplitude.",
@@ -1302,10 +1302,10 @@ const cndata = {
         "SEM": 1
     },
     "disulfide bridge": {
-        "DEFINITION": "A strong covalent bond formed when the sulfur of one cysteine monomer bonds to the sulfur of another cysteine monomer",
-        "CHAPTER": 1,
+        "DEFINITION": "A strong covalent bond formed when the sulfur of one cysteine monomer bonds to the sulfur of another cysteine monomer.",
+        "CHAPTER": 11,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "double helix": {
         "DEFINITION": "The form of native DNA, referring to its two adjacent antiparallel polynucleotide strands wound around an imaginary axis into a spiral shape",
@@ -1338,16 +1338,16 @@ const cndata = {
         "SEM": 1
     },
     "functional group": {
-        "DEFINITION": "An atom or a group of atoms that determines the chemical properties of a homologous series.",
-        "CHAPTER": "SPM",
-        "SUBJECT": "chemistry",
-        "SEM": "easy"
+        "DEFINITION": "A specific configuration of atoms commonly attached to the carbon skeletons of organic molecules and involved in chemical reactions.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
     },
     "glycogen": {
-        "DEFINITION": "An extensively branched glucose storage polysaccharide found in the liver and muscle of animals; the animal equivalent of starch",
-        "CHAPTER": 1,
+        "DEFINITION": "An extensively branched glucose storage polysaccharide found in the liver and muscle of animals; the animal equivalent of starch.",
+        "CHAPTER": 6,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "glycosidic linkage": {
         "DEFINITION": "A covalent bond formed between two monosaccharides by a dehydration reaction.",
@@ -1374,16 +1374,16 @@ const cndata = {
         "SEM": "easy"
     },
     "hydrogen ion": {
-        "DEFINITION": " A single proton with a charge of 1+. The dissociation of a water molecule (H2O) leads to the generation of a hydroxide ion (OH- ) and a hydrogen ion (H+ ); in water, H+ is not found alone but associates with a water molecule to form a hydronium ion",
-        "CHAPTER": 1,
+        "DEFINITION": "A single proton with a charge of 1+. The dissociation of a water molecule (H2O) leads to the generation of a hydroxide ion (OH- ) and a hydrogen ion (H+ ); in water, H+ is not found alone but associates with a \nwater molecule to form a hydronium ion.",
+        "CHAPTER": 5,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "hydrolysis": {
-        "DEFINITION": "A chemical reaction that breaks bonds between two molecules by the addition of water; functions in disassembly of polymers to monomers",
-        "CHAPTER": 1,
+        "DEFINITION": "A chemical reaction that breaks bonds between two molecules by \nthe addition of water; functions in disassembly of polymers to monomers.",
+        "CHAPTER": 5,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "hydroxide ion": {
         "DEFINITION": "A water molecule that has lost a proton; OH-",
@@ -1392,10 +1392,10 @@ const cndata = {
         "SEM": 1
     },
     "hydroxyl group": {
-        "DEFINITION": "A chemical group consisting of an oxygen atom joined to a hydrogen atom. Molecules possessing this group are soluble in water and are called alcohols",
-        "CHAPTER": 1,
+        "DEFINITION": "A chemical group consisting of an oxygen atom joined to a hydrogen atom. Molecules possessing this group are soluble in water and are called alcohols.",
+        "CHAPTER": 8,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "ion": {
         "DEFINITION": "An atom or group of atoms that has gained or lost one or more electrons, thus acquiring a charge",
@@ -1404,10 +1404,10 @@ const cndata = {
         "SEM": 1
     },
     "isomer": {
-        "DEFINITION": "One of two or more compounds that have the same numbers of atoms of the same elements but different structures and hence different properties",
-        "CHAPTER": 1,
+        "DEFINITION": "One of two or more compounds that have the same numbers of atoms \nof the same elements but different structures and hence different properties.",
+        "CHAPTER": 5,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "lipid": {
         "DEFINITION": "Any of a group of large biological molecules, including fats, phospholipids, and steroids, that mix poorly, if at all, with water",
@@ -1950,10 +1950,10 @@ const cndata = {
         "SEM": 1
     },
     "electrochemical gradient": {
-        "DEFINITION": "The diffusion gradient of an ion, which is affected by both the concentration difference of an ion across a membrane (a chemical force) and the ion’s tendency to move relative to the membrane potential (an electrical force)",
-        "CHAPTER": 2,
+        "DEFINITION": "The diffusion gradient of an ion, which is affected by both the concentration difference of an ion across a membrane (a chemical force) and the ion’s tendency to move relative to the membrane \npotential (an electrical force).",
+        "CHAPTER": 5,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "embryo sac": {
         "DEFINITION": "The female gametophyte of angiosperms, formed from the growth and division of the megaspore into a multicellular structure that typically has eight haploid nuclei",
@@ -2010,10 +2010,10 @@ const cndata = {
         "SEM": 2
     },
     "epidermis": {
-        "DEFINITION": "(1) The dermal tissue of nonwoody plants, usually consisting of a single layer of tightly packed cells. \\n (2) The outermost layer of cells in an animal",
-        "CHAPTER": 2,
+        "DEFINITION": "(1) The dermal tissue of nonwoody plants, usually consisting of a single layer of tightly packed cells.\\n(2) The outermost layer of cells in an animal.",
+        "CHAPTER": 8,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "epididymis": {
         "DEFINITION": "A coiled tubule located adjacent to the mammalian testis where sperm are stored",
@@ -2040,10 +2040,10 @@ const cndata = {
         "SEM": 1
     },
     "erythrocyte": {
-        "DEFINITION": "A blood cell that contains hemoglobin, which transports oxygen; also called a red blood cell",
-        "CHAPTER": 2,
+        "DEFINITION": "A blood cell that contains hemoglobin, which transports oxygen; also called a red blood cell.",
+        "CHAPTER": 7,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "estradiol": {
         "DEFINITION": "A steroid hormone that stimulates the development and maintenance of the female reproductive system and secondary sex characteristics; the major estrogen in mammals",
@@ -2082,10 +2082,10 @@ const cndata = {
         "SEM": 2
     },
     "exocytosis": {
-        "DEFINITION": "The cellular secretion of biological molecules by the fusion of vesicles containing them with the plasma membrane",
-        "CHAPTER": 2,
+        "DEFINITION": "The cellular secretion of biological molecules by the fusion of vesicles \ncontaining them with the plasma membrane.",
+        "CHAPTER": 10,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "exon": {
         "DEFINITION": "A sequence within a primary transcript that remains in the RNA after RNA processing; also refers to the region of DNA from which this sequence was transcribed",
@@ -2304,10 +2304,10 @@ const cndata = {
         "SEM": 1
     },
     "genetic variation": {
-        "DEFINITION": "Differences among individuals in the composition of their genes or other DNA sequences",
+        "DEFINITION": "Differences among individuals in the composition of their genes or other DNA sequences.",
         "CHAPTER": 3,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "genetically modified organism": {
         "DEFINITION": "An organism that has acquired one or more genes by artificial means",
@@ -2376,16 +2376,16 @@ const cndata = {
         "SEM": 1
     },
     "granum": {
-        "DEFINITION": "A stack of membrane-bounded thylakoids in the chloroplast. Grana function in the light reactions of photosynthesis",
-        "CHAPTER": 2,
+        "DEFINITION": "A stack of membrane-bounded thylakoids in the chloroplast. Grana function in the light reactions of photosynthesis.",
+        "CHAPTER": 6,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "grana": {
-        "DEFINITION": "A stack of membrane-bounded thylakoids in the chloroplast. Grana function in the light reactions of photosynthesis",
-        "CHAPTER": 2,
+        "DEFINITION": "A stack of membrane-bounded thylakoids in the chloroplast. Grana function in the light reactions of photosynthesis.",
+        "CHAPTER": 6,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "ground tissue": {
         "DEFINITION": "Plant tissue that is neither vascular nor dermal, fulfilling a variety of functions, such as storage, photosynthesis, and support",
@@ -2424,16 +2424,16 @@ const cndata = {
         "SEM": 1
     },
     "heterozygote": {
-        "DEFINITION": "An organism that has two different alleles for a gene (encoding a character)",
-        "CHAPTER": 4,
+        "DEFINITION": "An organism that has two different alleles for a gene (encoding a character).",
+        "CHAPTER": 3,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "heterozygous": {
-        "DEFINITION": "Having two different alleles for a given gene",
-        "CHAPTER": 4,
+        "DEFINITION": "Having two different alleles for a given gene.",
+        "CHAPTER": 3,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "histone": {
         "DEFINITION": "A small protein with a high proportion of positively charged amino acids that binds to the negatively charged DNA and plays a key role in chromatin structure",
@@ -2460,22 +2460,22 @@ const cndata = {
         "SEM": 1
     },
     "homozygote": {
-        "DEFINITION": "An organism that has a pair of identical alleles for a gene (encoding a character)",
-        "CHAPTER": 4,
+        "DEFINITION": "An organism that has a pair of identical alleles for a gene (encoding a \ncharacter).",
+        "CHAPTER": 3,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "homozygous": {
-        "DEFINITION": "Having two identical alleles for a given gene",
-        "CHAPTER": 4,
+        "DEFINITION": "Having two identical alleles for a given gene.",
+        "CHAPTER": 3,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "hybrid": {
         "DEFINITION": "Offspring that results from the mating of individuals from two different species or from two true-breeding varieties of the same species",
-        "CHAPTER": 7,
+        "CHAPTER": 3,
         "SUBJECT": "biology",
-        "SEM": 1
+        "SEM": 2
     },
     "hydrophilic": {
         "DEFINITION": "Having an affinity for water",
@@ -5226,10 +5226,10 @@ const cndata = {
         "SEM": "easy"
     },
     "magnetic field": {
-        "DEFINITION": "Region around a magnet where the force of magnetism acts.",
-        "CHAPTER": "SPM",
+        "DEFINITION": "A region in which a magnetic force is experienced when a charged particle entering the region.",
+        "CHAPTER": 4,
         "SUBJECT": "physics",
-        "SEM": "easy"
+        "SEM": 2
     },
     "electromagnetism": {
         "DEFINITION": "Interaction between electricity and magnetism.",
@@ -6875,11 +6875,731 @@ const cndata = {
         "SUBJECT": "biology",
         "SEM": 2
     },
-    "": {
-        "DEFINITION": "",
-        "CHAPTER": "",
-        "SUBJECT": "",
-        "SEM": ""
+    "diastole": {
+        "DEFINITION": "The stage of the cardiac cycle in which a heart chamber is relaxed and fills with blood.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "diastolic pressure": {
+        "DEFINITION": "Blood pressure in the arteries when the ventricles are relaxed.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "differentiation": {
+        "DEFINITION": "The process by which a cell or group of cells becomes specialized in structure and function.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "directional selection": {
+        "DEFINITION": "Natural selection in which individuals at one end of the phenotypic range survive or reproduce more successfully than do other individuals.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "disruptive selection": {
+        "DEFINITION": "Natural selection in which individuals on both extremes of a phenotypic range survive or reproduce more successfully than do individuals with intermediate phenotypes.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "distal tubule": {
+        "DEFINITION": "In the vertebrate kidney, the portion of a nephron that helps refine filtrate and empties it into a collecting duct.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "double circulation": {
+        "DEFINITION": "A circulatory system consisting of separate pulmonary and systemic \ncircuits, in which blood passes through the heart after completing each circuit.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "ecological niche": {
+        "DEFINITION": "The sum of a species’ use of the biotic and abiotic resources in its \nenvironment.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "ecological species concept": {
+        "DEFINITION": "Definition of a species in terms of ecological niche, the sum of how members of the species interact with the nonliving and living parts of their environment.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "ecological succession": {
+        "DEFINITION": "Transition in the species composition of a community following a disturbance; establishment of a community in an area virtually barren of life.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "ecology": {
+        "DEFINITION": "The study of how organisms interact with each other and their environment.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "ecosystem": {
+        "DEFINITION": "All the organisms in a given area as well as the abiotic factors with which they interact; one or more communities and the physical environment around them.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "ecosystem ecology": {
+        "DEFINITION": "The study of energy flow and the cycling of chemicals among the various \nbiotic and abiotic components in an ecosystem.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "effective populatiom size": {
+        "DEFINITION": "An estimate of the size of a population based on the numbers of females and males that successfully breed; generally smaller than the total population.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "effector": {
+        "DEFINITION": "A pathogen-encoded protein that cripples the host’s innate immune system.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "effector cell": {
+        "DEFINITION": "(1) A muscle cell or gland cell that carries out the body’s response to stimuli as directed by signals from the brain or other processing center of the nervous system.\\n(2) A lymphocyte that has undergone clonal selection and is capable of mediating an adaptive immune response.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "electrocardiogram": {
+        "DEFINITION": "A record of the electrical impulses that travel through heart muscle during the cardiac cycle.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "ECG": {
+        "DEFINITION": "A record of the electrical impulses that travel through heart muscle during the cardiac cycle.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "EKG": {
+        "DEFINITION": "A record of the electrical impulses that travel through heart muscle during the cardiac cycle.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "electron": {
+        "DEFINITION": "A subatomic particle with a single negative electrical charge and a mass about 1/2,000 that of a neutron or proton. One or more electrons move around the nucleus of an atom.",
+        "CHAPTER": 5,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "electron transport chain": {
+        "DEFINITION": "A sequence of electron carrier molecules (membrane proteins) that shuttle electrons down a series of redox reactions that release energy used to make ATP.",
+        "CHAPTER": 5,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "emigration": {
+        "DEFINITION": "The movement of individuals out of a population.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "endergonic reaction": {
+        "DEFINITION": "A non-spontaneous chemical reaction in which free energy is absorbed from the surroundings.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "endocrine gland": {
+        "DEFINITION": "A ductless gland that secretes hormones directly into the interstitialfluid, from which they diffuse into the bloodstream.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "endocrine system": {
+        "DEFINITION": "In animals, the internal system of communication involving hormones,the ductless glands that secrete hormones, and the molecular receptors on \nor in target cells that respond to hormones; functions in concert with the nervous system to effect internal regulation and maintain homeostasis.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "endothelium": {
+        "DEFINITION": "The simple squamous layer of cells lining the lumen of blood vessels.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "energy coupling": {
+        "DEFINITION": "In cellular metabolism, the use of energy released from an exergonic reaction to drive an endergonic reaction.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "entropy": {
+        "DEFINITION": "A measure of molecular disorder, or randomness.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "enzyme": {
+        "DEFINITION": "A macromolecule serving as a catalyst, a chemical agent that increases the rate of a reaction without being consumed by the reaction. Most enzymes are proteins.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "enzyme-substrate complex": {
+        "DEFINITION": "A temporary complex formed when an enzyme binds to its substrate molecule(s).",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "eosinophil": {
+        "DEFINITION": "Immune system cell that secretes destructive enzymes and helps defend against \nmulticellular pathogens.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "epinephrine": {
+        "DEFINITION": "A catecholamine that, when secreted as a hormone by the adrenal medulla, mediates “fight-or-flight” responses to short-term stresses; also released by some neurons as a neurotransmitter; also called adrenaline.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "epitope": {
+        "DEFINITION": "A small, accessible region of an antigen to which an antigen receptor or antibody binds.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "evaporative cooling": {
+        "DEFINITION": "The process in which the surface of an object becomes cooler during evaporation, a result of the molecules with the greatest kinetic energy changing from the liquid to the gaseous state.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "evolution": {
+        "DEFINITION": "Descent with modification; the process by which species accumulate differences from their ancestors as they adapt to different environments over time; also defined as a change in the genetic composition of a population from generation to generation.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "excitatory postsynaptic potential": {
+        "DEFINITION": "An electrical change (depolarization) in the membrane of a postsynaptic cell caused by the binding of an excitatory neurotransmitter from a presynaptic cell to a postsynaptic receptor; makes it more likely for a postsynaptic cell to generate an action potential.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "EPSP": {
+        "DEFINITION": "An electrical change (depolarization) in the membrane of a postsynaptic cell caused by the binding of an excitatory neurotransmitter from a presynaptic cell to a postsynaptic receptor; makes it more likely for a postsynaptic cell to generate an action potential.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "excretion": {
+        "DEFINITION": "The disposal of nitrogen-containing metabolites and other waste products.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "exergonic reaction": {
+        "DEFINITION": "A spontaneous chemical reaction in which there is a net release of free energy.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "exponential population growth": {
+        "DEFINITION": "Growth of a population in an ideal, unlimited environment, represented by a J-shaped curve when population size is plotted over time.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "feedback inhibition": {
+        "DEFINITION": "A method of metabolic control in which the end product of a metabolic pathway acts as an inhibitor of an enzyme within that pathway.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "feedback regulation": {
+        "DEFINITION": "The regulation of a process by its output or end product.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "fermentation": {
+        "DEFINITION": "A catabolic process that makes a limited amount of ATP from glucose (or other organic molecules) without an electron transport chain and that produces a characteristic end product, such as ethyl alcohol or lactic acid.",
+        "CHAPTER": 5,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "filtrate": {
+        "DEFINITION": "Cell-free fluid extracted from the body fluid by the excretory system.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "filtration": {
+        "DEFINITION": "In excretory systems, the extraction of water and small solutes, including metabolic wastes, from the body fluid.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "florigen": {
+        "DEFINITION": "A flowering signal, probably a protein, that is made in leaves under certain conditions and that travels to the shoot apical meristems,inducing them to switch from vegetative to reproductive growth.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "food chain": {
+        "DEFINITION": "The pathway along which food energy is transferred from trophic level to trophic level, beginning with producers.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "food web": {
+        "DEFINITION": "The interconnected feeding relationships in an ecosystem.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "fossil": {
+        "DEFINITION": "A preserved remnant or impression of an organism that lived in the past.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "founder effect": {
+        "DEFINITION": "Genetic drift that occurs when a few individuals become isolated from a larger population and form a new population whose gene pool composition is not reflective of that of the original population.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "free energy": {
+        "DEFINITION": "The portion of a biological system’s energy that can perform work when temperature and pressure are uniform throughout \nthe system. The change in free energy of a system (∆G) is calculated by the equation ∆G = ∆H - T∆S, where ∆H is the change in enthalpy (in biological systems, equivalent to total energy), ∆T is the absolute temperature, and ∆S is the change in entropy.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "ganglion": {
+        "DEFINITION": "A cluster (functional group) of nerve cell bodies.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "ganglia ": {
+        "DEFINITION": "A cluster (functional group) of nerve cell bodies.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "gas exchange": {
+        "DEFINITION": "The uptake of molecular oxygen from the environment and the discharge of carbon dioxide to the environment.",
+        "CHAPTER": 7,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "gated channel": {
+        "DEFINITION": "A transmembrane protein channel that opens or closes in response to a particular stimulus.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "gated ion channel": {
+        "DEFINITION": "A gated channel for a specific ion. The opening or closing of such channels may alter a cell’s membrane potential.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "gene flow": {
+        "DEFINITION": "A gated channel for a specific ion. The opening or closing of such channels may alter a cell’s membrane potential.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "genetic drift": {
+        "DEFINITION": "A process in which chance events cause unpredictable fluctuations in allele frequencies from one generation to the next. Effects of genetic drift are most pronounced in small populations.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "glia": {
+        "DEFINITION": "Cells of the nervous system that support, regulate, and augment the functions of neurons.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "glial cells": {
+        "DEFINITION": "Cells of the nervous system that support, regulate, and augment the functions of neurons.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "glomerulus": {
+        "DEFINITION": "A ball of capillaries surrounded by Bowman’s capsule in the nephron and serving as the site of filtration in the vertebrate kidney",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "glucagon": {
+        "DEFINITION": "A hormone secreted by the pancreas that raises blood glucose levels. \nIt promotes glycogen breakdown and release of glucose by the liver.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "glyceraldehyde 3-phosphate": {
+        "DEFINITION": "A three-carbon carbohydrate that is the direct product of the Calvin cycle; it is also an intermediate in glycolysis.",
+        "CHAPTER": 5,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "G3P": {
+        "DEFINITION": "A three-carbon carbohydrate that is the direct product of the Calvin cycle; it is also an intermediate in glycolysis.",
+        "CHAPTER": 5,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "glycolysis": {
+        "DEFINITION": "A series of reactions that ultimately splits glucose into pyruvate. \nGlycolysis occurs in almost all living cells, serving as the starting point for fermentation or cellular respiration.",
+        "CHAPTER": 5,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "G protein": {
+        "DEFINITION": "A GTP-binding protein that relays signals from a plasma membrane signal receptor, known as a G protein-coupled receptor, to other signal transduction proteins inside the cell.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "G protein-coupled receptor": {
+        "DEFINITION": "A signal receptor protein in the plasma membrane that responds to the binding of a signaling molecule by activating a G protein. Also called a G \nprotein-linked receptor.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "GPCR": {
+        "DEFINITION": "A signal receptor protein in the plasma membrane that responds to the binding of a signaling molecule by activating a G protein. Also called a G \nprotein-linked receptor.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "graded potential": {
+        "DEFINITION": "An electrical response of a cell to a stimulus, consisting of a change in voltage across the membrane proportional to the stimulus strength.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "gray matter": {
+        "DEFINITION": "Regions of clustered neuron cell bodies within the CNS.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "greenhouse effect": {
+        "DEFINITION": "The warming of Earth due to the atmospheric accumulation of carbon \ndioxide and certain other gases, which absorb reflected infrared radiation and reradiate some of it back toward Earth.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "gross primary production": {
+        "DEFINITION": "The total primary production of an ecosystem",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "GPP": {
+        "DEFINITION": "The total primary production of an ecosystem",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "guard cells": {
+        "DEFINITION": "The two cells that flank the stomatal pore and regulate the opening and closing of the pore.",
+        "CHAPTER": 7,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "guttation": {
+        "DEFINITION": "The exudation of water droplets from leaves, caused by root pressure in certain plants.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "heart": {
+        "DEFINITION": "A muscular pump that uses metabolic energy to elevate the hydrostatic pressure of the circulatory fluid (blood or hemolymph). The fluid then flows down a pressure gradient through the body and eventually returns to the heart.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "heart attack": {
+        "DEFINITION": "The damage or death of cardiac muscle tissue resulting from prolonged blockage of one or more coronary arteries.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "heart murmur": {
+        "DEFINITION": "A hissing sound that most often results from blood squirting backward \nthrough a leaky valve in the heart.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "heart rate": {
+        "DEFINITION": "The frequency of heart contraction (in beats per minute).",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "heavy chain": {
+        "DEFINITION": "One of the two types of polypeptide chains that make up an antibody molecule and B cell receptor; consists of a variable region, which contributes to the antigen-binding site, and a constant region.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "helper T cell": {
+        "DEFINITION": "A type of T cell that, when activated, secretes cytokines that promote the response of B cells (humoral response) and cytotoxic T cells \n(cell-mediated response) to antigens.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "hemoglobin": {
+        "DEFINITION": "An iron containing protein in red blood cells that reversibly binds oxygen.",
+        "CHAPTER": 7,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "hemolymph": {
+        "DEFINITION": "In invertebrates with an open circulatory system, the body fluid that bathes tissues.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "herbivore": {
+        "DEFINITION": "An animal that mainly eats plants or algae",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "heterotroph": {
+        "DEFINITION": "An organism that obtains organic food molecules by eating other organisms or substances derived from them.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "heterozygote advantage": {
+        "DEFINITION": "Greater reproductive success of heterozygous individuals compared \nwith homozygotes; tends to preserve variation in a gene pool.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "HIV": {
+        "DEFINITION": "The infectious agent that causes AIDS. HIV is a retrovirus.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "human immunodeficiency virus": {
+        "DEFINITION": "The infectious agent that causes AIDS. HIV is a retrovirus.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "homeostasis": {
+        "DEFINITION": " The steady state physiological condition of the body.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "host": {
+        "DEFINITION": "The larger participant in a symbiotic relationship, often providing a home and food source for the smaller symbiont.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "humoral immune response": {
+        "DEFINITION": "The branch of adaptive immunity that involves the activation of B cells and that leads to the production of antibodies, which defend against bacteria and viruses in body fluids.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "hyperpolarization": {
+        "DEFINITION": "A change in a cell’s membrane potential such that the inside of the membrane becomes more negative relative to the outside.Hyperpolarization reduces the chance that a neuron will transmit a nerve impulse.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "hypothalamus": {
+        "DEFINITION": "The ventral part of the vertebrate forebrain; functions in maintaining homeostasis, especially in coordinating the endocrine and nervous systems; secretes hormones of the posterior pituitary and releasing factors that regulate the anterior pituitary.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "immigration": {
+        "DEFINITION": "The influx of new individuals into a population from other areas.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "immune system": {
+        "DEFINITION": "An organism’s system of defenses against agents that cause disease.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "immunization": {
+        "DEFINITION": "The process of generating a state of immunity by artificial means. In vaccination, an inactive or weakened form of a pathogen is administered, inducing B and T cell responses and immunological memory. In passive immunization, antibodies specific for a particular pathogen are administered, conferring immediate but temporary protection.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "immunoglobulin": {
+        "DEFINITION": "A protein secreted by plasma cells (differentiated B cells) that binds to a particular antigen; also called immunoglobulin. All antibodies have the same Y-shaped structure and in their monomer form consist of two identical heavy chains and two identical light chains.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "Ig": {
+        "DEFINITION": "A protein secreted by plasma cells (differentiated B cells) that binds to a particular antigen; also called immunoglobulin. All antibodies have the same Y-shaped structure and in their monomer form consist of two identical heavy chains and two identical light chains.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "induced fit": {
+        "DEFINITION": "Caused by entry of the substrate, the change in shape of the active site of an enzyme so that it binds more snugly to the substrate.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "inflammatory response": {
+        "DEFINITION": "An innate immune defense triggered by physical injury or infection of tissue involving the release of substances that promote swelling, enhance the infiltration of white blood cells, and aid in tissue repair and destruction of invading pathogens.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "inhibitory postsynaptic potential": {
+        "DEFINITION": "An electrical change (usually hyperpolarization) in the membrane of a postsynaptic neuron caused by the binding of an inhibi\u0002tory neurotransmitter from a presynaptic cell to a postsynaptic receptor; makes it more difficult for a postsynaptic neuron to generate an action potential.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "IPSP": {
+        "DEFINITION": "An electrical change (usually hyperpolarization) in the membrane of a postsynaptic neuron caused by the binding of an inhibi\u0002tory neurotransmitter from a presynaptic cell to a postsynaptic receptor; makes it more difficult for a postsynaptic neuron to generate an action potential.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "innate immunity": {
+        "DEFINITION": "A form of defense common to all animals that is active immediately \nupon exposure to a pathogen and that is the same whether or not the pathogen has been encountered previously.",
+        "CHAPTER": 11,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "insulin": {
+        "DEFINITION": "A form of defense common to all animals that is active immediately \nupon exposure to a pathogen and that is the same whether or not the pathogen has been encountered previously.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "interneuron": {
+        "DEFINITION": "An association neuron; a nerve cell within the central nervous system that forms synapses with sensory and/or motor neurons and integrates sensory input and motor output.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "intersexual selection": {
+        "DEFINITION": "A form of natural selection in which individuals of one sex (usually \nthe females) are choosy in selecting their mates from the other sex; also called mate choice.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "interspecific interaction": {
+        "DEFINITION": "A relationship between individuals of two or more species in a community.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "interstitial fluid": {
+        "DEFINITION": "The fluid filling the spaces \nbetween cells in most animals.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "intrasexual selection": {
+        "DEFINITION": "A form of natural selection in which there is direct competition \namong individuals of one sex for mates of the opposite sex.",
+        "CHAPTER": 3,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "introduced species": {
+        "DEFINITION": "A species moved by humans, either intentionally or accidentally, from its native location to a new geographic region; sometimes called a non-native species, exotic species, or invasive species.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "joule(J)": {
+        "DEFINITION": "A unit of energy: 1 J = 0.239 cal; \n1 cal = 4.184 J.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "juxtaglomerular apparatus": {
+        "DEFINITION": "A specialized tissue in nephrons that releases the enzyme renin in \nresponse to a drop in blood pressure or volume",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "JGA": {
+        "DEFINITION": "A specialized tissue in nephrons that releases the enzyme renin in \nresponse to a drop in blood pressure or volume",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "juxtamedullary nephron": {
+        "DEFINITION": "In mammals and birds, a nephron with a loop of Henle that extends far into the renal medulla.",
+        "CHAPTER": 10,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "keystone species": {
+        "DEFINITION": "A species that is not necessarily abundant in a community yet exerts strong control on community structure by the nature of its ecological role or niche.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "kidney": {
+        "DEFINITION": "In vertebrates, one of a pair of excretory organs where blood filtrate is formed and processed into urine.",
+        "CHAPTER": 9,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "kilocalorie (kcal)": {
+        "DEFINITION": "A thousand calories; the amount of heat energy required to raise the \ntemperature of 1 kg of water by 1°C.",
+        "CHAPTER": 4,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "kin selection": {
+        "DEFINITION": "Natural selection that favors altruistic behavior by enhancing the reproductive success of relatives.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "K-selection": {
+        "DEFINITION": "Selection for life history traits that are sensitive to population density.",
+        "CHAPTER": 2,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "lacteal": {
+        "DEFINITION": "A tiny lymph vessel extending into the core of an intestinal villus and \nserving as the destination for absorbed chylomicrons.",
+        "CHAPTER": 8,
+        "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "lactic acid fermentation": {
+        "DEFINITION": "Glycolysis followed by the reduction of pyruvate to lactate, regenerating NAD+ with no release of carbon dioxide.",
+        "CHAPTER": 5,
+        "SUBJECT": "biology",
+        "SEM": 2
     },
     "lenticel": {
         "DEFINITION": "A small raised area in the bark of stems and roots that enables gas exchange between living cells and the outside air",
@@ -8937,6 +9657,1080 @@ const cndata = {
         "DEFINITION": "In zygomycete fungi, a sturdy multinucleate structure in which karyogamy and meiosis occur",
         "CHAPTER": 1,
         "SUBJECT": "biology",
+        "SEM": 2
+    },
+    "computer": {
+        "DEFINITION": "An electronic device (machine) that performs four basic operations : input, processing, output and storage",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "computer system": {
+        "DEFINITION": "A complete, working computer that includes software and hardware which are necessary to make the computer function",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "input": {
+        "DEFINITION": "Any data and instructions entered into the memory of a computer",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "process": {
+        "DEFINITION": "Performing operation on the data",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "output": {
+        "DEFINITION": "Presenting the results",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "storage": {
+        "DEFINITION": "Saving data, programs, or output for future use",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "data": {
+        "DEFINITION": "A collection of unprocessed items, which can include number, character and symbol, images, audio, video and instructions.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "information": {
+        "DEFINITION": "Processed data that conveys meaning and is useful to people.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "bit ": {
+        "DEFINITION": "A bit is the smallest unit of data the computer can process and comprises of binary digits of and 0 which represents an electrical state (on or off)",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "binary digit": {
+        "DEFINITION": "A bit is the smallest unit of data the computer can process and comprises of binary digits of and 0 which represents an electrical state (on or off)",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "byte": {
+        "DEFINITION": "A group of 8 bits used to represent a character such as a digit, a letter",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "data representation": {
+        "DEFINITION": "The form, in which data is stored, processed and transmitted.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "decimal number system": {
+        "DEFINITION": "The number system that consists of 0,1,2,3,4,5,6,7,8,9",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "binary number system": {
+        "DEFINITION": "The number system that consists of 1 and 0 only.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "hexadecimal number system": {
+        "DEFINITION": "The number system that uses the values 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "information coding scheme": {
+        "DEFINITION": "Information Coding Scheme is a coding system consists of bit patterns of 0s and 1s used to represent character set.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "ASCII": {
+        "DEFINITION": "Most widely used character code used in minicomputers, personal computers and server computers that make information available over the internet.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "EBCDIC": {
+        "DEFINITION": "A character code used by IBM mainframe computers and some midrange systems.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "unicode": {
+        "DEFINITION": "Uses 16 bits and represents 65,536 different characters and can symbolize the entire world’s written language.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "NOT gate": {
+        "DEFINITION": "Produces an output that is inverse of its input.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "AND gare": {
+        "DEFINITION": "Produces a TRUE output, if and only if both A and B are TRUE.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "OR gate": {
+        "DEFINITION": "Produces a TRUE output if either A or B (or both) are TRUE.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "NAND gate": {
+        "DEFINITION": "Produces a TRUE output if any of the inputs are FALSE",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "NOR gate": {
+        "DEFINITION": "Produces FALSE output if any of the inputs are TRUE.",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "XOR gate": {
+        "DEFINITION": "Produces TRUE output if there are opposite inputs",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "XNOR gate": {
+        "DEFINITION": "Produces FALSE output if there are opposite inputs",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "network": {
+        "DEFINITION": "A network is a collection of computers and devices connected together via communication devices and transmission media to share resources such as hardware, software, data and information.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "communication devices": {
+        "DEFINITION": "Any type of hardware capable of transmitting data, instructions and information between a sending device and a receiving device.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "digital modem": {
+        "DEFINITION": "A communication device that sends and receives data and information to and from a digital line.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "broadband modem": {
+        "DEFINITION": "A communication device that sends and receives data and information to and from a digital line.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "wireless modem": {
+        "DEFINITION": "A communication device that uses the mobile service providers network to connect to the Internet wirelessly from a computer or other mobile device.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "USB modem": {
+        "DEFINITION": "A communication device that uses the mobile service providers network to connect to the Internet wirelessly from a computer or other mobile device.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "wireless access point": {
+        "DEFINITION": "A central communications device that allows computers and devices to transfer data",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "switch": {
+        "DEFINITION": "A communication device that provides a central point for cables in a network.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "hub": {
+        "DEFINITION": "A communication device that provides a central point for cables in a network.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "router": {
+        "DEFINITION": "A communication device that connects multiple computers as other routers together on a network.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "network card": {
+        "DEFINITION": "Enables a computer or device to access a network",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "transmission media": {
+        "DEFINITION": "Materials or substances capable of carrying one or more signals in a communication channel",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "twisted pair cable": {
+        "DEFINITION": "Consists of one or more twisted wires bundled together. Used for network cabling and landline phone systems",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "coaxial cable": {
+        "DEFINITION": "Consists of single copper wire surrounded by 3 layers. CATV network wiring often uses this cable because can be over long distance.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "fiber optic cable": {
+        "DEFINITION": "Used for high speed communication.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "infrared": {
+        "DEFINITION": "Is a wireless transmission medium that sends signals using light waves.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "broadcast radio": {
+        "DEFINITION": "Is a wireless transmission medium that distributes radio signals through the air over.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "cellular radio": {
+        "DEFINITION": "Is a form of broadcast radio that is used widely for mobile communication specifically wireless modem and modem phones.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "microwave": {
+        "DEFINITION": "Radio waves that provide a high-speed signal transmission over long distance.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "communication satellite": {
+        "DEFINITION": "A communications satellite is a space station that receives microwave signals from an earth based station and broadcasts the signals back over a wide area to any number of earth-based station",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "network architecture": {
+        "DEFINITION": "The configuration of computers, devices and media in a network.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "client": {
+        "DEFINITION": "Computer on a network that requests resources from the server.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "server": {
+        "DEFINITION": "Powerful computers that provide “services” to the client computers on the network.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "client-server network": {
+        "DEFINITION": "Network in which one or more computers act as a server, and the other computers (clients) on the network request services from the server",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "peer-to-peer network": {
+        "DEFINITION": "Network in which all of the computers has equal responsibilities and capabilities, sharing hardware (such as printer), data or information with other computer.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "P2P network": {
+        "DEFINITION": "Network in which all of the computers has equal responsibilities and capabilities, sharing hardware (such as printer), data or information with other computer.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "local area network": {
+        "DEFINITION": "A network that connects computers and devices in a limited geographical area (within the same building) such as a home, school computer lab and office building.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "LAN": {
+        "DEFINITION": "A network that connects computers and devices in a limited geographical area (within the same building) such as a home, school computer lab and office building.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "wide area network": {
+        "DEFINITION": "A wide area network (WAN) is a network that covers a large geographical area located within a countryside or worldwide networks such as a city, country, or the world.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "WAN": {
+        "DEFINITION": "A wide area network (WAN) is a network that covers a large geographical area located within a countryside or worldwide networks such as a city, country, or the world.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "internet ": {
+        "DEFINITION": "A worldwide collection of network that links millions of businesses government agencies, educational institutions, and individuals.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "intraner": {
+        "DEFINITION": "A private network that uses Internet technologies belongs to an enterprise and is accessible only by that enterprises employees or authorized users.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "extranet": {
+        "DEFINITION": "A private network that connects more than one organizations that use Internet technologies to allow suppliers, customers and business partner limited access to their network",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "web page": {
+        "DEFINITION": "Each electronic document on the Web, which can contain text, graphics, animation, audio, and video.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "web site": {
+        "DEFINITION": "Is a collection of related web pages and associated items, such as documents and pictures, stored on a web server",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "web server": {
+        "DEFINITION": "A computer that delivers requested Web pages to your computer",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "web 2.0": {
+        "DEFINITION": "Web sites that provide a means for user to interact (social networking Web sites, wikis)",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "home page": {
+        "DEFINITION": "Refers to the first page that is displayed on a website and provides information about the website purpose and contents.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "broadband connection": {
+        "DEFINITION": "A high speed internet connection provided through DSL, FTTP, fixed wireless, Wifi, cellular radio network, cable Internet service and satellite Internet service",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "cable internet service": {
+        "DEFINITION": "Provides high-speed Internet access through the cable television network via a cable modem",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "digital subscriber line": {
+        "DEFINITION": "Provides high-speed Internet connections through the telephone network via a DSL modem.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "DSL": {
+        "DEFINITION": "Provides high-speed Internet connections through the telephone network via a DSL modem.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "fiber to the premises": {
+        "DEFINITION": "Provides high-speed Internet connections using fiber\u0002optic cable via a modem.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "FTTP": {
+        "DEFINITION": "Provides high-speed Internet connections using fiber\u0002optic cable via a modem.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "cellular radio network": {
+        "DEFINITION": "Provides high-speed Internet connections using radio signals to computers and devices with built in Wi-Fi capability or a communications device that enable Wi-Fi connectivity",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "mobile broadband": {
+        "DEFINITION": "Is a form of broadcast radio that is used widely for mobile connections specifically wireless modem and mobile phones",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "fixed wireless": {
+        "DEFINITION": "Provides a high-speed internet connection using a dish-shaped antenna on your house or business to communicate with a tower location via radio signals",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "satellite internet service": {
+        "DEFINITION": "Provides high-speed Internet connections via satellite to a satellite dish that communicates with a satellite modem.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "IP address": {
+        "DEFINITION": "Is a number that uniquely identifies each computer or device connected to the internet",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "IPv4": {
+        "DEFINITION": "IP address that consists of four groups of numbers each separated by a period. Uses 32 bit addresses",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "IPv6": {
+        "DEFINITION": "A new version of IP address consists of eight parts of hexadecimal separated by colons. Uses 128 bit addresses.",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "domain name": {
+        "DEFINITION": "The text version of IP addresses",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "domain name system": {
+        "DEFINITION": "The method the Internet users store domain names and their corresponding IP addresses",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "DNS": {
+        "DEFINITION": "The method the Internet users store domain names and their corresponding IP addresses",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "top level domain": {
+        "DEFINITION": "The last section of the domain name",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "computer ethics": {
+        "DEFINITION": "The moral guidelines that govern the use of computer and information system",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "information accuracy": {
+        "DEFINITION": "A measure of reliability of information held with an IT system",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "green computing": {
+        "DEFINITION": "Involves reducing the electricity and environmental waste while using a computer",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "codes fo conduct": {
+        "DEFINITION": "Written guideline that helps determine whether a specific computer action is ethical or unethical",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "information privacy": {
+        "DEFINITION": "Refers to the right of individuals and companies to deny or restrict the collection use of information about them.",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "software privacy": {
+        "DEFINITION": "The unauthorized and illegal duplication of copy righted software.",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "intellectual property right": {
+        "DEFINITION": "The right that protects unique and original works such as idea, inventions, art, writings, processes, company and product names and logos.",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "patent": {
+        "DEFINITION": "An exclusive right granted for an invention",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "copyright": {
+        "DEFINITION": "A legal term used to describe the rights that creators have over their literary and artisctic ",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "trademark": {
+        "DEFINITION": "A recognizable sign, logo, design or unique expression related to products or services",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "netiquette": {
+        "DEFINITION": "Is the code of acceptable behaviours users should follow while on the Internet",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "golden rule": {
+        "DEFINITION": "Treat others as you would like them to treat you.",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "computer security risk": {
+        "DEFINITION": "Any event or action that could cause a loss of or damage to computer hardware, software, data, information, or processing capability",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "system development": {
+        "DEFINITION": "A set of activities that involves Planning, Analysis, Design, Implementation, Maintenance used to build or modify an information system.",
+        "CHAPTER": 6,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "system development life cycle": {
+        "DEFINITION": "A conceptual model used in project management that described the stages involved in an information system development project, from planning through maintenance of the completed application.",
+        "CHAPTER": 6,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "system analyst": {
+        "DEFINITION": "Responsible for designing and developing an information system",
+        "CHAPTER": 6,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "steering committee": {
+        "DEFINITION": "The decision making body in organization",
+        "CHAPTER": 6,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "project team": {
+        "DEFINITION": "People who work on the project from beginning to end",
+        "CHAPTER": 6,
+        "SUBJECT": "compsc",
+        "SEM": 1
+    },
+    "coulomb’s law": {
+        "DEFINITION": "The magnitude of the electric force between two charges is directly proportional to the product of the charges and inversely proportional to the square of the distance between them.",
+        "CHAPTER": 1,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "electric field strength": {
+        "DEFINITION": "Electric force per unit test charge",
+        "CHAPTER": 1,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "electric potential": {
+        "DEFINITION": "Electric potential energy per unit charge",
+        "CHAPTER": 1,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "equipotential surface": {
+        "DEFINITION": "Surface on which the electric potential V is the same at every point",
+        "CHAPTER": 1,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "capacitance": {
+        "DEFINITION": "The ratio of charge to potential difference",
+        "CHAPTER": 2,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "time constant": {
+        "DEFINITION": "Time taken for the current in the RC circuit has decreased to 1/e or 37% of its initial value",
+        "CHAPTER": 2,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "dielectric": {
+        "DEFINITION": "A non conducting material placed between the plates of a capacitor",
+        "CHAPTER": 2,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "electric current": {
+        "DEFINITION": "The net charge flowing through the cross sectional area A per unit time",
+        "CHAPTER": 3,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "ohm's law": {
+        "DEFINITION": "The voltage is directly proportional to the current since the temperature is constant",
+        "CHAPTER": 3,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "resistivity": {
+        "DEFINITION": "Resistance of a cross sectional area A of a wire per unit length",
+        "CHAPTER": 3,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "electromotive force": {
+        "DEFINITION": "Potential difference of a source such as battery, generator etc when it is not connected to a circuit.",
+        "CHAPTER": 3,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "e.m.f": {
+        "DEFINITION": "Potential difference of a source such as battery, generator etc when it is not connected to a circuit.",
+        "CHAPTER": 3,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "kirchoff's current law": {
+        "DEFINITION": "In a closed loop, sum of all current is equal to zero",
+        "CHAPTER": 3,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "kirchoff's voltage law": {
+        "DEFINITION": "In a closed loop, sum of all potential differences is equal to zero",
+        "CHAPTER": 3,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "magnetic flux": {
+        "DEFINITION": "The dot product between magnetic field B and the element of area, A",
+        "CHAPTER": 5,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "electromagnetic induction": {
+        "DEFINITION": "Electromagnetic induction is the production of an electromotive force across an electrical conductor in a changing magnetic field",
+        "CHAPTER": 5,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "faraday's law": {
+        "DEFINITION": "An induced emf is directly proportional to the rate of change of magnetic flux",
+        "CHAPTER": 5,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "lenz's law": {
+        "DEFINITION": "An induced electric current flows in a direction such to oppose the change that caused it.",
+        "CHAPTER": 5,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "self induction": {
+        "DEFINITION": "The production of e emf in a circuit due to the change of current in the circuit itself",
+        "CHAPTER": 5,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "self inductance": {
+        "DEFINITION": "The ratio of the self induced (back) emf to the rate of change of current in the coil",
+        "CHAPTER": 5,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "mutual induction": {
+        "DEFINITION": "emf induced in a circuit by a changing current in another nearby circuit.",
+        "CHAPTER": 5,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "mutual inductance": {
+        "DEFINITION": "Mutual Inductance between the two coils is defined as the property of the coil due to which it opposes the change of current in the other coil",
+        "CHAPTER": 5,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "alternating current": {
+        "DEFINITION": "An electric current where its magnitude and direction change periodically.",
+        "CHAPTER": 6,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "root mean square": {
+        "DEFINITION": "The root mean square current/voltage is the numerical value of a direct current which produces power at the same rate as an alternating current in a given resistor.",
+        "CHAPTER": 6,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "phasor diagram": {
+        "DEFINITION": "Phasor is defined as a vector that rotate anticlockwise about its axis with constant angular velocity",
+        "CHAPTER": 6,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "capacitive reactance": {
+        "DEFINITION": "The opposition of a capacitor to the flow of current",
+        "CHAPTER": 6,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "inductive reactance": {
+        "DEFINITION": "The opposition of an inductor to the flow of current",
+        "CHAPTER": 6,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "impedance": {
+        "DEFINITION": "The quantity that measures the opposition of a circuit to the AC flows",
+        "CHAPTER": 6,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "huygen's principle": {
+        "DEFINITION": "Every point on a wave front can be considered as a source of secondary wavelets that spread out in the forward direction at the speed of the wave. The new wave front is the envelope of all the secondary wavelets - i.e. the tangent to all of them",
+        "CHAPTER": 7,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "coherence": {
+        "DEFINITION": "Two wave sources are perfectly coherent if they have a constant phase difference and the same frequency, and the same waveform",
+        "CHAPTER": 7,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "diffraction": {
+        "DEFINITION": "The bending of light waves as they travel around obstacles or pass through an aperture or slit comparable to the wavelength of the light waves",
+        "CHAPTER": 7,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "wave particle duality": {
+        "DEFINITION": "Wave-particle duality is a phenomenon where under certain circumstances a particle exhibits wave properties and under other conditions a wave exhibits properties of a particle",
+        "CHAPTER": 8,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "mass defect": {
+        "DEFINITION": "Mass difference between constituent nucleons and mass of nucleus",
+        "CHAPTER": 9,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "binding energy": {
+        "DEFINITION": "Energy needed to separate completely all the constituent nucleons in a nucleus",
+        "CHAPTER": 9,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "radioactivity dacay": {
+        "DEFINITION": "Disintegration of unstable nucleus to a more stable daughter nuclide with the emission of alpha, beta particles and gamma ray",
+        "CHAPTER": 9,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "radioactive decay": {
+        "DEFINITION": "Disintegration of unstable nucleus to a more stable daughter nuclide with the emission of alpha, beta particles and gamma ray",
+        "CHAPTER": 9,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "decay law": {
+        "DEFINITION": "The rate of decay is proportional to the number of radioactive nuclei present (or not yet decayed), N",
+        "CHAPTER": 9,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "decay constant": {
+        "DEFINITION": "Decay constant, λ is the ratio of rate of decay to the number of radioactive atoms in sample",
+        "CHAPTER": 9,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "half life": {
+        "DEFINITION": "Time taken for a radioactive nucleus to decay to half of its initial number of nuclei.",
+        "CHAPTER": 9,
+        "SUBJECT": "physics",
+        "SEM": 2
+    },
+    "assembler": {
+        "DEFINITION": "Program that translates assembly langugage to machine language",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "interpreter": {
+        "DEFINITION": "Program that translates source code into machine langugae one line at a time",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "compiler": {
+        "DEFINITION": "Program that translates the entire source code of high-level language to machine language",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "logic": {
+        "DEFINITION": "logic programming is a paradigm that focuses on programs that are written as a set of logical statements and rules",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "classes": {
+        "DEFINITION": "Classes are templates that define the properties and behaviors of objects",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "object": {
+        "DEFINITION": "Objects are instances of classes. They encapsulate data and the methods that operate on that data",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "object-oriented programming": {
+        "DEFINITION": "Object-oriented programming is a way of writing computer programs that relies on the concept of classes and objects",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "procedural": {
+        "DEFINITION": "Procedural contain a series of computational steps that uses a linear or top down approach to design and structure the program",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "langugae translator": {
+        "DEFINITION": "A computer program that converts instructions (source program) written in one programming language to be translated to machine language (objectq program)",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "source program": {
+        "DEFINITION": "Program written in a high level programming language",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "object program": {
+        "DEFINITION": "Source program after it has been translated into machines language",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "programming paradigm": {
+        "DEFINITION": "A programming paradigm, is a way in which computer language looks at the problem to be solved",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "high level language": {
+        "DEFINITION": "A high-level language is a programming language that is machine independent which can run on different types of computers and operating systems",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "low level language": {
+        "DEFINITION": "A low-level language is a programming language that is machine dependent that runs on only one particular type of computer",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "programming language": {
+        "DEFINITION": "Set of words, abbreviations, and symbols that enables a programmer to communicate instructions to a computer",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "computer program": {
+        "DEFINITION": "Computer program is a series of instructions that directs computer to perform tasks",
+        "CHAPTER": 1,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "programming": {
+        "DEFINITION": "Programming is the process of translating the algorithm into syntax of a given programming language",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "coding": {
+        "DEFINITION": "Coding is the process of translating the algorithm into syntax of a given programming language",
+        "CHAPTER": 2,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "sequence": {
+        "DEFINITION": "Sequence structure directs the computer to process the program instructions one after another, in the order listed in the program",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "selection": {
+        "DEFINITION": "Selection structure indicates that a decision needs to be made, followed by an appropriate action derrived from that decision",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "repetition": {
+        "DEFINITION": "Repetition control structure causes a statement or group of statements to be executed repeeatedly",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "flow chart": {
+        "DEFINITION": "A set of standard shaped boxes that are connected by flow lines to represent an algorithm",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "pseudocode": {
+        "DEFINITION": "A written statement of an algorithm using a semiformal language with limited vocabulary",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "algorithm": {
+        "DEFINITION": "Algorithm is a step-by-step instruction that will transform the input into the output",
+        "CHAPTER": 3,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "method": {
+        "DEFINITION": "A method is a collection of statements that perform some specific tasks and return the result to the caller",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "operators": {
+        "DEFINITION": "Operators are symbols that perform operations on variables and values",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "assigment operator": {
+        "DEFINITION": "Assignment operator used to assign a new value to a varibale",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "logic errors": {
+        "DEFINITION": "Logic errors occur when a program does not perform the way it was intended to",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "runtime errors": {
+        "DEFINITION": "Runtime errors are errors that cause a program to terminate abnormally",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "syntax errors": {
+        "DEFINITION": "Syntax errors are erros athat are detected by the compiler",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "array": {
+        "DEFINITION": "An array stores a fixed-size sequential collection of elements of the same type. An array can hold multiple value of the same data type simultaneously. An array is a collection of elements where all the elements are of the same data type.",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "data type": {
+        "DEFINITION": "Type of element that an array hold like int, char, double",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "name": {
+        "DEFINITION": "A name given to the varibale used for array declaration",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "size": {
+        "DEFINITION": "The number of elements in an array",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "index": {
+        "DEFINITION": "Location of element in an array. Index starts with 0",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "void": {
+        "DEFINITION": "Methods that do not have a return data type. These methods do not use a return statement to return a value",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "returned-value": {
+        "DEFINITION": "Methods that have a return data type. These methods return a value of specific data type using the return statement",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "predefined methos": {
+        "DEFINITION": "Predefined methos are built-in methods in java and part of the compiler package",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "user-defiined method": {
+        "DEFINITION": "A method created by the user/programmer. These methods take-on names that user/programmer assign to them and perform tasks that user/programmer create.",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "formal parameters": {
+        "DEFINITION": "The indentifier used in a method to stand for the value that is passed into the method by a caller",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
+        "SEM": 2
+    },
+    "actual parameters": {
+        "DEFINITION": "The actual value that is passed into the method by a caller",
+        "CHAPTER": 4,
+        "SUBJECT": "compsc",
         "SEM": 2
     }
 }

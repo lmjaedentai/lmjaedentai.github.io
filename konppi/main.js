@@ -10,7 +10,7 @@ function getquery() {
     }
     document.getElementById("definition").innerHTML = `<img src='https://http.cat/images/102.jpg';>`;
     
-    if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
+    if (!/^[A-Za-z0-9\s\-'’.]*$/.test(query.trim())) { //is not alpha
         return document.getElementById("definition").innerHTML = `<img src='https://http.cat/images/406.jpg';>\nOnly alphabetic characters are currently supported.`
     }
     else {
@@ -151,6 +151,10 @@ function buttonclick() {
         "chemistry-theme": {
             "DEFINITION": `Chemistry is the branch of science that studies the composition, structure, properties, and reactions of matter.\n\nIt explores how different substances interact with each other and how these interactions can be used to create new materials or products.\nEssentially, chemistry helps us understand the "why" and "how" behind the changes that occur in our world.`,
             "SUBJECT": "Chemistry"
+        },
+        "compsc-theme": {
+            "DEFINITION": `Fundamental areas of computer science Computer science is the study of computation, information, and automation. Computer science spans theoretical disciplines to applied disciplines. Algorithms and data structures are central to computer science.`,
+            "SUBJECT": "Computer Science"
         },
     }
     

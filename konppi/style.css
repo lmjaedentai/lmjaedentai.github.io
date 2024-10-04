@@ -15,6 +15,8 @@ html{
     --chemistry-header2: #dffff2;
     --physics-header: #7b68ee; 
     --physics-header2: #eeeefc;
+    --compsc-header: #2d7090; 
+    --compsc-header2: #eaf1f5;
     font-size: 18px;
     scroll-behavior: smooth;
 }
@@ -32,6 +34,11 @@ html{
 .chemistry-theme {
     --text-header: var(--chemistry-header);
     --text-header2: var(--chemistry-header2);
+}
+
+.compsc-theme {
+    --text-header: var(--compsc-header);
+    --text-header2: var(--compsc-header2);
 }
 
 
@@ -113,11 +120,7 @@ header .imgcontainer{
     text-align: right;
 }
 
-header .imgcontainer .img{
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-}
+
 
 
 main{
@@ -273,6 +276,7 @@ main em{
     padding: 3px 10px;
     margin: 5px;
     border-radius: 7px;
+    line-height: 30px;
 }
 
 main em:hover{
@@ -503,6 +507,12 @@ nav button ion-icon{
     color: var(--text-primary);
 }
 
+.banner h1:nth-child(1){
+    color:var(--compsc-header);
+    background-color:var(--compsc-header2);
+    text-decoration: underline;
+}
+
 .banner h1:nth-child(4){
     color:var(--physics-header);
     background-color:var(--physics-header2);
@@ -522,16 +532,24 @@ nav button ion-icon{
 }
 
 .menu{
-    display: flex;
-    margin: 40px 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
-.menu .btn{
+.menubox{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.menubox .btn{
     font-size: 30px;
     width: 30%;
     height: 150px;
-    margin: 20px 10px;
-    /* overflow: hidden; */
+    margin: 10px;
 }
 
 .menu .btn p{
@@ -541,23 +559,50 @@ nav button ion-icon{
     font-weight: 600;
 }
 
-.menu .btn:nth-child(3){
+#menubtn3{
     background-color: var(--physics-header2);
     color: var(--physics-header);
     border: 3px solid var(--physics-header);
 }
 
-.menu .btn:nth-child(1){
+#menubtn1{
     background-color: var(--bio-header2);
     color: var(--bio-header);
     border: 3px solid var(--bio-header);
 }
 
-
-.menu .btn:nth-child(2){
+#menubtn2{
     background-color: var(--chemistry-header2);
     color: var(--chemistry-header);
     border: 3px solid var(--chemistry-header);
+}
+
+#menubtn4{
+    background-color: var(--compsc-header2);
+    color: var(--compsc-header);
+    border: 3px solid var(--compsc-header);
+}
+
+.arrow{
+    position: absolute;
+    left: 350px;
+    top: 1295px;
+    width: 70px;
+    rotate: 340deg;
+    opacity: 0.3;
+    z-index: 3;
+    /* background: cyan; */
+}
+
+.menu b{
+    position: absolute;
+    left: 330px;
+    top: 1370px;
+    width: 70px;
+    rotate: 10deg;
+    font-family: "poppins";
+    font-size: 15px;
+    color: var(--text-tertiary);
 }
 
 /* QQ about us */
@@ -661,5 +706,7 @@ nav button ion-icon{
         writing-mode: vertical-lr;
         text-orientation: mixed;
         height: 200px;
+        width:40%;
+        font-size: 40px;
     }
 }
