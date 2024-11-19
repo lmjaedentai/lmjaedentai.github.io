@@ -141,7 +141,7 @@ main{
     box-sizing: border-box; 
     height:min-content;
     padding: 0px 20px;
-    margin: 40px auto 200px;
+    margin: 40px auto 50px;
 }
 
 main h2{
@@ -220,6 +220,7 @@ main  li::marker {
 
 main .info{
     color: #0e8d94;
+    text-align: left;
 }
 
 main .error{
@@ -253,7 +254,7 @@ footer{
     position: relative;
     bottom: 0%;
     width: 100%;
-    background-color: var(--white-tertiary);
+    background-image: linear-gradient(62deg, #8ec5fc26 0%, #e0c3fc2e 100%);
 }
 
 footer .footerbox{
@@ -343,11 +344,17 @@ footer p{
     }
 
     header input{
-        font-size: 1.8rem;
+        font-size: 2rem;
+        padding: 1px;
+        min-height: 90%;
+    }
+
+    header input::placeholder{
+        font-size: 1.5rem;
     }
     
     main{
-        padding: 10px 7% 300px;
+        padding: 10px 7% 0px;
         /* max-width: 100%; */
         width: 100%;
     }
