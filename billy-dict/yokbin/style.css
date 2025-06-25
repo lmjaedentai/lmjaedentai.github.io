@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Noto+Sans:wght@400;700&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap');
+
+.theme-light {
+    --text-header: #f7cb50;
+    --text-header2: #f8d763;
+    --text-primary: #1a1700;
+    --text-secondary: rgba(26,23,0,0.75);
+    --text-tertiary: rgba(26,23,0,0.6);
+    --text-quaternary: rgba(26,23,0,0.38);
+    --white-primary: #fdfbf1;
+    --white-secondary: #fef9e3;
+    --white-tertiary: #fffbd6;
+    --box-color: #fef9e3;
+    --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.theme-dark {
+    --text-header: #506cf7;
+    --text-header2: #8294f9;
+    --text-primary: #d7d7e5;
+    --text-secondary: rgba(215, 215, 229,.75);
+    --text-tertiary: rgba(215, 215, 229,.6);
+    --text-quaternary: rgba(215, 215, 229, 0.279);
+    --white-primary: #232329;
+    --white-secondary: #373740; 
+    --white-tertiary: #2b2b33;
+    --box-color: #2b2b33;
+    --box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+html{
+    font-size: 18px;
+    --mainfont: "Domine";
+}
+
+body{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    width: 100%;
+    background: var(--white-primary);
+    overflow: overlay;
+    min-height: 100%;
+    transition: 0.5s;
+}
+
+header{
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    margin-bottom: 10px;
+    background: transparent;
+    z-index: 2;
+    justify-content: center;
+}
+
+header form{
+    width: 100%;
+    max-width: 65vh;
+    min-width: 40vh;
+    border-radius: 5px;
+    border: 0;
+    background: var(--box-color);
+    box-shadow: var(--box-shadow);
+    align-items: center;
+    display: flex;
+}
+
+header input{
+    font-family: josefin sans;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    width: 90%;
+    background: transparent;
+    border: none;
+}
+
+header ion-icon{
+    margin: 15px;
+    display: block;
+    color: var(--text-quaternary);
+    font-size: 1.2rem;
+}
+
+header .cancelbutton{
+    border-radius: 50%;
+    color: var(--text-tertiary);
+    background: var(--white-tertiary);
+    width: 24px;
+    height: 20px;
+    cursor: pointer;
+}
+
+header input:focus{
+    caret-color: var(--text-header);
+    outline:none;
+    appearance: none;
+}
+
+header input::placeholder{
+    font-size: 1rem;
+    color:var(--text-quaternary);
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+.mobilebutton{
+    z-index: 1;
+    position: sticky;
+    display: flex;
+    top: 10%;
+    left: 75%;
+    width: fit-content;
+    justify-content: right;
+    opacity: 90%;
+}
+
+.mobilebutton button{
+    border: 0 none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.mobilebutton ion-icon {
+    font-size: 34px;
+    padding: 5px;
+    color: var(--text-secondary);
+}
+
+main{
+    font-family: var(--mainfont);
+    color: var(--text-primary);
+    width: 80%;
+    max-width: 90vh;
+    min-width: 30vh;
+    box-sizing: border-box; 
+    height:min-content;
+    padding: 0px 20px;
+    margin: 40px auto 50px;
+    line-height: 2;
+}
+
+main h2{
+    margin-bottom: 10px;
+}
+
+main hr{
+    background-color: var(--white-secondary);
+    border: 0 none;
+    /* color: var(--white-secondary); */
+    height: 1px;
+}
+
+h1{
+    font-family: 'josefin sans';
+    text-transform: capitalize;
+    color: var(--text-header);
+    margin:0;
+}
+
+a{
+    font-family: var(--mainfont);
+    color: var(--text-header);
+}
+
+
+#phonetic{
+    position: relative;
+}
+
+main strong{
+    margin: 20px 0;
+    /* color: var(--text-secondary); */
+    text-transform: capitalize;
+}
+
+main p{
+    text-align: justify;
+    white-space: pre-line;
+    font-size: 1.1rem;
+    margin: 0px;
+}
+
+main span{
+    color: var(--text-tertiary);
+    padding: 0 2px;
+}
+
+main em{
+    font-style: normal;
+    color: var(--text-header2);
+    text-decoration: underline;
+}
+
+main blockquote{
+    color: var(--text-secondary);
+    text-align: left;
+    border-left: 3px solid var(--white-secondary);
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin: 0px 0px;
+    transition: 0.2s;
+}
+
+main blockquote:hover{
+    border-left: 3px solid var(--text-header);
+}
+
+main ol{
+    margin: 0;
+    padding: 0 0px;
+}
+
+main li{
+    list-style: decimal;
+}
+
+main  li::marker {
+    color: var(--text-quaternary);
+    font-size: 0.8rem;
+}
+
+main .info{
+    color: #0e8d94;
+    text-align: left;
+}
+
+main .error{
+    color: #fe3824;
+}
+
+::selection {
+    background: var(--text-header2);
+}
+
+main img{
+    margin: 0px auto;
+    width: 80%;
+    padding:20px;
+    border-radius: 10%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+td, th{
+    padding: 10px;
+    border-bottom: 1px solid var(--text-quaternary);
+}
+
+footer{
+    display: block;
+    position: relative;
+    bottom: 0%;
+    width: 100%;
+}
+
+footer .footerbox{
+    background-color: var(--white-tertiary);
+    display: flex;
+    padding: 40px 0px 120px 5%;
+}
+
+
+footer p{
+    margin: auto 10px;
+    color:var(--text-secondary);
+    font-family: josefin sans;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
+
+.contextmenu{ 
+    overflow:hidden;
+    display: none; 
+    cursor: pointer; 
+    position: absolute; 
+    width: 60px;
+    height: 30px;
+    background: var(--text-header);
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    color: #e4eaf1;
+    transition: 0.7s;
+} 
+
+.contextmenu p {
+    overflow:hidden;
+    font-family: josefin sans;
+    font-size: 15px;
+    margin:auto;
+}
+
+.contextmenu:hover{
+    width: 100px;
+}
+
+.contextmenu:active{
+    background-color: var(--text-header2);
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    margin-right: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(250, 24, 239, 0);  
+    border-radius: 20px;                        
+}
+
+
+
+
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    html{
+        font-size: 15px;
+    }
+
+    body{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    header{
+        height: 80px;
+    }
+
+
+    header form{
+        margin-bottom: 5px;
+        width:90%;
+        min-width: 0px;
+    }
+
+    header input{
+        font-size: 2rem;
+        padding: 1px;
+        min-height: 90%;
+    }
+
+    header input::placeholder{
+        font-size: 1.5rem;
+    }
+    
+    main{
+        padding: 10px 7% 0px;
+        /* max-width: 100%; */
+        width: 100%;
+    }
+    
+    .mobilebutton{
+        position: absolute;
+        top: 3%;
+        left: 65%;
+    }
+
+    .contextmenu{ 
+        width: 60px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
