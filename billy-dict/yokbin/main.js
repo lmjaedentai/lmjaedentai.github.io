@@ -28,11 +28,11 @@ async function searchquery(query, second = false) {
     }
     if (!Array.isArray(raw)) {
         if (raw.title && raw.message) {
-            return formatoutput({ en: `Error: \n\n${raw.title} - ${raw.message}` });
+            return formatoutput({ en: `❌ Error: \n\n${raw.title} - ${raw.message}\n\nTry check your spelling` });
         }
-        return formatoutput({ en: `Error: Unexpected error` });
+        return formatoutput({ en: `❌ Error: Unexpected error` });
     }
-    await chinesedef(query, raw, second);
+    await chinesedef(query,second);
     await englishdef(raw, query, second)
 
 }
@@ -42,7 +42,7 @@ async function englishdef(raw, search, second = false, third=false) {
 
     //QQ error handling
     if (!Array.isArray(raw) || raw.length === 0) {
-        return "Error: Invalid or empty data";
+        return "❌ Error: Invalid or empty data";
     }
     // console.log(raw)
     const entry = raw[0];
@@ -66,11 +66,11 @@ async function englishdef(raw, search, second = false, third=false) {
 
 
 //QQ bingqiling
-async function chinesedef(query, englishraw, second = false, third = false) {
+async function chinesedef(query, second = false, third = false) {
     const targetlist = ['noun', 'adverb', 'adjective', 'verb', '<strong>\n\nAd<strong>\n\nVerb</strong></strong>', 'preposition', 'conjunction', 'article', 'pronoun', 'pro<strong>\n\nNoun</strong>', 'exclamation','Abbreviation'];
     const replacelist = ['Noun', 'Adverb', 'Adjective', 'Verb', 'Adverb', 'Preposition', 'Conjunction', 'Articles', 'Pronouns', 'Pronouns', 'Exclamation','Abbreviation'];
     var chinese_output = ''
-
+    console.log(second)
     if (query in cndata) {
         chinese_output = cndata[query];
         //formatting
@@ -87,9 +87,19 @@ async function chinesedef(query, englishraw, second = false, third = false) {
         }
     }
     else { 
-        console.log("lollllllll");
-        chinese_output = await translatedef(query);
-        chinese_output = '<strong>Google translated</strong>\n' + chinese_output
+        if (second) {
+            console.log(second)
+            console.table(["second try",second]);
+            chinese_output = await translatedef(query);
+            chinese_output = '<strong>Google translated</strong>\n' + chinese_output
+            formatoutput({e:`<span class="info">Translation accuracy not guaranteed.</span>`});
+        }
+        else {
+            console.log("first no result");
+            query = lemmatize(query);
+            console.table([query])
+            return await chinesedef(query, true);
+        }
     }
     
     chinese_output = chinese_output.replaceAll(`；`, `<span>；</span>`);
@@ -104,6 +114,25 @@ async function translatedef(query) { //test: hetero
     trans = await response.json()
     return trans[0][0][0];
 }
+
+
+
+function lemmatize(input){
+    const doc = nlp(input.trim().toLowerCase());
+    let lemma = input; // default fallback
+
+    if (doc.verbs().found) {
+        lemma = doc.verbs().toInfinitive().out('text'); // e.g. "running" → "run"
+    } else if (doc.nouns().found) {
+        lemma = doc.nouns().toSingular().out('text'); // e.g. "mice" → "mouse"
+    } else if (doc.adjectives().found) {
+        lemma = doc.adjectives().conjugate()[0]?.root || input; // e.g. "bigger" → "big"
+    }
+
+    return lemma
+}
+
+
 
 function formatoutput({ en = '', cn = '', q = '', second = false, e = ''}) {
     if (second || e != '') { //e can be info below title or seconndary query
