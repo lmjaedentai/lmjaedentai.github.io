@@ -146,6 +146,44 @@ function formatoutput({ en = '', cn = '', q = '', second = false, e = ''}) {
 }
 
 
+//!QQ searchbar suggestion
+const searchbar = document.getElementById("searchbar");
+const suggestions = document.getElementById("suggestions");
+searchbar.addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    suggestions.innerHTML = "";
+    if (!query) {
+        suggestions.style.display = "none";
+        return;
+    }
+
+
+    const matches = Object.keys(cndata)
+        .filter(key => /^[a-zA-Z]+$/.test(key) && key.length >= 3 && key !== key.toUpperCase())
+        .filter(key => /^[a-zA-Z]+$/.test(key)) // filter only pure alphabetic (no spaces, numbers, or symbols)
+        .filter(key => key.toLowerCase().startsWith(query))
+        .filter(key => /^[a-zA-Z]+$/.test(key) && key.length >= 4)
+        .sort()
+        .slice(0, 8);
+
+
+    if (matches.length > 0) {
+        matches.forEach(match => {
+            const div = document.createElement("div");
+            div.textContent = match;
+            div.onclick = () => {
+                searchbar.value = match;
+                suggestions.style.display = "none";
+                document.getElementById("searchbar").focus();
+            };
+            suggestions.appendChild(div);
+        });
+        suggestions.style.display = "block";
+    } else {
+        suggestions.style.display = "none";
+    }
+});
+
 
 
 //QQ ui functions

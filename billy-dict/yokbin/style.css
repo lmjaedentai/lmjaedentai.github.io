@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap');
 
 .theme-light {
-    --text-header: #f7cb50;
+    --text-header: #f3a41e;
     --text-header2: #f8d763;
-    --text-primary: #1a1700;
+    --text-primary: rgb(8, 6, 1);
     --text-secondary: rgba(26,23,0,0.75);
-    --text-tertiary: rgba(26,23,0,0.6);
+    --text-tertiary: rgb(169, 123, 44);
     --text-quaternary: rgba(26,23,0,0.38);
-    --white-primary: #fdfbf1;
+    --white-primary: #faf9f5;
     --white-secondary: #fef9e3;
-    --white-tertiary: #fffbd6;
+    --white-tertiary: #fdfbf1;
     --box-color: #fef9e3;
     --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -110,6 +110,39 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
+
+#suggestions {
+    position: absolute;
+    bottom: 100%; /* stick to the bottom of the input */
+    left: 50;
+    background: var(--white-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--white-tertiary);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    max-height: 200px;
+    overflow-y: auto;
+    width: 50%;
+    min-width: 400px; /* match input width */
+    max-width: 45vh;
+    display: none;
+    z-index: 1000;
+    margin-bottom: 6px; /* small gap above input */
+}
+
+#suggestions div {
+    font-family: josefin sans;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 1.0rem;
+    transition: 0.2s;
+}
+
+
+#suggestions div:hover {
+    background: var(--text-header);
+    color: var(--white-primary);
+}
 
 .mobilebutton{
     z-index: 1;

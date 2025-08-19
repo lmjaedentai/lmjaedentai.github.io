@@ -1,4 +1,4 @@
-console.warn("test");
+console.warn("\n" + "                       _oo0oo_\n" + "                      o8888888o\n" + "                      88\" . \"88\n" + "                      (| -_- |)\n" + "                      0\\  =  /0\n" + "                    ___/`---'\\___\n" + "                  .' \\\\|     |// '.\n" + "                 / \\\\|||  :  |||// \\\n" + "                / _||||| -:- |||||- \\\n" + "               |   | \\\\\\  -  /// |   |\n" + "               | \\_|  ''\\---/''  |_/ |\n" + "               \\  .-\\__  '-'  ___/-. /\n" + "             ___'. .'  /--.--\\  `. .'___\n" + "          .\"\" '<  `.___\\_<|>_/___.' >' \"\".\n" + "         | | :  `- \\`.;`\\ _ /`;.`/ - ` : | |\n" + "         \\  \\ `_.   \\_ __\\ /__ _/   .-` /  /\n" + "     =====`-.____`.___ \\_____/___.-`___.-'=====\n" + "                       `=---='\n" + "\n" + "\n" + "     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" + "\n" + "                菩提本无树   明镜亦非台\n" + "                本来无BUG    何必常修改\n");
 document.getElementById("searchbar").focus();
 var englishlemmatize = false;
 var contextmenu = document.querySelector(".contextmenu");
@@ -143,7 +143,7 @@ async function chinesedef(query, englishraw, second = false, third = false) {
         chinese_output = cndata[query];
         //formatting
         for (let i = 0; i < targetlist.length; i++) {
-            chinese_output = chinese_output.replaceAll(targetlist[i], `<strong>\n\n${replacelist[i]}</strong>`);
+            chinese_output = chinese_output.replaceAll(targetlist[i], `\n\n<strong>${replacelist[i]}</strong>`);
         }
         for (let n = 43; n > 0; n--) {
             if (chinese_output.includes(`${n}. `)) {
@@ -233,6 +233,49 @@ function formatoutput({ en = '', cn = '', q = '', second = false, e = '', t = ''
     
 }
 
+//!QQ searchbar suggestion
+const searchbar = document.getElementById("searchbar");
+const suggestions = document.getElementById("suggestions");
+searchbar.addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    suggestions.innerHTML = "";
+    if (!query) {
+        suggestions.style.display = "none";
+        return;
+    }
+
+
+    const matches = Object.keys(cndata)
+        .filter(key => /^[a-zA-Z]+$/.test(key) && key.length >= 3 && key !== key.toUpperCase())
+        .filter(key => /^[a-zA-Z]+$/.test(key)) // filter only pure alphabetic (no spaces, numbers, or symbols)
+        .filter(key => key.toLowerCase().startsWith(query))
+        .filter(key => /^[a-zA-Z]+$/.test(key) && key.length >= 4)
+        .sort()
+        .slice(0, 8);
+
+
+    if (matches.length > 0) {
+        matches.forEach(match => {
+            const div = document.createElement("div");
+            div.textContent = match;
+            div.onclick = () => {
+                searchbar.value = match;
+                suggestions.style.display = "none";
+                document.getElementById("searchbar").focus();
+            };
+            suggestions.appendChild(div);
+        });
+        suggestions.style.display = "block";
+    } else {
+        suggestions.style.display = "none";
+    }
+});
+
+
+// function clearInput() {
+// searchbar.value = "";
+// suggestions.style.display = "none";
+// }
 
 
 
