@@ -145,6 +145,7 @@ function formatoutput({ en = '', cn = '', q = '', second = false, e = ''}) {
     clearInput();
 }
 
+// TODO - theme changer, visitor counter, change suggestbox width for mobile
 
 //!QQ searchbar suggestion
 const searchbar = document.getElementById("searchbar");
@@ -190,6 +191,7 @@ searchbar.addEventListener("input", function () {
 function clearInput() {
     document.getElementById("searchbar").value = "";
     document.getElementById("searchbar").focus();
+    suggestions.style.display = "none";
     setTimeout(window.scrollTo(0,0),100);
     document.getElementById('searchtitle').scrollIntoView({behavior: 'smooth'});
 }

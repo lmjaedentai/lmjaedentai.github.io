@@ -115,9 +115,9 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     position: absolute;
     bottom: 100%; /* stick to the bottom of the input */
     left: 50;
-    background: var(--white-primary);
+    background: var(--white-tertiary);
     color: var(--text-primary);
-    border: 1px solid var(--white-tertiary);
+    border: 1px solid var(--white-primary);
     border-radius: 12px;
     box-shadow: var(--box-shadow);
     max-height: 200px;
@@ -128,13 +128,13 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     display: none;
     z-index: 1000;
     margin-bottom: 6px; /* small gap above input */
+    font-size: 1.0rem;
 }
 
 #suggestions div {
     font-family: josefin sans;
     padding: 10px 12px;
     cursor: pointer;
-    font-size: 1.0rem;
     transition: 0.2s;
 }
 
@@ -389,6 +389,12 @@ footer p{
 
     header input::placeholder{
         font-size: 1.5rem;
+    }
+
+    #suggestions{
+        min-width: 100px;
+        width: 90%;
+        font-size: 1.3rem;
     }
     
     main{

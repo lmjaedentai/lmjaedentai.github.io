@@ -211,7 +211,7 @@ function thesaurus(raw, search) {
                 if (i > 0)tableraw += '</tr>';
                 tableraw += '<tr>'
             }
-            tableraw += `<td>${synonym[i]}</td>`
+            tableraw += `<td onclick="searchquery('${synonym[i]}')">${synonym[i]}</td>`
         }
         tableraw += '</tr></table>'
         return formatoutput({ t:`${tableraw}</table>`});
@@ -283,6 +283,7 @@ searchbar.addEventListener("input", function () {
 function clearInput() {
     document.getElementById("searchbar").value = "";
     document.getElementById("searchbar").focus();
+    suggestions.style.display = "none";
     setTimeout(window.scrollTo(0,0),100);
     document.getElementById('searchtitle').scrollIntoView({behavior: 'smooth'});
 }
