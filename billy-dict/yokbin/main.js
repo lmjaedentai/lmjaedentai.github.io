@@ -39,7 +39,8 @@ async function searchquery(query, second = false) {
 
 async function englishdef(raw, search, second = false, third=false) {
     var english_output = '';
-
+    var synonym = []
+    var synonym_output = '';
     //QQ error handling
     if (!Array.isArray(raw) || raw.length === 0) {
         return "❌ Error: Invalid or empty data";
@@ -56,11 +57,19 @@ async function englishdef(raw, search, second = false, third=false) {
                 english_output += `     e.g. ${def.example}\n`;
             }
         });
+        meaning.synonyms.forEach((syn, j) => {
+            synonym = synonym.concat(syn);
+        });
     });
+    synonym.forEach((syn2, i)=> {
+        synonym_output += `<div id='synonym-chips' onclick="searchquery('${syn2}')">${syn2}</div>`
+    });
+    console.log(synonym_output);
+
     english_output = english_output.replaceAll("(", "<span>(");
     english_output = english_output.replaceAll(")", ")</span>");
     english_output = english_output.replaceAll("e.g. ", "💡 ");
-    formatoutput({en: english_output});
+    formatoutput({en: english_output, s:synonym_output});
     return english_output.trim();
 }
 
@@ -134,7 +143,7 @@ function lemmatize(input){
 
 
 
-function formatoutput({ en = '', cn = '', q = '', second = false, e = ''}) {
+function formatoutput({ en = '', cn = '', q = '', second = false, e = '', s=''}) {
     if (second || e != '') { //e can be info below title or seconndary query
         document.getElementById("phonetic").innerHTML = (second) ? `<span class="error">did you mean: ${q}</span>\n${e}` : e
     }
@@ -142,6 +151,7 @@ function formatoutput({ en = '', cn = '', q = '', second = false, e = ''}) {
     console.log(en)
     document.getElementById("definition").innerHTML = (en != '') ? en : document.getElementById("definition").innerHTML;
     document.getElementById("chinese").innerHTML = (cn != '') ? cn : document.getElementById("chinese").innerHTML;
+    document.getElementById("synonym-box").innerHTML = (s != '') ? s : document.getElementById("synonym-box").innerHTML;
     clearInput();
 }
 

@@ -3,7 +3,7 @@
 
 .theme-light {
     --text-header: #f3a41e;
-    --text-header2: #f8d763;
+    --text-header2: #fff1e2;
     --text-primary: rgb(8, 6, 1);
     --text-secondary: rgba(26,23,0,0.75);
     --text-tertiary: rgb(169, 123, 44);
@@ -17,7 +17,7 @@
 
 .theme-dark {
     --text-header: #506cf7;
-    --text-header2: #8294f9;
+    --text-header2: #262938;
     --text-primary: #d7d7e5;
     --text-secondary: rgba(215, 215, 229,.75);
     --text-tertiary: rgba(215, 215, 229,.6);
@@ -32,6 +32,7 @@
 html{
     font-size: 18px;
     --mainfont: "Domine";
+    
 }
 
 body{
@@ -280,15 +281,29 @@ main img{
     border-radius: 10%;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 0.9rem;
+main #synonym-box{
+    max-width: 100%;
+    height: 60px;
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
 }
 
-td, th{
-    padding: 10px;
-    border-bottom: 1px solid var(--text-quaternary);
+main #synonym-box #synonym-chips{
+    display: inline-block;
+    height: 30px;
+    width: max-content;
+    cursor: pointer;
+    padding: 2px 15px;
+    margin: 2px 5px;
+    border: 2px solid var(--text-header);
+    background-color: var(--text-header2);
+    border-radius: 10px;
+    color: var(--text-header);
+    font-family:'josefin sans';
+    font-weight: 500;
+    font-size: 1.1rem;
+
 }
 
 footer{
