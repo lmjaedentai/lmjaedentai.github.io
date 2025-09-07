@@ -8,9 +8,10 @@ function getquery() {
     if (query == '') {
         return
     }
-    document.getElementById("phonetic").innerHTML = ''
-    document.getElementById("definition").innerHTML = '';
-    document.getElementById("chinese").innerHTML = '';
+    document.getElementById("phonetic").replaceChildren();
+    document.getElementById("definition").replaceChildren();
+    document.getElementById("chinese").replaceChildren();
+    document.getElementById("synonym-box").replaceChildren();
     
     if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
         return document.getElementById("phonetic").innerHTML='Only alphabetic characters are acceptable.'
@@ -155,7 +156,7 @@ function formatoutput({ en = '', cn = '', q = '', second = false, e = '', s=''})
     clearInput();
 }
 
-// TODO - theme changer, visitor counter, change suggestbox width for mobile
+// TODO -visitor counter, 
 
 //!QQ searchbar suggestion
 const searchbar = document.getElementById("searchbar");

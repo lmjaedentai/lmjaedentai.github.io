@@ -8,17 +8,18 @@ function getquery() {
     if (query == '') {
         return
     }
-    document.getElementById("phonetic").innerHTML = ''
-    document.getElementById("definition").innerHTML = '';
-    document.getElementById("chinese").innerHTML = '';
-    document.getElementById("example").innerHTML =''
-    document.getElementById("thesaurus").innerHTML = '';
-    document.getElementById("etymology").innerHTML = '';
+    document.getElementById("phonetic").replaceChildren();
+    document.getElementById("definition").replaceChildren();
+    document.getElementById("chinese").replaceChildren();
+    document.getElementById("example").replaceChildren();
+    document.getElementById("thesaurus").replaceChildren();
+    document.getElementById("etymology").replaceChildren();
     
     if (!/^[A-Za-z\s]*$/.test(query.trim())) { //is not alpha
         return document.getElementById("phonetic").innerHTML='<img src="./asset/error.svg"/>\n\nOnly alphabetic characters are acceptable.'
     }
     else {
+        updateurl(query)
         searchquery(query);
     }
 }
@@ -220,6 +221,7 @@ function thesaurus(raw, search) {
 }
 
 function formatoutput({ en = '', cn = '', q = '', second = false, e = '', t = '', exp ='', et=''}) {
+    clearInput();
     if (second || e != '') { //e can be info below title or seconndary query
         document.getElementById("phonetic").innerHTML = (second) ? `<span class="error">did you mean: ${q}</span>\n${e}` : e
     }
@@ -229,7 +231,6 @@ function formatoutput({ en = '', cn = '', q = '', second = false, e = '', t = ''
     document.getElementById("thesaurus").innerHTML = (t != '') ? t : document.getElementById("thesaurus").innerHTML;
     document.getElementById("example").innerHTML = (exp != '') ? exp : document.getElementById("example").innerHTML;
     document.getElementById("etymology").innerHTML =  (et!= '') ? et : document.getElementById("etymology").innerHTML;
-    clearInput();
     
 }
 
@@ -272,10 +273,22 @@ searchbar.addEventListener("input", function () {
 });
 
 
-// function clearInput() {
-// searchbar.value = "";
-// suggestions.style.display = "none";
-// }
+//QQ update url
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("search");
+
+    if (query !== "" && (/^[A-Za-z\s]*$/.test(query.trim()))) {
+        searchquery(query);   // run your existing lookup with the query
+    }
+});
+
+function updateurl(input) {
+    const url = new URL(window.location);
+    url.searchParams.set("search", input);
+    window.history.replaceState({}, "", url);
+}
+
 
 
 
@@ -285,7 +298,7 @@ function clearInput() {
     document.getElementById("searchbar").focus();
     suggestions.style.display = "none";
     setTimeout(window.scrollTo(0,0),100);
-    document.getElementById('searchtitle').scrollIntoView({behavior: 'smooth'});
+    document.getElementById('searchtitle').scrollIntoView({ behavior: 'smooth' });
 }
 
 var form = document.getElementById("searchform");

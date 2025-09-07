@@ -32,7 +32,7 @@
 html{
     font-size: 18px;
     --mainfont: "Domine";
-    
+    border-top: 4px solid var(--text-header);
 }
 
 body{
@@ -303,6 +303,7 @@ main #synonym-box #synonym-chips{
     font-family:'josefin sans';
     font-weight: 500;
     font-size: 1.1rem;
+    justify-content: center;
 
 }
 
@@ -416,6 +417,10 @@ footer p{
         padding: 10px 7% 0px;
         /* max-width: 100%; */
         width: 100%;
+    }
+
+    main #synonym-box #synonym-chips{
+        height: 35px;
     }
     
     .mobilebutton{
