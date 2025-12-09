@@ -19,7 +19,6 @@ function getquery() {
         return document.getElementById("phonetic").innerHTML='<img src="./asset/error.svg"/>\n\nOnly alphabetic characters are acceptable.'
     }
     else {
-        updateurl(query)
         searchquery(query);
     }
 }
@@ -126,6 +125,7 @@ async function englishdef(raw, search, second = false, third=false) {
             english_output = english_output.replace("\n\n\n", "");
             english_output = `<ol type='1'>${english_output}</ol>`;
             formatoutput({ exp: example_output, en: english_output, et: etymology_output });
+            updateurl(query)
             if (!third) {
                 await chinesedef(search, raw, second);
             }

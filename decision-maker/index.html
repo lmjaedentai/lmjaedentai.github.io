@@ -2,37 +2,35 @@
 <html lang="en" class="theme-light">
     <head>
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Solve your confusion, indecisive and unhestitation.">
         <meta name="author" content="Jaeden Tai">
         <meta name="robots" content="noindex">
-        <title>Dictionary</title>
+        <title>Decision maker</title>
     </head>
     <body>
         <header>
         </header>
         <main>
-            <h1>Decision Maker</h1>
+            <h1>Decision maker</h1>
             <h2>Make life easier</h2>
             <div class="result">
+                <h3 id="resultlabel">Yes or No ?</h3>
+                <blockquote id="quote">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</blockquote>
+            </div>
+            <div class="setting">
                 <select id="select">
                     <optgroup>
                         <option value="1">Yea Nea</option>
                         <option value="2">Numbers</option>
                     </optgroup>
                 </select>
-                <h3 id="resultlabel">Yes</h3>
-                <blockquote id="quote">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</blockquote>
+                <button type="button" class="proceedbutton" onclick=proceedgo()><p onclick=proceedgo()>➜</p></button>
             </div>
-            <button type="button" class="proceedbutton" onclick=proceedgo()><p onclick=proceedgo()>GO !</p></button>
+            
         </main>
-        <!-- <footer>
-            <div class="footerbox">
-                <p>Powered by <a href="https://dictionaryapi.dev/" target="_blank"> Free Dictionary API.</a> and <a href="https://github.com/mahavivo/english-dictionary/tree/master/OALD8_%E4%B8%AD%E6%96%87%E9%87%8A%E4%B9%89" target="_blank">OALD8_中文释义</a><br>Crafted with love and dedication by Jaeden.</p>
-            </div>
-        </footer> -->
-
         <script src="main.js" defer></script>
     </body>
 </html>

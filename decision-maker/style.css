@@ -82,18 +82,6 @@ main .result{
     padding: 40px;
 }
 
-main .result select{
-    border: 3.5px solid var(--text-header);
-    border-radius: 10px;
-    width: 165px;
-    height: 50px;
-    margin: 20px 10px;
-    background: #fff;
-    font-family: var(--default-font);
-    text-align: center;
-    box-shadow: rgb(255, 208, 181) 0px 3px 8px;
-}
-
 
 main h3{
     margin: 0;
@@ -127,16 +115,35 @@ main blockquote{
     position: relative;
 }
 
+.setting{
+    display: flex;
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+}
+
+select{
+    border: 3.5px solid var(--text-header);
+    border-radius: 15px;
+    width: 140px;
+    height: 60px;
+    background: #fff;
+    font-family: var(--default-font);
+    text-align: center;
+    box-shadow: rgb(255, 208, 181) 0px 3px 8px;
+    margin: 10px;
+    font-size: 1rem;
+}
+
 main .proceedbutton{
     background: var(--text-header2);
-    padding: 20px;
-    width: 150px;
-    height: 60px;
+    width: 70px;
+    height: 57px;
     border: none;
-    border-radius: 20px;
-    margin: auto;
+    border-radius: 15px;
     box-shadow: var(--text-header2) 0px 3px 8px;
     transition: 0.5s;
+    margin: 10px;
 }
 
 main .proceedbutton:hover{
@@ -148,8 +155,10 @@ main .proceedbutton p{
     text-align: center;
     font-family: var(--default-font);
     color: white;
-    font-size: 1.5rem;
-    margin: -6px 0px 0px;
+    opacity: 0.89;
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0;
     cursor: pointer;
     position: relative;
 }

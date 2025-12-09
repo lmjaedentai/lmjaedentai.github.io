@@ -1,8 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Shantell+Sans:BNCE,INFM,SPAC@20,25,11.6&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.theme-light {
+    --text-header: #000000;
+    --text-header2: #8294f9;
+    --text-primary: #000000;
+    --text-secondary: rgba(0, 0, 0, 0.75);
+    --text-tertiary: rgba(0,0,0,.6);
+    --text-quaternary: rgba(0,0,0,.38);
+    --white-primary: rgb(249, 249, 255);
+    --white-secondary: #d3d3d3;
+    --white-tertiary: #040404;
+}
+
 
 
 html{
     font-size: 18px;
+    --serif: 'cardo', 'noto serif sc';
+    --sans-serif: 'open sans';
+    --chinese: 'noto serif sc'
 }
 
 body{
@@ -10,105 +26,241 @@ body{
     border: 0;
     margin: 0;
     width: 100%;
+    background: var(--white-primary);
     overflow: overlay;
     min-height: 100%;
     transition: 0.5s;
-    background-image: url(https://images.unsplash.com/photo-1717297808345-b740e9846158);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;	
+
+    font-family: var(--serif);
 }
 
+header{
+    padding: 20px 11%;
+}
+
+.heading{
+    display: flex;
+}
+
+header .profile{
+    min-width: fit-content;
+    /* width: 20%; */
+    /* border: 5px solid blue; */
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+header .profile img{
+    width: 180px;
+    border-radius: 150px;
+    margin: auto;
+}
+
+header .text{
+    min-width: 260px;
+    /* border: 5px solid blue; */
+    padding: 0 20px;
+    text-align: center;
+    width: 80%;
+}
+
+header h1{
+    font-size: 3.5rem;
+}
+
+header h2{
+    font-family: var(--chinese);
+    font-weight: 500;
+    font-size: 1rem;
+    margin: -30px 0 40px;
+}
+
+header h4{
+    font-size: 1.6rem;
+    margin: 30px 0 10px;
+    font-family: var(--chinese);
+}
+
+header hr{
+    color: var(--text-quaternary);
+    width: 1;
+}
 
 
 main{
-    display: block;
-    margin: 20vh auto 0px;
-    width: 70%;
-    /* max-width: 500px; */
+    padding: 0px 10% 0px;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.content, .index{
+    /* width: 50%; */
+    min-width: 300px;
+    /* border: 5px solid blue; */
+    margin: 10px;
+    padding: 0px 10px 0 0;
+}
+
+.index .pages{
+    /* border: var(--text-quaternary) 1px solid; */
+    
+    padding: 20px;
+    margin: 0px 40px;
+    display: flex;
+    border-radius: 10px;
+    transition: 0.5s;
+    font-family: var(--sans-serif);
+}
+
+.pages:hover{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.pages #title{
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.pages #description{
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.gallery{
+    width: 100%;
+    min-width: 300px;
+    
     /* border: 5px solid red; */
     text-align: center;
-    font-family: 'Josefin sans';
-}
-
-main h1{
-    margin: 0 auto 10px;
-    font-size: 3rem;
-    text-shadow: 3px 5px 0px rgba(0,0,0,0.39);
-    color: #f7f2f3;
-}
-
-main h2{
-    margin: 0 auto 60px;
-    font-size: 1.2rem;
-    text-transform: capitalize;
-    text-shadow: 1px 1px 0px rgba(0,0,0,0.39);
-    color: rgb(184, 31, 98);
+    margin: 60px 10px 10px;
 }
 
 main img{
-    margin: 60px auto;
-    display: block;
-    width: 200px;
-    border-radius: 50%;
-    opacity: 0.9;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-/* main .collectionbox{
-    display: flex;
-    width: 100%;
-    border: 5px solid blue;
-    height: 120px;
-    overflow-x: auto;
-    scrollbar-width: none; 
-}
-
-
-.collection{
+    text-align: center;
+    max-width: 70%;
+    /* max-width: 500px; */
     min-width: 300px;
-    margin: 0px 20px;
-    max-height: 110px;
-    border: 5px solid red;
-    background: white;
+    padding: 40px 0 0;
 }
- */
 
-main button{
-    display: block;
-    margin: 0px auto;
-    width: 200px;
-    height: 70px;
-    border-radius: 25px;
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border: 0;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    font-family: 'Josefin sans';
-    font-size: 1.3rem;
-    color: #f7f2f3;
+main h2{
+    margin-bottom: 10px;
+}
+
+main hr{
+    background-color: var(--white-secondary);
+    border: 0 none;
+    /* color: var(--white-secondary); */
+    height: 1px;
+}
+
+main h1{
+    font-family: 'cardo';
+    text-transform: capitalize;
+    color: var(--text-header);
+    margin: 50px 0 20px;
+}
+
+
+main p{
+    white-space: pre-line;
+    font-size: 0.9rem;
+    margin: 0px;
+    line-height: 35px;
+}
+
+main span{
+    color: var(--text-tertiary);
+    padding: 0 2px;
+}
+
+main em{
+    font-style: normal;
+    color: var(--text-header2);
+    text-decoration: underline;
+}
+
+main blockquote{
+    color: var(--text-secondary);
+    text-align: left;
+    border-left: 3px solid var(--white-secondary);
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin: 0px 0px;
+    transition: 0.2s;
+}
+
+main blockquote:hover{
+    border-left: 3px solid var(--text-header);
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+td, th{
+    padding: 10px;
+    border-bottom: 1px solid var(--text-quaternary);
     cursor: pointer;
-    transition: 0.5s;
 }
 
-main button:hover{
-    background: rgba(0, 0, 0, 0.2);
+.contextmenu:active{
+    background-color: var(--text-header2);
 }
 
-main ion-icon{
-    margin: 0px 0px 0px 10px;
+::-webkit-scrollbar {
+    width: 9px;
+    margin-right: 50px;
 }
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(250, 24, 239, 0);  
+    border-radius: 20px;                        
+}
+
+
 
 
 @media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    html{
+        font-size: 15px;
+    }
+
     body{
         width: 100%;
         padding: 0;
         margin: 0;
     }
+
+    
+    main{
+        padding: 0 20px;
+        display: block;
+        width: 90%;
+    }
+
+    header{
+        padding: 80px 35px 0;
+    }
+    
+    .heading{
+        display: block;
+    }
+
+    header .text{
+        width: 100%;
+        padding: 0px 0px;
+    }
+
+    .profile{
+        width: 100%;
+    }
+
 }
-
-
-
