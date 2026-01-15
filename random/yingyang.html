@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yin Yang Rotation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(120deg, #e6f0ea 0%, #edf9ff 100%);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .yinyang-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .yinyang {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .yinyang svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        .control-panel {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .control-panel h2 {
+            margin: 0 0 20px 0;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .slider-container {
+            width: 300px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+
+        .value-display {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="yinyang-wrapper">
+            <div class="yinyang" id="yinyang">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+                    <defs>
+                        <filter id="f">
+                            <feGaussianBlur stdDeviation="3.5"/>
+                        </filter>
+                    </defs>
+                    <circle cx="125" cy="125" r="116.6" fill="#7f7f7f" opacity="0.5" filter="url(#f)"/>
+                    <circle cx="125" cy="125" r="113.2" fill="#fff"/>
+                    <path d="m125,11.8 a56.6,56.6 0 0 1 0,113.2 56.6,56.6 0 0 0 0,113.2 113.2,113.2 0 0 0 0,-226.4"/>
+                    <circle cx="125" cy="68.4" r="17.6"/>
+                    <circle cx="125" cy="181.6" r="17.6" fill="#fff"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <h2>Rotation Speed</h2>
+            <div class="slider-container">
+                <input type="range" id="speedSlider" min="0" max="1800" value="0" step="1">
+                <div class="label">
+                    <span>0°/frame</span>
+                    <span>1800°/frame</span>
+                </div>
+                <div class="value-display">
+                    Current: <span id="speedValue">0</span>°/frame
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const yinyang = document.getElementById('yinyang');
+        const slider = document.getElementById('speedSlider');
+        const speedValue = document.getElementById('speedValue');
+
+        slider.addEventListener('input', function() {
+            const speed = this.value;
+            speedValue.textContent = speed;
+            
+            if (speed == 0) {
+                yinyang.style.animation = 'none';
+            } else {
+                const degreesPerSecond = speed * 24;
+                const duration = 360 / degreesPerSecond;
+                yinyang.style.animation = `spin ${duration}s linear infinite`;
+            }
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
