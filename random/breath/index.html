@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathe — Wellness Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700;1000&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <div class="arrow" id="prevArrow"> < </div>
+            <h1 class="category-title" id="categoryTitle">Calm</h1>
+            <div class="arrow" id="nextArrow"> > </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Breathing Circle -->
+            <div class="breathing-circle-container">
+                <div class="phase-label" id="phaseLabel"></div>
+                <div class="breathing-circle" id="breathingCircle">
+                    <div class="circle-text" id="circleText"></div>
+                </div>
+            </div>
+
+            <!-- Selection Box -->
+            <div class="selection-box">
+                <div class="custom-select">
+                    <div class="select-trigger" id="selectTrigger">
+                        Select Method
+                    </div>
+                    <div class="select-options" id="selectOptions">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description Area -->
+            <div class="description-area" id="descriptionArea"></div>
+
+            <!-- Start Button -->
+            <button class="start-button" id="startButton">
+                <span>Start</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
