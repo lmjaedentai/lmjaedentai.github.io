@@ -63,6 +63,32 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         opacity: 0.5;
       }
+
+      .easy{
+        color: white;
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        display: flex;
+        height: 70px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        background: rgb(255, 212, 21);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+      }
+
+      .easy p{
+        margin: 0;
+        padding: 10px 0;
+      }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
   </head>
@@ -237,6 +263,11 @@ markmap:
   - Pseudomembrane formation
 - **Clinical**
   - Respiratory diphtheria (pseudomembrane, airway obstruction)
+    - covering mucous lining of...
+      - tonsil
+      - pharynx
+      - larynx
+      - nares
   - Cutaneous diphtheria (rash, ulcers)
 - **Risk**: Unimmunized individuals
 - **Management**
@@ -258,12 +289,20 @@ markmap:
   - Ingestion of spores
   - Wound contamination
 - **Virulence**
-  - Botulinum toxin (blocks ACh release)
+  - **Botulinum toxin**: Life threatening neuroparalytic disease (blocks ACh release)
+    - protease inhibit muscle stimulation
   - Flaccid paralysis
 - **Clinical**
   - Food botulism (GI symptoms, paralysis)
   - Infant botulism (floppy baby)
+    - hypotonia
+    - irritability
+    - weak cry
+    - feeding difficulty
   - Wound botulism
+    - injection drug user: wound contamination with clostridium spore
+    - neurological syndrome
+    - muscle weakness & paralysis
   - Respiratory failure
 - **Risk**
   - Improperly canned food
@@ -286,10 +325,17 @@ markmap:
 - **Colonization**
   - Soil
   - Intestinal tract
-- **Transmission**: Spores through contaminated wounds
+- **Transmission**
+  - Spores through contaminated wounds
+    - rare: widespread vaccination
+  - postsurgical tetanus
+    - inadequate sterilization of surgical instrument
+    - endospore resisant to high temp
+    - wound infection
 - **Virulence**
-  - Tetanospasmin
-  - Tetanolysin (block inhibitory neurotransmitters)
+  - tetanus toxin (block inhibitory neurotransmitters)
+    - Tetanospasmin
+    - Tetanolysin 
   - Spastic paralysis
 - **Clinical**
   - Tetanus
@@ -317,12 +363,18 @@ markmap:
 - **Transmission**: Spores contaminating wounds or food
 - **Virulence**
   - Alpha toxin (lecithinase, hemolytic)
-  - Enterotoxin
+    - degrade tissue & cell membrane
+    - causes small vessel thrombosis & tissue ischemia
+  - Enterotoxin: disrupt ion transport in ileum => watery diarrhea
   - Hyaluronidase
   - Collagenase
 - **Clinical**
   - Gas gangrene (necrotizing infection, gas production, rapid)
-  - Food poisoning (watery diarrhea)
+    - anaerobic organism: fermentation of carbohydrates produce massive amount of gas in tissue
+    - pressure restriction of blood supply => tissue necrosis
+    - rapid progressive & fatal
+  - Food poisoning 
+  - Hemorrhagic diarrhea
 - **Risk**
   - Wound contamination
   - Improperly stored food
@@ -345,6 +397,8 @@ markmap:
   - Fecal-oral via endospores
   - Person-to-person
 - **Virulence**
+  - normal gut flora eliminated <= antibiotic use
+  - but it more resistant => dominate
   - Enterotoxin A (alters fluid secretion)
   - Enterotoxin B (disrupts cytoskeleton)
   - Spores resist alcohol
@@ -358,8 +412,8 @@ markmap:
   - Elimination of normal flora
   - Hospitalization
 - **Management**
-  - Discontinue offending antibiotic
-  - Specific therapy
+  - antibiotic coverage anaerobes (metronidazole, vancomycin, fidaxomicin)
+  - Surgical intervention: wound debridement, wound care
 - **Prevention**
   - Avoid inappropriate antibiotics
   - Hand washing with soap (NOT alcohol)
@@ -1096,7 +1150,7 @@ markmap:
   - Protective clothing
   - Minimize inoculation
 
-##### Fonsecaea pedrosoi, Cladosporium carrionii, Phialophora verrucosa
+##### **Chromoblastomycosis:** Fonsecaea pedrosoi, Cladosporium carrionii, Phialophora verrucosa
 - **Specimen**: Tissue biopsy
 - **Tests**
   - Dematiaceous fungi
@@ -1121,7 +1175,7 @@ markmap:
   - Amphotericin B
 - **Prevention**: Protective footwear
 
-##### Madurella mycetomatis, Pseudallescheria boydii, Exophiala jeanselmei
+##### **Mycetoma** : Madurella mycetomatis, Pseudallescheria boydii, Exophiala jeanselmei
 - **Specimen**
   - Tissue biopsy
   - discharge
@@ -4612,6 +4666,10 @@ markmap:
     <svg class="table" onclick="window.open('https://github.com/lmjaedentai/mbbsnota/blob/main/Microbiology.md')" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#ff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm240-240H200v160h240v-160Zm80 0v160h240v-160H520Zm-80-80v-160H200v160h240Zm80 0h240v-160H520v160ZM200-680h560v-80H200v80Z"/></svg>
     <div class="about">
       <p> Created with <a href="https://markmap.js.org/" target="_blank">Markmap</a><br>2026 by Jaeden Tai</p>
+    </div>
+    <div class="easy" onclick="window.open('./microbiology_easy.html')">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M565.5-348.5Q603-377 620-422H340q17 45 54.5 73.5T480-320q48 0 85.5-28.5Zm-143-149Q440-515 440-540t-17.5-42.5Q405-600 380-600t-42.5 17.5Q320-565 320-540t17.5 42.5Q355-480 380-480t42.5-17.5Zm200 0Q640-515 640-540t-17.5-42.5Q605-600 580-600t-42.5 17.5Q520-565 520-540t17.5 42.5Q555-480 580-480t42.5-17.5ZM305-704l112-145q12-16 28.5-23.5T480-880q18 0 34.5 7.5T543-849l112 145 170 57q26 8 41 29.5t15 47.5q0 12-3.5 24T866-523L756-367l4 164q1 35-23 59t-56 24q-2 0-22-3l-179-50-179 50q-5 2-11 2.5t-11 .5q-32 0-56-24t-23-59l4-165L95-523q-8-11-11.5-23T80-570q0-25 14.5-46.5T135-647l170-57Zm49 69-194 64 124 179-4 191 200-55 200 56-4-192 124-177-194-66-126-165-126 165Zm126 135Z"/></svg>
+      <p> Easy ver</p>
     </div>
   </body>
 </html>
