@@ -24,15 +24,36 @@
                 <div class="breathing-circle" id="breathingCircle">
                     <div class="circle-text" id="circleText"></div>
                 </div>
+                <div class="timer-display" id="timerDisplay">5:00</div>
             </div>
 
-            <!-- Selection Box -->
-            <div class="selection-box">
-                <div class="custom-select">
-                    <div class="select-trigger" id="selectTrigger">
-                        Select Method
+            <!-- Selection Row -->
+            <div class="selection-row">
+                <!-- Method Selection Box -->
+                <div class="selection-box">
+                    <div class="custom-select">
+                        <div class="select-trigger" id="selectTrigger">
+                            Select Method
+                        </div>
+                        <div class="select-options" id="selectOptions">
+                        </div>
                     </div>
-                    <div class="select-options" id="selectOptions">
+                </div>
+
+                <!-- Time Selection Box -->
+                <div class="time-selection-box">
+                    <div class="custom-select">
+                        <div class="select-trigger" id="timeSelectTrigger">
+                            5 min
+                        </div>
+                        <div class="select-options" id="timeSelectOptions">
+                            <div class="select-option" data-value="1">1 min</div>
+                            <div class="select-option" data-value="2">2 min</div>
+                            <div class="select-option selected" data-value="5">5 min</div>
+                            <div class="select-option" data-value="10">10 min</div>
+                            <div class="select-option" data-value="15">15 min</div>
+                            <div class="select-option" data-value="20">20 min</div>
+                        </div>
                     </div>
                 </div>
             </div>

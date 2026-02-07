@@ -219,11 +219,17 @@ let isBreathing = false;
 let breathingInterval = null;
 let currentMethodName = '';
 let selectedMethod = '';
+let selectedTime = 5; // default 5 minutes
+let timerInterval = null;
+let remainingSeconds = 0;
+let timerActive = false;
 
 const body = document.body;
 const categoryTitle = document.getElementById('categoryTitle');
 const selectTrigger = document.getElementById('selectTrigger');
 const selectOptions = document.getElementById('selectOptions');
+const timeSelectTrigger = document.getElementById('timeSelectTrigger');
+const timeSelectOptions = document.getElementById('timeSelectOptions');
 const descriptionArea = document.getElementById('descriptionArea');
 const startButton = document.getElementById('startButton');
 const breathingCircle = document.getElementById('breathingCircle');
@@ -231,6 +237,7 @@ const circleText = document.getElementById('circleText');
 const phaseLabel = document.getElementById('phaseLabel');
 const prevArrow = document.getElementById('prevArrow');
 const nextArrow = document.getElementById('nextArrow');
+const timerDisplay = document.getElementById('timerDisplay');
 
 // Method descriptions
 const methodDescriptions = {
@@ -269,14 +276,99 @@ selectTrigger.addEventListener('click', (e) => {
     e.stopPropagation();
     selectTrigger.classList.toggle('active');
     selectOptions.classList.toggle('active');
+    // Close time select if open
+    timeSelectTrigger.classList.remove('active');
+    timeSelectOptions.classList.remove('active');
+});
+
+// Time select functionality
+timeSelectTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    timeSelectTrigger.classList.toggle('active');
+    timeSelectOptions.classList.toggle('active');
+    // Close method select if open
+    selectTrigger.classList.remove('active');
+    selectOptions.classList.remove('active');
 });
 
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.custom-select')) {
         selectTrigger.classList.remove('active');
         selectOptions.classList.remove('active');
+        timeSelectTrigger.classList.remove('active');
+        timeSelectOptions.classList.remove('active');
     }
 });
+
+// Time option selection
+timeSelectOptions.querySelectorAll('.select-option').forEach(option => {
+    option.addEventListener('click', () => {
+        selectedTime = parseInt(option.dataset.value);
+        timeSelectTrigger.textContent = option.textContent;
+        timeSelectTrigger.classList.remove('active');
+        timeSelectOptions.classList.remove('active');
+        
+        // Update selected state
+        timeSelectOptions.querySelectorAll('.select-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        option.classList.add('selected');
+        
+        // Update timer display if not breathing
+        if (!isBreathing) {
+            remainingSeconds = selectedTime * 60;
+            updateTimerDisplay();
+        }
+    });
+});
+
+// Timer functions
+function updateTimerDisplay() {
+    const minutes = Math.floor(remainingSeconds / 60);
+    const seconds = remainingSeconds % 60;
+    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    
+    // Add warning class in last 30 seconds
+    if (remainingSeconds <= 30 && remainingSeconds > 0) {
+        timerDisplay.classList.add('warning');
+    } else {
+        timerDisplay.classList.remove('warning');
+    }
+}
+
+function startTimer() {
+    remainingSeconds = selectedTime * 60;
+    timerActive = true;
+    updateTimerDisplay();
+    
+    timerInterval = setInterval(() => {
+        if (remainingSeconds > 0) {
+            remainingSeconds--;
+            updateTimerDisplay();
+        } else {
+            // Timer finished
+            stopBreathing();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    timerActive = false;
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    remainingSeconds = selectedTime * 60;
+    updateTimerDisplay();
+}
+
+// Vibration function
+function vibrateDevice() {
+    if ('vibrate' in navigator) {
+        // Short, soft vibration: 50ms
+        navigator.vibrate(50);
+    }
+}
 
 function updateCategory() {
     const category = categories[currentCategoryIndex];
@@ -297,6 +389,10 @@ function updateCategory() {
     selectedMethod = '';
     selectTrigger.textContent = 'Select Method';
     descriptionArea.textContent = '';
+    
+    // Reset timer display
+    remainingSeconds = selectedTime * 60;
+    updateTimerDisplay();
 }
 
 function updateMethodSelect(category) {
@@ -336,7 +432,7 @@ function startBreathing() {
         alert('Please select a breathing method');
         return;
     }
-    startGradient()
+    startGradient();
     currentMethodName = methodName;
     const method = breathingData[methodName];
     const breathPattern = method.breath;
@@ -393,6 +489,9 @@ function startBreathing() {
 
         // Update phase label
         phaseLabel.textContent = phase.toUpperCase();
+
+        // Vibrate on phase change
+        vibrateDevice();
 
         // Determine target size and animation based on phase
         let targetSize, startSize;
@@ -459,7 +558,8 @@ function startBreathing() {
         }, seconds * 1000);
     }
 
-    // Start countdown
+    // Start countdown and timer
+    startTimer();
     showCountdown();
 }
 
@@ -480,7 +580,8 @@ function stopBreathing() {
     circleText.textContent = '';
     circleText.classList.remove('countdown-active');
     phaseLabel.textContent = '';
-    stopGradient()
+    stopGradient();
+    stopTimer();
 }
 
 // Event Listeners
@@ -541,26 +642,13 @@ function handleSwipe() {
 
 function startGradient() {
     body.style.setProperty('--bg-size', '300% 300%');
-    body.style.setProperty('--state', "running")
+    body.style.setProperty('--state', 'running');
 }
 
 function stopGradient() {
     body.style.setProperty('--bg-size', '100% 100%');
-    body.style.setProperty('--state', "paused");
+    body.style.setProperty('--state', 'paused');
 }
-
 
 // Initialize
 updateCategory();
-
-
-//NOTE - timer
-// new feature: add timer (use original css)
-
-// allow user to select time to breath: 1, 2, 5, 10, 15, 20 min
-
-// the box of time selection should be at the same row with method, beside it
-
-// 1. separate css, js and html
-
-// 2. don't need regenerate file, only output the additional part for me to replace/paste

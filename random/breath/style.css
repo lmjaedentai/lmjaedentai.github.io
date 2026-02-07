@@ -10,9 +10,8 @@ body {
     min-height: 100vh;
     position: relative;
     --bg-size: 100% 100%;
-    --state:"paused";
+    --state: paused;
 }
-
 
 /* Base + overlay layers */
 body::before,
@@ -53,7 +52,6 @@ body.focus::after {
     opacity: 1;
 }
 
-
 @keyframes gradientShift {
     0%   { background-position: 0% 50%; }
     50%  { background-position: 100% 50%; }
@@ -62,15 +60,14 @@ body.focus::after {
 
 body::before,
 body::after {
-    background-size:var(--bg-size);
+    background-size: var(--bg-size);
     animation: gradientShift 14s ease infinite;
     animation-play-state: var(--state);
 }
 
-
 .container {
     width: 100%;
-    max-width: 480px;
+    max-width: 580px;
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
@@ -122,7 +119,7 @@ body::after {
     align-items: center;
     justify-content: center;
     padding: 20px 30px 40px;
-    gap: 50px;
+    gap: 30px;
 }
 
 /* Breathing Circle */
@@ -233,6 +230,27 @@ body::after {
     font-weight: 400;
 }
 
+/* Timer display */
+.timer-display {
+    position: absolute;
+    bottom: -50px;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.timer-display.warning {
+    color: rgba(255, 100, 100, 0.9);
+    animation: timerPulse 1s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
 /* Rotation animation for hold phases */
 @keyframes breathingRotate {
     0% {
@@ -263,10 +281,26 @@ body::after {
     }
 }
 
+/* Selection row container */
+.selection-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    max-width: 360px;
+    align-items: center;
+}
+
 /* Selection Box - Custom Dropdown */
 .selection-box {
     width: 100%;
-    max-width: 360px;
+    max-width: 240px;
+    position: relative;
+    flex: 1;
+}
+
+.time-selection-box {
+    width: 100%;
+    max-width: 105px;
     position: relative;
 }
 
@@ -277,7 +311,7 @@ body::after {
 
 .select-trigger {
     width: 100%;
-    padding: 20px 24px;
+    padding: 20px;
     font-size: 22px;
     font-family: 'Cormorant Garamond', serif;
     color: white;
@@ -300,6 +334,11 @@ body::after {
     user-select: none;
 }
 
+.time-selection-box .select-trigger {
+    padding: 20px 16px;
+    font-size: 20px;
+}
+
 .select-trigger::after {
     content: '';
     position: absolute;
@@ -310,6 +349,10 @@ body::after {
     background-repeat: no-repeat;
     background-position: center;
     transition: transform 0.3s ease;
+}
+
+.time-selection-box .select-trigger::after {
+    right: 12px;
 }
 
 .select-trigger.active::after {
@@ -346,6 +389,10 @@ body::after {
     z-index: 100;
 }
 
+.time-selection-box .select-options {
+    max-height: 250px;
+}
+
 .select-options.active {
     opacity: 1;
     visibility: visible;
@@ -361,6 +408,11 @@ body::after {
     transition: all 0.2s ease;
     text-align: center;
     letter-spacing: 0.5px;
+}
+
+.time-selection-box .select-option {
+    padding: 14px 16px;
+    font-size: 18px;
 }
 
 .select-option:hover {
@@ -504,5 +556,17 @@ body::after {
     .breathing-circle-container {
         width: 240px;
         height: 240px;
+    }
+    
+    .selection-row {
+        max-width: 320px;
+    }
+    
+    .selection-box {
+        max-width: 200px;
+    }
+    
+    .time-selection-box {
+        max-width: 105px;
     }
 }

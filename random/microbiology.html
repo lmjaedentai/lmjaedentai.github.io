@@ -4,11 +4,64 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="Your side dish for Medical Important Microorganism">
+      <meta name="author" content="Jaeden Tai">
+      <meta name="robots" content="noindex">
     <title>Microbiology</title>
     <style>
       svg.markmap {
         width: 100%;
         height: 100vh;
+      }
+      header {
+        position: fixed;
+        display: flex;
+        top: 10px;
+        width: 100%;
+        height: fit-content;
+        justify-content: center;
+        align-items: center;
+        /* background-color: yellowgreen; */
+        z-index: 10;
+      }
+      .reminder {
+        width: 300px;
+        text-align: center;
+        margin: 20px;
+        background: rgb(255, 255, 255);
+        padding: 5px;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        opacity: 0.7;
+      }
+      .table{
+        position: fixed;
+        bottom: 110px;
+        right: 30px;
+        width: 37px;
+        height: 37px;
+        padding: 8px;
+        border-radius: 30px;
+        background: rgb(255, 255, 255);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        opacity: 0.6;
+        cursor: pointer;
+      }
+      .about{
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        margin: 20px;
+        background: rgb(255, 255, 255);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        opacity: 0.5;
       }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
@@ -16,9 +69,15 @@
   <body>
     <div class="markmap">
       <script type="text/template">
-# Medical Microbiology<!-- markmap: foldAll -->
 
-## Bacteria 
+---
+markmap:
+    initialExpandLevel: 
+        3
+---
+# medical microbiology
+
+## Bacteria
 
 ### Classification by Gram Stain
 
@@ -1214,7 +1273,726 @@
 - Special protocols for high-infectivity tissues
 - No effective treatment, only supportive care
 
-## Laboratory Diagnosis
+
+## Helminths
+
+### Classification
+
+#### Phylum Platyhelminthes (Flatworms)
+
+##### Class Cestoda (Tapeworms)
+- Elongated, dorsoventrally flattened, ribbon-like, segmented body
+- Hermaphroditic (monoecious)
+- Body consists of scolex (head), neck, and strobila (chain of proglottids)
+- No digestive system; absorb nutrients through tegument
+- Humans can be definitive or intermediate hosts
+
+##### Class Trematoda (Flukes)
+- Unsegmented, leaf-shaped, dorsoventrally flat
+- Size: 1 mm to several cm
+- Two suckers: oral sucker and ventral sucker (acetabulum)
+- Simple digestive system, no anus
+- Hermaphroditic (monoecious) except blood flukes (diecious)
+
+#### Phylum Nemathelminthes (Roundworms)
+
+##### Class Nematoda (Nematodes)
+- Elongated, non-segmented, cylindrical, tapering at both ends
+- Pseudocoelom (body cavity)
+- Complete digestive, reproductive, nervous, and excretory systems
+- Diecious (separate sexes); male smaller with curved posterior end
+- Female reproductive structures: paired ovaries, oviducts, uteri, vagina, genital pore
+- Male reproductive structures: testis, vas deferens, seminal vesicle, cloaca, spicules, gubernaculum
+
+### Intestinal Nematodes (Soil-Transmitted Helminths)
+
+#### Ascaris lumbricoides (Common Roundworm)
+- **Description**: Largest human nematode; Female 220-350mm, Male 150-310mm
+- **Habitat**: Small intestine
+- **Infective Stage**: Embryonated eggs
+- **Transmission**: Fecal-oral, Ingestion of infective eggs in contaminated food/water/soil
+- **Life Cycle**: Egg ingestion → larvae hatch in small intestine → penetrate intestinal wall → liver → heart → lungs → bronchi → pharynx → swallowed → small intestine (mature to adults); Life span 12-18 months
+- **Virulence**: Larval migration through tissues, Adult worm burden
+- **Clinical**: Asymptomatic (mild), Pulmonary phase (Löffler's syndrome: fever, cough, dyspnea, eosinophilia), Intestinal obstruction (children <5 years), Abdominal discomfort, Malnutrition, Stunted growth, Ectopic migration
+- **Eggs**: Fertilized (60x40 μm, ovoid, golden brown with thick albuminous coat), Unfertilized (90x40 μm, elongated, irregular), Decorticated (coat lost)
+- **Diagnosis**: Stool microscopy (eggs)
+- **Management**: Albendazole, Mebendazole
+- **Prevention**: Periodic deworming, Improved sanitation, Public health education, Surgery (obstruction)
+
+#### Trichuris trichiura (Whipworm)
+- **Description**: Female 35-50mm with blunt tail, Male 30-45mm with coiled tail
+- **Habitat**: Large intestine (cecum)
+- **Infective Stage**: Embryonated eggs
+- **Transmission**: Fecal-oral, Ingestion of barrel-shaped infective eggs
+- **Life Cycle**: No pulmonary phase; Eggs ingested → larvae hatch → mature in large intestine; Anterior end embedded in mucosa, posterior hanging in lumen
+- **Clinical**: Asymptomatic (mild), Mucous bloody diarrhea (heavy), Abdominal pain, Rectal prolapse, Anemia, Clubbing of fingers (children with heavy loads)
+- **Eggs**: 50-54 x 22-23 μm, Barrel-shaped with bipolar mucoid plugs
+- **Diagnosis**: Stool microscopy (bipolar barrel-shaped eggs)
+- **Management**: Albendazole, Mebendazole
+- **Prevention**: Periodic deworming, Improved sanitation, Public health education
+
+#### Hookworms (Necator americanus, Ancylostoma duodenale)
+- **Description**: N. americanus (Female 9-11mm, Male 5-9mm; 2 ventral and 2 dorsal cutting plates; 6,000-11,000 eggs/day; 0.03-0.05ml blood/day; lives up to 18 years), A. duodenale (Female 10-13mm, Male 8-11mm; 4 ventral teeth; 15,000-20,000 eggs/day; 0.16-0.34ml blood/day; lives 1-5 years)
+- **Habitat**: Small intestine
+- **Infective Stage**: Filariform larvae (L3)
+- **Transmission**: Skin penetration by L3 (thin skin between toes, dorsum of feet, soles, hands)
+- **Life Cycle**: L3 penetrates skin → bloodstream → heart → lungs → bronchi → pharynx → swallowed → small intestine (mature, attach to wall)
+- **Clinical**: Ground itch (erythematous papular/vesicular eruptions, edema, itching), Pulmonary manifestations (Löffler's syndrome), Intestinal phase (nausea, vomiting, abdominal pain, diarrhea), Iron deficiency anemia (blood loss), Protein loss, Malabsorption, Retarded growth and mental development (children)
+- **Eggs**: 60 x 40 μm, Ellipsoidal, Thin transparent shell, Clear space separating shell from embryo
+- **Diagnosis**: Stool microscopy (eggs)
+- **Management**: Albendazole, Mebendazole, Iron supplementation
+- **Prevention**: Periodic deworming, Wear shoes, Improved sanitation, Public health education
+
+#### Strongyloides stercoralis (Threadworm)
+- **Description**: Smallest intestinal nematode; Female 2.2 x 0.04 mm; Male free-living
+- **Habitat**: Small intestine (mucosa)
+- **Infective Stage**: Filariform larvae (L3)
+- **Transmission**: Skin penetration by L3
+- **Life Cycle**: Two cycles - Parasitic (L3 → skin → bloodstream → lungs → intestine → adult female → eggs → rhabditiform larvae in stool) and Free-living (in soil); Autoinfection possible (rhabditiform → filariform in intestine)
+- **Clinical**: Cutaneous (rash, pruritus, larva currens - racing larva 5-15 cm/hour, perianal involvement), Pulmonary (Löffler's syndrome), GI (diarrhea, abdominal pain, malabsorption), Hyperinfection syndrome (immunocompromised, especially steroids), Disseminated strongyloidiasis (GIT, brain, lungs, skin - fatal)
+- **Larvae**: Rhabditiform (225 x 16 μm, short buccal cavity, notched tail), Filariform (700 μm, notched tail)
+- **Diagnosis**: Stool/sputum examination (rhabditiform larvae with notched tail), ELISA
+- **Management**: Ivermectin, Thiabendazole, Albendazole
+- **Prevention**: Wear shoes, Sanitary disposal, Screen before immunosuppression (CRITICAL)
+
+#### Enterobius vermicularis (Pinworm)
+- **Description**: Female 6-12mm with long pointed tail, Male 2-5mm with blunt end
+- **Habitat**: Large intestine, Migrates to perianal area to lay eggs
+- **Infective Stage**: Embryonated eggs
+- **Transmission**: Fecal-oral, Ingestion of infective eggs, Auto-reinfection, Retroinfection
+- **Life Cycle**: Eggs ingested → hatch in small intestine → migrate to large intestine → mature → gravid females migrate to perianal area at night → lay eggs → die
+- **Clinical**: Pruritus ani (perianal, perineal, vaginal itching - worse at night), Insomnia, Restlessness, Nocturnal enuresis, Scratching (bleeding, eczema, dermatitis, secondary infection), Ectopic infection (vagina, uterus)
+- **Eggs**: 50 x 30 μm, One side flattened, Transparent shell
+- **Diagnosis**: Scotch tape technique (perianal swab in morning)
+- **Management**: Albendazole, Mebendazole, Treat entire household
+- **Prevention**: Personal hygiene, Avoid crowded places, Frequent handwashing
+
+### Blood and Tissue Nematodes (Filarial Worms)
+
+#### Wuchereria bancrofti
+- **Disease**: Lymphatic filariasis (Elephantiasis)
+- **Habitat**: Lymphatic system, Lymph nodes
+- **Vectors**: Mosquitoes (Culex, Anopheles, Aedes)
+- **Infective Stage**: L3 larvae
+- **Transmission**: Mosquito bite deposits L3 → lymphatics → mature to adults → microfilariae in blood
+- **Distribution**: Tropical and subtropical regions; 1.3 billion at risk, >120 million infected
+- **Microfilariae**: 244-296 x 7.5-10 μm, Sheathed (unstained with Giemsa), Body bends in smooth curves, No terminal nuclei, Discrete body nuclei, Anterior cephalic space ratio 1:1, Nocturnal periodicity
+- **Clinical**: Acute (inflammatory filariasis: lymphangitis, lymphadenitis, epididymo-orchitis, filarial fever), Chronic (10-15 years: lymphedema, hydrocele 40-60%, elephantiasis of limbs/scrotum/breast/vulva, chyluria)
+- **Diagnosis**: Blood smear (thick, Giemsa stain, nighttime collection 10 PM-2 AM), Microfilariae identification, Antigen detection, Serology
+- **Management**: Diethylcarbamazine (DEC), Albendazole, Ivermectin, Surgery (hydrocele)
+- **Prevention**: Mass drug administration (MDA), Mosquito control, Insecticide-treated nets
+
+#### Brugia malayi, Brugia timori
+- **Disease**: Lymphatic filariasis
+- **Habitat**: Lymphatic system
+- **Vectors**: Mansonia, Anopheles, Aedes mosquitoes
+- **Distribution**: Southeast Asia (B. malayi), Eastern Indonesia (B. timori)
+- **Microfilariae**: B. malayi (177-230 x 5-6 μm, Sheathed, stains dark purple with Giemsa, Body bends in kinky curves, Terminal and subterminal nuclei, Indiscrete body nuclei, Anterior cephalic space ratio 2:1, Subperiodic or nocturnal)
+- **Clinical**: Similar to W. bancrofti but less severe elephantiasis, Usually affects lower limbs
+- **Diagnosis**: Blood smear (microfilariae identification - distinguish by sheath staining, body nuclei, cephalic space)
+- **Management**: DEC, Albendazole, Ivermectin
+- **Prevention**: Mosquito control, MDA
+
+### Tissue Nematodes
+
+#### Trichinella spiralis
+- **Disease**: Trichinosis (Trichinellosis)
+- **Habitat**: Encysted larvae in striated muscle
+- **Infective Stage**: Encysted larvae in meat
+- **Transmission**: Ingestion of undercooked meat (pork, bear, walrus) containing cysts
+- **Life Cycle**: Larvae released in stomach → mature in small intestine → female viviparous (produces larvae, not eggs) → newborn larvae penetrate intestinal wall → bloodstream → encyst in striated muscle
+- **Clinical**: (1) Intestinal phase (2-7 days: diarrhea, abdominal pain, nausea, vomiting, fever), (2) Muscle invasion phase (2nd week: fever, periorbital edema, myalgia, weakness, muscle tenderness, eosinophilia), (3) Convalescent stage (3-4 weeks: symptoms subside, recovery in 2-6 months)
+- **Diagnosis**: Muscle biopsy (encysted larvae), Serology, Eosinophil count
+- **Management**: Mebendazole, Albendazole, Corticosteroids (severe)
+- **Prevention**: Cook meat at 77°C (170°F), Freeze meat, Avoid raw/undercooked pork
+
+### Intestinal Cestodes (Tapeworms)
+
+#### Taenia solium (Pork Tapeworm)
+- **Definitive Host**: Human (adult worm)
+- **Intermediate Host**: Swine, Human (larva)
+- **Adult Habitat**: Small intestine
+- **Infective Stage**: Cysticercus cellulosae (larva in pork) for taeniasis; Eggs for cysticercosis
+- **Transmission**: Taeniasis (undercooked pork with cysts), Cysticercosis (fecal-oral contamination with eggs, autoinfection)
+- **Adult**: Up to 6m long, Creamy white, Scolex with 4 suckers + rostellum with 25-50 hooklets, Neck, Strobila (proglottids)
+- **Eggs**: 31-43 μm, Rounded, Thick radially striated brown shell, Hexacanth embryo (6 hooklets), Identical to T. saginata
+- **Proglottids**: Gravid proglottids with 7-12 lateral uterine branches per side
+- **Clinical**: Taeniasis (mild: deprivation of nutrition, GI disturbances, abdominal pain, vomiting, diarrhea, intestinal obstruction), Cysticercosis (CNS most common: headache, dizziness, seizures, epilepsy, hydrocephalus; Eye: blurred vision, retinal detachment; Heart; Muscle; Subcutaneous nodules; Life-threatening)
+- **Diagnosis**: Taeniasis (eggs/proglottids in feces, count uterine branches), Cysticercosis (biopsy, serology ELISA, radiology CT/MRI, ophthalmoscopy)
+- **Management**: Praziquantel, Niclosamide, Surgery (neurocysticercosis), Corticosteroids (reduce inflammation)
+- **Prevention**: Cook pork thoroughly, Meat inspection, Improved sanitation, Handwashing
+
+#### Taenia saginata (Beef Tapeworm)
+- **Definitive Host**: Human
+- **Intermediate Host**: Cattle
+- **Adult Habitat**: Small intestine
+- **Infective Stage**: Cysticercus bovis (larva in beef)
+- **Transmission**: Undercooked beef containing cysts
+- **Adult**: Up to 10m long, Scolex with 4 suckers, NO rostellum or hooklets
+- **Eggs**: Identical to T. solium (cannot differentiate)
+- **Proglottids**: Gravid proglottids with 15-30 lateral uterine branches per side
+- **Clinical**: Asymptomatic or mild abdominal discomfort, Anal pruritus (crawling proglottids)
+- **Diagnosis**: Eggs/proglottids in feces (count uterine branches to differentiate species)
+- **Management**: Praziquantel, Niclosamide
+- **Prevention**: Cook beef thoroughly, Meat inspection
+
+#### Diphyllobothrium latum (Broad Fish Tapeworm)
+- **Description**: Largest tapeworm infecting humans (up to 10m), Ivory colored
+- **Disease**: Diphyllobothriasis
+- **Habitat**: Small intestine
+- **Intermediate Hosts**: 1st - Copepods (procercoid), 2nd - Freshwater fish (plerocercoid)
+- **Infective Stage**: Plerocercoid larvae in fish
+- **Transmission**: Undercooked/raw freshwater fish
+- **Adult**: Spatulate scolex with 2 longitudinal grooves (bothria), No hooks
+- **Eggs**: 58-76 x 40-51 μm, Operculated (lidded), Oval, Yellow-brown, Unembryonated when passed
+- **Clinical**: Mild (bloating, vague abdominal discomfort, anorexia, nausea, vomiting, diarrhea), Megaloblastic anemia (vitamin B12 deficiency - worm competes for B12)
+- **Diagnosis**: Operculated eggs or spatulated scolex in feces
+- **Management**: Praziquantel, Vitamin B12 supplementation (if anemic)
+- **Prevention**: Cook/freeze fish, Prevent fecal contamination of water, Public health education
+
+### Cestodes in Other Organs
+
+#### Echinococcus granulosus (Dog Tapeworm)
+- **Disease**: Unilocular hydatid disease (Cystic echinococcosis)
+- **Definitive Host**: Dogs, Foxes, Wolves (adult worm in intestine)
+- **Intermediate Host**: Sheep, Cattle, Humans (hydatid cyst/larva in organs)
+- **Habitat**: Hydatid cysts in liver (60-70%), lungs (20-25%), bones, kidneys, spleen, muscles, CNS, eye
+- **Infective Stage**: Eggs
+- **Transmission**: Fecal-oral (dog feces with eggs), Contaminated food/water
+- **Adult**: 2-7mm (in dog), Scolex with 4 suckers + rostellum with hooks, 3 proglottids
+- **Life Cycle**: Human ingests eggs → oncosphere hatches → penetrates intestinal wall → bloodstream → organs → develops into thick-walled hydatid cyst (enlarges gradually, produces protoscolices and daughter cysts)
+- **Clinical**: Asymptomatic for years (20-30 years if slow-growing), Mass lesion effect when large, Liver (abdominal pain, nausea, vomiting, hepatomegaly), Lungs (chronic cough, chest pain, dyspnea), Brain (symptoms when small), Cyst rupture (allergic reactions, anaphylaxis, secondary echinococcosis)
+- **Diagnosis**: Radiography (space-occupying lesion), Ultrasound, CT/MRI, Serology (ELISA for anti-hydatid antibodies), Casoni skin test
+- **Management**: Surgical removal (90%), Albendazole/Mebendazole (before/after surgery), PAIR technique (Puncture, Aspiration, Injection of scolicidal agent, Re-aspiration)
+- **Prevention**: Deworm dogs regularly, Don't feed dogs raw offal, Hand hygiene, Avoid contact with dog feces
+
+### Blood Trematodes (Blood Flukes)
+
+#### Schistosoma species
+- **Distribution**: 200-300 million cases in 77 countries; Second most devastating parasitic disease after malaria
+- **Characteristics**: Diecious (separate sexes), Male with gynecophoral canal holding female
+
+##### Schistosoma haematobium (Bladder Fluke)
+- **Habitat**: Veins of urinary bladder plexus
+- **Intermediate Host**: Bulinus snails
+- **Distribution**: Africa, Middle East
+- **Eggs**: 112-170 x 40-70 μm, Elongated, Terminal spine
+- **Clinical**: Urinary schistosomiasis (hematuria, dysuria, frequency), Bladder wall granulomas, Fibrosis, Hydronephrosis, Bladder cancer (squamous cell carcinoma), Genital schistosomiasis
+
+##### Schistosoma mansoni (Manson's Fluke)
+- **Habitat**: Veins draining large intestine (mesenteric)
+- **Intermediate Host**: Biomphalaria snails
+- **Distribution**: Africa, South America, Caribbean, Middle East
+- **Eggs**: 114-180 x 45-70 μm, Oval, Large prominent lateral spine
+- **Clinical**: Intestinal schistosomiasis (bloody diarrhea, abdominal pain), Hepatosplenic schistosomiasis (periportal fibrosis, portal hypertension, splenomegaly, esophageal varices, hematemesis)
+
+##### Schistosoma japonicum (Oriental Fluke)
+- **Habitat**: Veins of small intestine
+- **Intermediate Host**: Oncomelania snails
+- **Distribution**: China, Philippines, Indonesia
+- **Eggs**: 70-100 x 50-65 μm, Rounded, Small rudimentary lateral spine or knob
+- **Clinical**: Intestinal and hepatosplenic disease (more severe than S. mansoni), CNS involvement (cerebral granulomas from ectopic eggs)
+
+#### Schistosomiasis - General Features
+- **Infective Stage**: Free-swimming cercariae
+- **Transmission**: Skin penetration by cercariae while in freshwater
+- **Life Cycle**: Cercariae penetrate skin → schistosomula → bloodstream → lungs → liver → mature → migrate to final habitat → mate → eggs laid → eggs penetrate tissues → excreted in urine (S. haematobium) or feces (S. mansoni, S. japonicum) → hatch in water → miracidium → infect snails → sporocysts → cercariae released
+- **Clinical**: (1) Cercarial dermatitis (pruritic papular rash within 24 hours), (2) Katayama fever (acute schistosomiasis 2-4 weeks post-exposure: fever, cough, hepatosplenomegaly, lymphadenopathy, eosinophilia), (3) Chronic schistosomiasis (months-years: organ-specific pathology from granulomas around eggs)
+- **Diagnosis**: Microscopy (eggs in urine/feces - identify by spine location), Rectal/liver/bladder biopsy, Serology (antibody detection for travelers), Eosinophilia
+- **Management**: Praziquantel (drug of choice), Corticosteroids (Katayama fever)
+- **Prevention**: Avoid freshwater in endemic areas, Snail control, Improved sanitation, Mass drug administration, Safe water access, Vaccine development
+
+### Liver Trematodes (Liver Flukes)
+
+#### Clonorchis sinensis / Opisthorchis viverrini (Chinese/Asian Liver Fluke)
+- **Disease**: Clonorchiasis / Opisthorchiasis
+- **Habitat**: Bile ducts, Gallbladder
+- **Intermediate Hosts**: 1st - Snails (cercariae), 2nd - Freshwater fish (metacercariae)
+- **Infective Stage**: Metacercariae in fish
+- **Transmission**: Undercooked/raw freshwater fish
+- **Distribution**: Northeast Thailand, Laos, Cambodia, Vietnam, China, Korea
+- **Adult**: 5-10mm long, Flat, Reddish
+- **Eggs**: 26-30 x 15-17 μm, Operculated, Jug-shaped with prominent shoulders around operculum, Small knob at posterior end
+- **Clinical**: Asymptomatic (light), Fatigue, Abdominal discomfort, Anorexia, Weight loss, Dyspepsia, Diarrhea, Obstructive jaundice, Pancreatitis, Recurrent cholangitis, Cholangiocarcinoma (Group 1 biological carcinogen - IARC 2009)
+- **Diagnosis**: Eggs in feces or duodenal aspirate, Serology, Ultrasound/CT (dilated bile ducts)
+- **Management**: Praziquantel, Triclabendazole
+- **Prevention**: Cook fish thoroughly, Avoid raw/dried/salted fish, Public health education
+
+#### Fasciola hepatica (Sheep Liver Fluke)
+- **Disease**: Fascioliasis
+- **Habitat**: Liver parenchyma, Bile ducts
+- **Intermediate Hosts**: 1st - Snails (cercariae), 2nd - Water plants (metacercariae on watercress, water spinach)
+- **Infective Stage**: Metacercariae on aquatic plants
+- **Transmission**: Ingestion of contaminated water plants
+- **Distribution**: Cosmopolitan, Common in sheep-raising countries
+- **Adult**: 3cm long, Brown to pale, Leaf-shaped, Large
+- **Eggs**: 130-150 x 60-90 μm, Large, Operculated, Elliptical-oval, Yellow-brown
+- **Clinical**: (1) Early/Acute phase (migration through liver: abdominal pain, nausea, vomiting, hepatomegaly, fever, cough, eosinophilia), (2) Chronic phase (months-years: cholangitis, cholecystitis, biliary obstruction, pancreatitis)
+- **Diagnosis**: Eggs in feces (large operculated), Serology, Imaging (liver lesions)
+- **Management**: Triclabendazole (drug of choice), Praziquantel
+- **Prevention**: Avoid raw water vegetables, Cook watercress/water spinach, Separate pig farming from plant cultivation
+
+### Intestinal Trematodes (Intestinal Flukes)
+
+#### Fasciolopsis buski (Giant Intestinal Fluke)
+- **Description**: Largest trematode infecting humans (2-7cm)
+- **Disease**: Fasciolopsiasis
+- **Habitat**: Small intestine (duodenum, jejunum)
+- **Intermediate Hosts**: 1st - Snails, 2nd - Water plants (water chestnuts, bamboo, caltrop, lotus)
+- **Infective Stage**: Metacercariae on water plants
+- **Transmission**: Ingestion of contaminated water plants
+- **Distribution**: Central and Southeast Asia
+- **Eggs**: 130-140 x 80-85 μm, Large, Ellipsoidal, Unembryonated, Thin shell, Small indistinct operculum (similar to F. hepatica but slightly smaller)
+- **Clinical**: Asymptomatic (light), Abdominal pain, Nausea, Vomiting, Fever, Diarrhea with mucus, Intestinal obstruction, Allergic reactions, Edema (face, lower limbs), Anemia, Vitamin B12 deficiency, Malabsorption, Eosinophilia
+- **Diagnosis**: Eggs in feces
+- **Management**: Praziquantel
+- **Prevention**: Cook water vegetables, Separate pig rearing from water plant cultivation
+
+### Lung Trematodes (Lung Flukes)
+
+#### Paragonimus westermani (Lung Fluke)
+- **Description**: 7-15mm long, Pinkish-brown, Leaf-like
+- **Disease**: Paragonimiasis
+- **Habitat**: Lungs (in pairs within cysts)
+- **Intermediate Hosts**: 1st - Snails, 2nd - Freshwater crabs/crayfish (metacercariae)
+- **Infective Stage**: Metacercariae in crustaceans
+- **Transmission**: Ingestion of raw/undercooked freshwater crabs or crayfish
+- **Distribution**: Southeast Asia, Korea, Japan, China, West Africa, Latin America
+- **Life Span**: 5-6 years
+- **Eggs**: 80-120 x 45-70 μm, Operculated, Oval, Yellow-brown, Thick shell, Often asymmetrical, Unembryonated
+- **Clinical**: Acute phase (invasion: diarrhea, abdominal pain, fever, cough, urticaria, hepatosplenomegaly, pulmonary infiltrates, eosinophilia), Chronic pulmonary phase (10-15 years: chronic cough, rust-colored sputum, hemoptysis, dyspnea, chest pain, resembles tuberculosis), Extrapulmonary (brain - seizures, visual disturbances, space-occupying lesions; abdominal organs; subcutaneous nodules)
+- **Diagnosis**: Eggs in sputum (rust-colored) or feces, Serology, Chest X-ray (nodular/ring shadows), CT/MRI (brain lesions)
+- **Management**: Praziquantel, Triclabendazole, Corticosteroids (cerebral infections), Surgery (brain cysts)
+- **Prevention**: Cook crabs/crayfish thoroughly, Avoid raw/pickled crustaceans, Public health education
+
+## Arthropods
+
+### General Characteristics
+- Phylum Arthropoda (~10 million species)
+- Invertebrate animals with chitinous exoskeleton
+- Segmented body, Paired jointed appendages
+- Bilaterally symmetrical
+- Must molt for growth
+- Open circulatory system with hemolymph
+- Compound eyes and simple eyes (ocelli)
+- Separate genders
+
+### Medical Importance Categories
+- Bites and nuisance
+- Allergy induction
+- Venom production
+- Ectoparasites
+- Disease vectors (mechanical, biological, transovarial transmission)
+- Intermediate hosts of pathogens
+
+### Classification
+
+#### Class Hexanauplia (Copepods)
+- **Dracunculus medinensis (Guinea worm)**: Dracunculiasis
+- **Intermediate hosts**: Copepods for Diphyllobothrium latum (fish tapeworm - procercoid larvae)
+
+#### Class Arachnida
+
+##### Mites (Trombiculidae, Sarcoptidae)
+
+###### Trombicula species (Chiggers)
+- **Names**: Chiggers, Red bugs, Scrub-itch mites, Harvest mites
+- **Distribution**: Worldwide
+- **Parasitic Stage**: Larval stage only (6 legs)
+- **Adult**: Free-living, Non-parasitic (8 legs)
+- **Feeding**: Larvae attach to skin → inject enzymes → digest cellular content → form stylostome (tube-like structure) → suck digested product
+- **Clinical**: Ground itch (itching 24-48 hours after bite, intense itchiness from enzymes, erythematous papular/vesicular eruptions, edema), Secondary bacterial infection
+- **Duration**: Larvae attached 3-5 days before dropping off
+- **Disease Vector**: Leptotrombidium deliense transmits Orientia tsutsugamushi (scrub typhus)
+- **Management**: Topical corticosteroids, Antihistamines
+
+###### Sarcoptes scabiei (Scabies Mite)
+- **Disease**: Scabies
+- **Distribution**: Worldwide
+- **Feeding**: Female burrows into skin → lays eggs → feeds on skin cells
+- **Clinical**: Intense itching (worse at night), Burrows (linear tracks), Papular rash, Secondary bacterial infection, Type I and IV hypersensitivity reactions
+- **Allergens**: Tropomyosin, Paramyosin
+- **Transmission**: Direct skin contact, Fomites
+- **Management**: Permethrin cream, Ivermectin
+- **Prevention**: Treat close contacts, Wash bedding/clothing
+
+##### Ticks
+
+###### Hard Ticks (Ixodidae)
+- **Characteristics**: Scutum (dorsal shield) present, Capitulum visible from above, One nymphal stage, Feed for days-weeks, Females take one blood meal and lay eggs once
+- **Genera**: Ixodes, Dermacentor, Amblyomma, Rhipicephalus
+
+####### Ixodes species
+- **Diseases Transmitted**: Lyme disease (Borrelia burgdorferi), Babesiosis (Babesia species), Anaplasmosis (Anaplasma phagocytophilum), Powassan encephalitis (Powassan virus)
+- **Distribution**: North America, Europe, Asia
+
+####### Dermacentor species
+- **Diseases Transmitted**: Rocky Mountain spotted fever (Rickettsia rickettsii), Tularemia (Francisella tularensis), Colorado tick fever (Colorado tick fever virus), Tick paralysis (neurotoxin)
+- **Distribution**: North and South America
+
+###### Soft Ticks (Argasidae)
+- **Characteristics**: No scutum, Capitulum not visible from above, Several nymphal stages, Feed for 30-60 minutes, Females take multiple blood meals and lay eggs several times
+- **Genera**: Ornithodoros
+
+####### Ornithodoros species
+- **Diseases Transmitted**: Tick-borne relapsing fever (Borrelia species: B. duttoni, B. hermsii, B. parkeri, B. turicatae, B. crocidurae, B. miyamotoi)
+- **Distribution**: Africa, Americas, Middle East
+
+##### Tick Biology
+- **Life Stages**: Egg → 6-legged larva → 8-legged nymph → 8-legged adult
+- **Feeding**: Blood required at every stage to survive
+- **Bites**: Usually painless (salivary anesthetics), May cause red lump, Generally don't itch
+
+##### Tick-Borne Diseases - Clinical Features
+- **Symptoms**: Fever/chills, Headache, Fatigue, Muscle aches, Joint pain (Lyme disease), Rash (Lyme disease, ehrlichiosis, tularemia, RMSF)
+- **Diagnosis**: Clinical symptoms, Tick exposure history, Laboratory tests (serology, PCR)
+- **Management**: Remove tick promptly, Antibiotics (doxycycline for most), Supportive care
+- **Prevention**: Protective clothing, Insect repellent, Tick checks after outdoor activities, Prompt removal
+
+#### Class Insecta
+
+##### Order: Anoplura (Lice)
+
+###### Pediculus humanus humanus (Body Louse)
+- **Characteristics**: 2-3mm long, Dorsoventrally flattened, Wingless, 6 legs
+- **Habitat**: Lives and lays eggs on clothing, Moves to skin only for feeding
+- **Diseases Transmitted**: Endemic typhus (Rickettsia prowazekii), Trench fever (Bartonella quintana), Louse-borne relapsing fever (Borrelia recurrentis)
+- **Transmission**: Direct contact, Contaminated clothing, Crowding
+- **Clinical**: Pruritus, Scratch marks, Secondary infection
+- **Management**: Treat clothing with insecticide, Improve hygiene, Antibiotics for diseases
+- **Prevention**: Avoid overcrowding, Wash clothing/bedding, Good personal hygiene
+
+###### Pediculus humanus capitis (Head Louse)
+- **Habitat**: Lives in hair on head
+- **Eggs**: Nits (brown/white) attached to hair
+- **Transmission**: Direct head-to-head contact, Shared combs/hats
+- **Clinical**: Scalp itching, Tickling sensation, Nits visible
+- **Management**: Permethrin lotion, Malathion, Ivermectin, Manual nit removal
+- **Not a disease vector**
+
+###### Phthirus pubis (Pubic/Crab Louse)
+- **Characteristics**: 0.8-1.2mm, Large claws, Lives on pubic hair
+- **Transmission**: Sexual contact, Contaminated bedding
+- **Clinical**: Genital itching, Blue spots
+- **Management**: Permethrin, Treat sexual partners
+- **Not a disease vector**
+
+##### Order: Siphonaptera (Fleas)
+
+###### Xenopsylla cheopis (Oriental Rat Flea)
+- **Diseases Transmitted**: Plague (Yersinia pestis), Murine typhus (Rickettsia typhi)
+- **Reservoir**: Rats
+- **Distribution**: Worldwide
+- **Clinical**: Plague (bubonic, septicemic, pneumonic), Murine typhus (fever, headache, rash)
+- **Management**: Antibiotics (streptomycin, doxycycline), Flea control, Rodent control
+- **Prevention**: Avoid rodents, Insecticides, Improve sanitation
+
+###### Ctenocephalides felis (Cat Flea)
+- **Diseases Transmitted**: Cat-flea typhus/flea-borne spotted fever (Rickettsia felis), Murine typhus (R. typhi)
+- **Intermediate Host**: Dipylidium caninum (dog/cat tapeworm)
+- **Management**: Treat pets, Environmental control
+
+###### Ctenocephalides canis (Dog Flea)
+- **Intermediate Host**: Dipylidium caninum
+
+###### Pulex irritans (Human Flea)
+- **Distribution**: Worldwide
+- **Clinical**: Bites, Pruritus
+
+###### Tunga penetrans (Sand Flea/Jigger)
+- **Disease**: Tungiasis
+- **Distribution**: Tropical/subtropical Americas, Sub-Saharan Africa
+- **Feeding**: Female burrows into skin (toes, feet) → sucks blood → produces eggs → lives 4-6 weeks
+- **Clinical**: Pain, Intense itching, Inflammatory reaction, Nodules, Bacterial superinfection (abscesses, tetanus, gangrene, post-streptococcal glomerulonephritis), Multiple lesions restrict mobility, Disfigurement
+- **Reservoirs**: Pigs, Cattle
+- **Management**: Surgical extraction of embedded fleas
+- **Prevention**: Wear shoes, Avoid sandy environments, Treat reservoirs
+
+##### Order: Hemiptera (True Bugs)
+
+###### Bed Bugs (Cimex lectularius, Cimex hemipterus)
+- **Disease**: Cimicosis (bed bug bites)
+- **Habitat**: Cracks, crevices, mattresses in dwellings
+- **Characteristics**: Ovular flattened body, Short broad head, Rounded compound eyes, 4-segmented antennae, Piercing-sucking mouthparts
+- **Activity**: Nocturnal
+- **Clinical**: Redness, Blisters, Itching, Psychological disturbance, Fatigue, Fever (some)
+- **Transmission**: Not known to transmit infectious diseases
+- **Management**: Insecticide treatment, Heat treatment, Mattress encasements
+- **Prevention**: Inspect accommodations, Avoid used furniture, Seal cracks
+
+###### Kissing Bugs (Reduviidae: Triatoma, Rhodnius, Panstrongylus)
+- **Disease Vector**: Chagas disease (Trypanosoma cruzi)
+- **Distribution**: Southern USA, Mexico, Central America, South America
+- **Characteristics**: Triatoma (intermediate head length, antennae midway), Rhodnius (long head, antennae at front under clypeus), Panstrongylus (short robust head, antennae in front of eyes)
+- **Habitat**: Cracks, crevices in poor housing
+- **Activity**: Feed at night on face/lips (hence "kissing bugs")
+- **Transmission**: After blood meal → bug defecates → feces contain T. cruzi → scratching introduces parasite through mucous membranes or skin breaks
+- **Clinical**: Acute Chagas (Chagoma, Romana's sign, fever, lymphadenopathy), Chronic Chagas (cardiomyopathy, megaesophagus, megacolon)
+- **Prevention**: Improved housing, Insecticide spraying, Bed nets, Screen windows
+
+##### Order: Diptera (Flies and Mosquitoes)
+
+###### Family: Culicidae (Mosquitoes)
+
+####### Mosquito Characteristics
+- **Mouthparts**: Long proboscis for piercing and sucking blood
+- **Sexual Dimorphism**: Females blood-feeders (need protein for eggs), Males feed on nectar
+- **Life Stages**: Egg → Larva (aquatic) → Pupa (aquatic) → Adult (aerial)
+
+####### Anopheles species
+- **Subfamily**: Anophelinae
+- **Characteristics**: Palps as long as proboscis, Adults rest with abdomen at angle, No siphon in larvae (rest parallel to water surface)
+- **Eggs**: Laid individually on water, Each egg has lateral floats
+- **Diseases Transmitted**: Malaria (Plasmodium species: P. falciparum, P. vivax, P. ovale, P. malariae, P. knowlesi), Lymphatic filariasis (Wuchereria bancrofti, Brugia species), O'nyong-nyong fever (O'nyong-nyong virus)
+- **Distribution**: Tropical and subtropical regions worldwide
+- **Biting Time**: Mainly evening and night
+
+####### Aedes species
+- **Subfamily**: Culicinae
+- **Characteristics**: Palps shorter than proboscis, Adults hold abdomen parallel to surface, Larvae with siphon (rest at angle to water surface)
+- **Eggs**: Laid individually beside water (drought-resistant), No floats, Black/dark brown
+- **Diseases Transmitted**: Dengue fever (DENV 1-4), Zika fever (Zika virus), Chikungunya (Chikungunya virus), Yellow fever (Yellow fever virus), Lymphatic filariasis (W. bancrofti), Japanese encephalitis (JE virus)
+- **Key Species**: Ae. aegypti (dengue, Zika, yellow fever), Ae. albopictus (dengue, chikungunya), Ae. japonicus (Japanese encephalitis)
+- **Distribution**: Tropical and temperate regions
+- **Biting Time**: Daytime (Ae. aegypti, Ae. albopictus)
+
+####### Culex species
+- **Subfamily**: Culicinae
+- **Eggs**: Laid in rafts on water, No floats
+- **Diseases Transmitted**: Lymphatic filariasis (W. bancrofti, Brugia malayi), Japanese encephalitis (JE virus), West Nile encephalitis (West Nile virus), St. Louis encephalitis (SLE virus)
+- **Distribution**: Worldwide
+- **Biting Time**: Evening and night
+
+####### Mansonia species
+- **Subfamily**: Culicinae
+- **Eggs**: Laid in star-shaped clusters on undersurface of floating aquatic plants
+- **Larvae**: Siphon adapted for piercing aquatic plants to obtain air, Rest at angle attached to plant roots
+- **Diseases Transmitted**: Lymphatic filariasis (W. bancrofti, Brugia malayi)
+- **Distribution**: Southeast Asia, Africa, South America
+
+####### Vectorial Capacity Factors
+- **Extrinsic Factors**: Temperature, Rainfall, Pathogen titer, Larval competition (affect extrinsic incubation period)
+- **Intrinsic Factors**: Vector competence (ability to become infected and transmit), Blood feeding hours, Host specificity (anthropophagic vs zoophagic vs zoo-anthropophagic), Life span
+
+###### Family: Psychodidae (Sandflies)
+
+####### Phlebotomus species (Old World)
+- **Distribution**: Africa, Asia, Middle East, Mediterranean
+- **Diseases Transmitted**: Leishmaniasis (Leishmania species: L. donovani - visceral, L. tropica - cutaneous), Sandfly fever (phleboviruses)
+
+####### Lutzomyia species (New World)
+- **Distribution**: Americas
+- **Diseases Transmitted**: Leishmaniasis (Leishmania species: L. braziliensis - mucocutaneous, L. mexicana - cutaneous), Carrion's disease/Bartonellosis (Bartonella bacilliformis)
+
+####### Sandfly Characteristics
+- **Size**: Small (2-3mm), Hairy bodies and wings
+- **Breeding**: Humid spaces (buttress roots of trees, animal burrows, cracks)
+- **Biting**: Very small painful bites in clusters, Mainly nocturnal (but bite if disturbed during day)
+- **Flight**: Weak fliers, Hop rather than fly
+
+###### Family: Simulidae (Blackflies)
+
+####### Simulium species
+- **Diseases Transmitted**: Onchocerciasis/River blindness (Onchocerca volvulus - subcutaneous filariasis)
+- **Distribution**: Africa, Central/South America, Yemen
+- **Breeding**: Fast-flowing rivers and streams (larvae attach to rocks)
+- **Biting**: Pool feeders (lacerate skin, feed on blood pool), Very painful bites, Can cause blood loss anemia
+- **Clinical**: Black fly fever (headaches, fever, nausea, adenitis, dermatitis, allergic asthma), Local swelling and pain
+- **Characteristics**: Small (1-5mm), Humpbacked appearance, Short antennae
+
+###### Family: Glossinidae (Tsetse Flies)
+
+####### Glossina species
+- **Diseases Transmitted**: African trypanosomiasis/Sleeping sickness (Trypanosoma brucei gambiense - chronic, T. b. rhodesiense - acute)
+- **Distribution**: Sub-Saharan Africa (equatorial belt)
+- **Species Groups**: G. palpalis (riverine - T. b. gambiense vector), G. morsitans (savanna - T. b. rhodesiense vector), G. fusca (forest - animal trypanosomes)
+- **Characteristics**: Branched arista hairs on antennae, Hatchet-shaped wings, Proboscis projects forward
+- **Reproduction**: Adenotrophic viviparity (give birth to fully developed larva that immediately pupates), Larva feeds on milk gland secretions in mother's uterus
+- **Biting**: Both sexes blood-feed, Painful bites
+- **Transmission**: Biological vector (T. brucei develops in fly's midgut and salivary glands)
+
+###### Family: Tabanidae (Horse Flies, Deer Flies)
+
+####### Chrysops species (Deer Flies)
+- **Diseases Transmitted**: Loiasis (Loa loa - subcutaneous filariasis), Tularemia (Francisella tularensis)
+- **Distribution**: Central/West Africa (Loa loa)
+- **Biting**: Painful bites, Diurnal feeders, Attracted to movement
+- **Characteristics**: Dark bands on wings, Large eyes
+
+###### Family: Ceratopogonidae (Biting Midges)
+
+####### Culicoides species
+- **Diseases Transmitted**: Mansonella streptocerca (streptocerciasis - subcutaneous filariasis), Mansonella perstans, Mansonella ozzardi (serous cavity filariasis)
+- **Distribution**: Tropical/subtropical regions
+- **Characteristics**: Very small (<3mm - "no-see-ums"), Painful bites, Breed in mud/wet soil
+- **Biting**: Females blood-feed, Dawn/dusk, Swarm
+
+###### Family: Muscidae (House Flies)
+
+####### Musca domestica (House Fly)
+- **Medical Importance**: Mechanical vector (carries pathogens on body/mouthparts - nematode eggs, bacteria, viruses, protozoa)
+- **Diseases**: Food poisoning, Diarrheal diseases, Trachoma, Yaws
+- **Breeding**: Decaying organic matter, Feces, Garbage
+- **Distribution**: Worldwide synanthropic
+- **Prevention**: Sanitation, Waste management, Fly screens
+
+###### Myiasis-Causing Flies
+
+####### Definition
+- **Myiasis**: Infection by fly larvae (maggots) in human tissues
+- **Etymology**: Greek "myia" (fly)
+- **Distribution**: Tropical and subtropical regions, especially rural areas
+
+####### Types by Specificity
+
+######## Obligatory Myiasis
+- **Definition**: Flies require living host for larval development
+- **Agents**: Cordylobia anthropophaga (tumbu fly), Chrysomya bezziana (Old World screwworm), Cochliomyia hominivorax (New World screwworm), Dermatobia hominis (human botfly), Auchmeromyia senegalensis (Congo floor maggot), Gasterophilus intestinalis (horse botfly), Oestrus ovis (sheep botfly), Hypoderma species (warble flies)
+
+######## Facultative Myiasis
+- **Definition**: Flies normally lay eggs on decaying matter but opportunistically infest open wounds
+- **Agents**: Musca domestica (house fly), Lucilia spp. (green bottle fly), Phormia spp. (blow fly), Calliphora spp. (blow fly), Sarcophaga spp. (flesh fly)
+
+######## Accidental Myiasis (Pseudomyiasis)
+- **Definition**: Accidental ingestion of eggs/larvae
+- **Agents**: Various flies, Often gastrointestinal myiasis
+
+####### Cordylobia anthropophaga (Tumbu Fly)
+- **Distribution**: Tropical Africa
+- **Transmission**: Eggs laid on clothes hung outdoors → hatch in 24-72 hours → larvae penetrate wearer's skin
+- **Clinical**: Furuncular lesions, Sensation of movement, Breathing pore visible
+- **Management**: Occlusion (petroleum jelly) → larva emerges for air → remove
+
+####### Chrysomya bezziana (Old World Screwworm)
+- **Distribution**: Asia, Tropical Africa, India, Papua New Guinea
+- **Characteristics**: Obligatory parasite, Blue-green metallic fly
+- **Oviposition**: Wounds, Open sores, Mucous membranes
+- **Feeding**: Larvae burrow into living tissue (healthy and necrotic), Feed on living tissue
+- **Clinical**: Tissue destruction, Characteristic odor attracts more flies, Permanent tissue damage, Can be fatal
+- **Forensic Importance**: Can cause myiasis pre-mortem, May affect post-mortem interval estimation
+- **Management**: Surgical removal of larvae, Debridement, Antibiotics
+
+####### Cochliomyia hominivorax (New World Screwworm)
+- **Distribution**: New World (Americas)
+- **Characteristics**: Obligatory parasite, Larvae screw deeper when disturbed
+- **Oviposition**: Exposed flesh, Wounds, Navels, Mucous membranes
+- **Life Cycle**: Larvae hatch rapidly → burrow into subdermal tissue → feed 3-7 days → drop to ground → pupate ~1 week → adults emerge; Total cycle ~3 weeks
+- **Clinical**: Severe tissue damage leading to death possible
+- **Control**: Sterile Insect Technique (SIT) - females mate once, Release sterile males to reduce population
+- **Management**: Surgical removal, Wound care
+
+####### Dermatobia hominis (Human Botfly)
+- **Distribution**: Central/South America
+- **Transmission**: Passive transfer - Female captures mosquito/tick → attaches eggs → when vector feeds on human → eggs hatch → larvae penetrate skin
+- **Clinical**: Furuncular myiasis, Painful boil-like lesions, Sensation of movement, Central pore for larval breathing
+- **Management**: Occlusion (bacon, petroleum jelly) → larva emerges → remove, Surgical extraction
+
+####### Clinical Features of Myiasis
+- **Cutaneous**: Painful non-healing ulcers, Sensation of movement/wriggling, Discharge from central hole, Pruritus, White structure protruding (part of maggot), Bubbling when submerged (larval respiration), Migratory myiasis (Gasterophilus - moves 20-30 cm/day)
+- **Gastrointestinal**: Difficult to diagnose, Abdominal pain, Nausea, Vomiting
+- **Genitourinary**: Difficult to diagnose
+- **Ophthalmomyiasis**: Vision problems, Eye damage
+- **Wound Myiasis**: Maggots in wounds, Tissue destruction, Foul odor
+
+####### Diagnosis
+- **Direct**: Locate and extract larvae from tissue
+- **Identification**: Morphological features (anterior/posterior spiracles, mouthparts, cephalopharyngeal skeleton, cuticular spines)
+- **History**: Travel history, Exposure to risk factors
+- **Imaging**: Ultrasound, X-ray/CT/MRI
+- **Serology**: ELISA (used previously for ophthalmomyiasis)
+
+####### Management
+- **Surgical**: Removal of larvae, Debridement of necrotic tissue
+- **Medical**: Antibiotics (secondary infections), Ivermectin (some cases)
+- **Wound Care**: Cleaning, Dressing
+
+####### Prevention
+- **Protective Clothing**: Cover skin in endemic areas
+- **Avoid**: Hanging clothes outdoors in endemic areas
+- **Hygiene**: Clean wounds promptly, Cover wounds
+- **Sanitation**: Proper waste disposal
+- **Insect Control**: Screens, Repellents
+
+### Arthropod-Induced Conditions
+
+#### Bites and Nuisance
+- Bed bugs (cimicosis)
+- Sand fleas (tungiasis)
+- Mosquitoes
+- Fleas
+- Flies
+
+#### Allergy Induction
+
+##### Bite/Sting Allergies
+- **Mechanism**: Local reactions (urticarial wheals, papular reactions), Systemic IgE-mediated hypersensitivity
+- **Agents**: Mosquito bites, Tick bites, Bed bug bites, Bee/wasp/hornet stings, Fire ant stings
+- **Clinical**: Localized reactions, Bullous/hemorrhagic reactions (children, immunologically naive), Anaphylactic shock (severe)
+
+##### Venom Allergy
+- **Agents**: Bees, Wasps, Hornets, Fire ants
+- **Clinical**: Immediate-type allergic reactions, Systemic reactions, Anaphylaxis
+
+##### Inhalation/Ingestion Allergens
+- **Major Allergen**: Tropomyosin (cross-reactive)
+- **Sources**: House dust mites (Dermatophagoides pteronyssinus), Cockroaches, Crustaceans (seafood allergy)
+- **Scabies**: Tropomyosin and Paramyosin from Sarcoptes scabiei, Type I (immediate) and Type IV (delayed) hypersensitivity
+
+##### Lepidopterism
+- **Definition**: Cutaneous and systemic reactions from contact with caterpillars or adult moths/butterflies
+- **Clinical**: Dermatitis, Systemic reactions
+
+#### Venom Production
+
+##### Rove Beetle (Paederus species)
+- **Venom**: Paederine (toxic amide in hemolymph)
+- **Clinical**: Dermatitis linearis (Paederus dermatitis), Necrotic blisters on skin after contact
+
+##### Bees, Wasps, Hornets
+- **Bee Venom**: Melittin, Apamin, MCD peptides (pain, inflammation)
+- **Hornet Venom**: Hornet kinin (pain), Acetylcholine (pain nerve stimulation), Phospholipases, Mastoparan (degrades immune cells, destroys RBCs and muscle cells)
+- **Wasp Venom**: Wasp kinin, Amines, Mastoparan
+
+##### Spiders
+- **Black Widow (Latrodectus tredecimguttatus)**: α-Latrotoxin (presynaptic neurotoxin)
+- **Clinical**: Severe pain, Muscle cramps, Sweating, Hypertension
+
+##### Scorpions
+- **Deathstalker (Leiurus quinquestriatus)**: Chlorotoxin (blocks chloride channels)
+- **Medical Use**: Chlorotoxin binds glioma cells (diagnostic/therapeutic for cancers)
+
+##### Fire Ants (Solenopsis species)
+- **Venom**: 95% water-insoluble alkaloid (2,6 di-substituted piperidines)
+- **Properties**: Cytotoxic, Hemolytic, Antibacterial, Insecticidal
+- **Clinical**: Painful burning sensation, Pustules, Allergic reactions
+
+##### Ticks
+- **Tick Paralysis**: Neurotoxin produced by feeding tick (e.g., Dermacentor andersoni)
+- **Clinical**: Ascending paralysis, Weakness, Recovery within 24 hours of tick removal
+
+### Modes of Disease Transmission by Arthropod Vectors
+
+#### Mechanical Transmission
+- **Definition**: Vector acts as vehicle without pathogen amplification or development
+- **Example**: House flies carrying nematode eggs on legs/mouthparts
+- **Characteristics**: No biological relationship between pathogen and vector
+
+#### Biological Transmission
+- **Definition**: Pathogen develops, changes, or multiplies in vector as part of life cycle
+- **Examples**: Filarial worms and malaria parasites develop in mosquitoes, Dengue virus multiplies in mosquitoes
+- **Characteristics**: Essential developmental stage in vector
+
+#### Transovarial Transmission
+- **Definition**: Pathogen transmitted from infected vector to progeny via eggs
+- **Examples**: Scrub typhus (Orientia in mites), Japanese encephalitis (JE virus in Aedes), Dengue (DENV in Ae. aegypti and Ae. albopictus)
+- **Significance**: Maintains pathogen in vector population across generations
+
+### Host Feeding Specificity
+- **Anthropophagic**: Human-loving (essential for human disease transmission)
+- **Zoophagic**: Animal-loving (ornithophagic - birds, simiophagic - simians)
+- **Zoo-anthropophagic**: Feeds on both humans and animals (important for zoonotic transmission)
+
+# Laboratory Diagnosis <!--markmap: foldAll -->
 
 ### Specimen Collection
 - Timing is crucial
@@ -1250,7 +2028,7 @@
 - Determines effective treatment
 - Identifies resistance patterns
 
-## Infection Prevention and Control
+# Infection Prevention and Control <!--markmap: foldAll -->
 
 ### Chain of Infection
 - Infectious agent
@@ -1281,7 +2059,18 @@
 - Optimal dosing and duration
 - Minimize resistance development
 - Reduce adverse effects
+
+
       </script>
+    </div>
+    <header>
+      <div class="reminder">
+        <p> Click the node to expand each category</p>
+      </div>
+    </header>
+    <svg class="table" onclick="window.open('https://github.com/lmjaedentai/mbbsnota/blob/main/Microbiology.md')" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#ff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm240-240H200v160h240v-160Zm80 0v160h240v-160H520Zm-80-80v-160H200v160h240Zm80 0h240v-160H520v160ZM200-680h560v-80H200v80Z"/></svg>
+    <div class="about">
+      <p> Created with <a href="https://markmap.js.org/" target="_blank">Markmap</a><br>2026 by Jaeden Tai</p>
     </div>
   </body>
 </html>
