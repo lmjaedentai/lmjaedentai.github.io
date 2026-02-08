@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your side dish for Medical Important Microorganism">
+    <meta name="author" content="Jaeden Tai">
+    <meta name="robots" content="noindex">
+    <title>Microbiology</title>
+    <style>
+        svg.markmap {
+            width: 100%;
+            height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            display: flex;
+            top: 10px;
+            width: 100%;
+            height: fit-content;
+            justify-content: center;
+            align-items: center;
+            /* background-color: yellowgreen; */
+            z-index: 10;
+        }
+
+        .reminder {
+            width: 300px;
+            text-align: center;
+            margin: 20px;
+            background: rgb(255, 255, 255);
+            padding: 5px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            opacity: 0.7;
+        }
+
+        .table {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 37px;
+            height: 37px;
+            padding: 8px;
+            border-radius: 30px;
+            background: rgb(255, 255, 255);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            opacity: 0.6;
+            cursor: pointer;
+        }
+
+        .about {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            margin: 20px;
+            background: rgb(255, 255, 255);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            opacity: 0.5;
+        }
+
+        .easy {
+            color: rgb(0, 0, 0);
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            height: 70px;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            background: rgb(255, 255, 255);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .easy p {
+            margin: 0;
+            padding: 10px 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+</head>
+
+<body>
+    <!--NOTE replace , and : with \n+4space+ - for nested list -->
+    <div class="markmap">
+        <script type="text/template">
+---
+markmap:
+    initialExpandLevel:
+        3
+---
+# By body <!--markmap: foldAll -->
+
+## 1. Skin, Wound & Soft Tissue
+### Pus, Abscess, or Cellulitis
+- **Golden Yellow Pus / Crusts**
+  - *Staphylococcus aureus* (Abscess, Scalded Skin, Impetigo)
+- **Honey-Colored Crusts**
+  - *Streptococcus pyogenes* (Impetigo, Erysipelas, Necrotizing Fasciitis)
+- **Blue-Green Pus / Burn Victim**
+  - *Pseudomonas aeruginosa* (Hot tub rash, Ecthyma gangrenosum)
+- **Gas / Crepitus (Crackling Skin)**
+  - *Clostridium perfringens* (Gas Gangrene)
+
+### Ulcers & Nodules
+- **Grey Membrane on Ulcer**
+  - *Corynebacterium diphtheriae* (Cutaneous Diphtheria)
+- **Ascending Lymphatic Nodules (Rose Gardener)**
+  - *Sporothrix schenckii* (Sporotrichosis)
+- **Draining Sinuses with Granules**
+  - *Mycetoma* (Madura foot)
+- **Painful Boil with "Breathing Pore" (Maggot)**
+  - *Myiasis* (Tumbu fly, Botfly)
+- **Sandfly Bite Ulcer**
+  - *Leishmania tropica* (Oriental Sore)
+
+### Rashes & Itching
+- **Intense Itch (Worse at Night) + Burrows**
+  - *Sarcoptes scabiei* (Scabies)
+- **Ring-shaped (Annular) with Clearing**
+  - *Dermatophytes* (Ringworm / Tinea corporis)
+- **Hypopigmented Patches (Spaghetti & Meatballs)**
+  - *Malassezia furfur* (Pityriasis versicolor)
+- **Toe/Foot Nodule (Sand flea)**
+  - *Tunga penetrans* (Jigger)
+- **Creeping Eruption**
+  - *Hookworm / Strongyloides* (Cutaneous Larva Migrans)
+
+## 2. Gastrointestinal (Diarrhea)
+### Watery Diarrhea
+- **Rice Water Stool (Severe Dehydration)**
+  - *Vibrio cholerae*
+- **Fatty, Foul-Smelling (Steatorrhea)**
+  - *Giardia lamblia* (Camper/Hiker)
+- **Traveler's Diarrhea**
+  - *E. coli* (ETEC)
+- **HIV/AIDS (Chronic Watery)**
+  - *Cryptosporidium* (Acid-fast oocysts)
+  - *Cystoisospora*
+  - *Microsporidia*
+- **Infant / Winter Vomiting**
+  - *Rotavirus*
+- **Explosive Vomiting (Cruise/School)**
+  - *Norovirus*
+
+### Bloody Diarrhea (Dysentery)
+- **Liver Abscess + Bloody Stool**
+  - *Entamoeba histolytica* (Anchovy paste pus)
+- **Pig Contact**
+  - *Balantidium coli*
+- **Liver Damage (Portal Hypertension)**
+  - *Schistosoma mansoni / japonicum*
+- **Hemolytic Uremic Syndrome (Kidney Failure)**
+  - *E. coli* (EHEC)
+- **Poultry / Eggs**
+  - *Salmonella*
+
+### Toxin-Mediated / Antibiotic Associated
+- **Rapid Onset Vomiting (Cream/Mayo)**
+  - *Staphylococcus aureus*
+- **Reheated Meat / Gravy**
+  - *Clostridium perfringens*
+- **Antibiotic Use (Clindamycin)**
+  - *Clostridium difficile* (Pseudomembranous colitis)
+
+## 3. Respiratory
+### Sore Throat (Pharyngitis)
+- **Thick Grey Pseudomembrane**
+  - *Corynebacterium diphtheriae* (Airway obstruction)
+- **Sandpaper Rash / Strawberry Tongue**
+  - *Streptococcus pyogenes* (Scarlet Fever)
+- **Pink Eye + Sore Throat**
+  - *Adenovirus*
+
+### Pneumonia (Cough)
+- **Rust-Colored Sputum**
+  - *Streptococcus pneumoniae*
+- **Currant Jelly Sputum (Alcoholic)**
+  - *Klebsiella pneumoniae*
+- **Cystic Fibrosis / Ventilator**
+  - *Pseudomonas aeruginosa*
+- **"Walking" Pneumonia (Mild)**
+  - *Mycoplasma pneumoniae*
+- **Air Conditioning / Water Towers**
+  - *Legionella pneumophila*
+- **HIV (Ground Glass Opacities)**
+  - *Pneumocystis jirovecii*
+- **Raw Crab Ingestion (Mimics TB)**
+  - *Paragonimus westermani* (Lung fluke)
+
+### Fungal Pneumonia (Geographic)
+- **Bat/Bird Droppings (Caves)**
+  - *Histoplasma capsulatum*
+- **Rotting Wood / Soil**
+  - *Blastomyces dermatitidis*
+- **Desert Dust (Valley Fever)**
+  - *Coccidioides*
+
+## 4. Neurologic
+### Meningitis (Stiff Neck + Fever)
+- **Petechial Rash (Purpura)**
+  - *Neisseria meningitidis*
+- **Newborns**
+  - *Group B Strep (S. agalactiae)*
+  - *E. coli*
+  - *Listeria*
+- **HIV / Pigeon Droppings**
+  - *Cryptococcus neoformans* (India Ink +)
+- **Freshwater Swimming (Fatal)**
+  - *Naegleria fowleri*
+
+### Paralysis
+- **Spastic (Lockjaw, Arching)**
+  - *Clostridium tetani*
+- **Flaccid (Floppy Baby, Honey)**
+  - *Clostridium botulinum*
+- **Flaccid (Limb paralysis)**
+  - *Poliovirus*
+- **Hydrophobia (Fear of Water)**
+  - *Rabies*
+
+### Brain Lesions / Seizures
+- **Swiss Cheese Brain (Cysts)**
+  - *Taenia solium* (Neurocysticercosis)
+- **Ring-Enhancing Lesions (HIV)**
+  - *Toxoplasma gondii*
+
+## 5. Genitourinary
+### Urethritis / Vaginitis
+- **Purulent Discharge (Drip)**
+  - *Neisseria gonorrhoeae*
+- **Clear Discharge**
+  - *Chlamydia trachomatis*
+- **Green/Frothy Foul Discharge**
+  - *Trichomonas vaginalis* (Strawberry Cervix)
+- **Curdy White Discharge (Itch)**
+  - *Candida albicans*
+
+### Genital Ulcers
+- **Painless Chancre**
+  - *Treponema pallidum* (Syphilis)
+- **Painful Vesicles/Ulcers**
+  - *HSV-2* (Herpes)
+- **Warts**
+  - *HPV*
+
+### Urinary Tract
+- **Staghorn Stones**
+  - *Proteus*
+- **Hematuria (Blood in Urine - Africa)**
+  - *Schistosoma haematobium*
+
+## 6. Systemic & Vector-Borne
+### Mosquito Vectors
+- **Cyclic Fevers + Anemia**
+  - *Plasmodium* (Malaria)
+- **Bone-Breaking Pain**
+  - *Dengue Fever*
+- **Elephantiasis (Limb Swelling)**
+  - *Wuchereria bancrofti*
+
+### Tick/Louse Vectors
+- **Bullseye Rash (Erythema Migrans)**
+  - *Borrelia burgdorferi* (Lyme)
+- **Spotted Rash (Palms/Soles)**
+  - *Rickettsia* (RMSF)
+- **Hemolytic Anemia (Maltese Cross)**
+  - *Babesia*
+
+### Zoonotic (Animal Contact)
+- **Undulant Fever (Unpasteurized Milk)**
+  - *Brucella*
+- **Jaundice + Red Eyes (Rat Urine)**
+  - *Leptospira*
+- **Rose Spots + Constipation**
+  - *Salmonella typhi* (Typhoid)
+
+## 7. Organ Specific
+### Liver
+- **Biliary Obstruction (Raw Fish)**
+  - *Clonorchis / Opisthorchis*
+- **Jaundice (Fecal-Oral)**
+  - *Hepatitis A / E*
+- **Jaundice (Blood/Sex)**
+  - *Hepatitis B / C*
+
+### Heart
+- **Cardiomyopathy (Mega-heart)**
+  - *Trypanosoma cruzi* (Chagas)
+
+### Eye
+- **Contact Lens Keratitis**
+  - *Acanthamoeba*
+- **River Blindness (Blackfly)**
+  - *Onchocerca volvulus*
+- **Worm in Eye (Deer fly)**
+  - *Loa loa*
+
+# Laboratory Identification of Pathogens <!--markmap: foldAll -->
+
+## 1. Direct Examination & Microscopy
+- **General Staining Methods**
+  - **Gram Stain**
+    - **Gram-Positive**: Cocci (Staph, Strep), Rods (Clostridium, Corynebacterium)
+    - **Gram-Negative**: Rods (E. coli, Pseudomonas), Cocci (Neisseria), Coccobacilli (Brucella)
+  - **Acid-Fast Stain**: Mycobacterium
+  - **KOH Preparation**: Fungal skin scrapings (Malassezia, Dermatophytes)
+  - **India Ink**: Cryptococcus neoformans (CSF capsule)
+  - **GMS / PAS Staining**: Fungi in tissue biopsies (Blastomyces)
+  - **Giemsa Stain**: Blood smears for parasites (Malaria, Filarial worms)
+- **Specialized Microscopy**
+  - **Darkfield Microscopy**: Spirochaetes (Leptospira)
+  - **Darkfield/Phase Contrast**: Trichomonas vaginalis (Wet mount motility)
+  - **Wood's Lamp Fluorescence**: Microsporum (Golden-yellow/Silvery)
+
+## 2. Culture Methods
+- **Bacteria**
+  - **Blood Agar**: Hemolysis (Alpha: S. pneumoniae; Beta: S. aureus, GAS, GBS)
+  - **MacConkey Agar**: Lactose fermentation (Pink: E. coli, Klebsiella; Colorless: Proteus, Salmonella)
+  - **Chocolate Agar**: Fastidious organisms (Neisseria)
+  - **TCBS Agar**: Vibrio species (Yellow: V. cholerae)
+  - **Anaerobic Culture**: Clostridium species
+- **Fungi**
+  - **SDA (Sabouraud Dextrose Agar)**: General fungal growth
+  - **SDA + Olive Oil**: Malassezia furfur requirement
+- **Viruses & Parasites**
+  - **Cell Culture / Embryonated Eggs**: Viruses
+  - **Specialized Media**: Free-living amoebae (Naegleria, Acanthamoeba)
+
+## 3. Biochemical & Identification Tests
+- **Enzymatic Tests**
+  - **Catalase**: Staphylococci (+) vs. Streptococci (-)
+  - **Coagulase**: S. aureus (+) vs. CoNS (-)
+  - **Oxidase**: Pseudomonas, Neisseria, Vibrio (+)
+  - **Urease**: Proteus, Brucella (+)
+  - **Indole**: E. coli (+) vs. Klebsiella (-)
+- **Metabolic & Growth Inhibitors**
+  - **Bacitracin Sensitivity**: Group A Strep (Sensitive)
+  - **Optochin Sensitivity**: S. pneumoniae (Sensitive)
+  - **Swarming Motility**: Proteus on blood agar
+  - **Germ-Tube Test**: Candida albicans
+  - **Thermal Dimorphism**: Endemic fungi (Yeast at 37°C, Mold at 25°C)
+
+## 4. Immunology & Serology
+- **Antigen Detection**
+  - **Latex Agglutination**: Lancefield Grouping (A, B) for Streptococci
+  - **EIA / ELISA / DFA**: Entamoeba, Giardia, Trichomonas, Cryptosporidium
+  - **Rapid Antigen Tests**: Wuchereria bancrofti
+- **Antibody Detection**
+  - **Serology (IgM/IgG)**: Helminths (Schistosoma, Strongyloides, Trichinella)
+  - **CATT (Card Agglutination)**: Trypanosoma brucei
+- **Skin Tests**
+  - **Casoni Skin Test**: Echinococcus granulosus (Hydatid disease)
+
+## 5. Molecular & Advanced Methods
+- **Genetics**
+  - **PCR**: C. diphtheriae (toxin genes), Viruses, Protozoa (Entamoeba, Naegleria)
+  - **ITS Sequencing**: Definitive fungal identification
+- **Proteomics**
+  - **MALDI-TOF Mass Spectrometry**: Rapid identification of Bacteria and Yeasts
+
+## 6. Organism-Specific Specialized Tests
+- **Helminths (Parasites)**
+  - **Scotch Tape Technique**: Enterobius vermicularis (Pinworm) eggs
+  - **Stool Microscopy**: Identification of eggs (Ascaris, Hookworm) or larvae (Strongyloides)
+  - **Muscle Biopsy**: Trichinella spiralis encysted larvae
+- **Prions**
+  - **Clinical Protocols**: Handling high-infectivity tissue
+- **Arthropods**
+  - **Morphological ID**: Identification of disease vectors (Mosquitoes, Ticks, Flies)
+
+# Clinical Decision Flowchart for Infectious Diseases
+
+## By Chief Complaint / Presenting Symptom
+
+### Fever
+
+#### Fever + Respiratory Symptoms
+
+##### Fever + Cough + Dyspnea
+- **Acute onset (<1 week)**
+  - Pneumonia
+    - Community-acquired
+      - S. pneumoniae (rusty sputum, lobar consolidation)
+      - Mycoplasma pneumoniae (dry cough, young adults)
+      - Influenza virus (sudden onset, myalgia)
+      - RSV (infants, bronchiolitis)
+      - COVID-19 (loss of taste/smell, ground-glass opacities)
+    - Hospital-acquired
+      - P. aeruginosa (ICU, ventilator)
+      - Klebsiella pneumoniae (alcoholics, currant jelly sputum)
+      - Acinetobacter baumannii (ICU, ventilator)
+- **Subacute/Chronic (>2 weeks)**
+  - Tuberculosis (night sweats, weight loss, hemoptysis, upper lobe cavitation)
+  - Pneumocystis jirovecii (HIV CD4<200, dry cough, bilateral infiltrates)
+  - Aspergillus (neutropenic, halo sign)
+  - Histoplasmosis (cave exploration, Ohio/Mississippi valleys)
+
+##### Fever + Sore Throat
+- **With pseudomembrane**
+  - Diphtheria (gray membrane, bull neck, unvaccinated)
+  - EBV (infectious mononucleosis, posterior pharynx, lymphadenopathy)
+- **Without pseudomembrane**
+  - Streptococcus pyogenes (pharyngitis, scarlet fever if sandpaper rash)
+  - Influenza (sudden onset, myalgia)
+  - Adenovirus (conjunctivitis + pharyngitis)
+
+##### Fever + Rhinorrhea + Congestion
+- Common cold
+  - Rhinovirus (most common)
+  - Coronavirus (229E, OC43, NL63, HKU1)
+  - Adenovirus
+  - Parainfluenza
+
+#### Fever + Gastrointestinal Symptoms
+
+##### Fever + Watery Diarrhea (Non-bloody)
+- **Acute onset**
+  - Cholera (rice water stool, severe dehydration, endemic areas)
+  - ETEC (traveler's diarrhea, contaminated food/water)
+  - Rotavirus (children <5 years, winter, projectile vomiting)
+  - Norovirus (outbreaks on cruises, vomiting prominent)
+  - Giardia lamblia (foul-smelling, fatty stool, camping/hiking)
+  - Cryptosporidium (chlorine-resistant, swimming pools, HIV)
+  - Cyclospora (imported berries, prolonged fatigue)
+  - Cystoisospora (HIV/AIDS, eosinophilia)
+- **Food poisoning (rapid onset <6 hours)**
+  - S. aureus (preformed toxin, recovered food handlers)
+  - B. cereus (fried rice, reheating)
+  - C. perfringens (meat, gravy, cafeteria food)
+
+##### Fever + Bloody Diarrhea (Dysentery)
+- **With mucus**
+  - Shigella (tenesmus, left lower quadrant pain)
+  - EIEC (mimics Shigella)
+  - Campylobacter (undercooked poultry, preceding Guillain-Barré)
+  - Salmonella (contaminated eggs/poultry)
+  - EHEC O157:H7 (hamburger, may develop HUS)
+  - Entamoeba histolytica (flask-shaped ulcers, liver abscess)
+  - Balantidium coli (pig farmers, large ciliated trophozoite)
+
+##### Fever + Abdominal Pain + Hepatosplenomegaly
+- Typhoid fever (Salmonella typhi, rose spots, constipation early then diarrhea)
+- Visceral leishmaniasis (Kala-azar, pancytopenia, endemic areas)
+- Malaria (cyclical fever, jaundice if severe)
+- Schistosomiasis (Katayama fever, eosinophilia, freshwater exposure)
+
+#### Fever + Skin Manifestations
+
+##### Fever + Maculopapular Rash
+- **Starting from face, spreading down**
+  - Measles (Koplik spots, cough, conjunctivitis, coryza - 3 Cs)
+  - Rubella (mild, posterior cervical lymphadenopathy)
+- **Starting from trunk**
+  - Typhoid fever (rose spots on abdomen)
+  - Dengue (dengue rash after fever breaks)
+  - Zika (conjunctivitis, arthralgia)
+  - Chikungunya (severe arthralgia, "bending fever")
+- **Sandpaper texture**
+  - Scarlet fever (Streptococcus pyogenes, strawberry tongue, circumoral pallor)
+
+##### Fever + Vesicular Rash
+- **All stages present**
+  - Chickenpox (VZV, "dewdrop on rose petal", crops of lesions)
+- **Dermatomal distribution**
+  - Shingles (VZV reactivation, painful, unilateral)
+- **Hands, feet, mouth**
+  - Hand-foot-mouth disease (Coxsackievirus, children)
+  - Herpangina (Coxsackievirus, posterior pharynx vesicles)
+
+##### Fever + Petechial/Purpuric Rash
+- **Rapidly progressive**
+  - Meningococcemia (Neisseria meningitidis, non-blanching, may have meningitis)
+  - Rocky Mountain spotted fever (wrists/ankles spreading centrally, tick bite)
+  - Dengue hemorrhagic fever (bleeding, thrombocytopenia, capillary leak)
+
+##### Fever + Painless Skin Ulcer
+- **With black eschar**
+  - Cutaneous anthrax (painless, depressed black center)
+  - Scrub typhus (eschar at bite site, Leptotrombidium mite)
+- **Multiple ulcers**
+  - Cutaneous leishmaniasis (oriental sore, sandfly endemic areas)
+
+##### Fever + Erythematous/Cellulitis
+- **Rapidly spreading**
+  - Necrotizing fasciitis (Streptococcus pyogenes, severe pain, crepitus if gas gangrene)
+  - Gas gangrene (Clostridium perfringens, wound infection)
+- **Well-demarcated, raised border**
+  - Erysipelas (Streptococcus pyogenes, face or legs, butterfly on face)
+- **Not well-demarcated**
+  - Cellulitis (various bacteria, warm, tender, erythema)
+
+#### Fever + Neurological Symptoms
+
+##### Fever + Headache + Neck Stiffness (Meningitis)
+- **Acute bacterial meningitis**
+  - Neonate (<3 months)
+    - Group B Streptococcus (S. agalactiae)
+    - E. coli
+    - Listeria monocytogenes
+  - Children (3 months - 18 years)
+    - S. pneumoniae (most common)
+    - N. meningitidis (petechial rash, outbreaks)
+    - H. influenzae type b (if unvaccinated)
+  - Adults (18-50 years)
+    - S. pneumoniae (most common)
+    - N. meningitidis
+  - Elderly (>50 years)
+    - S. pneumoniae
+    - Listeria monocytogenes (immunocompromised)
+    - Gram-negative bacilli
+- **Chronic meningitis (>4 weeks)**
+  - Mycobacterium tuberculosis (basilar meningitis, cranial nerve palsies)
+  - Cryptococcus neoformans (HIV CD4<100, India ink positive)
+  - Coccidioides immitis (endemic southwestern USA)
+
+##### Fever + Altered Mental Status (Encephalitis)
+- **With seizures**
+  - Herpes simplex virus (HSV-1, temporal lobe, MRI abnormalities)
+  - Japanese encephalitis virus (Asia, mosquito-borne)
+  - Rabies (hydrophobia, animal bite, 100% fatal)
+- **With flaccid paralysis**
+  - Poliomyelitis (asymmetric, lower motor neuron)
+  - West Nile virus (elderly, mosquito-borne, flaccid paralysis)
+  - Enterovirus D68 (acute flaccid myelitis in children)
+
+##### Fever + Focal Neurological Deficits
+- **Brain abscess**
+  - Streptococcus species (dental infection source)
+  - Staphylococcus aureus (post-neurosurgery, endocarditis)
+  - Toxoplasma gondii (HIV, ring-enhancing lesions)
+  - Nocardia (immunocompromised, lung primary)
+- **Space-occupying lesion**
+  - Neurocysticercosis (Taenia solium, seizures, calcifications)
+  - Cerebral toxoplasmosis (HIV, multiple ring-enhancing)
+  - Tuberculoma (TB, single or multiple)
+
+#### Fever + Lymphadenopathy
+
+##### Fever + Generalized Lymphadenopathy
+- HIV (acute retroviral syndrome, rash, pharyngitis)
+- EBV (infectious mononucleosis, posterior cervical, splenomegaly)
+- CMV (mononucleosis-like, heterophile negative)
+- Toxoplasmosis (posterior cervical, flu-like)
+- Secondary syphilis (generalized rash including palms/soles)
+
+##### Fever + Localized Lymphadenopathy
+- **Cervical**
+  - Streptococcus pyogenes pharyngitis
+  - EBV
+  - Mycobacterium tuberculosis (scrofula, matted nodes)
+  - Bartonella henselae (cat-scratch disease)
+- **Axillary**
+  - Cat-scratch disease (Bartonella henselae, cat scratch/bite)
+  - Tularemia (Francisella tularensis, rabbit/tick exposure)
+  - Plague (Yersinia pestis, bubo, flea bite)
+- **Inguinal**
+  - Lymphogranuloma venereum (Chlamydia trachomatis L1-L3, STI)
+  - Chancroid (Haemophilus ducreyi, painful genital ulcer)
+  - Plague (flea bite on leg)
+
+#### Fever + Hepatosplenomegaly
+
+##### With Jaundice
+- Malaria (cyclical fever, hemolysis, endemic areas)
+- Leptospirosis (Weil's disease, conjunctival suffusion, water exposure)
+- Yellow fever (black vomit, hemorrhagic fever, mosquito-borne)
+- Viral hepatitis (hepatitis A, B, C, E)
+
+##### Without Jaundice
+- Visceral leishmaniasis (kala-azar, pancytopenia, sandfly endemic)
+- Typhoid fever (Salmonella typhi)
+- Infectious mononucleosis (EBV, CMV)
+- Malaria (early stages)
+- Schistosomiasis (chronic hepatosplenic)
+
+### Skin/Soft Tissue Symptoms (Without Fever)
+
+#### Pruritus (Itching)
+
+##### Pruritus + Skin Burrows
+- Scabies (Sarcoptes scabiei, worse at night, interdigital spaces, wrists, genitals)
+
+##### Pruritus + Perianal
+- Pinworm (Enterobius vermicularis, worse at night, children, scotch tape test)
+
+##### Pruritus + Skin Lesions
+- Dermatophytosis
+  - Tinea corporis (ringworm, circular raised border)
+  - Tinea pedis (athlete's foot, interdigital maceration)
+  - Tinea cruris (jock itch, groin)
+  - Tinea capitis (scalp, hair loss)
+- Cutaneous larva migrans (creeping eruption, serpiginous, dog/cat hookworm)
+- Onchocerciasis (river blindness, subcutaneous nodules, Africa)
+
+##### Pruritus + Hypopigmented Patches
+- Pityriasis versicolor (Malassezia furfur, trunk, KOH "spaghetti and meatballs")
+
+#### Painless Swelling/Mass
+
+##### Limb Swelling (Chronic Progressive)
+- Lymphatic filariasis (elephantiasis, Wuchereria bancrofti, Brugia malayi, mosquito-borne)
+- Lymphedema (chronic obstruction)
+
+##### Scrotal Swelling
+- Hydrocele (lymphatic filariasis, transilluminates)
+
+##### Subcutaneous Nodules
+- Onchocerca volvulus (onchocerciasis, mobile, non-tender)
+- Cysticercosis (Taenia solium, calcified on X-ray)
+- Loiasis (Loa loa, Calabar swelling, eye worm)
+
+#### Ulcers/Wounds
+
+##### Non-Healing Ulcer + Moving Maggots
+- Myiasis
+  - Furuncular (Cordylobia anthropophaga, Dermatobia hominis)
+  - Wound myiasis (Chrysomya bezziana, Cochliomyia hominivorax)
+  - Sensation of movement, discharge from central pore
+
+##### Chronic Non-Healing Ulcer
+- Cutaneous leishmaniasis (painless, raised border, endemic areas)
+- Buruli ulcer (Mycobacterium ulcerans, undermined edges)
+- Chromoblastomycosis (verrucous lesions, barefoot farmers)
+- Mycetoma (Madura foot, draining sinuses with granules, barefoot)
+
+### Respiratory Symptoms (Without Fever)
+
+#### Chronic Cough (>3 weeks)
+
+##### Chronic Cough + Night Sweats + Weight Loss
+- Pulmonary tuberculosis (hemoptysis, upper lobe cavitation, positive AFB)
+
+##### Chronic Cough + Wheezing
+- ABPA (allergic bronchopulmonary aspergillosis, asthma, eosinophilia)
+
+##### Chronic Cough + Hemoptysis
+- Tuberculosis
+- Paragonimiasis (lung fluke, rust-colored sputum, undercooked crab/crayfish)
+- Aspergilloma (fungus ball in pre-existing cavity)
+
+### Gastrointestinal Symptoms (Without Fever)
+
+#### Chronic Diarrhea (>2 weeks)
+
+##### Watery + Malabsorption + Fatty Stool
+- Giardiasis (foul-smelling, flatulence, camping)
+- Cryptosporidiosis (HIV CD4<200, chronic profuse)
+- Tropical sprue (endemic areas, folate/B12 deficiency)
+- Celiac disease (gluten, non-infectious)
+
+##### Bloody + Chronic
+- Inflammatory bowel disease (non-infectious)
+- Intestinal schistosomiasis (Schistosoma mansoni/japonicum)
+- Intestinal tuberculosis (right lower quadrant, Crohn's-like)
+- Amoebiasis (Entamoeba histolytica, flask-shaped ulcers)
+
+#### Abdominal Pain + Mass
+
+##### Right Upper Quadrant Mass
+- Amoebic liver abscess (Entamoeba histolytica, anchovy paste pus, right lobe)
+- Pyogenic liver abscess (E. coli, Klebsiella, multiple organisms)
+- Hydatid cyst (Echinococcus granulosus, dog contact, sheep-rearing areas)
+
+##### Epigastric Discomfort + Passing Proglottids
+- Taeniasis (Taenia saginata - beef, T. solium - pork)
+- Diphyllobothriasis (Diphyllobothrium latum, fish, B12 deficiency)
+
+### Urogenital Symptoms
+
+#### Urinary Symptoms
+
+##### Painless Hematuria (Terminal)
+- Schistosomiasis (Schistosoma haematobium, Africa/Middle East, bladder calcification)
+
+##### Dysuria + Frequency + Urgency
+- UTI
+  - E. coli (most common, 80%)
+  - Staphylococcus saprophyticus (young sexually active women)
+  - Proteus mirabilis (alkaline urine, staghorn calculi)
+  - Klebsiella pneumoniae (diabetics)
+
+##### Milky Urine
+- Chyluria (lymphatic filariasis, lymph in urine)
+
+#### Genital Symptoms
+
+##### Genital Ulcer (Painful)
+- Herpes simplex (HSV-2, grouped vesicles, recurrent)
+- Chancroid (Haemophilus ducreyi, soft painful ulcer, inguinal buboes)
+- Lymphogranuloma venereum (Chlamydia trachomatis L1-L3, inguinal lymphadenopathy)
+
+##### Genital Ulcer (Painless)
+- Primary syphilis (Treponema pallidum, indurated chancre, inguinal lymphadenopathy)
+- Donovanosis (Klebsiella granulomatis, beefy red ulcer)
+
+##### Vaginal Discharge
+- **Foul-smelling, frothy, greenish**
+  - Trichomoniasis (Trichomonas vaginalis, strawberry cervix, motile trophozoites)
+- **Thick, white, cottage cheese**
+  - Vulvovaginal candidiasis (Candida albicans, pruritus, KOH prep)
+- **Thin, grayish, fishy odor**
+  - Bacterial vaginosis (Gardnerella, clue cells, whiff test positive)
+
+##### Urethral Discharge
+- Gonorrhea (Neisseria gonorrhoeae, purulent, gram-negative diplococci)
+- Chlamydia (Chlamydia trachomatis, mucoid, often asymptomatic)
+
+### Ocular Symptoms
+
+#### Red Eye + Discharge
+- Bacterial conjunctivitis (purulent, S. aureus, S. pneumoniae, H. influenzae)
+- Viral conjunctivitis (watery, adenovirus, highly contagious)
+- Trachoma (Chlamydia trachomatis, chronic, leading cause blindness)
+
+#### Vision Loss/Blindness
+
+##### Progressive Vision Loss
+- Onchocerciasis (river blindness, microfilariae in eye, Africa/Americas)
+- Trachoma (chronic Chlamydia trachomatis, scarring)
+
+##### Acute Vision Loss
+- CMV retinitis (HIV CD4<50, hemorrhages, "pizza pie" retina)
+- Toxoplasma retinochoroiditis (congenital or reactivation)
+- Endophthalmitis (post-surgery, Candida, bacteria)
+
+#### Eye Worm (Visible Worm)
+- Loiasis (Loa loa, worm crossing conjunctiva, Calabar swelling, deer fly vector)
+
+### Cardiac Symptoms
+
+#### Heart Failure + Cardiomegaly (Chronic)
+- Chagas disease (Trypanosoma cruzi, chronic cardiomyopathy, South America)
+- Rheumatic heart disease (post-Streptococcus pyogenes, valve damage)
+
+### Musculoskeletal Symptoms
+
+#### Muscle Pain + Periorbital Edema
+- Trichinosis (Trichinella spiralis, undercooked pork, eosinophilia, 2nd week)
+
+#### Severe Joint Pain (Arthralgia)
+- Chikungunya ("bending fever", Aedes mosquito, persistent arthralgia)
+- Dengue (breakbone fever, severe myalgia/arthralgia)
+- Lyme disease (Borrelia burgdorferi, migratory arthritis, erythema migrans)
+
+### Hematologic Abnormalities
+
+#### Anemia
+
+##### Iron Deficiency Anemia + Eosinophilia
+- Hookworm infection (Necator americanus, Ancylostoma duodenale, chronic blood loss)
+
+##### Megaloblastic Anemia (B12 Deficiency)
+- Diphyllobothriasis (Diphyllobothrium latum, fish tapeworm competes for B12)
+
+##### Hemolytic Anemia + Cyclical Fever
+- Malaria (Plasmodium species, intraerythrocytic, hemozoin pigment)
+
+#### Eosinophilia (Marked Elevation)
+
+##### Eosinophilia + Pulmonary Infiltrates
+- Löffler's syndrome
+  - Ascaris lumbricoides (larval migration)
+  - Hookworm (larval migration)
+  - Strongyloides stercoralis (larval migration)
+  - Toxocara (visceral larva migrans)
+
+##### Eosinophilia + Subcutaneous Swelling
+- Loiasis (Loa loa, Calabar swelling, eye worm)
+- Gnathostomiasis (undercooked fish/poultry, migratory swelling)
+
+##### Eosinophilia + Chronic Diarrhea
+- Intestinal helminths (especially tissue-invasive)
+- Strongyloidiasis
+- Trichinosis (early phase)
+
+## By Epidemiological Clues
+
+### Travel History
+
+#### Recent Travel to Sub-Saharan Africa
+- Malaria (Plasmodium falciparum, most severe)
+- African trypanosomiasis (sleeping sickness, tsetse fly)
+- Schistosomiasis (S. haematobium, S. mansoni)
+- Yellow fever
+- Ebola (recent outbreak areas)
+- Lassa fever (rodent exposure)
+
+#### Recent Travel to Southeast Asia
+- Malaria (P. vivax, P. knowlesi)
+- Dengue fever (urban, Aedes mosquito)
+- Scrub typhus (rural areas, mite)
+- Melioidosis (Burkholderia pseudomallei, soil/water, diabetes risk)
+- Leptospirosis (water activities)
+- Strongyloidiasis
+- Opisthorchiasis (raw fish)
+- Paragonimiasis (raw crab/crayfish)
+- Gnathostomiasis (raw fish/poultry)
+
+#### Recent Travel to Latin America
+- Chagas disease (Trypanosoma cruzi, kissing bug, poor housing)
+- Dengue fever
+- Zika virus
+- Chikungunya
+- Coccidioidomycosis (southwestern USA/Mexico)
+- Paracoccidioidomycosis (Brazil)
+- Histoplasmosis (Central America)
+- Cutaneous leishmaniasis
+
+#### Recent Travel to Middle East
+- Brucellosis (unpasteurized dairy)
+- Q fever (Coxiella burnetii, animal exposure)
+- MERS-CoV (camel contact)
+- Cutaneous leishmaniasis
+- Schistosomiasis (S. haematobium)
+
+### Exposure History
+
+#### Animal Contact
+
+##### Dog Contact
+- Rabies (dog bite, fatal encephalitis)
+- Echinococcosis (Echinococcus granulosus, hydatid cyst)
+- Toxocariasis (visceral larva migrans, children, eosinophilia)
+- Capnocytophaga (dog bite, asplenic patients)
+
+##### Cat Contact
+- Cat-scratch disease (Bartonella henselae, regional lymphadenopathy)
+- Toxoplasmosis (cat feces, immunocompromised, pregnancy risk)
+- Pasteurella multocida (cat bite/scratch)
+
+##### Rodent Contact
+- Plague (Yersinia pestis, flea-borne from rats)
+- Leptospirosis (rat urine in water)
+- Hantavirus (pulmonary syndrome, rodent droppings)
+- Lymphocytic choriomeningitis virus (pet hamsters, mice)
+- Rat-bite fever (Streptobacillus moniliformis)
+
+##### Farm Animal Contact
+- Brucellosis (cattle, goats, sheep, unpasteurized dairy)
+- Q fever (Coxiella burnetii, sheep, goats, cattle)
+- Anthrax (cattle, sheep, goats, wool)
+- Leptospirosis (cattle urine)
+- Orf (Parapoxvirus, sheep, goat contact)
+
+##### Bird Contact
+- Psittacosis (Chlamydia psittaci, parrots, pigeons, atypical pneumonia)
+- Cryptococcosis (pigeon droppings, immunocompromised)
+- Histoplasmosis (bird droppings, spelunking, demolition)
+
+##### Tick Bite
+- Lyme disease (Ixodes, erythema migrans)
+- Rocky Mountain spotted fever (Dermacentor, wrist/ankle rash)
+- Babesiosis (Ixodes, hemolytic anemia)
+- Ehrlichiosis (Amblyomma, Dermacentor, leukopenia)
+- Anaplasmosis (Ixodes, leukopenia)
+- Tularemia (rabbit hunters, ulceroglandular)
+- Tick paralysis (ascending, reversible)
+- Tick-borne relapsing fever (Ornithodoros, soft tick)
+
+##### Mosquito Bite
+- **Urban areas**
+  - Dengue (Aedes aegypti, day-biting)
+  - Zika (Aedes, microcephaly in pregnancy)
+  - Chikungunya (Aedes, severe arthralgia)
+- **Rural/Forest areas**
+  - Malaria (Anopheles, evening/night)
+  - Japanese encephalitis (Culex, rural Asia)
+  - Yellow fever (Aedes, Africa/South America)
+- **Any**
+  - West Nile virus (Culex)
+  - Lymphatic filariasis (Culex, Anopheles, Aedes)
+
+##### Sandfly Bite
+- Leishmaniasis (visceral, cutaneous, mucocutaneous)
+- Carrion's disease (Bartonella bacilliformis)
+
+##### Tsetse Fly Bite
+- African trypanosomiasis (sleeping sickness, sub-Saharan Africa)
+
+#### Food History
+
+##### Raw/Undercooked Pork
+- Trichinosis (Trichinella spiralis, muscle pain, periorbital edema)
+- Taeniasis (Taenia solium, tapeworm)
+- Cysticercosis (T. solium eggs, neurocysticercosis)
+
+##### Raw/Undercooked Beef
+- Taeniasis (Taenia saginata, tapeworm)
+- EHEC O157:H7 (hamburger, HUS)
+
+##### Raw/Undercooked Freshwater Fish
+- Clonorchiasis/Opisthorchiasis (liver flukes, cholangiocarcinoma risk)
+- Diphyllobothriasis (Diphyllobothrium latum, B12 deficiency)
+- Gnathostomiasis (migratory swelling)
+
+##### Raw/Undercooked Crab or Crayfish
+- Paragonimiasis (Paragonimus westermani, lung fluke, rust-colored sputum)
+
+##### Raw Oysters/Shellfish
+- Vibrio parahaemolyticus (gastroenteritis)
+- Vibrio vulnificus (septicemia in liver disease)
+- Hepatitis A (contaminated shellfish)
+- Norovirus (contaminated shellfish)
+
+##### Unpasteurized Dairy
+- Brucellosis (fever, hepatosplenomegaly)
+- Listeriosis (Listeria monocytogenes, pregnancy, elderly)
+- Tuberculosis (Mycobacterium bovis)
+- Salmonellosis
+- Campylobacter
+
+##### Contaminated Water
+- Cholera (rice water stool, severe dehydration)
+- Typhoid fever (Salmonella typhi)
+- Giardiasis (camping, backpacking)
+- Cryptosporidiosis (swimming pools)
+- Leptospirosis (recreational water)
+- Guinea worm (Dracunculus medinensis, Africa)
+
+#### Occupational Exposure
+
+##### Healthcare Worker
+- Needlestick
+  - HIV (PEP within 72 hours)
+  - Hepatitis B (vaccination status)
+  - Hepatitis C (no PEP available)
+- Tuberculosis (N95 mask, airborne precautions)
+
+##### Farmer/Agricultural Worker
+- Brucellosis (livestock)
+- Leptospirosis (contaminated water/soil)
+- Tetanus (soil contamination of wounds)
+- Anthrax (cattle, sheep)
+- Histoplasmosis (bird/bat droppings)
+- Soil-transmitted helminths (barefoot)
+
+##### Sewer Worker
+- Leptospirosis (rat urine)
+- Hepatitis A (fecal-oral)
+
+##### Veterinarian
+- Brucellosis
+- Q fever
+- Rabies (animal bites)
+- Psittacosis
+
+##### Butcher/Slaughterhouse Worker
+- Brucellosis
+- Erysipeloid (Erysipelothrix rhusiopathiae)
+- Q fever
+
+##### Laboratory Worker
+- Brucella (aerosol)
+- Mycobacterium tuberculosis (aerosol)
+- Coccidioides immitis (culture handling)
+- Neisseria meningitidis
+
+### Host Factors
+
+#### Immunocompromised States
+
+##### HIV/AIDS by CD4 Count
+
+###### CD4 <200 cells/μL
+- Pneumocystis jirovecii pneumonia (PCP, dry cough, bilateral infiltrates)
+- Cryptosporidiosis (chronic profuse diarrhea)
+- Microsporidiosis (chronic diarrhea)
+- Cystoisosporiasis (chronic diarrhea, eosinophilia)
+
+###### CD4 <100 cells/μL
+- Cryptococcal meningitis (headache, India ink positive)
+- Toxoplasma encephalitis (ring-enhancing lesions, seizures)
+- Disseminated Mycobacterium avium complex (fever, diarrhea, anemia)
+
+###### CD4 <50 cells/μL
+- CMV retinitis (vision loss, hemorrhages)
+- CMV colitis (diarrhea, abdominal pain)
+- Disseminated histoplasmosis
+- Disseminated coccidioidomycosis
+
+##### Neutropenia (<500 cells/μL)
+- Invasive aspergillosis (pulmonary, sinusitis)
+- Mucormycosis (rhinocerebral, pulmonary)
+- Invasive candidiasis
+- Pseudomonas aeruginosa (bacteremia, pneumonia)
+- Gram-negative bacteremia
+
+##### Transplant Recipients
+- Early (<1 month)
+  - Surgical site infections
+  - Nosocomial infections
+  - Donor-derived infections
+- Intermediate (1-6 months)
+  - CMV (most common)
+  - EBV (post-transplant lymphoproliferative disorder)
+  - Aspergillus
+  - PCP (if no prophylaxis)
+  - BK virus (kidney transplant, nephropathy)
+- Late (>6 months)
+  - Community-acquired infections
+  - Cryptococcus
+  - Endemic mycoses
+
+##### Asplenia/Splenectomy
+- Encapsulated bacteria
+  - Streptococcus pneumoniae (most common)
+  - Haemophilus influenzae
+  - Neisseria meningitidis
+- Babesiosis (severe)
+- Capnocytophaga (dog bite)
+
+##### Diabetes Mellitus
+- Mucormycosis (rhinocerebral in DKA)
+- Malignant otitis externa (Pseudomonas)
+- Emphysematous pyelonephritis
+- Necrotizing fasciitis
+- Fournier's gangrene
+
+#### Age-Related
+
+##### Neonates (<1 month)
+- Group B Streptococcus (meningitis, sepsis)
+- E. coli (meningitis, sepsis)
+- Listeria monocytogenes (meningitis)
+- Herpes simplex virus (disseminated, encephalitis)
+- Congenital infections (TORCH)
+  - Toxoplasmosis (chorioretinitis, hydrocephalus)
+  - Other (syphilis, VZV, parvovirus B19)
+  - Rubella (deafness, cataracts, PDA)
+  - CMV (hearing loss, developmental delay)
+  - HSV (skin vesicles, encephalitis)
+
+##### Children (1 month - 18 years)
+- Respiratory syncytial virus (bronchiolitis, <2 years)
+- Rotavirus (gastroenteritis, <5 years)
+- Hand-foot-mouth disease (Coxsackievirus)
+- Pinworm (Enterobius vermicularis, pruritus ani)
+- Measles, mumps, rubella (if unvaccinated)
+
+##### Elderly (>65 years)
+- Streptococcus pneumoniae (pneumonia, meningitis)
+- Influenza (severe complications)
+- Herpes zoster (shingles, post-herpetic neuralgia)
+- Clostridium difficile (antibiotic-associated)
+- Listeria monocytogenes (meningitis)
+- Gram-negative bacteremia
+
+#### Pregnancy-Related Risks
+- Listeriosis (miscarriage, stillbirth, neonatal sepsis)
+- Toxoplasmosis (congenital infection from primary infection)
+- Parvovirus B19 (hydrops fetalis)
+- CMV (congenital infection if primary)
+- Rubella (congenital rubella syndrome if primary in 1st trimester)
+- Zika virus (microcephaly)
+- Hepatitis E (fulminant hepatitis in pregnancy)
+- Malaria (placental malaria, severe)
+
+## By Laboratory/Diagnostic Clues
+
+### Microscopy Findings
+
+#### Gram Stain Patterns
+- **Gram-positive cocci in clusters**: Staphylococcus
+- **Gram-positive cocci in chains**: Streptococcus
+- **Gram-positive diplococci**: Streptococcus pneumoniae
+- **Gram-negative diplococci (intracellular)**: Neisseria gonorrhoeae
+- **Gram-negative diplococci (extracellular)**: Neisseria meningitidis
+- **Gram-negative rods (lactose fermenters, pink MacConkey)**: E. coli, Klebsiella
+- **Gram-negative rods (non-lactose fermenters, colorless MacConkey)**: Salmonella, Shigella, Proteus
+- **Gram-negative comma-shaped**: Vibrio cholerae, Campylobacter
+
+#### Acid-Fast Stain
+- **Acid-fast bacilli**: Mycobacterium tuberculosis, M. leprae
+- **Modified acid-fast**: Nocardia, Cryptosporidium, Cystoisospora, Cyclospora
+
+#### Blood Smear Findings
+- **Intraerythrocytic parasites with pigment**: Malaria (Plasmodium species)
+- **Intraerythrocytic ring forms without pigment**: Babesia (Maltese cross)
+- **Trypomastigotes**: Trypanosoma (African or Chagas)
+- **Microfilariae**: Filarial worms (Wuchereria, Brugia, Loa loa)
+
+#### Stool Examination
+- **Eggs with lateral spine**: Schistosoma mansoni
+- **Eggs with terminal spine**: Schistosoma haematobium
+- **Eggs with rudimentary spine**: Schistosoma japonicum
+- **Barrel-shaped eggs with bipolar plugs**: Trichuris trichiura
+- **Operculated eggs**: Diphyllobothrium, Clonorchis, Fasciola, Paragonimus
+- **Rhabditiform larvae**: Strongyloides stercoralis
+- **Trophozoites with ingested RBCs**: Entamoeba histolytica
+- **Pear-shaped trophozoites**: Giardia lamblia
+- **Acid-fast oocysts 4-6 μm**: Cryptosporidium
+- **Acid-fast oocysts 8-10 μm**: Cyclospora
+- **Acid-fast oocysts 20-30 μm**: Cystoisospora
+
+#### Urine Examination
+- **Terminal hematuria**: Schistosoma haematobium
+- **Eggs in urine**: Schistosoma haematobium
+
+### Imaging Findings
+
+#### Chest X-ray Patterns
+- **Upper lobe cavitation**: Tuberculosis
+- **Bilateral interstitial infiltrates**: PCP, viral pneumonia
+- **Lobar consolidation**: Bacterial pneumonia (S. pneumoniae)
+- **Patchy infiltrates with eosinophilia**: Löffler's syndrome (helminth migration)
+- **Fungus ball in cavity**: Aspergilloma
+- **Halo sign**: Invasive aspergillosis (neutropenic patients)
+- **Ground-glass opacities**: COVID-19, PCP
+
+#### CT/MRI Brain
+- **Ring-enhancing lesions (multiple)**: Toxoplasmosis, neurocysticercosis
+- **Ring-enhancing lesions (single)**: Brain abscess, tuberculoma
+- **Calcifications**: Neurocysticercosis (old)
+- **Temporal lobe involvement**: HSV encephalitis
+- **Basal meningeal enhancement**: Tuberculous meningitis
+
+#### Ultrasound/CT Abdomen
+- **Hydatid cyst (daughter cysts visible)**: Echinococcus granulosus
+- **Liver abscess (anchovy paste)**: Entamoeba histolytica
+- **Dilated bile ducts**: Clonorchis, Opisthorchis, Fasciola
+- **Bladder calcification**: Schistosoma haematobium (chronic)
+
+### Serological Markers
+- **Heterophile antibody positive**: EBV (infectious mononucleosis)
+- **Heterophile antibody negative, CMV IgM positive**: CMV mononucleosis
+- **Positive HIV antibody + antigen (4th generation)**: HIV infection
+- **HBsAg positive**: Hepatitis B infection (acute or chronic)
+- **Anti-HCV positive**: Hepatitis C exposure/infection
+- **VDRL/RPR positive**: Syphilis (screening)
+- **IgM toxoplasma**: Acute toxoplasmosis
+- **Cryptococcal antigen**: Cryptococcosis
+- **Galactomannan antigen**: Invasive aspergillosis
+
+## Special Populations/Scenarios
+
+### Returned Traveler with Fever
+- **Onset <2 weeks after return**
+  - Malaria (can present up to years later)
+  - Dengue fever
+  - Chikungunya
+  - Typhoid fever
+  - Bacterial gastroenteritis
+- **Onset 2-6 weeks**
+  - Malaria
+  - Typhoid fever
+  - Acute schistosomiasis (Katayama fever)
+  - Hepatitis A
+  - Tuberculosis
+- **Onset >6 weeks**
+  - Malaria
+  - Tuberculosis
+  - Hepatitis B
+  - Visceral leishmaniasis
+
+### Sepsis with Unknown Source
+- **Sepsis + Neutropenia**: Consider fungal (Candida, Aspergillus), Pseudomonas
+- **Sepsis + Asplenia**: Streptococcus pneumoniae, Neisseria meningitidis, Haemophilus influenzae
+- **Sepsis + IVDU**: Staphylococcus aureus (endocarditis), HIV, Hepatitis B/C
+- **Sepsis + Recent GI procedure**: Enteric organisms (E. coli, Bacteroides)
+- **Sepsis + Recent dental work**: Viridans streptococci (endocarditis)
+- **Sepsis + Indwelling catheter**: Staphylococcus epidermidis, Candida
+
+### Eosinophilia (Approach)
+- **Mild eosinophilia (500-1500)**
+  - Drug reaction
+  - Atopic conditions
+- **Moderate to severe (>1500)**
+  - Helminth infection (tissue-invasive)
+    - Ascaris (larval migration)
+    - Hookworm (larval migration)
+    - Strongyloides
+    - Trichinella
+    - Toxocara (visceral larva migrans)
+    - Schistosomiasis (acute Katayama)
+    - Filariasis
+    - Echinococcus
+    - Cystoisospora
+  - ABPA (Aspergillus)
+  - Hypereosinophilic syndrome
+
+### Recurrent Infections
+- **Recurrent pyogenic infections (Staph, Strep)**
+  - Consider primary immunodeficiency (check immunoglobulins, complement)
+- **Recurrent fungal/opportunistic infections**
+  - Consider HIV, immunosuppression
+- **Recurrent HSV/VZV**
+  - Consider HIV, cellular immune deficiency
+- **Recurrent Neisseria infections**
+  - Consider complement deficiency (C5-C9)
+
+        </script>
+    </div>
+    <header>
+        <div class="reminder">
+            <p> Simplified version: Clinical Cases</p>
+        </div>
+    </header>
+    <div class="about">
+        
+        <p>Created with <a href="https://markmap.js.org/" target="_blank">Markmap</a><br>2026 by Jaeden Tai<br>Summarized by <a href="https://claude.ai/" target="_blank">Claude</a> and <a href="https://gemini.google.com/" target="_blank">Gemini</a></p>
+  
+    </div>
+    <div class="easy" onclick="window.open('./microbiology.html')">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ff"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+        <p>Back</p>
+    </div>
+</body>
+
+</html>

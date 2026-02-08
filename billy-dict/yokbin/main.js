@@ -197,6 +197,22 @@ searchbar.addEventListener("input", function () {
 });
 
 
+//QQ update url
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("search");
+
+    if (query !== "" && (/^[A-Za-z\s]*$/.test(query.trim()))) {
+        searchquery(query);   // run your existing lookup with the query
+    }
+});
+
+function updateurl(input) {
+    const url = new URL(window.location);
+    url.searchParams.set("search", input);
+    window.history.replaceState({}, "", url);
+}
+
 
 //QQ ui functions
 function clearInput() {
