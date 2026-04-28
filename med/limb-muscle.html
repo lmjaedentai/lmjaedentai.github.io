@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Limb of Muscle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@300&family=Sohne:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f0eb;
+      --text: #1a1714;
+      --text-muted: #8a7f76;
+      --accent: #c96442;
+      --btn-bg: #ffffff;
+      --btn-border: #d6cec6;
+      --btn-hover-bg: #1a1714;
+      --btn-hover-text: #f5f0eb;
+      --radius: 10px;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.5rem;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .eyebrow {
+      font-family: 'Georgia', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    h1 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      margin-top: 0.3rem;
+    }
+
+    .divider {
+      width: 36px;
+      height: 1px;
+      background: var(--btn-border);
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.4rem;
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .btn:nth-child(1) { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.45s forwards; }
+    .btn:nth-child(2) { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.55s forwards; }
+    .btn:nth-child(3) { animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.65s forwards; }
+
+    .btn:hover {
+      background: var(--btn-hover-bg);
+      border-color: var(--btn-hover-bg);
+      color: var(--btn-hover-text);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(26,23,20,0.12);
+    }
+
+    .btn-label {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .btn-icon {
+      width: 18px;
+      height: 18px;
+      opacity: 0.6;
+      flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover .btn-icon { opacity: 1; }
+
+    .btn-arrow {
+      font-size: 1rem;
+      opacity: 0.3;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn:hover .btn-arrow {
+      opacity: 0.8;
+      transform: translateX(3px);
+    }
+
+    .footer-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.9s forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="eyebrow">Anatomy · Physiology</span>
+      <h1>Limb of Muscle</h1>
+      <span class="sub">Select a region to begin</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <nav class="nav-buttons">
+      <button class="btn" onclick="location.href='upper.html'">
+        <span class="btn-label">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C9.5 2 8 4 8 6v6l-2 3v1h12v-1l-2-3V6c0-2-1.5-4-4-4z" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 20a2 2 0 0 0 4 0" stroke-linecap="round"/>
+          </svg>
+          Shoulder and Arm
+        </span>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <button class="btn" onclick="location.href='upper2.html'">
+        <span class="btn-label">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 3h6v10l2 8H7l2-8V3z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Forearm and Hand
+        </span>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <button class="btn" onclick="location.href='lower.html'">
+        <span class="btn-label">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="9" stroke-linecap="round"/>
+            <path d="M12 8v4l3 3" stroke-linecap="round"/>
+          </svg>
+          Lower Limb
+        </span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </nav>
+
+    <span class="footer-note">Generated by Claude. Prepared by Jaeden 2026.</span>
+  </div>
+
+  <script>
+    function navigate(section) {
+      console.log('Navigate to:', section);
+      // Wire up your routing here
+    }
+  </script>
+</body>
+</html>
