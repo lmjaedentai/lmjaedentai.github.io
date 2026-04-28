@@ -1,0 +1,371 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: transparent; }
+  .wrap { padding: 1rem 0; font-family: var(--font-sans, sans-serif); }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .tab { padding: 6px 14px; font-size: 13px; border: 0.5px solid var(--color-border-secondary, #ccc); border-radius: var(--border-radius-md, 8px); background: transparent; color: var(--color-text-secondary, #555); cursor: pointer; transition: all .15s; }
+  .tab.active, .tab:hover { background: var(--color-background-secondary, #f4f4f0); color: var(--color-text-primary, #111); border-color: var(--color-border-primary, #aaa); }
+  .tab.active { font-weight: 500; }
+  .muscle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 1.25rem; }
+  .muscle-card { background: var(--color-background-primary, #fff); border: 0.5px solid var(--color-border-tertiary, #ddd); border-radius: var(--border-radius-lg, 12px); padding: 14px 16px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .muscle-card:hover { border-color: var(--color-border-secondary, #bbb); background: var(--color-background-secondary, #f8f8f4); }
+  .muscle-card.selected { border: 1.5px solid var(--color-border-info, #3b82f6); background: var(--color-background-info, #eff6ff); }
+  .muscle-name { font-size: 14px; font-weight: 500; color: var(--color-text-primary, #111); margin-bottom: 4px; }
+  .muscle-group { font-size: 11px; color: var(--color-text-secondary, #888); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+  .action-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 400; }
+  .tag.flex { background: #EEEDFE; color: #3C3489; }
+  .tag.ext { background: #E1F5EE; color: #085041; }
+  .tag.abd { background: #FAECE7; color: #712B13; }
+  .tag.add { background: #FBEAF0; color: #72243E; }
+  .tag.rot { background: #FAEEDA; color: #633806; }
+  .tag.stab { background: #F1EFE8; color: #444441; }
+  .tag.other { background: #E6F1FB; color: #0C447C; }
+  .detail-panel { background: var(--color-background-primary, #fff); border: 0.5px solid var(--color-border-tertiary, #ddd); border-radius: var(--border-radius-lg, 12px); padding: 18px 20px; min-height: 160px; }
+  .detail-empty { color: var(--color-text-secondary, #888); font-size: 14px; }
+  .detail-title { font-size: 16px; font-weight: 500; margin-bottom: 4px; color: var(--color-text-primary, #111); }
+  .detail-sub { font-size: 13px; color: var(--color-text-secondary, #777); margin-bottom: 14px; }
+  .detail-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .detail-col label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary, #888); display: block; margin-bottom: 4px; }
+  .detail-col p { font-size: 13px; color: var(--color-text-primary, #222); line-height: 1.55; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+  .leg-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--color-text-secondary, #888); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .section-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary, #888); margin-bottom: 8px; }
+  .nerve-badge { display: inline-block; font-size: 11px; padding: 2px 9px; border-radius: 20px; background: var(--color-background-secondary, #f0f0ec); color: var(--color-text-secondary, #555); border: 0.5px solid var(--color-border-tertiary, #ddd); margin-top: 8px; }
+</style>
+
+<div class="wrap">
+  <div class="tabs" id="tabs">
+    <button class="tab active" onclick="setGroup('all')">All muscles</button>
+    <button class="tab" onclick="setGroup('rotator')">Rotator cuff</button>
+    <button class="tab" onclick="setGroup('shoulder')">Shoulder movers</button>
+    <button class="tab" onclick="setGroup('arm')">Arm (elbow)</button>
+    <button class="tab" onclick="setGroup('scapular')">Scapular stabilisers</button>
+  </div>
+
+  <div class="section-label" id="count-label">Showing all 18 muscles</div>
+  <div class="muscle-grid" id="grid"></div>
+
+  <div class="section-label">Select a muscle for details</div>
+  <div class="detail-panel" id="detail">
+    <p class="detail-empty">Click any muscle card above to see its origin, insertion, actions, and nerve supply.</p>
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><span class="leg-dot" style="background:#7F77DD"></span>Flexion</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#1D9E75"></span>Extension</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#D85A30"></span>Abduction</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#D4537E"></span>Adduction</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#BA7517"></span>Rotation</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#888780"></span>Stabilisation</div>
+    <div class="leg-item"><span class="leg-dot" style="background:#378ADD"></span>Other</div>
+  </div>
+</div>
+
+<script>
+const muscles = [
+  {
+    name: "Supraspinatus",
+    group: "rotator",
+    groupLabel: "Rotator cuff",
+    actions: [
+      {label:"Abduction (0–15°)", cls:"abd"},
+      {label:"Stabilise GHJ", cls:"stab"}
+    ],
+    origin: "Supraspinous fossa of scapula",
+    insertion: "Greater tubercle of humerus (superior facet)",
+    nerve: "Suprascapular nerve (C5–C6)",
+    notes: "Initiates abduction before deltoid takes over. Most commonly torn rotator cuff tendon."
+  },
+  {
+    name: "Infraspinatus",
+    group: "rotator",
+    groupLabel: "Rotator cuff",
+    actions: [
+      {label:"Lateral rotation", cls:"rot"},
+      {label:"Stabilise GHJ", cls:"stab"}
+    ],
+    origin: "Infraspinous fossa of scapula",
+    insertion: "Greater tubercle of humerus (middle facet)",
+    nerve: "Suprascapular nerve (C5–C6)",
+    notes: "Main lateral rotator of the shoulder. Often injured in overhead athletes."
+  },
+  {
+    name: "Teres minor",
+    group: "rotator",
+    groupLabel: "Rotator cuff",
+    actions: [
+      {label:"Lateral rotation", cls:"rot"},
+      {label:"Adduction", cls:"add"},
+      {label:"Stabilise GHJ", cls:"stab"}
+    ],
+    origin: "Lateral border of scapula (upper 2/3)",
+    insertion: "Greater tubercle of humerus (inferior facet)",
+    nerve: "Axillary nerve (C5–C6)",
+    notes: "Works with infraspinatus for lateral rotation. The only rotator cuff muscle supplied by the axillary nerve."
+  },
+  {
+    name: "Subscapularis",
+    group: "rotator",
+    groupLabel: "Rotator cuff",
+    actions: [
+      {label:"Medial rotation", cls:"rot"},
+      {label:"Adduction", cls:"add"},
+      {label:"Stabilise GHJ", cls:"stab"}
+    ],
+    origin: "Subscapular fossa (anterior scapula)",
+    insertion: "Lesser tubercle of humerus",
+    nerve: "Upper & lower subscapular nerves (C5–C6)",
+    notes: "Sole anterior rotator cuff muscle. Prevents anterior GHJ dislocation."
+  },
+  {
+    name: "Deltoid",
+    group: "shoulder",
+    groupLabel: "Shoulder movers",
+    actions: [
+      {label:"Abduction (15–90°)", cls:"abd"},
+      {label:"Flexion (ant. fibres)", cls:"flex"},
+      {label:"Extension (post. fibres)", cls:"ext"},
+      {label:"Med. & lat. rotation", cls:"rot"}
+    ],
+    origin: "Clavicle (lateral 1/3), acromion, spine of scapula",
+    insertion: "Deltoid tuberosity of humerus",
+    nerve: "Axillary nerve (C5–C6)",
+    notes: "Primary abductor of the shoulder from 15–90°. Three distinct functional heads."
+  },
+  {
+    name: "Pectoralis major",
+    group: "shoulder",
+    groupLabel: "Shoulder movers",
+    actions: [
+      {label:"Flexion (clavicular head)", cls:"flex"},
+      {label:"Extension (sternal head)", cls:"ext"},
+      {label:"Adduction", cls:"add"},
+      {label:"Medial rotation", cls:"rot"}
+    ],
+    origin: "Clavicle (medial half), sternum, costal cartilages 1–6",
+    insertion: "Lateral lip of bicipital groove (humerus)",
+    nerve: "Medial & lateral pectoral nerves (C5–T1)",
+    notes: "Powerful adductor and medial rotator. Clavicular head flexes; sternal head extends from flexion."
+  },
+  {
+    name: "Latissimus dorsi",
+    group: "shoulder",
+    groupLabel: "Shoulder movers",
+    actions: [
+      {label:"Extension", cls:"ext"},
+      {label:"Adduction", cls:"add"},
+      {label:"Medial rotation", cls:"rot"}
+    ],
+    origin: "Spinous processes T7–L5, iliac crest, lower 3–4 ribs",
+    insertion: "Floor of bicipital groove (humerus)",
+    nerve: "Thoracodorsal nerve (C6–C8)",
+    notes: "The 'swimmer's muscle'. Also used in coughing and adducting arm in climbing."
+  },
+  {
+    name: "Teres major",
+    group: "shoulder",
+    groupLabel: "Shoulder movers",
+    actions: [
+      {label:"Extension", cls:"ext"},
+      {label:"Adduction", cls:"add"},
+      {label:"Medial rotation", cls:"rot"}
+    ],
+    origin: "Inferior angle of scapula",
+    insertion: "Medial lip of bicipital groove (humerus)",
+    nerve: "Lower subscapular nerve (C5–C6)",
+    notes: "\"Little lat\" — mimics latissimus dorsi actions but is NOT rotator cuff."
+  },
+  {
+    name: "Coracobrachialis",
+    group: "shoulder",
+    groupLabel: "Shoulder movers",
+    actions: [
+      {label:"Flexion", cls:"flex"},
+      {label:"Adduction", cls:"add"}
+    ],
+    origin: "Coracoid process of scapula",
+    insertion: "Medial shaft of humerus",
+    nerve: "Musculocutaneous nerve (C5–C7)",
+    notes: "Pierced by musculocutaneous nerve. Weak flexor and adductor."
+  },
+  {
+    name: "Serratus anterior",
+    group: "scapular",
+    groupLabel: "Scapular stabiliser",
+    actions: [
+      {label:"Scapular protraction", cls:"other"},
+      {label:"Upward rotation", cls:"rot"},
+      {label:"Holds scapula to chest", cls:"stab"}
+    ],
+    origin: "Lateral surfaces of ribs 1–8",
+    insertion: "Medial border & inferior angle of scapula",
+    nerve: "Long thoracic nerve (C5–C7)",
+    notes: "Paralysis → winged scapula. Essential for overhead movements."
+  },
+  {
+    name: "Trapezius",
+    group: "scapular",
+    groupLabel: "Scapular stabiliser",
+    actions: [
+      {label:"Elevation (upper)", cls:"other"},
+      {label:"Retraction (middle)", cls:"other"},
+      {label:"Depression (lower)", cls:"other"},
+      {label:"Upward rotation", cls:"rot"}
+    ],
+    origin: "Occipital bone, ligamentum nuchae, spinous processes C7–T12",
+    insertion: "Clavicle (lateral 1/3), acromion, spine of scapula",
+    nerve: "Accessory nerve (CN XI) + C3–C4",
+    notes: "Only muscle supplied by a cranial nerve. Upper/middle/lower fibres have different actions."
+  },
+  {
+    name: "Rhomboids (major & minor)",
+    group: "scapular",
+    groupLabel: "Scapular stabiliser",
+    actions: [
+      {label:"Retraction", cls:"other"},
+      {label:"Downward rotation", cls:"rot"},
+      {label:"Elevation", cls:"other"}
+    ],
+    origin: "Spinous processes C7–T5, ligamentum nuchae",
+    insertion: "Medial border of scapula",
+    nerve: "Dorsal scapular nerve (C4–C5)",
+    notes: "Retract and rotate the scapula downward. Work with middle trapezius."
+  },
+  {
+    name: "Levator scapulae",
+    group: "scapular",
+    groupLabel: "Scapular stabiliser",
+    actions: [
+      {label:"Scapular elevation", cls:"other"},
+      {label:"Downward rotation", cls:"rot"}
+    ],
+    origin: "Transverse processes of C1–C4",
+    insertion: "Superior angle of scapula",
+    nerve: "Dorsal scapular nerve (C4–C5) + C3–C4",
+    notes: "Also tilts neck ipsilaterally when scapula is fixed."
+  },
+  {
+    name: "Biceps brachii",
+    group: "arm",
+    groupLabel: "Arm (elbow)",
+    actions: [
+      {label:"Elbow flexion", cls:"flex"},
+      {label:"Supination (most powerful)", cls:"rot"},
+      {label:"Shoulder flexion (weak)", cls:"flex"}
+    ],
+    origin: "Long head: supraglenoid tubercle; Short head: coracoid process",
+    insertion: "Radial tuberosity + bicipital aponeurosis",
+    nerve: "Musculocutaneous nerve (C5–C6)",
+    notes: "Most powerful supinator when elbow is flexed at 90°. Two-joint muscle."
+  },
+  {
+    name: "Triceps brachii",
+    group: "arm",
+    groupLabel: "Arm (elbow)",
+    actions: [
+      {label:"Elbow extension", cls:"ext"},
+      {label:"Shoulder extension (long head)", cls:"ext"},
+      {label:"Adduction (long head)", cls:"add"}
+    ],
+    origin: "Long: infraglenoid tubercle; Lateral: humerus (posterior, proximal); Medial: humerus (posterior, distal)",
+    insertion: "Olecranon of ulna",
+    nerve: "Radial nerve (C6–C8)",
+    notes: "Only extensor of the elbow. Radial nerve injury (Saturday night palsy) affects it."
+  },
+  {
+    name: "Brachialis",
+    group: "arm",
+    groupLabel: "Arm (elbow)",
+    actions: [
+      {label:"Elbow flexion (pure)", cls:"flex"}
+    ],
+    origin: "Anterior humerus (distal half)",
+    insertion: "Coronoid process & ulnar tuberosity",
+    nerve: "Musculocutaneous nerve (C5–C6), small radial branch",
+    notes: "\"Workhorse\" flexor — strongest elbow flexor regardless of forearm position."
+  },
+  {
+    name: "Brachioradialis",
+    group: "arm",
+    groupLabel: "Arm (elbow)",
+    actions: [
+      {label:"Elbow flexion", cls:"flex"},
+      {label:"Brings forearm to neutral", cls:"rot"}
+    ],
+    origin: "Lateral supracondylar ridge of humerus",
+    insertion: "Styloid process of radius",
+    nerve: "Radial nerve (C5–C6)",
+    notes: "Most effective when forearm is in mid-pronation. The 'beer-drinking muscle'."
+  },
+  {
+    name: "Pectoralis minor",
+    group: "scapular",
+    groupLabel: "Scapular stabiliser",
+    actions: [
+      {label:"Scapular protraction", cls:"other"},
+      {label:"Downward rotation", cls:"rot"},
+      {label:"Anterior tilting", cls:"other"}
+    ],
+    origin: "Ribs 3–5 (anterior surfaces)",
+    insertion: "Coracoid process of scapula",
+    nerve: "Medial pectoral nerve (C8–T1)",
+    notes: "Depresses and anteriorly tilts the scapula. Tightness contributes to shoulder impingement."
+  }
+];
+
+let currentGroup = 'all';
+let selectedIdx = null;
+
+function setGroup(g) {
+  currentGroup = g;
+  selectedIdx = null;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  render();
+  document.getElementById('detail').innerHTML = '<p class="detail-empty">Click any muscle card above to see its origin, insertion, actions, and nerve supply.</p>';
+}
+
+function filtered() {
+  if (currentGroup === 'all') return muscles;
+  return muscles.filter(m => m.group === currentGroup);
+}
+
+function render() {
+  const list = filtered();
+  document.getElementById('count-label').textContent = `Showing ${list.length} muscle${list.length !== 1 ? 's' : ''}`;
+  const grid = document.getElementById('grid');
+  grid.innerHTML = list.map((m, i) => {
+    const realIdx = muscles.indexOf(m);
+    const sel = selectedIdx === realIdx ? 'selected' : '';
+    const tags = m.actions.map(a => `<span class="tag ${a.cls}">${a.label}</span>`).join('');
+    return `<div class="muscle-card ${sel}" onclick="select(${realIdx})">
+      <div class="muscle-name">${m.name}</div>
+      <div class="muscle-group">${m.groupLabel}</div>
+      <div class="action-tags">${tags}</div>
+    </div>`;
+  }).join('');
+}
+
+function select(idx) {
+  selectedIdx = idx;
+  render();
+  const m = muscles[idx];
+  const tags = m.actions.map(a => `<span class="tag ${a.cls}">${a.label}</span>`).join('');
+  document.getElementById('detail').innerHTML = `
+    <div class="detail-title">${m.name}</div>
+    <div class="detail-sub">${m.groupLabel}</div>
+    <div class="action-tags" style="margin-bottom:14px">${tags}</div>
+    <div class="detail-rows">
+      <div class="detail-col"><label>Origin</label><p>${m.origin}</p></div>
+      <div class="detail-col"><label>Insertion</label><p>${m.insertion}</p></div>
+      <div class="detail-col"><label>Clinical note</label><p>${m.notes}</p></div>
+      <div class="detail-col"><label>Nerve supply</label><p>${m.nerve}</p></div>
+    </div>
+  `;
+}
+
+render();
+</script>

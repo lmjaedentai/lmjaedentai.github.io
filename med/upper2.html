@@ -1,0 +1,231 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{padding:1rem 0;font-family:var(--font-sans,sans-serif)}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+.tab{padding:6px 14px;font-size:13px;border:0.5px solid var(--color-border-secondary,#ccc);border-radius:var(--border-radius-md,8px);background:transparent;color:var(--color-text-secondary,#555);cursor:pointer;transition:all .15s}
+.tab.active,.tab:hover{background:var(--color-background-secondary,#f4f4f0);color:var(--color-text-primary,#111);border-color:var(--color-border-primary,#aaa)}
+.tab.active{font-weight:500}
+.compartment-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-secondary,#888);margin:12px 0 6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:8px}
+.card{background:var(--color-background-primary,#fff);border:0.5px solid var(--color-border-tertiary,#ddd);border-radius:var(--border-radius-lg,12px);padding:12px 14px;cursor:pointer;transition:all .15s}
+.card:hover{border-color:var(--color-border-secondary,#bbb);background:var(--color-background-secondary,#f8f8f4)}
+.card.sel{border:1.5px solid var(--color-border-info,#3b82f6);background:var(--color-background-info,#eff6ff)}
+.cname{font-size:13px;font-weight:500;color:var(--color-text-primary,#111);margin-bottom:3px}
+.cgroup{font-size:11px;color:var(--color-text-secondary,#888);text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11px;padding:2px 7px;border-radius:20px}
+.t-flex{background:#EEEDFE;color:#3C3489}
+.t-ext{background:#E1F5EE;color:#085041}
+.t-pron{background:#FAECE7;color:#712B13}
+.t-sup{background:#FAEEDA;color:#633806}
+.t-grip{background:#FBEAF0;color:#72243E}
+.t-other{background:#E6F1FB;color:#0C447C}
+.detail{background:var(--color-background-primary,#fff);border:0.5px solid var(--color-border-tertiary,#ddd);border-radius:var(--border-radius-lg,12px);padding:16px 18px;margin-top:10px;min-height:140px}
+.d-title{font-size:15px;font-weight:500;color:var(--color-text-primary,#111);margin-bottom:2px}
+.d-sub{font-size:12px;color:var(--color-text-secondary,#777);margin-bottom:10px}
+.d-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.d-col label{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-secondary,#888);display:block;margin-bottom:3px}
+.d-col p{font-size:13px;color:var(--color-text-primary,#222);line-height:1.5}
+.empty{font-size:14px;color:var(--color-text-secondary,#888)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.leg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--color-text-secondary,#888)}
+.ldot{width:10px;height:10px;border-radius:50%}
+.nerve-badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;background:var(--color-background-secondary,#f0f0ec);color:var(--color-text-secondary,#555);border:0.5px solid var(--color-border-tertiary,#ddd);margin-top:8px}
+</style>
+
+<div class="wrap">
+<h2 class="sr-only" style="position:absolute;left:-9999px">Forearm muscles interactive reference</h2>
+
+<div class="controls" id="tabs">
+  <button class="tab active" onclick="setView('all',this)">All muscles</button>
+  <button class="tab" onclick="setView('ant',this)">Anterior (flexors)</button>
+  <button class="tab" onclick="setView('post',this)">Posterior (extensors)</button>
+  <button class="tab" onclick="setView('deep',this)">Deep layer</button>
+  <button class="tab" onclick="setView('nerve:median',this)">Median nerve</button>
+  <button class="tab" onclick="setView('nerve:ulnar',this)">Ulnar nerve</button>
+  <button class="tab" onclick="setView('nerve:radial',this)">Radial nerve</button>
+</div>
+
+<div id="main"></div>
+
+<div class="detail" id="detail"><p class="empty">Click any muscle card to see origin, insertion, nerve supply, and clinical notes.</p></div>
+
+<div class="legend">
+  <div class="leg"><span class="ldot" style="background:#7F77DD"></span>Wrist/finger flexion</div>
+  <div class="leg"><span class="ldot" style="background:#1D9E75"></span>Wrist/finger extension</div>
+  <div class="leg"><span class="ldot" style="background:#D85A30"></span>Pronation</div>
+  <div class="leg"><span class="ldot" style="background:#BA7517"></span>Supination</div>
+  <div class="leg"><span class="ldot" style="background:#D4537E"></span>Grip / pinch</div>
+  <div class="leg"><span class="ldot" style="background:#378ADD"></span>Other</div>
+</div>
+</div>
+
+<script>
+const M = [
+  {name:"Pronator teres",comp:"Anterior superficial",nerve:"median",nerveLabel:"Median (C6–C7)",
+   actions:[{l:"Pronation",c:"t-pron"},{l:"Elbow flexion (weak)",c:"t-flex"}],
+   origin:"Medial epicondyle (humeral head) + coronoid process (ulnar head)",
+   insertion:"Lateral surface of radius (mid-shaft)",
+   notes:"Pronates with power. Compressed in pronator teres syndrome — median nerve entrapment proximal to carpal tunnel."},
+  {name:"Flexor carpi radialis",comp:"Anterior superficial",nerve:"median",nerveLabel:"Median (C6–C7)",
+   actions:[{l:"Wrist flexion",c:"t-flex"},{l:"Wrist abduction (radial deviation)",c:"t-other"}],
+   origin:"Medial epicondyle (common flexor origin)",
+   insertion:"Base of 2nd & 3rd metacarpals",
+   notes:"Landmark for radial artery pulse (lateral to tendon). Used as anatomical guide in carpal tunnel surgery."},
+  {name:"Palmaris longus",comp:"Anterior superficial",nerve:"median",nerveLabel:"Median (C8)",
+   actions:[{l:"Wrist flexion (weak)",c:"t-flex"},{l:"Tenses palmar fascia",c:"t-other"}],
+   origin:"Medial epicondyle",
+   insertion:"Palmar aponeurosis",
+   notes:"Absent in ~15% of people. No functional deficit if missing. Used as tendon graft donor. Tested by opposing thumb & little finger with wrist flexed."},
+  {name:"Flexor carpi ulnaris",comp:"Anterior superficial",nerve:"ulnar",nerveLabel:"Ulnar (C7–C8)",
+   actions:[{l:"Wrist flexion",c:"t-flex"},{l:"Wrist adduction (ulnar deviation)",c:"t-other"}],
+   origin:"Medial epicondyle + olecranon (ulnar head)",
+   insertion:"Pisiform, hook of hamate, 5th metacarpal base",
+   notes:"Only superficial flexor supplied by ulnar nerve. Protects ulnar nerve as it enters Guyon's canal. Most medial tendon of wrist."},
+  {name:"Flexor digitorum superficialis",comp:"Anterior intermediate",nerve:"median",nerveLabel:"Median (C7–C8, T1)",
+   actions:[{l:"Flexion PIP joints (digits 2–5)",c:"t-flex"},{l:"Wrist flexion",c:"t-flex"}],
+   origin:"Medial epicondyle, coronoid process, oblique line of radius",
+   insertion:"Middle phalanges of digits 2–5 (splits to allow FDP through)",
+   notes:"Splits at the finger — 'Camper's chiasm' — allowing FDP to pass through. Independent testing: flex one PIP while holding others extended."},
+  {name:"Flexor digitorum profundus",comp:"Anterior deep",nerve:"median+ulnar",nerveLabel:"Median (digits 2–3) + Ulnar (digits 4–5)",
+   actions:[{l:"Flexion DIP joints",c:"t-flex"},{l:"Flexion PIP & MCP (assists)",c:"t-flex"}],
+   origin:"Medial & anterior ulna + interosseous membrane",
+   insertion:"Distal phalanges of digits 2–5",
+   notes:"Only flexor of DIP joints. Split innervation: lateral half (AIN/median) for index & middle; medial half (ulnar) for ring & little. Deep to FDS."},
+  {name:"Flexor pollicis longus",comp:"Anterior deep",nerve:"median",nerveLabel:"Anterior interosseous nerve (C8–T1)",
+   actions:[{l:"Thumb IP flexion",c:"t-flex"},{l:"Thumb MCP flexion",c:"t-flex"}],
+   origin:"Anterior radius + interosseous membrane",
+   insertion:"Distal phalanx of thumb",
+   notes:"Only intrinsic-independent flexor of thumb IP joint. Injured in 'Mannerfelt lesion' (RA). Tested by holding thumb MCP stable and flexing IP."},
+  {name:"Pronator quadratus",comp:"Anterior deep",nerve:"median",nerveLabel:"Anterior interosseous nerve (C8–T1)",
+   actions:[{l:"Pronation",c:"t-pron"}],
+   origin:"Distal anterior ulna",
+   insertion:"Distal anterior radius",
+   notes:"Primary pronator — active even without pronator teres (it acts only at speed). Covers distal radio-ulnar joint. Seen on MRI in TFCC injuries."},
+  {name:"Brachioradialis",comp:"Posterior superficial",nerve:"radial",nerveLabel:"Radial (C5–C6)",
+   actions:[{l:"Elbow flexion",c:"t-flex"},{l:"Brings forearm to neutral",c:"t-other"}],
+   origin:"Lateral supracondylar ridge of humerus",
+   insertion:"Styloid process of radius",
+   notes:"Forms lateral border of cubital fossa. Strongest elbow flexor in mid-pronation ('beer-drinking muscle'). Radial nerve supply — no flexor compartment."},
+  {name:"Extensor carpi radialis longus",comp:"Posterior superficial",nerve:"radial",nerveLabel:"Radial (C6–C7)",
+   actions:[{l:"Wrist extension",c:"t-ext"},{l:"Radial deviation",c:"t-other"}],
+   origin:"Lateral supracondylar ridge (distal to BR)",
+   insertion:"Base of 2nd metacarpal",
+   notes:"Active during fist clenching to stabilise the wrist. Runs under APL & EPB tendons (De Quervain's area)."},
+  {name:"Extensor carpi radialis brevis",comp:"Posterior superficial",nerve:"radial",nerveLabel:"Deep radial / PIN (C7–C8)",
+   actions:[{l:"Wrist extension",c:"t-ext"},{l:"Radial deviation",c:"t-other"}],
+   origin:"Lateral epicondyle (common extensor origin)",
+   insertion:"Base of 3rd metacarpal",
+   notes:"Most implicated tendon in lateral epicondylitis (tennis elbow). Undergoes degenerative angiofibroblastic change at its attachment."},
+  {name:"Extensor digitorum",comp:"Posterior superficial",nerve:"radial",nerveLabel:"Posterior interosseous nerve (C7–C8)",
+   actions:[{l:"Extension MCP joints (digits 2–5)",c:"t-ext"},{l:"Wrist extension (weak)",c:"t-ext"}],
+   origin:"Lateral epicondyle",
+   insertion:"Extensor expansions of digits 2–5",
+   notes:"Forms the extensor hood. Juncturae tendinum connect it across metacarpal heads — explaining why you can't extend ring finger independently."},
+  {name:"Extensor digiti minimi",comp:"Posterior superficial",nerve:"radial",nerveLabel:"Posterior interosseous nerve (C7–C8)",
+   actions:[{l:"Extension of little finger",c:"t-ext"}],
+   origin:"Lateral epicondyle",
+   insertion:"Extensor expansion of digit 5",
+   notes:"Allows independent little finger extension. Clinically tested when suspecting ulnar nerve injury (not actually ulnar-supplied)."},
+  {name:"Extensor carpi ulnaris",comp:"Posterior superficial",nerve:"radial",nerveLabel:"Posterior interosseous nerve (C7–C8)",
+   actions:[{l:"Wrist extension",c:"t-ext"},{l:"Ulnar deviation",c:"t-other"}],
+   origin:"Lateral epicondyle + posterior ulna",
+   insertion:"Base of 5th metacarpal",
+   notes:"Stabilises distal radio-ulnar joint through its sheath. Subluxation of its tendon occurs in forearm supination with ulnar deviation."},
+  {name:"Supinator",comp:"Posterior deep",nerve:"radial",nerveLabel:"Posterior interosseous nerve (C5–C6)",
+   actions:[{l:"Supination (all speeds)",c:"t-sup"}],
+   origin:"Lateral epicondyle, radial collateral ligament, supinator crest of ulna",
+   insertion:"Anterior & lateral radius (proximal third)",
+   notes:"PIN (deep radial nerve) passes through the arcade of Frohse between its two heads — a common entrapment site. Supinates even at speed without biceps."},
+  {name:"Abductor pollicis longus",comp:"Posterior deep",nerve:"radial",nerveLabel:"Posterior interosseous nerve (C7–C8)",
+   actions:[{l:"Thumb abduction",c:"t-other"},{l:"Wrist radial deviation",c:"t-other"}],
+   origin:"Posterior radius, ulna & interosseous membrane",
+   insertion:"Base of 1st metacarpal",
+   notes:"Forms the anterior wall of the anatomical snuffbox. Involved in De Quervain's tenosynovitis (1st extensor compartment with EPB)."},
+  {name:"Extensor pollicis brevis",comp:"Posterior deep",nerve:"radial",nerveLabel:"Posterior interosseous nerve (C7–C8)",
+   actions:[{l:"Thumb MCP extension",c:"t-ext"},{l:"Thumb abduction",c:"t-other"}],
+   origin:"Posterior radius + interosseous membrane",
+   insertion:"Base of proximal phalanx of thumb",
+   notes:"Travels with APL in 1st dorsal extensor compartment. De Quervain's tenosynovitis causes pain here with Finkelstein's test."},
+  {name:"Extensor pollicis longus",comp:"Posterior deep",nerve:"radial",nerveLabel:"Posterior interosseous nerve (C7–C8)",
+   actions:[{l:"Thumb IP extension",c:"t-ext"},{l:"Thumb retropulsion",c:"t-other"}],
+   origin:"Posterior ulna + interosseous membrane",
+   insertion:"Base of distal phalanx of thumb",
+   notes:"Forms posterior wall of anatomical snuffbox. Ruptured spontaneously in Colles' fracture (attrition at Lister's tubercle). Tested by thumb retropulsion."},
+  {name:"Extensor indicis",comp:"Posterior deep",nerve:"radial",nerveLabel:"Posterior interosseous nerve (C7–C8)",
+   actions:[{l:"Index finger MCP extension",c:"t-ext"},{l:"Independent index extension",c:"t-other"}],
+   origin:"Posterior ulna (distal) + interosseous membrane",
+   insertion:"Extensor expansion of index finger",
+   notes:"Only extensor that allows true independent index extension. Harvest donor tendon for EPL reconstruction. Tested by making a 'gun' shape."},
+  {name:"Flexor retinaculum (carpal tunnel)",comp:"Landmark",nerve:"—",nerveLabel:"—",
+   actions:[{l:"Retains flexor tendons",c:"t-other"},{l:"Protects median nerve",c:"t-other"}],
+   origin:"Scaphoid tubercle & trapezium (radial) → pisiform & hook of hamate (ulnar)",
+   insertion:"Forms roof of carpal tunnel",
+   notes:"Carpal tunnel syndrome: compression of median nerve here. Nine tendons pass through (FDS ×4, FDP ×4, FPL ×1) plus the median nerve."}
+];
+
+const COMP_ORDER = [
+  "Anterior superficial","Anterior intermediate","Anterior deep",
+  "Posterior superficial","Posterior deep","Landmark"
+];
+
+let view='all', sel=null;
+
+function setView(v,el){
+  view=v; sel=null;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  render();
+  document.getElementById('detail').innerHTML='<p class="empty">Click any muscle card to see origin, insertion, nerve supply, and clinical notes.</p>';
+}
+
+function filtered(){
+  if(view==='all') return M;
+  if(view==='ant') return M.filter(m=>m.comp.startsWith('Anterior'));
+  if(view==='post') return M.filter(m=>m.comp.startsWith('Posterior'));
+  if(view==='deep') return M.filter(m=>m.comp.includes('deep'));
+  if(view.startsWith('nerve:')) return M.filter(m=>m.nerve.includes(view.split(':')[1]));
+  return M;
+}
+
+function render(){
+  const list=filtered();
+  const byComp={};
+  list.forEach(m=>{
+    if(!byComp[m.comp]) byComp[m.comp]=[];
+    byComp[m.comp].push(m);
+  });
+  const keys=COMP_ORDER.filter(k=>byComp[k]);
+  let html='';
+  keys.forEach(k=>{
+    html+=`<div class="compartment-label">${k} <span style="font-weight:400;text-transform:none;letter-spacing:0">(${byComp[k].length})</span></div><div class="grid">`;
+    byComp[k].forEach(m=>{
+      const idx=M.indexOf(m);
+      const s=sel===idx?'sel':'';
+      const tags=m.actions.map(a=>`<span class="tag ${a.c}">${a.l}</span>`).join('');
+      html+=`<div class="card ${s}" onclick="pick(${idx})"><div class="cname">${m.name}</div><div class="cgroup">${m.nerveLabel}</div><div class="tags">${tags}</div></div>`;
+    });
+    html+='</div>';
+  });
+  document.getElementById('main').innerHTML=html;
+}
+
+function pick(idx){
+  sel=idx; render();
+  const m=M[idx];
+  const tags=m.actions.map(a=>`<span class="tag ${a.c}">${a.l}</span>`).join('');
+  document.getElementById('detail').innerHTML=`
+    <div class="d-title">${m.name}</div>
+    <div class="d-sub">${m.comp}</div>
+    <div class="tags" style="margin-bottom:12px">${tags}</div>
+    <div class="d-grid">
+      <div class="d-col"><label>Origin</label><p>${m.origin}</p></div>
+      <div class="d-col"><label>Insertion</label><p>${m.insertion}</p></div>
+      <div class="d-col"><label>Nerve supply</label><p>${m.nerveLabel}</p></div>
+      <div class="d-col"><label>Clinical note</label><p>${m.notes}</p></div>
+    </div>`;
+}
+
+render();
+</script>

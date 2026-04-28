@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lower limb muscles — interactive reference</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fafaf8;color:#111;padding:20px;font-size:14px}
+h1{font-size:20px;font-weight:500;margin-bottom:16px;color:#111}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tab{padding:5px 12px;font-size:12px;border:1px solid #ccc;border-radius:8px;background:#fff;color:#555;cursor:pointer;transition:all .15s}
+.tab.on{background:#111;color:#fff;border-color:#111;font-weight:500}
+.tab:hover:not(.on){background:#f0f0ec;color:#111}
+.slbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:#888;margin:16px 0 7px;padding-left:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:6px}
+.card{background:#fff;border:1px solid #e5e5e0;border-radius:12px;padding:11px 13px;cursor:pointer;transition:all .15s}
+.card:hover{border-color:#bbb;background:#f8f8f4}
+.card.sel{border:2px solid #3b82f6;background:#eff6ff}
+.cn{font-size:13px;font-weight:600;color:#111;margin-bottom:2px}
+.cg{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
+.tags{display:flex;flex-wrap:wrap;gap:3px}
+.tag{font-size:11px;padding:2px 7px;border-radius:20px;font-weight:500}
+.tf{background:#EEEDFE;color:#3C3489}.te{background:#E1F5EE;color:#085041}
+.ta{background:#FAECE7;color:#712B13}.tad{background:#FBEAF0;color:#72243E}
+.tr{background:#FAEEDA;color:#633806}.ts{background:#F1EFE8;color:#444441}
+.to{background:#E6F1FB;color:#0C447C}.tp{background:#EAF3DE;color:#27500A}
+.det{background:#fff;border:1px solid #e5e5e0;border-radius:12px;padding:16px 18px;margin-top:14px;min-height:130px}
+.dt{font-size:16px;font-weight:600;color:#111;margin-bottom:2px}
+.ds{font-size:12px;color:#888;margin-bottom:10px}
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dc label{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#888;display:block;margin-bottom:3px;font-weight:600}
+.dc p{font-size:13px;color:#222;line-height:1.55}
+.emp{font-size:13px;color:#aaa;padding:20px 0}
+.legend{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px;padding-top:14px;border-top:1px solid #eee}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:#666}
+.ld{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.count{font-size:12px;color:#aaa;margin-left:4px;font-weight:400}
+</style>
+</head>
+<body>
+<h1>Lower limb muscles — interactive reference</h1>
+<div class="tabs" id="tabs">
+  <button class="tab on" onclick="sv('all',this)">All muscles</button>
+  <button class="tab" onclick="sv('g',this)">Gluteal</button>
+  <button class="tab" onclick="sv('ta',this)">Thigh — anterior</button>
+  <button class="tab" onclick="sv('tm',this)">Thigh — medial</button>
+  <button class="tab" onclick="sv('tp',this)">Thigh — posterior</button>
+  <button class="tab" onclick="sv('la',this)">Leg — anterior</button>
+  <button class="tab" onclick="sv('ll',this)">Leg — lateral</button>
+  <button class="tab" onclick="sv('lp',this)">Leg — posterior</button>
+  <button class="tab" onclick="sv('f',this)">Foot (intrinsic)</button>
+  <button class="tab" onclick="sv('nf',this)">Femoral n.</button>
+  <button class="tab" onclick="sv('no',this)">Obturator n.</button>
+  <button class="tab" onclick="sv('ns',this)">Sciatic n.</button>
+  <button class="tab" onclick="sv('nt',this)">Tibial n.</button>
+  <button class="tab" onclick="sv('np',this)">Peroneal n.</button>
+  <button class="tab" onclick="sv('ng',this)">Gluteal nn.</button>
+</div>
+<div id="main"></div>
+<div class="det" id="det"><p class="emp">Click any muscle card to see origin, insertion, nerve supply, and clinical notes.</p></div>
+<div class="legend">
+  <div class="li"><span class="ld" style="background:#7F77DD"></span>Flexion</div>
+  <div class="li"><span class="ld" style="background:#1D9E75"></span>Extension</div>
+  <div class="li"><span class="ld" style="background:#D85A30"></span>Abduction</div>
+  <div class="li"><span class="ld" style="background:#D4537E"></span>Adduction</div>
+  <div class="li"><span class="ld" style="background:#BA7517"></span>Rotation</div>
+  <div class="li"><span class="ld" style="background:#888780"></span>Stabilisation</div>
+  <div class="li"><span class="ld" style="background:#378ADD"></span>Other</div>
+  <div class="li"><span class="ld" style="background:#639922"></span>Plantar/dorsiflexion</div>
+</div>
+<script>
+const M=[
+  {n:"Gluteus maximus",r:"g",rl:"Gluteal region",nk:"ng",nl:"Inferior gluteal (L5–S2)",
+   a:[{l:"Hip extension",c:"te"},{l:"Lateral rotation",c:"tr"},{l:"Abduction (upper fibres)",c:"ta"}],
+   o:"Posterior ilium (posterior gluteal line), sacrum, coccyx, sacrotuberous ligament",
+   i:"Iliotibial tract + gluteal tuberosity of femur",
+   cl:"Largest muscle in the body. Primary hip extensor. Most active in stair climbing, rising from sitting, running. ITB tightness related to ITBS and piriformis syndrome."},
+  {n:"Gluteus medius",r:"g",rl:"Gluteal region",nk:"ng",nl:"Superior gluteal (L4–S1)",
+   a:[{l:"Hip abduction",c:"ta"},{l:"Medial rotation (anterior fibres)",c:"tr"},{l:"Pelvic stabilisation",c:"ts"}],
+   o:"Ilium between anterior and posterior gluteal lines",
+   i:"Greater trochanter of femur (lateral surface)",
+   cl:"Weakness → Trendelenburg gait (pelvis drops to opposite side during stance). Key IM injection site. Essential pelvic stabiliser."},
+  {n:"Gluteus minimus",r:"g",rl:"Gluteal region",nk:"ng",nl:"Superior gluteal (L4–S1)",
+   a:[{l:"Hip abduction",c:"ta"},{l:"Medial rotation",c:"tr"},{l:"Pelvic stabilisation",c:"ts"}],
+   o:"Ilium between anterior and inferior gluteal lines",
+   i:"Greater trochanter (anterior surface)",
+   cl:"Deepest and smallest gluteal muscle. Works synergistically with medius. Paralysis also causes Trendelenburg sign."},
+  {n:"Piriformis",r:"g",rl:"Gluteal region",nk:"ns",nl:"Direct branches S1–S2",
+   a:[{l:"Lateral rotation (hip extended)",c:"tr"},{l:"Abduction (hip flexed)",c:"ta"}],
+   o:"Anterior surface of sacrum (S2–S4), sacrotuberous ligament",
+   i:"Greater trochanter (superior surface)",
+   cl:"Sciatic nerve passes inferior to it in most people. Piriformis syndrome: sciatic pain from spasm. Key landmark for inferior gluteal vessels and nerve."},
+  {n:"Obturator internus",r:"g",rl:"Gluteal region",nk:"ns",nl:"Nerve to obturator internus (L5–S2)",
+   a:[{l:"Lateral rotation",c:"tr"},{l:"Abduction (hip flexed)",c:"ta"}],
+   o:"Inner surface of obturator membrane + surrounding pelvic bone",
+   i:"Greater trochanter (medial surface)",
+   cl:"Exits pelvis via lesser sciatic foramen, hooks around ischium — gives it a unique line of pull. Part of short external rotators."},
+  {n:"Gemellus superior",r:"g",rl:"Gluteal region",nk:"ns",nl:"Nerve to obturator internus (L5–S2)",
+   a:[{l:"Lateral rotation",c:"tr"}],
+   o:"Ischial spine",i:"Greater trochanter (blends with obturator internus tendon)",
+   cl:"Upper helper of obturator internus. Part of the short external rotator group. Rarely tested independently."},
+  {n:"Gemellus inferior",r:"g",rl:"Gluteal region",nk:"ns",nl:"Nerve to quadratus femoris (L4–S1)",
+   a:[{l:"Lateral rotation",c:"tr"}],
+   o:"Ischial tuberosity",i:"Greater trochanter (blends with obturator internus tendon)",
+   cl:"Lower helper of obturator internus. Below the tendon. Part of short external rotators."},
+  {n:"Quadratus femoris",r:"g",rl:"Gluteal region",nk:"ns",nl:"Nerve to quadratus femoris (L4–S1)",
+   a:[{l:"Lateral rotation",c:"tr"},{l:"Hip adduction (weak)",c:"tad"}],
+   o:"Lateral border of ischial tuberosity",i:"Intertrochanteric crest of femur",
+   cl:"Strongest short external rotator. Ischiofemoral impingement can compress it between ischium and lesser trochanter."},
+  {n:"Tensor fasciae latae",r:"g",rl:"Gluteal region",nk:"ng",nl:"Superior gluteal (L4–S1)",
+   a:[{l:"Hip abduction",c:"ta"},{l:"Hip flexion",c:"tf"},{l:"Medial rotation",c:"tr"},{l:"Knee stabilisation via ITB",c:"ts"}],
+   o:"Anterior superior iliac spine (ASIS) + anterior iliac crest",
+   i:"Iliotibial band (ITB) → Gerdy's tubercle of tibia",
+   cl:"ITB tightness → iliotibial band syndrome (lateral knee pain in runners). Acts via the ITB to stabilise the knee."},
+  {n:"Iliacus",r:"ta",rl:"Anterior thigh",nk:"nf",nl:"Femoral nerve (L2–L4)",
+   a:[{l:"Hip flexion",c:"tf"},{l:"Lateral rotation (weak)",c:"tr"}],
+   o:"Iliac fossa, iliac crest, anterior sacroiliac ligaments",
+   i:"Lesser trochanter of femur (with psoas major tendon)",
+   cl:"Forms iliopsoas with psoas major. Innervated by femoral nerve proximal to inguinal ligament. TB psoas abscess can track here."},
+  {n:"Psoas major",r:"ta",rl:"Anterior thigh",nk:"nf",nl:"Lumbar plexus direct (L1–L3)",
+   a:[{l:"Hip flexion",c:"tf"},{l:"Lumbar spine flexion (bilateral)",c:"tf"},{l:"Lateral rotation",c:"tr"}],
+   o:"Transverse processes + vertebral bodies/discs T12–L5",
+   i:"Lesser trochanter of femur",
+   cl:"Tight psoas → anterior pelvic tilt, hyperlordosis, low back pain. Psoas abscess (TB, Crohn's) tracks down to femoral triangle presenting as groin swelling."},
+  {n:"Rectus femoris",r:"ta",rl:"Anterior thigh",nk:"nf",nl:"Femoral nerve (L2–L4)",
+   a:[{l:"Knee extension",c:"te"},{l:"Hip flexion",c:"tf"}],
+   o:"Anterior inferior iliac spine (AIIS) + groove above acetabulum",
+   i:"Patella → patellar tendon → tibial tuberosity",
+   cl:"Only quadriceps head crossing the hip — hence its two actions. Quad strain in kicking sports. AIIS avulsion fractures in adolescent athletes."},
+  {n:"Vastus lateralis",r:"ta",rl:"Anterior thigh",nk:"nf",nl:"Femoral nerve (L2–L4)",
+   a:[{l:"Knee extension",c:"te"}],
+   o:"Intertrochanteric line, greater trochanter, lateral linea aspera, lateral intermuscular septum",
+   i:"Lateral patella → patellar tendon → tibial tuberosity",
+   cl:"Largest quadriceps head. IM injection site in infants (no major vessels). Lateral retinaculum tightness → lateral patellar tracking disorder."},
+  {n:"Vastus medialis",r:"ta",rl:"Anterior thigh",nk:"nf",nl:"Femoral nerve (L2–L4)",
+   a:[{l:"Knee extension",c:"te"},{l:"Medial patellar stabilisation",c:"ts"}],
+   o:"Intertrochanteric line, medial linea aspera, medial supracondylar line, adductor magnus tendon",
+   i:"Medial patella → patellar tendon → tibial tuberosity",
+   cl:"VMO (oblique fibres) stabilises patella medially. Wasting appears early in knee pathology. Key rehab target in patellar instability."},
+  {n:"Vastus intermedius",r:"ta",rl:"Anterior thigh",nk:"nf",nl:"Femoral nerve (L2–L4)",
+   a:[{l:"Knee extension",c:"te"}],
+   o:"Anterior and lateral femoral shaft (upper 2/3)",
+   i:"Deep surface of quadriceps tendon → tibial tuberosity",
+   cl:"Deepest quadriceps head, directly on femur. Can be site of femoral stress fractures in distance athletes."},
+  {n:"Sartorius",r:"ta",rl:"Anterior thigh",nk:"nf",nl:"Femoral nerve (L2–L3)",
+   a:[{l:"Hip flexion",c:"tf"},{l:"Hip abduction + lateral rotation",c:"ta"},{l:"Knee flexion",c:"tf"}],
+   o:"Anterior superior iliac spine (ASIS)",
+   i:"Pes anserinus (medial surface of tibia, with gracilis and semitendinosus)",
+   cl:"Longest muscle in the body. 'Tailor's muscle.' Forms lateral border of femoral triangle. Part of pes anserinus (important in pes anserinus bursitis)."},
+  {n:"Pectineus",r:"ta",rl:"Anterior thigh",nk:"nf",nl:"Femoral (L2–L3) ± Obturator",
+   a:[{l:"Hip adduction",c:"tad"},{l:"Hip flexion",c:"tf"}],
+   o:"Pectineal line of pubis (between iliopectineal eminence and pubic tubercle)",
+   i:"Pectineal line of femur (below lesser trochanter)",
+   cl:"Forms floor of femoral triangle. Dual innervation in some individuals (femoral + obturator). Sits between adductor and anterior compartments."},
+  {n:"Adductor longus",r:"tm",rl:"Medial thigh",nk:"no",nl:"Obturator nerve (L2–L4)",
+   a:[{l:"Hip adduction",c:"tad"},{l:"Hip flexion (from extended position)",c:"tf"}],
+   o:"Body of pubis below the pubic tubercle",
+   i:"Middle third of linea aspera of femur",
+   cl:"Most commonly strained adductor ('groin strain'). Forms medial border of femoral triangle. Most anteriorly placed adductor."},
+  {n:"Adductor brevis",r:"tm",rl:"Medial thigh",nk:"no",nl:"Obturator nerve (L2–L4)",
+   a:[{l:"Hip adduction",c:"tad"},{l:"Hip flexion",c:"tf"}],
+   o:"Body and inferior ramus of pubis",
+   i:"Pectineal line + upper third of linea aspera",
+   cl:"Deep to adductor longus and pectineus. Obturator nerve passes anterior and posterior to it — anatomical landmark."},
+  {n:"Adductor magnus",r:"tm",rl:"Medial thigh",nk:"no",nl:"Obturator (adductor) + Tibial division sciatic (hamstring part)",
+   a:[{l:"Hip adduction",c:"tad"},{l:"Hip extension (hamstring/ischial part)",c:"te"}],
+   o:"Inferior pubic ramus, ischial ramus (adductor part); ischial tuberosity (hamstring part)",
+   i:"Linea aspera + medial supracondylar ridge; adductor tubercle (hamstring part)",
+   cl:"Largest adductor. Dual innervation. Adductor hiatus in its tendon transmits femoral vessels → popliteal vessels. Hamstring part active in hip extension."},
+  {n:"Gracilis",r:"tm",rl:"Medial thigh",nk:"no",nl:"Obturator nerve (L2–L3)",
+   a:[{l:"Hip adduction",c:"tad"},{l:"Knee flexion",c:"tf"},{l:"Medial rotation of flexed leg",c:"tr"}],
+   o:"Body and inferior ramus of pubis",
+   i:"Pes anserinus (medial tibia, with sartorius and semitendinosus)",
+   cl:"Only medial thigh muscle crossing the knee joint. Part of pes anserinus. Commonly harvested as tendon graft for ACL reconstruction."},
+  {n:"Obturator externus",r:"tm",rl:"Medial thigh",nk:"no",nl:"Obturator nerve (L3–L4)",
+   a:[{l:"Lateral rotation of hip",c:"tr"},{l:"Hip joint stabilisation",c:"ts"}],
+   o:"Outer surface of obturator membrane + margins of obturator foramen",
+   i:"Trochanteric fossa of femur",
+   cl:"Deep external rotator. Sometimes grouped with short external rotators of the gluteal region. Obturator nerve passes superior to it."},
+  {n:"Biceps femoris — long head",r:"tp",rl:"Posterior thigh",nk:"ns",nl:"Tibial division of sciatic (S1–S3)",
+   a:[{l:"Knee flexion",c:"tf"},{l:"Hip extension",c:"te"},{l:"Lateral rotation of leg (knee flexed)",c:"tr"}],
+   o:"Ischial tuberosity (shared origin with semitendinosus)",
+   i:"Head of fibula + lateral tibial condyle (lateral to popliteal fossa)",
+   cl:"Most commonly strained hamstring. Proximal hamstring avulsion at ischial tuberosity occurs in sprinting ('water-skier injury'). Common peroneal nerve at its medial border."},
+  {n:"Biceps femoris — short head",r:"tp",rl:"Posterior thigh",nk:"np",nl:"Common peroneal division of sciatic (L5–S2)",
+   a:[{l:"Knee flexion",c:"tf"},{l:"Lateral rotation of leg",c:"tr"}],
+   o:"Lateral linea aspera + lateral supracondylar line of femur",
+   i:"Head of fibula (joins long head tendon)",
+   cl:"Does NOT cross the hip — not a hip extensor. Unique: supplied by common peroneal division despite being in posterior thigh."},
+  {n:"Semitendinosus",r:"tp",rl:"Posterior thigh",nk:"ns",nl:"Tibial division of sciatic (L5–S2)",
+   a:[{l:"Knee flexion",c:"tf"},{l:"Hip extension",c:"te"},{l:"Medial rotation of leg",c:"tr"}],
+   o:"Ischial tuberosity (with long head of biceps femoris)",
+   i:"Pes anserinus (medial tibia, with sartorius and gracilis)",
+   cl:"Long rope-like tendon in lower thigh. Part of pes anserinus. Harvested for ACL reconstruction (semitendinosus-gracilis 'hamstring graft')."},
+  {n:"Semimembranosus",r:"tp",rl:"Posterior thigh",nk:"ns",nl:"Tibial division of sciatic (L5–S2)",
+   a:[{l:"Knee flexion",c:"tf"},{l:"Hip extension",c:"te"},{l:"Medial rotation of leg",c:"tr"}],
+   o:"Ischial tuberosity (superolateral impression)",
+   i:"Posterior medial tibial condyle; capsule (oblique popliteal lig.); popliteus fascia",
+   cl:"Medial wall of popliteal fossa. Bursa between it and medial gastrocnemius → Baker's cyst. Membranous tendon vs semitendinosus cord."},
+  {n:"Popliteus",r:"tp",rl:"Posterior thigh",nk:"nt",nl:"Tibial nerve (L4–S1)",
+   a:[{l:"Medially rotates tibia — unlocks knee",c:"tr"},{l:"Knee flexion (initiates)",c:"tf"}],
+   o:"Lateral condyle of femur + posterior horn of lateral meniscus",
+   i:"Posterior tibial surface above the soleal line",
+   cl:"'Key to the knee' — unlocks full extension by lateral rotation of femur on fixed tibia. Popliteus tendinopathy: posterolateral knee pain in downhill runners."},
+  {n:"Tibialis anterior",r:"la",rl:"Anterior leg",nk:"np",nl:"Deep peroneal nerve (L4–L5)",
+   a:[{l:"Dorsiflexion",c:"tp"},{l:"Inversion",c:"to"}],
+   o:"Lateral tibial condyle + upper 2/3 lateral tibia + interosseous membrane",
+   i:"Medial cuneiform + base of 1st metatarsal (medial and plantar surfaces)",
+   cl:"Primary dorsiflexor. Paralysis → foot drop (L4/L5 or deep peroneal lesion). Anterior compartment syndrome compresses it. Palpable tendon medial to ankle."},
+  {n:"Extensor hallucis longus",r:"la",rl:"Anterior leg",nk:"np",nl:"Deep peroneal nerve (L5–S1)",
+   a:[{l:"Great toe extension",c:"te"},{l:"Dorsiflexion",c:"tp"},{l:"Inversion",c:"to"}],
+   o:"Middle third of anterior fibula + interosseous membrane",
+   i:"Dorsal distal phalanx of great toe",
+   cl:"L5 nerve root test — great toe extension weakness. Lies between tibialis anterior and EDL. Deep peroneal nerve injury → loss of great toe extension."},
+  {n:"Extensor digitorum longus",r:"la",rl:"Anterior leg",nk:"np",nl:"Deep peroneal nerve (L5–S1)",
+   a:[{l:"Extension digits 2–5 (MTP and IP)",c:"te"},{l:"Dorsiflexion",c:"tp"},{l:"Eversion",c:"to"}],
+   o:"Lateral tibial condyle + anterior fibula (medial border) + interosseous membrane",
+   i:"Middle and distal phalanges of digits 2–5 (extensor hood)",
+   cl:"Also everts the foot. Claw toe deformity when intrinsics are lost. Shares anterior compartment with TA and EHL."},
+  {n:"Peroneus (fibularis) tertius",r:"la",rl:"Anterior leg",nk:"np",nl:"Deep peroneal nerve (L5–S1)",
+   a:[{l:"Dorsiflexion",c:"tp"},{l:"Eversion",c:"to"}],
+   o:"Lower 1/3 anterior fibula + interosseous membrane",
+   i:"Base of 5th metatarsal (dorsal surface)",
+   cl:"Absent in ~10% of people. Sometimes described as the inferior part of EDL. Resists inversion when present."},
+  {n:"Peroneus (fibularis) longus",r:"ll",rl:"Lateral leg",nk:"np",nl:"Superficial peroneal nerve (L5–S1)",
+   a:[{l:"Eversion",c:"to"},{l:"Plantarflexion (weak)",c:"tp"}],
+   o:"Head and upper 2/3 of lateral fibula + adjacent intermuscular septa",
+   i:"Medial cuneiform + base of 1st metatarsal (plantar surface — crosses the sole diagonally)",
+   cl:"Supports transverse and medial longitudinal arches. Avulsion at 5th metatarsal base ('dancer's fracture') in forced inversion."},
+  {n:"Peroneus (fibularis) brevis",r:"ll",rl:"Lateral leg",nk:"np",nl:"Superficial peroneal nerve (L5–S1)",
+   a:[{l:"Eversion",c:"to"},{l:"Plantarflexion (weak)",c:"tp"}],
+   o:"Lower 2/3 of lateral fibula",
+   i:"Tuberosity (styloid process) of 5th metatarsal",
+   cl:"Lies deep to peroneus longus. Tendon tears at lateral ankle in chronic ankle instability. Avulsion of 5th MT base on inversion (Jones fracture area)."},
+  {n:"Gastrocnemius",r:"lp",rl:"Posterior leg — superficial",nk:"nt",nl:"Tibial nerve (S1–S2)",
+   a:[{l:"Plantarflexion",c:"tp"},{l:"Knee flexion",c:"tf"}],
+   o:"Medial head: medial femoral condyle. Lateral head: lateral femoral condyle.",
+   i:"Calcaneus via Achilles tendon (with soleus)",
+   cl:"Two-joint muscle. Active in running/jumping. Medial head strain = 'tennis leg.' Most powerful plantarflexor with knee extended (cannot shorten fully if knee is flexed)."},
+  {n:"Soleus",r:"lp",rl:"Posterior leg — superficial",nk:"nt",nl:"Tibial nerve (S1–S2)",
+   a:[{l:"Plantarflexion",c:"tp"},{l:"Venous pump (walking)",c:"ts"}],
+   o:"Posterior fibula head, posterior tibia (soleal line), fibrous arch between tibia and fibula",
+   i:"Calcaneus via Achilles tendon (with gastrocnemius)",
+   cl:"'Second heart' — major calf venous pump preventing DVT. Most important plantarflexor in walking. Active even with knee bent (unlike gastrocnemius)."},
+  {n:"Plantaris",r:"lp",rl:"Posterior leg — superficial",nk:"nt",nl:"Tibial nerve (S1–S2)",
+   a:[{l:"Plantarflexion (weak)",c:"tp"},{l:"Knee flexion (weak)",c:"tf"}],
+   o:"Lateral supracondylar line of femur (above lateral gastrocnemius head)",
+   i:"Posteromedial calcaneus (medial to Achilles tendon)",
+   cl:"Vestigial; absent in ~10%. Tendon graft donor site. Rupture mimics DVT or severe calf strain — sudden 'snap' with medial calf pain."},
+  {n:"Flexor hallucis longus",r:"lp",rl:"Posterior leg — deep",nk:"nt",nl:"Tibial nerve (S1–S2)",
+   a:[{l:"Hallux IP joint flexion",c:"tf"},{l:"Plantarflexion (weak)",c:"tp"},{l:"Inversion",c:"to"}],
+   o:"Posterior fibula (lower 2/3) + interosseous membrane",
+   i:"Plantar distal phalanx of great toe",
+   cl:"'Dancer's tendon' — FHL tenosynovitis in ballet dancers (en pointe loading). Passes through osseofibrous tunnel behind medial malleolus. Crosses FDL at Henry's knot."},
+  {n:"Flexor digitorum longus",r:"lp",rl:"Posterior leg — deep",nk:"nt",nl:"Tibial nerve (L5–S1)",
+   a:[{l:"Flexion of distal phalanges digits 2–5",c:"tf"},{l:"Plantarflexion",c:"tp"},{l:"Inversion",c:"to"}],
+   o:"Posterior tibia (medial to the vertical ridge below soleal line)",
+   i:"Plantar distal phalanges of digits 2–5 (splits into 4 tendons in sole)",
+   cl:"Crosses FHL at Henry's knot (sustentaculum tali). Hammer toe contributor. Active during toe-off phase of gait."},
+  {n:"Tibialis posterior",r:"lp",rl:"Posterior leg — deep",nk:"nt",nl:"Tibial nerve (L4–L5)",
+   a:[{l:"Inversion",c:"to"},{l:"Plantarflexion",c:"tp"},{l:"Longitudinal arch support",c:"ts"}],
+   o:"Posterior interosseous membrane + adjacent posterior surfaces of tibia and fibula",
+   i:"Navicular tuberosity + medial, intermediate, lateral cuneiforms + cuboid + metatarsals 2–4 bases",
+   cl:"Primary invertor of the foot. Tibialis posterior tendon dysfunction → adult acquired flatfoot (pes planus) — medial ankle swelling, 'too many toes' sign. L4 root lesion affects it."},
+  {n:"Extensor digitorum brevis",r:"f",rl:"Dorsal foot",nk:"np",nl:"Deep peroneal nerve (L5–S1)",
+   a:[{l:"Extension of digits 1–4 at MTP joints",c:"te"}],
+   o:"Anterolateral surface of calcaneus + inferior extensor retinaculum",
+   i:"Dorsal extensor expansions of digits 1–4",
+   cl:"Only intrinsic muscle on dorsum of foot. Wasting visible in deep peroneal nerve lesions. Can be mistaken for dorsal foot ganglion or swelling."},
+  {n:"Abductor hallucis",r:"f",rl:"Plantar foot — medial",nk:"nt",nl:"Medial plantar nerve (S1–S2)",
+   a:[{l:"Great toe abduction",c:"ta"},{l:"Great toe MTP flexion",c:"tf"}],
+   o:"Medial calcaneal tubercle + flexor retinaculum + plantar aponeurosis",
+   i:"Medial base of proximal phalanx of great toe (with medial FHB tendon)",
+   cl:"Forms the medial border of foot. Active in toe-off. Weakness associated with hallux valgus development. 1st layer of plantar muscles."},
+  {n:"Flexor digitorum brevis",r:"f",rl:"Plantar foot — medial",nk:"nt",nl:"Medial plantar nerve (S1–S2)",
+   a:[{l:"Flexion of PIP joints of digits 2–5",c:"tf"}],
+   o:"Medial calcaneal tubercle + central plantar aponeurosis",
+   i:"Middle phalanges of digits 2–5 (splits to allow FDL to pass through — mirror of FDS in hand)",
+   cl:"Shares origin with plantar fascia — implicated in plantar fasciitis. 1st plantar layer."},
+  {n:"Abductor digiti minimi (foot)",r:"f",rl:"Plantar foot — lateral",nk:"nt",nl:"Lateral plantar nerve (S1–S3)",
+   a:[{l:"Little toe abduction",c:"ta"},{l:"Little toe MTP flexion",c:"tf"}],
+   o:"Medial and lateral calcaneal tubercles + plantar aponeurosis",
+   i:"Lateral base of proximal phalanx of little toe",
+   cl:"Lateral plantar nerve entrapment (Baxter's nerve) causes lateral heel pain mimicking plantar fasciitis. 1st plantar layer."},
+  {n:"Quadratus plantae",r:"f",rl:"Plantar foot — 2nd layer",nk:"nt",nl:"Lateral plantar nerve (S1–S2)",
+   a:[{l:"Straightens oblique pull of FDL",c:"to"},{l:"Assists digit 2–5 flexion",c:"tf"}],
+   o:"Medial and lateral heads of calcaneus (plantar surface)",
+   i:"Posterolateral margin of FDL tendon before its division",
+   cl:"Unique to humans — corrects the oblique pull of FDL so flexion is in line with toes. No direct hand equivalent. 2nd plantar layer."},
+  {n:"Lumbricals (foot) ×4",r:"f",rl:"Plantar foot — 2nd layer",nk:"nt",nl:"Medial plantar (1st) + Lateral plantar (2nd–4th)",
+   a:[{l:"MTP flexion + IP extension digits 2–5",c:"tf"}],
+   o:"FDL tendons (from their medial sides)",
+   i:"Medial extensor expansions of digits 2–5",
+   cl:"Prevent claw toe deformity (by balancing MTP flexion with IP extension). Wasting causes claw toes in diabetic peripheral neuropathy. 2nd plantar layer."},
+  {n:"Flexor hallucis brevis",r:"f",rl:"Plantar foot — medial",nk:"nt",nl:"Medial plantar nerve (S1–S2)",
+   a:[{l:"Great toe MTP flexion",c:"tf"}],
+   o:"Plantar surface of cuboid + adjacent lateral cuneiform",
+   i:"Two heads → medial and lateral bases of proximal phalanx of great toe (sesamoid bones in tendons)",
+   cl:"Contains two sesamoid bones. Sesamoiditis causes forefoot pain under 1st MTP joint. 3rd plantar layer."},
+  {n:"Adductor hallucis",r:"f",rl:"Plantar foot — deep",nk:"nt",nl:"Lateral plantar nerve (S1–S2)",
+   a:[{l:"Great toe adduction",c:"tad"},{l:"Transverse arch support",c:"ts"}],
+   o:"Oblique head: bases of MT 2–4 + long plantar lig. Transverse head: deep transverse MT lig. + MTP joint capsules",
+   i:"Lateral base of proximal phalanx of great toe (with lateral FHB tendon)",
+   cl:"Weakness contributes to hallux valgus. Both heads support the transverse arch. 3rd plantar layer."},
+  {n:"Flexor digiti minimi brevis (foot)",r:"f",rl:"Plantar foot — lateral",nk:"nt",nl:"Lateral plantar nerve (S1–S2)",
+   a:[{l:"Little toe MTP flexion",c:"tf"}],
+   o:"Base of 5th metatarsal + long plantar ligament",
+   i:"Lateral base of proximal phalanx of little toe",
+   cl:"Small muscle. 3rd plantar layer. May become hypertrophied contributing to little toe corn."},
+  {n:"Plantar interossei ×3",r:"f",rl:"Plantar foot — deep",nk:"nt",nl:"Lateral plantar nerve (S1–S2)",
+   a:[{l:"Adduction of digits 3–5 toward 2nd toe",c:"tad"},{l:"MTP flexion",c:"tf"}],
+   o:"Medial bases and shafts of metatarsals 3–5 (unipennate — one origin each)",
+   i:"Medial sides of extensor expansions of digits 3–5",
+   cl:"Mnemonic: 'PAD' — Plantar ADduct. Axis of foot is 2nd toe. Wasted in peripheral neuropathy causing forefoot deformity. 4th plantar layer."},
+  {n:"Dorsal interossei (foot) ×4",r:"f",rl:"Plantar foot — deep",nk:"nt",nl:"Lateral plantar nerve (S1–S2)",
+   a:[{l:"Abduction of digits 2–4 away from 2nd toe",c:"ta"},{l:"MTP flexion",c:"tf"}],
+   o:"Adjacent metatarsal shafts (bipennate — two origins each)",
+   i:"Extensor expansions of digits 2–4 (1st to medial side of 2nd toe; 2nd–4th to lateral sides)",
+   cl:"Mnemonic: 'DAB' — Dorsal ABduct. Axis = 2nd toe (not 3rd as in hand). Atrophy → metatarsalgia and splaying. 4th plantar layer."}
+];
+
+const ORDER=["g","ta","tm","tp","la","ll","lp","f"];
+const LABELS={g:"Gluteal region",ta:"Anterior thigh",tm:"Medial thigh",tp:"Posterior thigh",la:"Anterior leg",ll:"Lateral leg",lp:"Posterior leg",f:"Foot (intrinsic)"};
+const NKEYS=["nf","no","ns","nt","np","ng"];
+
+let view='all',sel=null;
+
+function sv(v,el){
+  view=v;sel=null;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  render();
+  document.getElementById('det').innerHTML='<p class="emp">Click any muscle card to see origin, insertion, nerve supply, and clinical notes.</p>';
+}
+
+function fl(){
+  if(view==='all') return M;
+  if(NKEYS.includes(view)) return M.filter(m=>m.nk===view);
+  return M.filter(m=>m.r===view);
+}
+
+function render(){
+  const list=fl();
+  const byR={};
+  list.forEach(m=>{if(!byR[m.r])byR[m.r]=[];byR[m.r].push(m);});
+  const keys=ORDER.filter(k=>byR[k]);
+  let h=`<div style="font-size:12px;color:#aaa;margin-bottom:12px">${list.length} muscle${list.length!==1?'s':''} shown</div>`;
+  keys.forEach(k=>{
+    h+=`<div class="slbl">${LABELS[k]} <span class="count">(${byR[k].length})</span></div><div class="grid">`;
+    byR[k].forEach(m=>{
+      const i=M.indexOf(m);
+      const s=sel===i?' sel':'';
+      const tags=m.a.map(a=>`<span class="tag ${a.c}">${a.l}</span>`).join('');
+      h+=`<div class="card${s}" onclick="pick(${i})"><div class="cn">${m.n}</div><div class="cg">${m.nl}</div><div class="tags">${tags}</div></div>`;
+    });
+    h+='</div>';
+  });
+  document.getElementById('main').innerHTML=h;
+}
+
+function pick(i){
+  sel=i;render();
+  const m=M[i];
+  const tags=m.a.map(a=>`<span class="tag ${a.c}">${a.l}</span>`).join('');
+  document.getElementById('det').innerHTML=`
+    <div class="dt">${m.n}</div>
+    <div class="ds">${m.rl} &nbsp;·&nbsp; ${m.nl}</div>
+    <div class="tags" style="margin-bottom:12px">${tags}</div>
+    <div class="dg">
+      <div class="dc"><label>Origin</label><p>${m.o}</p></div>
+      <div class="dc"><label>Insertion</label><p>${m.i}</p></div>
+      <div class="dc"><label>Nerve supply</label><p>${m.nl}</p></div>
+      <div class="dc"><label>Clinical note</label><p>${m.cl}</p></div>
+    </div>`;
+}
+render();
+</script>
+</body>
+</html>
