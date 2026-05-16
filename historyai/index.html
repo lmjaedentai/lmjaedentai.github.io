@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HistoryAI — Patient Simulation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="favicon.ico" />
+</head>
+
+<body>
+
+    <!-- ═══ HEADER ════════════════════════════════════════════ -->
+    <header>
+        <div class="brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M4.5 9a3 3 0 0 0 6 0v-3a3 3 0 0 0-6 0" />
+                    <path d="M10.5 9c0 3.5 2.5 6 5.5 6s5.5-2.5 5.5-6" />
+                    <circle cx="16" cy="19" r="2" />
+                    <path d="M16 17v-2" />
+                </svg>
+            </div>
+            HistoryAI
+        </div>
+        <nav class="tabs">
+            <button class="active" onclick="switchTab('chat')" id="tab-chat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                Consult
+            </button>
+            <button onclick="switchTab('scenario')" id="tab-scenario">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                </svg>
+                Scenario
+            </button>
+            <button onclick="switchTab('settings')" id="tab-settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                        d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M2 12h2M20 12h2M4.93 19.07l1.41-1.41M19.07 19.07l-1.41-1.41" />
+                </svg>
+                Settings
+            </button>
+        </nav>
+    </header>
+
+    <!-- ═══ DESKTOP LAYOUT ════════════════════════════════════ -->
+    <main>
+        <div class="layout-desktop">
+
+            <!-- Left column: Scenario + Settings -->
+            <div class="col-left">
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="dot"></div>
+                        <h2>Patient Scenario</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="field">
+                            <label>Language</label>
+                            <select id="langSelect-desktop" onchange="syncLanguage(this.value)">
+                                <option value="English">English</option>
+                                <option value="Bahasa Melayu">Bahasa Melayu</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Case Data (JSON or plain text)</label>
+                            <textarea id="scenarioText-desktop" placeholder='Paste structured JSON case data or plain text.
+
+JSON example:
+{
+  "presenting_complaint": "Chest pain",
+  "history_of_presenting_illness": {
+    "onset": "2 days ago",
+    "character": "crushing"
+  },
+  "patient_persona": {
+    "name": "Encik Ali", "age": 55
+  }
+}'></textarea>
+                        </div>
+                        <div class="hint">JSON preferred. Plain text is also accepted and wrapped automatically.</div>
+                        <button class="btn btn-primary" id="applyBtn-desktop" onclick="applyScenario('desktop')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Apply &amp; Start Session
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="dot"></div>
+                        <h2>Settings</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="field">
+                            <label>Gemini API Key</label>
+                            <div class="input-row">
+                                <input type="password" id="apiKeyInput-desktop" placeholder="AIza…"
+                                    autocomplete="off" />
+                                <button class="btn btn-primary" style="padding:9px 12px;flex-shrink:0;"
+                                    onclick="saveApiKey('desktop')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="5 12 12 5 19 12" />
+                                        <polyline points="5 19 12 12 19 19" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="apiStatus-desktop" class="hint">No key saved.</div>
+                        <div class="divider"></div>
+                        <!-- UPDATE href below to your own website's API guide page -->
+                        <a class="api-guide-btn" href="https://your-website.com/api-guide" target="_blank"
+                            rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                            How to get an API key
+                        </a>
+                        <div class="hint">Key is saved in localStorage — never leaves your browser.</div>
+                    </div>
+                </div>
+
+            </div><!-- /col-left -->
+
+            <!-- Right column: Chat -->
+            <div class="col-right">
+                <div class="panel" style="height:100%;">
+                    <div class="panel-header" style="justify-content:space-between;">
+                        <div style="display:flex;align-items:center;gap:10px;">
+                            <div class="dot"></div>
+                            <h2>Consultation</h2>
+                        </div>
+                        <div id="sessionBadge-desktop" class="status-badge" style="display:none;">
+                            <div class="dot-status"></div>Session Active
+                        </div>
+                    </div>
+
+                    <div id="chatSession-desktop" style="display:none;" class="session-bar">
+                        <span id="sessionTitle-desktop">Case loaded</span>
+                        <button class="sbar-end" onclick="promptEndSession()">End Session</button>
+                    </div>
+
+                    <!-- 429 error banner -->
+                    <div class="error-banner" id="errorBanner-desktop">
+                        <div class="error-banner-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                                <line x1="12" y1="9" x2="12" y2="13" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                        </div>
+                        <div class="error-banner-body">
+                            <div class="error-banner-title">Rate Limit Reached (429)</div>
+                            <div class="error-banner-msg">You've hit Gemini's free-tier quota. Please wait a moment
+                                before sending your next message, or check your API key quota in Google AI Studio.</div>
+                        </div>
+                        <button class="error-banner-close" onclick="dismissError()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chatMessages-desktop">
+                            <div class="chat-empty" id="chatEmpty-desktop">
+                                <div class="empty-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                    </svg>
+                                </div>
+                                <p><strong>Ready to begin.</strong><br />Set a patient scenario and click Apply to
+                                    start.</p>
+                            </div>
+                        </div>
+
+                        <div class="typing-indicator" id="typingIndicator-desktop">
+                            <div class="avatar patient-avatar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                            </div>
+                            <div class="typing-dots"><span></span><span></span><span></span></div>
+                        </div>
+
+                        <div class="chat-footer">
+                            <div class="chat-input-bar">
+                                <div class="chat-input-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                    </svg>
+                                    <textarea id="chatInput" rows="1" placeholder="Ask the patient a question…"
+                                        onkeydown="handleKey(event,'desktop')" oninput="autoResize(this)"></textarea>
+                                </div>
+                                <button class="send-btn" id="sendBtn-desktop" onclick="sendMessage('desktop')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="22" y1="2" x2="11" y2="13" />
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div><!-- /layout-desktop -->
+
+        <!-- ═══ MOBILE LAYOUT ═══════════════════════════════════ -->
+        <div class="layout-mobile" style="width:100%;">
+
+            <!-- CHAT (mobile) -->
+            <div class="panel panel-mobile active" id="panel-chat">
+                <div class="panel-header" style="justify-content:space-between;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div class="dot"></div>
+                        <h2>Consultation</h2>
+                    </div>
+                    <div id="sessionBadge-mobile" class="status-badge" style="display:none;">
+                        <div class="dot-status"></div>Active
+                    </div>
+                </div>
+
+                <div id="chatSession-mobile" style="display:none;" class="session-bar">
+                    <span id="sessionTitle-mobile">Case loaded</span>
+                    <button class="sbar-end" onclick="promptEndSession()">End</button>
+                </div>
+
+                <!-- 429 error banner (mobile) -->
+                <div class="error-banner" id="errorBanner-mobile">
+                    <div class="error-banner-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                            <line x1="12" y1="9" x2="12" y2="13" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                    </div>
+                    <div class="error-banner-body">
+                        <div class="error-banner-title">Rate Limit Reached (429)</div>
+                        <div class="error-banner-msg">Gemini quota hit. Wait a moment, then try again. Check your quota
+                            at Google AI Studio.</div>
+                    </div>
+                    <button class="error-banner-close" onclick="dismissError()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages-mobile">
+                        <div class="chat-empty" id="chatEmpty-mobile">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                            </div>
+                            <p><strong>Ready to begin.</strong><br />Go to Scenario tab, apply a case, then come back.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="typing-indicator" id="typingIndicator-mobile">
+                        <div class="avatar patient-avatar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        </div>
+                        <div class="typing-dots"><span></span><span></span><span></span></div>
+                    </div>
+
+                    <div class="chat-footer">
+                        <div class="chat-input-bar">
+                            <div class="chat-input-wrap">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                                <textarea id="chatInput-mobile" rows="1" placeholder="Ask the patient…"
+                                    onkeydown="handleKey(event,'mobile')" oninput="autoResize(this)"></textarea>
+                            </div>
+                            <button class="send-btn" id="sendBtn-mobile" onclick="sendMessage('mobile')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="2" x2="11" y2="13" />
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /panel-chat -->
+
+            <!-- SCENARIO (mobile) -->
+            <div class="panel panel-mobile" id="panel-scenario" style="padding-bottom:20px;">
+                <div class="panel-header">
+                    <div class="dot"></div>
+                    <h2>Patient Scenario</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="field">
+                        <label>Language</label>
+                        <select id="langSelect-mobile" onchange="syncLanguage(this.value)">
+                            <option value="English">English</option>
+                            <option value="Bahasa Melayu">Bahasa Melayu</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Case Data (JSON or plain text)</label>
+                        <textarea id="scenarioText-mobile" style="min-height:200px;"
+                            placeholder="Paste JSON case data or plain text description…"></textarea>
+                    </div>
+                    <div class="hint">JSON preferred. Plain text also accepted.</div>
+                    <button class="btn btn-primary" id="applyBtn-mobile" onclick="applyScenario('mobile')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        Apply &amp; Start Session
+                    </button>
+                </div>
+            </div>
+
+            <!-- SETTINGS (mobile) -->
+            <div class="panel panel-mobile" id="panel-settings" style="padding-bottom:20px;">
+                <div class="panel-header">
+                    <div class="dot"></div>
+                    <h2>Settings</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="field">
+                        <label>Gemini API Key</label>
+                        <div class="input-row">
+                            <input type="password" id="apiKeyInput-mobile" placeholder="AIza…" autocomplete="off" />
+                            <button class="btn btn-primary" style="padding:9px 12px;flex-shrink:0;"
+                                onclick="saveApiKey('mobile')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="5 12 12 5 19 12" />
+                                    <polyline points="5 19 12 12 19 19" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="apiStatus-mobile" class="hint">No key saved.</div>
+                    <div class="divider"></div>
+                    <!-- UPDATE href below to your own website's API guide page -->
+                    <a class="api-guide-btn" href="https://your-website.com/api-guide" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        How to get an API key
+                    </a>
+                    <div class="hint">Key saved in localStorage — never leaves your browser.</div>
+                </div>
+            </div>
+
+        </div><!-- /layout-mobile -->
+    </main>
+
+    <!-- ═══ END-SESSION MODAL ════════════════════════════════ -->
+    <div class="modal-overlay" id="endModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-icon teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M9 11l3 3L22 4" />
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="modal-title">Session Complete</div>
+                    <p class="modal-body-text">Would you like a consultant evaluation of your history-taking
+                        performance?</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p class="modal-body-text" style="color:var(--gray-500);font-size:12.5px;">
+                    The evaluator will review your full conversation and score you on content, clinical reasoning,
+                    communication, flow, and professionalism.
+                </p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" onclick="handleEndChoice(false)">No, just end</button>
+                <button class="btn btn-primary" onclick="handleEndChoice(true)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                    Yes, evaluate me
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
