@@ -1,9 +1,7 @@
-
 'use strict';
 
 // Verify the exact model string at: https://ai.google.dev/gemini-api/docs/models
 const GEMINI_MODEL = 'gemini-3.1-flash-lite';
-// const GEMINI_MODEL = 'gemma-4-31b-it';
 const KEEP_RECENT_TURNS = 8; // history window sent to API (1 turn = 2 entries)
 
 
@@ -84,7 +82,7 @@ Evaluate across exactly 5 domains. For each domain write a SHORT paragraph (3–
 - Constructive: strengths before weaknesses
 - Actionable: one concrete suggestion to improve
 
-Respond with ONLY valid JSON. No preamble, no markdown fences, no extra text.
+YOU MUST respond with ONLY a raw JSON object. Absolutely no markdown, no backticks, no code fences, no explanation, no preamble. Start your response with { and end with }.
 
 Schema:
 {
@@ -134,10 +132,32 @@ function formatTranscript(history) {
 }
 
 /* ════════════════════════════════════════════════════════
+    ROBUST JSON EXTRACTOR
+    Handles: raw JSON, ```json fences, leading/trailing prose,
+    and single-line minified or pretty-printed objects.
+════════════════════════════════════════════════════════ */
+
+function extractJson(raw) {
+    // 1. Strip markdown code fences (```json ... ``` or ``` ... ```)
+    let cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '').trim();
+
+    // 2. Try parsing the cleaned string directly
+    try { return JSON.parse(cleaned); } catch (_) { /* fall through */ }
+
+    // 3. Find the outermost { ... } block in case Gemini prepended/appended prose
+    const start = cleaned.indexOf('{');
+    const end = cleaned.lastIndexOf('}');
+    if (start !== -1 && end !== -1 && end > start) {
+        const slice = cleaned.slice(start, end + 1);
+        try { return JSON.parse(slice); } catch (_) { /* fall through */ }
+    }
+
+    // 4. Nothing worked — surface a readable error
+    throw new Error('Could not parse evaluator JSON. Raw output:\n' + raw);
+}
+
+/* ════════════════════════════════════════════════════════
     GEMINI API CALL
-    - thinkingBudget: 0  → disables reasoning/thinking mode entirely
-        (saves tokens + latency; not needed for simple patient replies)
-    - evaluator uses a tiny budget for slightly more structured output
 ════════════════════════════════════════════════════════ */
 
 async function callGemini(apiKey, systemInstruction, contents, genConfig = {}) {
@@ -151,11 +171,8 @@ async function callGemini(apiKey, systemInstruction, contents, genConfig = {}) {
             contents,
             generationConfig: {
                 temperature: 0.7,
-                maxOutputTokens: 200,   // patient answers are very short
+                maxOutputTokens: 200,
                 topP: 0.9,
-                // thinkingConfig: {
-                //     thinkingBudget: 0     // disable thinking — fast, token-efficient
-                // },
                 ...genConfig
             }
         })
@@ -163,7 +180,6 @@ async function callGemini(apiKey, systemInstruction, contents, genConfig = {}) {
 
     const data = await res.json();
 
-    // Surface 429 distinctly so the caller can show the right UI
     if (data.error) {
         const e = data.error;
         const err = new Error(e.message || 'Unknown Gemini error');
@@ -188,14 +204,12 @@ class VirtualPatient {
         this._sessions = {};
     }
 
-    // Start session — fires neutral greeting trigger → patient just greets back
     async init(sessionId, language, clinicalCase) {
         if (!['English', 'Bahasa Melayu'].includes(language))
             throw new Error('language must be "English" or "Bahasa Melayu"');
 
         const systemInstruction = buildPatientPrompt(language, clinicalCase);
 
-        // Neutral greeting — patient MUST NOT mention symptoms yet
         const greeting = language === 'Bahasa Melayu'
             ? 'Selamat pagi.'
             : 'Good morning.';
@@ -212,7 +226,6 @@ class VirtualPatient {
         return reply;
     }
 
-    // Chat — uses trimmed history for token efficiency
     async chat(sessionId, message) {
         const s = this._sessions[sessionId];
         if (!s) throw new Error(`Session "${sessionId}" not found.`);
@@ -222,14 +235,13 @@ class VirtualPatient {
         try {
             reply = await callGemini(this._apiKey, s.systemInstruction, trimHistory(s.history));
         } catch (err) {
-            s.history.pop(); // rollback so history stays consistent
+            s.history.pop();
             throw err;
         }
         s.history.push({ role: 'model', parts: [{ text: reply }] });
         return reply;
     }
 
-    // Evaluate — full history, no trim, low temperature for consistent marking
     async evaluate(sessionId) {
         const s = this._sessions[sessionId];
         if (!s) throw new Error(`Session "${sessionId}" not found.`);
@@ -247,16 +259,15 @@ class VirtualPatient {
             [{ role: 'user', parts: [{ text: evalContent }] }],
             {
                 temperature: 0.2,
-                maxOutputTokens: 1500,  // evaluator needs more room for paragraphs
+                maxOutputTokens: 1500,
                 topP: 0.8,
-                // thinkingConfig: { thinkingBudget: 512 } // small budget — better JSON consistency
             }
         );
-        console.log('\n\n\n\n===============Raw evaluator output:===================\n\n', raw);
-        const cleaned = raw.replace(/^```json\s*/i, '').replace(/\s*```$/, '').trim();
-        let feedback;
-        try { feedback = JSON.parse(cleaned); }
-        catch { throw new Error('Evaluator returned invalid JSON:\n' + cleaned); }
+
+        console.log('=== Raw evaluator output ===\n', raw);
+
+        // FIX: use robust extractor instead of simple regex strip + JSON.parse
+        const feedback = extractJson(raw);
 
         return { ...feedback, turns };
     }
@@ -282,7 +293,7 @@ let currentSessId = null;
 let selectedLang = 'English';
 
 /* ════════════════════════════════════════════════════════
-    INIT — restore key from localStorage
+    INIT
 ════════════════════════════════════════════════════════ */
 
 (function onLoad() {
@@ -341,7 +352,7 @@ function syncLanguage(val) {
 }
 
 /* ════════════════════════════════════════════════════════
-    APPLY SCENARIO — calls vp.init(), patient just greets back
+    APPLY SCENARIO
 ════════════════════════════════════════════════════════ */
 
 async function applyScenario(ctx) {
@@ -354,11 +365,9 @@ async function applyScenario(ctx) {
     try { clinicalCase = JSON.parse(raw); }
     catch { clinicalCase = { case_description: raw }; }
 
-    // Sync textarea to other context
     const other = ctx === 'desktop' ? 'mobile' : 'desktop';
     document.getElementById('scenarioText-' + other).value = raw;
 
-    // End any existing session
     if (currentSessId) { vp.end(currentSessId); currentSessId = null; }
 
     clearChat();
@@ -421,7 +430,6 @@ async function sendMessage(ctx) {
         addMessage('patient', reply, 'desktop');
         addMessage('patient', reply, 'mobile');
     } catch (err) {
-        // Roll back the doctor bubble on failure
         ['desktop', 'mobile'].forEach(c => {
             const el = document.getElementById('chatMessages-' + c);
             if (el?.lastElementChild?.classList.contains('msg')) el.lastElementChild.remove();
@@ -438,7 +446,6 @@ function handleKey(e, ctx) {
 
 /* ════════════════════════════════════════════════════════
     END SESSION FLOW
-    promptEndSession() → modal → handleEndChoice(wantsEval)
 ════════════════════════════════════════════════════════ */
 
 function promptEndSession() {
@@ -450,7 +457,6 @@ async function handleEndChoice(wantsEval) {
     document.getElementById('endModal').classList.remove('show');
 
     if (!wantsEval) {
-        // No evaluation — end session and clear everything
         if (currentSessId && vp) vp.end(currentSessId);
         currentSessId = null;
         clearChat();
@@ -462,7 +468,6 @@ async function handleEndChoice(wantsEval) {
         return;
     }
 
-    // Yes — run evaluation, show feedback, then cleanly end session
     if (!vp || !currentSessId) return;
 
     if (vp.turnCount(currentSessId) < 1) {
@@ -472,37 +477,57 @@ async function handleEndChoice(wantsEval) {
         return;
     }
 
-    setLoading(true);
-    try {
-        const feedback = await vp.evaluate(currentSessId);
-        addFeedbackCard(feedback, 'desktop');
-        addFeedbackCard(feedback, 'mobile');
-    } catch (err) {
-        handleApiError(err, 'evaluating session');
-    } finally {
-        setLoading(false);
-    }
-
-    // End session (free memory) but leave chat visible so student sees feedback
-    if (currentSessId && vp) vp.end(currentSessId);
-    currentSessId = null;
-
+    // FIX: Hide session UI elements BEFORE running evaluation,
+    // so the loading indicator renders cleanly over the chat.
     ['desktop', 'mobile'].forEach(c => {
         document.getElementById('chatSession-' + c).style.display = 'none';
         document.getElementById('sessionBadge-' + c).style.display = 'none';
+    });
+
+    setLoading(true);
+
+    // FIX: Capture the session ID before ending the session.
+    // Previously the session could be GC'd before evaluate() completed.
+    const sessToEval = currentSessId;
+    currentSessId = null; // prevent new messages being sent during evaluation
+
+    let feedbackOk = false;
+    try {
+        const feedback = await vp.evaluate(sessToEval);
+
+        // FIX: render card BEFORE ending the session (session data still in memory)
+        addFeedbackCard(feedback, 'desktop');
+        addFeedbackCard(feedback, 'mobile');
+        feedbackOk = true;
+    } catch (err) {
+        // FIX: show error inline in chat so it's visible, not just a toast
+        handleApiError(err, 'evaluating session');
+        addErrorCard(err.message, 'desktop');
+        addErrorCard(err.message, 'mobile');
+    } finally {
+        setLoading(false);
+        // Now safe to free session memory
+        if (vp) vp.end(sessToEval);
+    }
+
+    // Append the session-end marker and scroll into view
+    ['desktop', 'mobile'].forEach(c => {
         const container = document.getElementById('chatMessages-' + c);
         if (container) {
             const m = document.createElement('div');
             m.className = 'session-end-marker';
             m.textContent = '— Session ended —';
             container.appendChild(m);
-            container.scrollTop = container.scrollHeight;
+            // FIX: use requestAnimationFrame so the DOM has painted before we scroll
+            requestAnimationFrame(() => {
+                container.scrollTop = container.scrollHeight;
+            });
         }
     });
 }
 
 /* ════════════════════════════════════════════════════════
-    EVALUATE — renders feedback card in chat
+    FEEDBACK CARD
 ════════════════════════════════════════════════════════ */
 
 function addFeedbackCard(fb, ctx) {
@@ -552,7 +577,30 @@ ${domainHTML}
 </div>`;
 
     container.appendChild(card);
-    container.scrollTop = container.scrollHeight;
+
+    // FIX: scroll after the card is painted, not before
+    requestAnimationFrame(() => {
+        container.scrollTop = container.scrollHeight;
+    });
+}
+
+/* ════════════════════════════════════════════════════════
+    ERROR CARD — shown inline in chat when evaluation fails
+    so the student always sees what went wrong
+════════════════════════════════════════════════════════ */
+
+function addErrorCard(message, ctx) {
+    const container = document.getElementById('chatMessages-' + ctx);
+    if (!container) return;
+
+    const card = document.createElement('div');
+    card.className = 'error-card';
+    card.innerHTML = `
+<div class="error-card-title">⚠ Evaluation failed</div>
+<div class="error-card-msg">${escapeHtml(message)}</div>`;
+
+    container.appendChild(card);
+    requestAnimationFrame(() => { container.scrollTop = container.scrollHeight; });
 }
 
 /* ════════════════════════════════════════════════════════
@@ -564,7 +612,6 @@ function handleApiError(err, context) {
         || (err.status && (err.status === 'RESOURCE_EXHAUSTED' || err.status === 429));
 
     if (is429) {
-        // Show the prominent 429 banner — much more visible than a toast
         ['desktop', 'mobile'].forEach(c => {
             document.getElementById('errorBanner-' + c).classList.add('show');
         });
