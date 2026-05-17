@@ -30,7 +30,7 @@
                     <path d="M16 17v-2" />
                 </svg>
             </div>
-            HistoryAI
+            <p>HistoryAI</p>
         </div>
         <nav class="tabs">
             <button class="active" onclick="switchTab('chat')" id="tab-chat">
@@ -58,6 +58,7 @@
                 Settings
             </button>
         </nav>
+        <p class="about">2026 by Jaeden Tai</p>
     </header>
 
     <!-- ═══ DESKTOP LAYOUT ════════════════════════════════════ -->
@@ -81,22 +82,26 @@
                             </select>
                         </div>
                         <div class="field">
-                            <label>Case Data (JSON or plain text)</label>
-                            <textarea id="scenarioText-desktop" placeholder='Paste structured JSON case data or plain text.
+                            <label>Case Data</label>
+                            <textarea id="scenarioText-desktop" placeholder='Paste your case data here. 
+                            
+Patient Details (example)
+Name: Mr. Chann
+Age: 45 years old
+Occupation: Data analyst
 
-JSON example:
-{
-  "presenting_complaint": "Chest pain",
-  "history_of_presenting_illness": {
-    "onset": "2 days ago",
-    "character": "crushing"
-  },
-  "patient_persona": {
-    "name": "Encik Ali", "age": 55
-  }
-}'></textarea>
+Presenting Complaint
+“I have chest pain.”
+
+History of Presenting Illness
+Started: 2 hours ago
+Onset: Sudden
+Site: Central chest
+Character: Tight/heavy pressure
+Radiation: Left arm and jaw
+                            '></textarea>
                         </div>
-                        <div class="hint">JSON preferred. Plain text is also accepted and wrapped automatically.</div>
+                        <div class="hint"> It can be OSCE past year questions or real clinical scenario.</div>
                         <button class="btn btn-primary" id="applyBtn-desktop" onclick="applyScenario('desktop')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -217,14 +222,8 @@ JSON example:
 
                         <div class="chat-footer">
                             <div class="chat-input-bar">
-                                <div class="chat-input-wrap">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                                    </svg>
-                                    <textarea id="chatInput" rows="1" placeholder="Ask the patient a question…"
-                                        onkeydown="handleKey(event,'desktop')" oninput="autoResize(this)"></textarea>
-                                </div>
+                                <textarea id="chatInput" rows="1" placeholder="Ask the patient a question…"
+                                    onkeydown="handleKey(event,'desktop')" oninput="autoResize(this)"></textarea>
                                 <button class="send-btn" id="sendBtn-desktop" onclick="sendMessage('desktop')">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                                         stroke-linecap="round" stroke-linejoin="round">
@@ -313,14 +312,8 @@ JSON example:
 
                     <div class="chat-footer">
                         <div class="chat-input-bar">
-                            <div class="chat-input-wrap">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                                </svg>
-                                <textarea id="chatInput-mobile" rows="1" placeholder="Ask the patient…"
-                                    onkeydown="handleKey(event,'mobile')" oninput="autoResize(this)"></textarea>
-                            </div>
+                            <textarea id="chatInput-mobile" rows="1" placeholder="Ask the patient…"
+                                onkeydown="handleKey(event,'mobile')" oninput="autoResize(this)"></textarea>
                             <button class="send-btn" id="sendBtn-mobile" onclick="sendMessage('mobile')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                                     stroke-linecap="round" stroke-linejoin="round">
@@ -440,7 +433,9 @@ JSON example:
         </div>
     </div>
 
-    <div id="toast"></div>
+    <div id="toast">
+        <p id="toastmsg">This is a toast message.</p>
+    </div>
 
     <script src="script.js"></script>
 </body>
