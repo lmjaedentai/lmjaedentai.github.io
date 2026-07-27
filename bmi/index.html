@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI Calculator</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: #fff;
+    color: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  h1 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1a56db;
+    margin-bottom: 32px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid #e8e8e8;
+    gap: 16px;
+  }
+
+  .row-label {
+    font-size: 20px;
+    font-weight: 600;
+    color: #555;
+    white-space: nowrap;
+    min-width: 80px;
+  }
+
+  .row-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  input[type=number] {
+    width: 140px;
+    font-size: 48px;
+    font-weight: 800;
+    color: #0a0a0a;
+    border: none;
+    outline: none;
+    text-align: right;
+    background: transparent;
+    -moz-appearance: textfield;
+  }
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  input[type=number]::placeholder { color: #d0d0d0; }
+  input[type=number]:focus { color: #1a56db; }
+
+  .unit {
+    font-size: 20px;
+    font-weight: 500;
+    color: #aaa;
+    width: 28px;
+  }
+
+  /* Sex toggle */
+  .sex-toggle {
+    display: flex;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 3px;
+    gap: 3px;
+  }
+  .sex-toggle button {
+    padding: 10px 24px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: transparent;
+    color: #999;
+    transition: all 0.15s;
+  }
+  .sex-toggle button.active {
+    background: #fff;
+    color: #1a56db;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+  }
+
+  /* BMI result row */
+  .bmi-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    gap: 16px;
+  }
+
+  .bmi-label {
+    font-size: 20px;
+    font-weight: 600;
+    color: #555;
+  }
+
+  .bmi-right {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .bmi-value {
+    font-size: 64px;
+    font-weight: 800;
+    color: #1a56db;
+    letter-spacing: -0.03em;
+  }
+
+  .bmi-value.empty { color: #e0e0e0; }
+
+  .bmi-cls {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .cls-u  { background: #e0f2fe; color: #0369a1; }
+  .cls-n  { background: #dcfce7; color: #166534; }
+  .cls-p  { background: #fef3c7; color: #92400e; }
+  .cls-o1 { background: #ffedd5; color: #9a3412; }
+  .cls-o2 { background: #fee2e2; color: #7f1d1d; }
+  .cls-o3 { background: #fecaca; color: #7f1d1d; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>BMI Calculator — Malaysia</h1>
+
+  <!-- Weight -->
+  <div class="row">
+    <span class="row-label">Weight</span>
+    <div class="row-right">
+      <input type="number" id="weight" placeholder="70" min="1" max="300" oninput="calc()">
+      <span class="unit">kg</span>
+    </div>
+  </div>
+
+  <!-- Height -->
+  <div class="row">
+    <span class="row-label">Height</span>
+    <div class="row-right">
+      <input type="number" id="height" placeholder="170" min="1" max="250" oninput="calc()">
+      <span class="unit">cm</span>
+    </div>
+  </div>
+
+  <!-- Age -->
+  <div class="row">
+    <span class="row-label">Age</span>
+    <div class="row-right">
+      <input type="number" id="age" placeholder="25" min="1" max="120" oninput="calc()">
+      <span class="unit">yr</span>
+    </div>
+  </div>
+
+  <!-- Sex -->
+  <div class="row">
+    <span class="row-label">Sex</span>
+    <div class="sex-toggle">
+      <button id="btn-m" class="active" onclick="setSex('M')">Male</button>
+      <button id="btn-f" onclick="setSex('F')">Female</button>
+    </div>
+  </div>
+
+  <!-- BMI result -->
+  <div class="bmi-row">
+    <span class="bmi-label">BMI</span>
+    <div class="bmi-right">
+      <span id="bmi-val" class="bmi-value empty">—</span>
+      <span id="bmi-cls" class="bmi-cls" style="display:none"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let sex = 'M';
+
+  function setSex(s) {
+    sex = s;
+    document.getElementById('btn-m').classList.toggle('active', s === 'M');
+    document.getElementById('btn-f').classList.toggle('active', s === 'F');
+    calc();
+  }
+
+  function calc() {
+    const w = parseFloat(document.getElementById('weight').value);
+    const h = parseFloat(document.getElementById('height').value);
+    const age = parseFloat(document.getElementById('age').value);
+
+    const bmiEl = document.getElementById('bmi-val');
+    const clsEl = document.getElementById('bmi-cls');
+
+    if (!w || !h || h <= 0) {
+      bmiEl.textContent = '—';
+      bmiEl.className = 'bmi-value empty';
+      clsEl.style.display = 'none';
+      return;
+    }
+
+    const hm = h / 100;
+    const bmi = w / (hm * hm);
+    bmiEl.textContent = bmi.toFixed(1);
+    bmiEl.className = 'bmi-value';
+
+    let label, cls;
+
+    if (age && age < 18) {
+      // Paediatric — WHO SD approximation
+      if (bmi < 14)       { label = 'Underweight'; cls = 'cls-u'; }
+      else if (bmi < 18)  { label = 'Normal';       cls = 'cls-n'; }
+      else if (bmi < 24)  { label = 'Overweight';   cls = 'cls-p'; }
+      else                { label = 'Obese';         cls = 'cls-o1'; }
+    } else {
+      // Adult — Asian cut-offs (MOH Malaysia 2023)
+      if (bmi < 18.5)      { label = 'Underweight';    cls = 'cls-u'; }
+      else if (bmi < 23.0) { label = 'Normal';          cls = 'cls-n'; }
+      else if (bmi < 27.5) { label = 'Pre-obese';       cls = 'cls-p'; }
+      else if (bmi < 32.5) { label = 'Obese I';         cls = 'cls-o1'; }
+      else if (bmi < 37.5) { label = 'Obese II';        cls = 'cls-o2'; }
+      else                 { label = 'Obese III';        cls = 'cls-o3'; }
+    }
+
+    clsEl.textContent = label;
+    clsEl.className = 'bmi-cls ' + cls;
+    clsEl.style.display = '';
+  }
+</script>
+</body>
+</html>
