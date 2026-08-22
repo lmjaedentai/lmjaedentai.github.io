@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E = mgh Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      transition: border-color 0.2s;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #0066cc;
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .value-display {
+      font-size: 13px;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    .result-box {
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .result-label {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .result-value {
+      font-size: 36px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .result-unit {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .formula {
+      background: #f0f5ff;
+      border: 1px solid #d0deff;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 13px;
+      color: #333;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>E = mgh</h1>
+
+    <div class="input-group">
+      <label for="mass">Mass (m) – kilograms</label>
+      <input type="number" id="mass" value="10" min="0.1" max="10000" step="0.1" />
+      <div class="value-display" id="mass-display">10 kg</div>
+    </div>
+
+    <div class="input-group">
+      <label for="height">Height (h) – meters</label>
+      <input type="number" id="height" value="5" min="0" max="1000" step="0.1" />
+      <div class="value-display" id="height-display">5 m</div>
+    </div>
+
+    <div class="result-box">
+      <div class="result-label">Potential energy</div>
+      <div class="result-value" id="result">490.5</div>
+      <div class="result-unit">joules (J)</div>
+    </div>
+
+    <div class="formula">
+      E = <span id="formula-m">10</span> × <span id="formula-h">5</span> × 9.81<br>
+      = <span id="formula-result">490.5</span> J
+    </div>
+  </div>
+
+  <script>
+    const g = 9.81;
+    const massInput = document.getElementById('mass');
+    const heightInput = document.getElementById('height');
+    const resultElement = document.getElementById('result');
+    const massDisplay = document.getElementById('mass-display');
+    const heightDisplay = document.getElementById('height-display');
+    const formulaM = document.getElementById('formula-m');
+    const formulaH = document.getElementById('formula-h');
+    const formulaResult = document.getElementById('formula-result');
+
+    function updateCalculation() {
+      const m = parseFloat(massInput.value) || 0;
+      const h = parseFloat(heightInput.value) || 0;
+      const E = m * g * h;
+      const rounded = Math.round(E * 100) / 100;
+
+      resultElement.textContent = rounded;
+      massDisplay.textContent = m + ' kg';
+      heightDisplay.textContent = h + ' m';
+      formulaM.textContent = m;
+      formulaH.textContent = h;
+      formulaResult.textContent = rounded;
+    }
+
+    massInput.addEventListener('input', updateCalculation);
+    heightInput.addEventListener('input', updateCalculation);
+
+    updateCalculation();
+  </script>
+</body>
+</html>
